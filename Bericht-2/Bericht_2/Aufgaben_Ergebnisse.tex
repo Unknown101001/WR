@@ -66,7 +66,7 @@ Ein Vergleich der beiden Tabellen macht deutlich, dass bei den hybriden Finiten 
 	\subfigure[Problemstellung]{\includegraphics[width=0.4\textwidth]{../../19/problem.png}}
 	\subfigure[Definitionen in Rock.geo]{\includegraphics[width=0.59\textwidth]{../../19/rockgeo.png}}
 \end{figure}
-Ziel der Aufgabe war es das in Abb.3 (a) zu sehende Problem zu implementieren, bzw. vorhandene Lücken in der Implementierung zu schließen.
+Ziel der Aufgabe war es das in Abb.3 (a) zu sehende Problem zu implementieren bzw. vorhandene Lücken in der Implementierung zu schließen.
 Zunächst haben wir dafür das Gitter samt Rändern in der Datei Rock.geo definiert. 
 Auf eine nähere Erklärung des .geo-Files möchten wir an dieser Stelle verzichten und verweisen auf den ersten Praktikumsbericht.
 
@@ -134,7 +134,7 @@ Setzt man die Permeabilität der Lehmschicht hingegen höher,
 	\captionabove{Aufgabe 18}
 		\includegraphics[width=\textwidth]{../../19/blatt5tabelle.png} 
 \end{figure}
-Wie schon bei den beiden vorherigen Tabellen bemerkt wurde, sieht man hier wieder schön, dass die gemischte und hybride Finite Elemente Methoden die gleichen Ergebnisse bei LeftOutflow und RightOutflow liefern. \newline
+Wie schon bei den beiden vorherigen Tabellen bemerkt wurde, sieht man hier wieder schön, dass die gemischte und hybride Finite Elemente Methode die gleichen Ergebnisse bei LeftOutflow und RightOutflow liefern. \newline
 Weiter sieht man bei diesen beiden Methoden, dass der Fluss erhalten wird, d.h. der Flux Loss ist extrem niedrig und im Bereich der zu erwartenden Ungenauigkeiten. \newline Im Gegensatz dazu erkennt man bei der linearen Finite Elemente Methode (Laplace), dass der Fluss nicht erhalten wird und auch deutlich schlechtere Ergebnisse insgesamt geliefert werden. \newline
 Bei der Permeabilität 1 wird dieser Unterschied zwischen hybrid/mixed und linearen FEM am besten deutlich. Hierbei liefert die lineare Methode einen insgesamt zu hohen Ausfluss (z.B. bei Level 5 ist der Ausfluss 3,00428), wohingegen bei den anderen beiden der erwartete Wert von 1,5 auf beiden Seiten zustande kommt. 
 

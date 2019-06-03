@@ -2,18 +2,18 @@
 
 \subsection{Analytische Herleitung}
 
-\textbf{Ziel:} Wir wollen das Problem nun in einer Weise diskretisieren, sodass die Flussbilanz automatisch erfüllt ist (somit Flux-Loss = 0).
+\textbf{Ziel:} Wir wollen das Problem nun in einer Weise diskretisieren, sodass die Flussbilanz automatisch erfüllt ist (somit Flux Loss = 0).
 
-Die Flussbilanz ist für die numerische Lösung erfüllt wenn gilt:
+Die Flussbilanz ist für die numerische Lösung erfüllt, wenn gilt:
 \[ \int_{\Gamma_\text{in}} q_h \cdot n \diff a = \int_{\Gamma_\text{out}} q_h \cdot n \diff a \]
-Bezeichnung:
+Bezeichnungen:
 \begin{itemize}
 	\item $ \Gamma_\text{in} $ und $ \Gamma_\text{out} $ analog definiert zu Lemma (1.1) im Skript
 	\item n als äußerer Normalenvektor
 	\item (Bisher bei Finiten Elementen) $ q_h \coloneqq \kappa \nabla_h u_h$ wobei $ \nabla_h $ eine \enquote{passende} numerische Differentiation-Methode ist.
 \end{itemize}
 
-Um die Flussbilanz zu erfüllen verwenden wir \defi{gemischte Finiten Elemente}. Bei dieser Methode wird, im Gegensatz zu (linearen) Finiten Elementen, nicht nur $ u_h $ als numerische Approximation für $ u $ berechnet sonder das Paar $ (u_h,q_h) $ als numerische Approximation an $ (u,q) $. Wie genau dies funktioniert, untersuchen wir im Folgenden:
+Um die Flussbilanz zu erfüllen verwenden wir \defi{gemischte Finite Elemente}. Bei dieser Methode wird, im Gegensatz zu (linearen) Finiten Elementen, nicht nur $ u_h $ als numerische Approximation für $ u $ berechnet sondern das Paar $ (u_h,q_h) $ als numerische Approximation an $ (u,q) $. Wie genau dies funktioniert untersuchen wir im Folgenden:
 
 Betrachten wir noch einmal unser eigentliches analytisches Problem (LG: Laplace-Gleichung) 
 \begin{gather*}
@@ -24,9 +24,9 @@ Betrachten wir noch einmal unser eigentliches analytisches Problem (LG: Laplace-
 	(\kappa\nabla u) \cdot n &= g_N \text{ auf } \Gamma_N \\
 	\end{cases}
 \end{gather*}
-($ \kappa $ ist sym pos-def) und setzen den \defi{Fluss} als: 
+($ \kappa $ ist sym. pos. def.) und setzen den \defi{Fluss} zu 
 \[ q :\equiv - \kappa \nabla u. \]
-Somit können wir unser analytischen Problem umschrieben zu 
+Dann können wir unser analytisches Problem umschreiben zu 
 \begin{gather*}
 	\text{Bestimme } u:\overline{\Omega} \to \R \text{ und } q: u:\overline{\Omega} \to \R \text{ mit } \\
 		\text{(LG F)}\begin{cases}
@@ -36,15 +36,15 @@ Somit können wir unser analytischen Problem umschrieben zu
 		-q \cdot n &= g_N \text{ auf } \Gamma_N \\
 		\end{cases}
 \end{gather*} 
-der \defi{Laplace-Gleichung mit Fluss}. Nun schaue wir uns, wie zuvor bei finiten Elementen, die schwache Formulierung von (LG F) an.
+der \defi{Laplace-Gleichung mit Fluss}. Nun schauen wir uns, wie zuvor bei Finiten Elementen, die schwache Formulierung von (LG F) an.
 \begin{align*}
 	\int_\Omega \dive(q)\, \Phi \diff x = 0 &\text{ für alle Testfunktionen } \Phi: \Omega \to \R \\
 	\int_{\Omega} \kappa^{-1} (q + \kappa \nabla u) \cdot \Psi \diff x = 0 &\text{ für alle Testfunktionen } \Psi:\Omega \to \R^2 \ (\star)
 \end{align*}
-Wir wollen dann noch die Dirichlet-Randbedingung $ 	u = u_D \text{ auf } \Gamma_D $ mit in die schwache Formulierung einfließen lassen. Dazu verwenden wir den Satz von Gauß:
+Wir wollen nun noch die Dirichlet-Randbedingung $ 	u = u_D \text{ auf } \Gamma_D $ mit in die schwache Formulierung einfließen lassen. Dazu verwenden wir den Satz von Gauß:
 \[ \int_{\partial\Omega} (u\Psi) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(u\Psi) \diff x = \int_{\Omega} \nabla u \cdot \Psi \diff x + \int_{\Omega} u \dive(\Psi) \diff x \quad (\Psi:\Omega \to \R^2) \]
 
-Die Neumann-Randbedingung $ (\kappa\nabla u) \cdot n = g_N \text{ auf } \Gamma_N $ werden durch die Wahl des Lösungs- bwz. Ansatzraum erfüllt.
+Die Neumann-Randbedingung $ (\kappa\nabla u) \cdot n = g_N \text{ auf } \Gamma_N $ wird durch die Wahl des Lösungs- bwz. Ansatzraumes erfüllt.
 \bigskip
 
 Zusammen mit 
@@ -62,7 +62,7 @@ erhalten wir die gewünschte schwache Formulierung, im folgenden \defi{gemischte
 	\end{cases}	\\
 	\text{ für alle } (\Psi, \Phi) \text{ mit } \Psi \cdot n = 0 \text{ auf } \Gamma_N 
 \end{gather*}
-\unklar{\textbf{Idee der gemischten Finiten Elemente}:Diskretisieren wir (gFE) erfüllt unsere numerische Lösung $ q_h $ die Forderung $ \dive(q_h) = 0 \text{ auf } K \ (K \in \mathcal{K}) $ und erfüllt somit die Flussbilanz in jeder Zelle.}
+\unklar{\textbf{Idee der gemischten Finiten Elemente}: Diskretisieren wir (gFE), so erfüllt unsere numerische Lösung $ q_h $ die Forderung $ \dive(q_h) = 0 \text{ auf } K \ (K \in \mathcal{K}) $ und somit auch die Flussbilanz in jeder Zelle.}
 
 \subsection{Diskretisierung}
 
@@ -74,7 +74,7 @@ Weiter sei $ \mathcal{F} $ die \defi{Menge aller Seiten}, $ \mathcal{F}_K $ die 
 	\mathcal{F}_K &\coloneqq \left( \{ \partial K \cap \partial K' : K' \in \mathcal{K} \} \cup \{ \partial K \cap \partial \Omega\} \right) \setminus \{ \emptyset \} \\
 	\partial \Omega_h &\coloneqq \bigcup_{F \in \mathcal{F}} F.
 \end{align*}
-Wir nummerier Seiten und Zellen durch:
+Wir nummerieren Seiten und Zellen durch:
 \begin{align*}
 	\mathcal{F} &= \{F_1, \dots , F_{\abs{\mathcal{F}}} \} &\text{\defi{globale Seitennummerierung}} \\
 	\mathcal{K} &= \{K_1, \dots , K_{\abs{\mathcal{K}}} \} &\text{\defi{globale Zellennummerierung}} 
@@ -88,17 +88,17 @@ Wir nummerier Seiten und Zellen durch:
 \begin{define}
 	Als Testräume/FE-Räume wählen wir $ W_h, Q_h $ und $ W_h(-g_N) $
 	\begin{align*}
-		W_h &\coloneqq \spann \left\{ \psi_1, \dots , \psi_{\abs{\mathcal{F}}}  \right\} &&\text{(\defi{Seitenansatzraum}/ Raum für $ \psi $ und $ q_u $ mit RWen)}\\
+		W_h &\coloneqq \spann \left\{ \psi_1, \dots , \psi_{\abs{\mathcal{F}}}  \right\} &&\text{(\defi{Seitenansatzraum}/ Raum für $ \psi $ und $ q_u!!! $ mit RWen)}\\
 		Q_h &\coloneqq \spann \{ \mu_1, \dots , \mu_{\abs{\mathcal{K}}} \} &&\text{(\defi{Zellenansatzraum}/ Raum für $ \phi $ und $ u_h $)}
 	\end{align*}
 	\begin{align*}
-		W_h(g) &\coloneqq \left\{ \psi_h \in W_h: \int_F \psi_h \cdot \diff a = \int_F g \diff a (F \subseteq \Gamma_N) \right\}.
+		W_h(g) &\coloneqq \left\{ \psi_h \in W_h: \int_F \psi_h \cdot \diff a = \int_F g \diff a \quad (F \subseteq \Gamma_N) \right\}.
 	\end{align*}
 	$ \{ \psi_i \}_{i=1}^{\abs{\mathcal{F}}} $ heißt \defi{Seitenbasis} und ist gegeben durch 
 	\begin{align*}
 		\forall i \in \{1, \dots , \abs{\mathcal{F}} \} : \int_{F_j} \psi_i \cdot n \diff a = \delta_{i,j} \text{ und }  \psi_i|_K \in \mathbb{P}_1(K,\R^2) \ (K \in \mathcal{K}) 
 	\end{align*}
-	und  $ \{ \mu_i \}_{m=1}^{\abs{\mathcal{K}}} $ heißt \defi{Zellenbasis} uns ist gegeben durch
+	und  $ \{ \mu_i \}_{m=1}^{\abs{\mathcal{K}}} $ heißt \defi{Zellenbasis} und ist gegeben durch
 	\begin{align*}
 		\forall m \in \{1, \dots , \abs{\mathcal{K}} \} : \mu_m \coloneqq  \mathbbm{1}_{K_m}.
 	\end{align*}
@@ -107,12 +107,12 @@ Wir nummerier Seiten und Zellen durch:
 \begin{remark}
 	
 	\[	\forall K \in \mathcal{K}:\psi_i|_K \in \mathbb{P}_1(K,\R^2) \text{ und } \mu_m|_K \in \mathbb{P}_0(K,\R) \]
-	Unter Verwender der Notation 
+	Unter Verwendung der Notation 
 	\[\forall k,n \in  \mathbb{N} \ \forall K \in \mathcal{K}: \tilde{\mathbb{P}}_k(K,\R^n) \coloneqq \left\{  f:\Omega \to \R^n \mid f|_K \in \mathbb{P}_k(K, \R^n)  \right\}  \]
 	gilt
 	\begin{align*}	
-	W_h &\subseteq \bigcap_{K \in \mathcal{K}} \tilde{\mathbb{P}}_1(K,\R^2) &&\text{(Menge der zellenweise linearen Funktionen) und }\\
-	Q_h &\subseteq \bigcap_{K \in \mathcal{K}} \tilde{\mathbb{P}}_0(K,\R) &&\text{(Menge der zelleiweise konstatnen Funktionen)}. 
+	W_h &\subseteq \bigcap_{K \in \mathcal{K}} \tilde{\mathbb{P}}_1(K,\R^2) &&\text{(Menge der zellenweisen linearen Funktionen) und }\\
+	Q_h &\subseteq \bigcap_{K \in \mathcal{K}} \tilde{\mathbb{P}}_0(K,\R) &&\text{(Menge der zellenweisen konstanten Funktionen)}. 
 	\end{align*}	
 \end{remark}
 
@@ -129,7 +129,7 @@ Wir nummerier Seiten und Zellen durch:
 \end{define}
 \subsubsection{Referenzzelle}
 
-Es bleibt die Frage offen wie wir die Seitenbasis $ \{ \psi_i \}_{i=1}^{\abs{\mathcal{F}}} $ erhalten. Dazu betrachten wir wie im Abschnitt zu Finiten-Elementen die Referenzzelle. Im folgenden werden wir das Referenzdreieck anschauen, analog können die Schritte für das Referenzviereck vollzogen werden. 
+Es bleibt die Frage offen, wie wir die Seitenbasis $ \{ \psi_i \}_{i=1}^{\abs{\mathcal{F}}} $ erhalten. Dazu betrachten wir wie im Abschnitt zu Finiten Elementen die Referenzzelle. Im Folgenden werden wir das Referenzdreieck anschauen, analog können die Schritte für das Referenzviereck vollzogen werden. 
 
 \begin{define}
 	
@@ -210,10 +210,10 @@ Weiter setzen wir noch
 \textbf{Transformation von $ \hat{K} $ zu $ K $:} Für ein beliebiges $ K \in \mathcal{K} $ wollen wir jetzt eine Seitenbasis $ \{ \psi_1^K, \psi_2^K, \psi_3^K \} $ berechnen (Wie bisher gegeben durch $ \forall i\in\{1,2,3\}: \psi_i^K\in\mathbb{P}_1(K,\R^2) \text{ und } \int_{F_j^K} \psi_i^K \cdot n^K \diff a = \delta_{i,j} $, wobei $ n^K $ äußere Normale von  $ K $ und $ F_j^K  $ beliebige Seite von $ K $). Dazu betrachten wir die affine \defi{Transformationsabbildung $ \varphi_K $} von $ \hat{K} $ zu $ K $:
 \begin{gather*}
 	\varphi_K: \hat{K} \to K, \varphi_K(\xi) = z_{0,K} + B_K \xi \text{ mit passenden } B_K\in\R^{2 \times 2} \text{ und } \\
-	J_K \coloneqq \det(B_K) \geq.
+	J_K \coloneqq \det(B_K) \geq !!!.
 \end{gather*}
 \begin{Lemma}
-	Es gilt $\tilde{n}^K = \frac{1}{\abs{B_K^{-T} \hat{n}}} B_K^{-T} \hat{n} $ ist Normale zu $ \partial K $
+	Es gilt: $\tilde{n}^K = \frac{1}{\abs{B_K^{-T} \hat{n}}} B_K^{-T} \hat{n} $ ist Normale zu $ \partial K $.
 \end{Lemma}
 \begin{remark}
 	\unklar{
@@ -249,12 +249,12 @@ Wir setzen $ \psi_j (j \in \{1,\dots , \abs{\mathcal{F}}\})$ durch
 	0,			  &\text{sonst}.
 \end{cases} \]
 \begin{remark}
-	Für alle Zellen $ K \in \mathcal{K} $ von den $ F_j $ eine anliegende Seite ist ($ \overline{K} \cap F_j \ne \emptyset $) und $ F_j $ lokal mit $ i \in \{1,2,3\} $ nummeriert ist gilt
+	Für alle Zellen $ K \in \mathcal{K} $ von denen $ F_j $ eine anliegende Seite ($ \overline{K} \cap F_j \ne \emptyset $) und $ F_j $ lokal mit $ i \in \{1,2,3\} $ nummeriert ist, gilt:
 	\[ \psi_j|_K = \psi_i^K. \]
 \end{remark}
 
 \subsection{Formulierung als LGS}
-Sei, wie oben, Seiten, Seitenbasis, Zellen und Zellenbasis global nummeriert 
+Seien wie oben Seiten, Seitenbasis, Zellen und Zellenbasis global nummeriert 
 \begin{align*}
 &N \coloneqq \abs{\mathcal{F}} &&\mathcal{F} = \{F_1, \dots , F_{N} \}  \\
 &&&W_h =\{\psi_1, \dots , \psi_N\}\\
@@ -313,9 +313,9 @@ Dann löst $ (\underline{q}, \underline{u}) $ (L gFE) bzw. $ (q_h,u_h) $ (dgFE) 
 \textbf{Optimierungstheorie:} 
 \begin{gather*}
 	(\underline{q}, \underline{u}) \text{ Sattelpunkt von } L  \text { wie in Lemma \ref{Sattelpunkt}}\\
-	\iff \underline{q} \text{ minimiert } E:W_h(-g_N) \to \R , \underline{x} \mapsto \frac{1}{2} \underline{x}^T \underline{A} \underline{x} - \underline{b}^T \underline{x} \text{ under der NB } \underline{B} \underline{q} = 0.
+	\iff \underline{q} \text{ minimiert } E:W_h(-g_N) \to \R , \underline{x} \mapsto \frac{1}{2} \underline{x}^T \underline{A} \underline{x} - \underline{b}^T \underline{x} \text{ unter der NB } \underline{B} \underline{q} = 0.
 \end{gather*}
-Außerdem erhalten wir eine A-Posteriori-Schranke:
+Außerdem erhalten wir eine A-posteriori Schranke:
 \[ \norm{q-q_h}_{\kappa^{-1}} \leq \norm{q_h + \kappa \nabla u_h}_{\kappa^{-1}} \ (\text{wobei } \norm{f}_{\kappa^{-1}} = \int \kappa^{-1} f \cdot f \diff x)  \]
 
 \subsection{Hybridisierung}
@@ -323,5 +323,5 @@ Außerdem erhalten wir eine A-Posteriori-Schranke:
 Beim Lösen von (uL gFE) gibt es das Problem, dass die Matrix \[ \begin{pmatrix}
 \underline{A} &\underline{B}^T\\
 \underline{B} &0
-\end{pmatrix} \] im Allgemeinen nicht symmetrisch positiv-definit ist und somit das CG-Verfahren nicht zum Lösen verwendet werden kann. Durch die Hybridisierung erhalten wir ein LGS mit einer spd Matrix.
+\end{pmatrix} \] im Allgemeinen nicht symmetrisch positiv definit ist und somit das CG-Verfahren nicht zum Lösen verwendet werden kann. Durch die Hybridisierung erhalten wir ein LGS mit einer spd Matrix.
 
