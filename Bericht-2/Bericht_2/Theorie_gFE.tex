@@ -13,7 +13,7 @@ Bezeichnungen:
 	\item (Bisher bei Finiten Elementen) $ q_h \coloneqq \kappa \nabla_h u_h$ wobei $ \nabla_h $ eine \enquote{passende} numerische Differentiation-Methode ist.
 \end{itemize}
 
-Um die Flussbilanz zu erfüllen verwenden wir \defi{gemischte Finite Elemente}. Bei dieser Methode wird, im Gegensatz zu (linearen) Finiten Elementen, nicht nur $ u_h $ als numerische Approximation für $ u $ berechnet sondern das Paar $ (u_h,q_h) $ als numerische Approximation an $ (u,q) $. Wie genau dies funktioniert untersuchen wir im Folgenden:
+Um die Flussbilanz zu erfüllen, verwenden wir \defi{gemischte Finite Elemente}. Bei dieser Methode wird, im Gegensatz zu (linearen) Finiten Elementen, nicht nur $ u_h $ als numerische Approximation für $ u $ berechnet, sondern das Paar $ (u_h,q_h) $ als numerische Approximation an $ (u,q) $. Wie genau dies funktioniert, untersuchen wir im Folgenden:
 
 Betrachten wir noch einmal unser eigentliches analytisches Problem (LG: Laplace-Gleichung) 
 \begin{gather*}
@@ -53,7 +53,7 @@ Zusammen mit
 	&\text{ und }\\
 	&&(\star) \iff \int_{\Omega} \nabla u \cdot \Psi \diff x &= - \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x &&(\Psi:\Omega \to \R^2) 
 \end{align*}
-erhalten wir die gewünschte schwache Formulierung, im folgenden \defi{gemischtes Finite-Elemente-Problem} genannt:
+erhalten wir die gewünschte schwache Formulierung, im Folgenden \defi{gemischtes Finite-Elemente-Problem} genannt:
 \begin{gather*}
 	\text{Bestimme } (q,u) \text{ mit } q\cdot n = -g_N \text{ auf } \Gamma_N \text{ und}\\
 	\text{(gFE)}\begin{cases}
@@ -129,7 +129,7 @@ Wir nummerieren Seiten und Zellen durch:
 \end{define}
 \subsubsection{Referenzzelle}
 
-Es bleibt die Frage offen, wie wir die Seitenbasis $ \{ \psi_i \}_{i=1}^{\abs{\mathcal{F}}} $ erhalten. Dazu betrachten wir wie im Abschnitt zu Finiten Elementen die Referenzzelle. Im Folgenden werden wir das Referenzdreieck anschauen, analog können die Schritte für das Referenzviereck vollzogen werden. 
+Es bleibt die Frage offen, wie wir die Seitenbasis $ \{ \psi_i \}_{i=1}^{\abs{\mathcal{F}}} $ erhalten. Dazu betrachten wir, wie im Abschnitt zu Finiten Elementen, die Referenzzelle. Im Folgenden werden wir das Referenzdreieck anschauen, analog können die Schritte für das Referenzviereck vollzogen werden. 
 
 \begin{define}
 	

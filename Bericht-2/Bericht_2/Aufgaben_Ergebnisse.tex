@@ -19,7 +19,7 @@
 
 Beim Lösen des in der Aufgabe gegebenen Sattelpunktproblems konnte verifiziert werden, dass bei der Verwendung von gemischten Finiten Elementen die Ein- und Ausflussbedingung für alle verwendeten Level erhalten werden.
 Im Gegensatz dazu stehen die Erkenntnisse, welche wir bereits im letzten Bericht zu den linearen Finiten Elementen gewonnen haben. 
-Am deutlichsten spiegelt sich dies in der Größe 'Flux Loss' wieder, welcher bei Verwendung von gemischten Finiten Elementen unabhängig vom Level gleich 0 ist, während er unter Verwendung von linearen Finiten Elementen auf einem komplizierten Mesh nicht zu vernachlässigen ist.  \newline
+Am Deutlichsten spiegelt sich dies in der Größe 'Flux Loss' wieder, welcher bei Verwendung von gemischten Finiten Elementen unabhängig vom Level gleich 0 ist, während er unter Verwendung von linearen Finiten Elementen auf einem komplizierten Mesh nicht zu vernachlässigen ist.  \newline
 In den Plots lassen sich bei genauerem Betrachten vor allem im Bereich der Steine des Meshes 'Square500' geringe Unterschiede zwischen beiden Verfahren erkennen. Während die gemischten Finite Elemente sich etwas besser an die Steine 'anschmiegen', lassen sich vor allem die deutlich größeren 'Schatten' unter den Steinen bei den linearen Finiten Elementen erkennen.
 Beides lässt sich bei beiden Problemen verifizieren. 
 
@@ -66,7 +66,7 @@ Ein Vergleich der beiden Tabellen macht deutlich, dass bei den hybriden Finiten 
 	\subfigure[Problemstellung]{\includegraphics[width=0.4\textwidth]{../../19/problem.png}}
 	\subfigure[Definitionen in Rock.geo]{\includegraphics[width=0.59\textwidth]{../../19/rockgeo.png}}
 \end{figure}
-Ziel der Aufgabe war es das in Abb.3 (a) zu sehende Problem zu implementieren bzw. vorhandene Lücken in der Implementierung zu schließen.
+Ziel der Aufgabe war es, das in Abb.3 (a) zu sehende Problem zu implementieren bzw. vorhandene Lücken in der Implementierung zu schließen.
 Zunächst haben wir dafür das Gitter samt Rändern in der Datei Rock.geo definiert. 
 Auf eine nähere Erklärung des .geo-Files möchten wir an dieser Stelle verzichten und verweisen auf den ersten Praktikumsbericht.
 
@@ -88,7 +88,7 @@ Das ist gleichbedeutend mit dem komponentenweisen Vergleich, welchen wir in Zeil
 	
 \end{figure}
 In der Funktion OutFlowLeftRight sollen dann die Ausflussmengen auf der rechten und auf der linken Seite des Steines berechnet werden. 
-Dazu führen wir zunächst die temporäre Variable 'lrn' ein. Anschließend setzen wir diese auf 1, falls sich die aktuell betrachtete Zelle im Lehmblock befindet, auf 2, falls es sich um eine Zelle rechts des Steines handelt und 0 sonst. \newline
+Dazu führen wir zunächst die temporäre Variable 'lrn' ein. Anschließend setzen wir diese auf 1, falls sich die aktuell betrachtete Zelle im Lehmblock befindet, auf 2, falls es sich um eine Zelle rechts des Steines handelt, und 0 sonst. \newline
 Mit 'c()[i]' können wir dabei auf die i-te Koordinate des \underline{Zellmittelpunktes} zugreifen, man beachte dies vor allem im Zusammenhang mit den entsprechenden Abfragen. 
 Nachdem wir dann wie üblich den Fluss an den äußeren Faces der entsprechenden Zelle berechnet haben, addieren wir den Ausfluss auf den entsprechenden Summationswert und geben diese Werte zuletzt zurück.
 
