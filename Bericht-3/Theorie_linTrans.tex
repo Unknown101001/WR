@@ -16,11 +16,42 @@ Da $ K \subseteq \Omega $ belibeig ist und \unklar{$ \rho, q \in C^1(\Omega) $} 
 Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times [0,T]$ und der Anfangsbedingung $ \rho(x,0) = \rho_0(x) \text{ auf } \Omega $ folgt das zu lösende analytische Problem
 \begin{gather*}
 	\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
-	\text{(lTP)} 
+	\lTG
 	\begin{cases}
 		\partial_t \rho + \dive(\rho q) = 0 &\text{ in } \Omega \times [0,T]\\
 		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times [0,T]\\
 		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega
 	\end{cases}
 \end{gather*}
+
+\subsection{Erhaltungsgrößen der analytischen Lösung}
+\begin{Lemma}(Massenbilanz)
+	\label{Massenbilanz}
+	
+	Sei $ \rho $ Lösung von $ \lTG $. 
+	
+	Dann gilt die \defi{Massenbilanz}:
+	\[ \underbrace{\int_{\Omega} \rho(x,t) \diff x}_{(1)} = \underbrace{\int_{\Omega} \rho_0(x) \diff x}_{(2)}  \underbrace{-\int_{0}^{t} \int_{\Gammain} \rhoin(x,\tilde{t}) q(x) \cdot \nu(x) \diff a \diff \tilde{t}}_{(3)} \underbrace{- \int_{0}^{t} \int_{\Gammain} \rho(x,\tilde{t}) q(x) \cdot \nu(x) \diff a \diff \tilde{t}}_{(4)} \]
+\end{Lemma}
+	Interpretation der Terme:
+	\begin{enumerate}[label=(\arabic*)]
+		\item Masse zum Zeitpunkt $ t $,
+		\item Masse zum Anfangszeitpunkt $ 0 $,
+		\item Masse, die in $ [0,t] $ hinzu geflossen ist ($ \nu $ ist äußere Normale, deswegen \enquote{-} statt \enquote{+}),
+		\item Masse, die in $ [0,t] $ abgeflossen ist.
+	\end{enumerate}
+
+\begin{Lemma}(Energiegleichung)
+	\label{Energiegleichung}
+	
+	Sei $ \dive(q) = 0 $ und $ \rho $ eine Lösung von $ \lTG $. 
+	
+	Dann gilt die \defi{Energiebilanz}: $ \forall \ t\in [0,T] $
+	\[\int_{\Omega} \abs{\rho(x,t)}^2 \diff x = \int_{\Omega} \abs{\rho_0(x)}^2 \diff x  + \int_{0}^{T} \left[ \int_{\Gammain}\abs{\rhoin(t)}^2 \abs{q\cdot n} \diff a - \int_{\Gammaout} \abs{\rho(t)}^2 \abs{q\cdot n} \diff a  \right] \]
+\end{Lemma}
+
+\subsection{Schwache Lösung von $ \lTG $}
+
+
+
  
