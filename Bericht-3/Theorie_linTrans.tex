@@ -11,15 +11,15 @@ Nach der physikalischen Modellierung gilt folgende Bilanzgleichung:
 \end{gather*}
 Da $ K \subseteq \Omega $ belibeig ist und \unklar{$ \rho, q \in C^1(\Omega) $} folgt die \defi{lineare Transportgleichung}
 \begin{gather*}
-	\partial_t \rho + \dive(\rho q) = 0 \text{ in } \Omega \times [0,T] 
+	\partial_t \rho + \dive(\rho q) = 0 \text{ in } \Omega \times (0,T) 
 \end{gather*}
-Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times [0,T]$ und der Anfangsbedingung $ \rho(x,0) = \rho_0(x) \text{ auf } \Omega $ folgt das zu lösende analytische Problem
+Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,T)$ und der Anfangsbedingung $ \rho(x,0) = \rho_0(x) \text{ auf } \Omega $ folgt das zu lösende analytische Problem
 \begin{gather*}
 	\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
 	\lTG
 	\begin{cases}
-		\partial_t \rho + \dive(\rho q) = 0 &\text{ in } \Omega \times [0,T]\\
-		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times [0,T]\\
+		\partial_t \rho + \dive(\rho q) = 0 &\text{ in } \Omega \times (0,T)\\
+		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times ()0,T)\\
 		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega
 	\end{cases}
 \end{gather*}
@@ -50,7 +50,52 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times [0,
 	\[\int_{\Omega} \abs{\rho(x,t)}^2 \diff x = \int_{\Omega} \abs{\rho_0(x)}^2 \diff x  + \int_{0}^{T} \left[ \int_{\Gammain}\abs{\rhoin(t)}^2 \abs{q\cdot n} \diff a - \int_{\Gammaout} \abs{\rho(t)}^2 \abs{q\cdot n} \diff a  \right] \]
 \end{Lemma}
 
-\subsection{Schwache Lösung von $ \lTG $}
+\subsection{Lösungsbegriffe von $ \lTG $}
+
+\begin{define}(Lösungsbegriffe)
+	
+	\begin{itemize}
+		\item Eine Lösung von
+		\begin{gather*}
+		\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
+		\lTG
+		\begin{cases}
+		\partial_t \rho + \dive(\rho q) = 0 &\text{ in } \Omega \times (0,T)\\
+		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times (0,T)\\
+		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega.
+		\end{cases}
+		\end{gather*}
+		heißt \defi{klassische Lösung}.
+		\item Eine Lösung von 
+		\begin{gather*}
+		\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
+		\stlTG
+		\begin{cases}
+		\int_{\Omega} \int_{0}^{T} \partial_t \rho + \dive(\rho q) \phi \diff t \diff x = 0 &\text{ in } \Omega \times (0,T)\\
+		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times (0,T)\\
+		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega
+		\end{cases}\\
+		\text{ für alle } \phi: \Omega \times (0,T) \to \R.
+		\end{gather*}
+		heißt \defi{starke Lösung}.
+		\item Eine Lösung von 
+		\begin{gather*}
+		\text{Bestimme } \rho \in L^1(\Omega \times [0,T], \R_{\geq 0}) \text{, sodass}\\
+		\swlTG
+		\int_{\Omega} \rho_0 \phi(0) \diff x = \int_{0}^{T} \left[ - \int_{\Omega} \rho (\partial_t \phi - q \nabla_{\unklar{x}} \phi ) \diff x + \oint_{\Gammain} \rhoin q \cdot \nu \phi \diff a + \oint_{\Gammaout} \rho q \cdot n \phi \diff a \right] \diff t\\
+		\unklar{\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega \text{ und } \phi = 0 \text{ auf } \Gammain \times (0,T).}
+		\end{gather*}
+		heißt \defi{schwache Lösung}.
+	\end{itemize}
+\end{define}
+
+\begin{Lemma}(Zusammenhang der Lösungsbegriffe)
+	
+	\begin{enumerate}
+		\item Ist $ \rho $ eine klassische Lösung, so ist $ \rho $ auch eine schwache Lösung.
+		\item Ist $ \rho $ glatt genug und eine schwache Lösung, so ist $ \rho $ eine klassische Lösung. 
+	\end{enumerate}
+\end{Lemma}
 
 
 
