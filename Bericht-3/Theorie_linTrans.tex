@@ -106,14 +106,30 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
 
 \subsubsection{Diskretisierung im Raum}
-\unklar{Wir betrachten $ \rho $ als starke Lösung (Lösung von $ \stlTG $) und schreiben das zu lösende Problem $ \stlTG $ um.} 
+\unklar{Wir betrachten $ \rho $ als Lösung und schreiben das zu lösende Problem um.} Sei $ \mathcal{K} $ eine Triangulierung von $ \Omega $ wie bisher. 
 \begin{define}(Flux)
 	
 	Zu gegebenen Fluss $ q:\Omega \to \R^2 $ definieren wir die \defi{Flussfunktion}/\defi{Flux} als
 	\[ \Psi: \Abb(\Omega \times [0,T], \R) \to \Abb(\Omega \times [0,T], \R^2), \Psi(\rho) = \rho q \]
 \end{define}
 
-Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho = - \dive(\Psi(\rho)) $ und somit
+Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho = - \dive(\Psi(\rho)) (*) $ und somit
+\begin{align*}
+	&\sum_{K \in \mathcal{K}} \oint_{\partial K} \phi \Psi(\rho) \cdot n^K \diff a \stackrel{(\star)}{=} \oint_{\partial \Omega} \phi \Psi(\rho) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(\Psi(\rho) \Phi) \diff x \\
+	& \qquad = \int_{\Omega} \phi \dive(\Psi(\rho)) + \Psi(\rho) \cdot \nabla \phi \diff x = - \int_\Omega \partial_t \rho \phi \diff x + \int_\Omega \Psi(\rho) \cdot \nabla \phi \diff x \\
+	\iff &\sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} = - \left(\partial_t \rho, \phi  \right)_\Omega + \left(\Psi(\rho), \nabla\phi  \right)_\Omega \\
+	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = \left(\Psi(\rho), \nabla\phi  \right)_\Omega + \sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} 
+\end{align*}
+\begin{remark}
+	zu $ (\star) $: Integration über inneren Kanten $ F $ fällt weg, da für die beiden Nachbarzellen wegen der äußeren Normalen in unterschiedliche Richtungen integriert wird:
+	\[ F = K \cap K': \oint_{F}  \phi \Psi(\rho) \cdot n^K \diff a = - \oint_{F} \phi \Psi(\rho) \cdot n^{K'} \diff a\]
+\end{remark}
+\ \newline
+\textbf{Approximation}:
+
+Wähle Lösungs-/Ansatzraum $ Q_h $ und \defi{numerical flux} $ \Psi^* $
+ 
+  
 
 \subsubsection{Diskretisierung in der Zeit}
 
