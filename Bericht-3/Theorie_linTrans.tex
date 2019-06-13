@@ -1,8 +1,11 @@
 % !TeX root = Bericht_main.tex
 \subsection{Analytische Betrachtung der linearen Transportgleichung}
 \textbf{Bisher} wollten wir aus gegebenen Randwerten den Fluss $ q $ berechnen.\\
-\textbf{Jetzt} ist $ \Omega \subseteq \R^D $ der Fluss $ q: \Omega \to \R^D $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
+\textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wir betrachten nur zweidimensionale Gebiete) der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
 transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und die \defi{Einfluss} der Substanz über Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ ist gerade die Menge der Randpunkte an dem Substanz einfließen kann).
+
+Gegebenenfalls betrachten wir $ \rho $ auch als 
+\[ \rho: [0,T] \to \Abb(\Omega, \R_{\geq 0}), t \mapsto \rho(\cdot,t). \]
 
 Nach der physikalischen Modellierung gilt folgende Bilanzgleichung:
 \begin{gather*}
@@ -24,6 +27,8 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 	\end{cases}
 \end{gather*}
 
+
+
 \subsection{Erhaltungsgrößen der analytischen Lösung}
 \begin{Lemma}(Massenbilanz)
 	\label{Massenbilanz}
@@ -41,7 +46,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 		\item Masse, die in $ [0,t] $ abgeflossen ist.
 	\end{enumerate}
 
-\begin{Lemma}(Energiegleichung)
+\begin{Lemma}(Energiebilanz)
 	\label{Energiegleichung}
 	
 	Sei $ \dive(q) = 0 $ und $ \rho $ eine Lösung von $ \lTG $. 
@@ -97,6 +102,19 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 	\end{enumerate}
 \end{Lemma}
 
+\subsection{Numerische Approximation}
+Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
 
+\subsubsection{Diskretisierung im Raum}
+\unklar{Wir betrachten $ \rho $ als starke Lösung (Lösung von $ \stlTG $) und schreiben das zu lösende Problem $ \stlTG $ um.} 
+\begin{define}(Flux)
+	
+	Zu gegebenen Fluss $ q:\Omega \to \R^2 $ definieren wir die \defi{Flussfunktion}/\defi{Flux} als
+	\[ \Psi: \Abb(\Omega \times [0,T], \R) \to \Abb(\Omega \times [0,T], \R^2), \Psi(\rho) = \rho q \]
+\end{define}
+
+Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho = - \dive(\Psi(\rho)) $ und somit
+
+\subsubsection{Diskretisierung in der Zeit}
 
  
