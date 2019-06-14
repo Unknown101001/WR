@@ -71,23 +71,27 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 		\end{cases}
 		\end{gather*}
 		heißt \defi{klassische Lösung}.
+%		\item Eine Lösung von 
+%		\begin{gather*}
+%		\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
+%		\stlTG
+%		\begin{cases}
+%		\int_{\Omega} \int_{0}^{T} \partial_t \rho + \dive(\rho q) \phi \diff t \diff x = 0 &\text{ in } \Omega \times (0,T)\\
+%		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times (0,T)\\
+%		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega
+%		\end{cases}\\
+%		\text{ für alle } \phi: \Omega \times (0,T) \to \R.
+%		\end{gather*}
+%		heißt \defi{starke Lösung}.
 		\item Eine Lösung von 
-		\begin{gather*}
-		\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
-		\stlTG
-		\begin{cases}
-		\int_{\Omega} \int_{0}^{T} \partial_t \rho + \dive(\rho q) \phi \diff t \diff x = 0 &\text{ in } \Omega \times (0,T)\\
-		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times (0,T)\\
-		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega
-		\end{cases}\\
-		\text{ für alle } \phi: \Omega \times (0,T) \to \R.
-		\end{gather*}
-		heißt \defi{starke Lösung}.
-		\item Eine Lösung von 
-		\begin{gather*}
+		\begin{gather*} 
 		\text{Bestimme } \rho \in L^1(\Omega \times [0,T], \R_{\geq 0}) \text{, sodass}\\
 		\swlTG
-		\int_{\Omega} \rho_0 \phi(0) \diff x = \int_{0}^{T} \left[ - \int_{\Omega} \rho (\partial_t \phi - q \nabla_{\unklar{x}} \phi ) \diff x + \oint_{\Gammain} \rhoin q \cdot \nu \phi \diff a + \oint_{\Gammaout} \rho q \cdot n \phi \diff a \right] \diff t\\
+		\begin{cases}
+		\displaystyle
+		\int_{\Omega} \rho_0 \phi(0) \diff x = \mkern-16mu &- \displaystyle \int_{0}^{T} \int_{\Omega} \rho (\partial_t \phi - q \nabla_{\unklar{x}} \phi ) \diff x \diff t \\
+		&+\displaystyle\int_{0}^{T} \left[ \oint_{\Gammain} \rhoin q \cdot \nu \phi \diff a + \oint_{\Gammaout} \rho q \cdot n \phi \diff a \right] \diff t
+		\end{cases}	\\
 		\unklar{\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega \text{ und } \phi = 0 \text{ auf } \Gammain \times (0,T).}
 		\end{gather*}
 		heißt \defi{schwache Lösung}.
@@ -116,9 +120,10 @@ Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \r
 Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho = - \dive(\Psi(\rho)) (*) $ und somit
 \begin{align*}
 	&\sum_{K \in \mathcal{K}} \oint_{\partial K} \phi \Psi(\rho) \cdot n^K \diff a \stackrel{(\star)}{=} \oint_{\partial \Omega} \phi \Psi(\rho) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(\Psi(\rho) \Phi) \diff x \\
-	& \qquad = \int_{\Omega} \phi \dive(\Psi(\rho)) + \Psi(\rho) \cdot \nabla \phi \diff x = - \int_\Omega \partial_t \rho \phi \diff x + \int_\Omega \Psi(\rho) \cdot \nabla \phi \diff x \\
-	\iff &\sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} = - \left(\partial_t \rho, \phi  \right)_\Omega + \left(\Psi(\rho), \nabla\phi  \right)_\Omega \\
-	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = \left(\Psi(\rho), \nabla\phi  \right)_\Omega + \sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} 
+	& \quad = \int_{\Omega} \phi \dive(\Psi(\rho)) + \Psi(\rho) \cdot \nabla \phi \diff x = - \int_\Omega \partial_t \rho \phi \diff x + \int_\Omega \Psi(\rho) \cdot \nabla \phi \diff x \\
+	\iff &\sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} = - \left(\partial_t \rho, \phi  \right)_\Omega - \left(\dive(\Psi(\rho)), \phi  \right)_\Omega \\
+	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = \left(\dive(\Psi(\rho)), \phi  \right)_\Omega - \sum_{K \in \mathcal{K} } \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} \\
+	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = \left(\dive(\Psi(\rho)), \phi  \right)_\Omega - \sum_{\substack{K \in \mathcal{K} \\  \partial K \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} - \sum_{\substack{K \in \mathcal{K} \\  \partial K \subseteq \Gammain}} \left(\rhoin q \cdot n^K, \phi \right)_{\partial K} 
 \end{align*}
 \begin{remark}
 	zu $ (\star) $: Integration über inneren Kanten $ F $ fällt weg, da für die beiden Nachbarzellen wegen der äußeren Normalen in unterschiedliche Richtungen integriert wird:
@@ -127,7 +132,11 @@ Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho 
 \ \newline
 \textbf{Approximation}:
 
-Wähle Lösungs-/Ansatzraum $ Q_h $ und \defi{numerical flux} $ \Psi^* $
+Wähle Lösungs-/Ansatzraum $ Q_h $ mit Zellenbasis $ \{ \eta_K \}_{K\in \mathcal{K}} $ und \defi{numerical flux} $ \Psi^* $ 
+
+
+
+Mit folgender Berechnung erhalten wir $ \partial_t \rho $ der semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ 
  
   
 
