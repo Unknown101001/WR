@@ -117,13 +117,17 @@ Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \r
 	\[ \Psi: \Abb(\Omega \times [0,T], \R) \to \Abb(\Omega \times [0,T], \R^2), \Psi(\rho) = \rho q \]
 \end{define}
 
-Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho = - \dive(\Psi(\rho)) (*) $ und somit
+Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho = - \dive(\Psi(\rho)) $ und somit
 \begin{align*}
 	&\sum_{K \in \mathcal{K}} \oint_{\partial K} \phi \Psi(\rho) \cdot n^K \diff a \stackrel{(\star)}{=} \oint_{\partial \Omega} \phi \Psi(\rho) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(\Psi(\rho) \Phi) \diff x \\
 	& \quad = \int_{\Omega} \phi \dive(\Psi(\rho)) + \Psi(\rho) \cdot \nabla \phi \diff x = - \int_\Omega \partial_t \rho \phi \diff x + \int_\Omega \Psi(\rho) \cdot \nabla \phi \diff x \\
 	\iff &\sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} = - \left(\partial_t \rho, \phi  \right)_\Omega - \left(\dive(\Psi(\rho)), \phi  \right)_\Omega \\
 	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = \left(\dive(\Psi(\rho)), \phi  \right)_\Omega - \sum_{K \in \mathcal{K} } \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} \\
-	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = \left(\dive(\Psi(\rho)), \phi  \right)_\Omega - \sum_{\substack{K \in \mathcal{K} \\  \partial K \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} - \sum_{\substack{K \in \mathcal{K} \\  \partial K \subseteq \Gammain}} \left(\rhoin q \cdot n^K, \phi \right)_{\partial K} 
+	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = \left(\dive(\Psi(\rho)), \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
+	\iff & \sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( \left(\dive(\Psi(\rho)), \phi \right)_K\\
+	&\qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F}- \sum_{\substack{F \in \mathcal{F}_K \\ F \subseteq \Gammain}} \left(\rhoin q \cdot n^K, \phi \right)_{F} \bigg)\\
+	\iff & \sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( \left(\dive(\Psi(\rho)), \phi \right)_K \\
+	&\qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K \cap \Gammain} \bigg) \tag{\sun}
 \end{align*}
 \begin{remark}
 	zu $ (\star) $: Integration über inneren Kanten $ F $ fällt weg, da für die beiden Nachbarzellen wegen der äußeren Normalen in unterschiedliche Richtungen integriert wird:
@@ -131,14 +135,23 @@ Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho 
 \end{remark}
 \ \newline
 \textbf{Approximation}:
+Wähle Lösungs-/Ansatzraum $ Q_h $ mit Zellenbasis $ \{ \eta_K \}_{K\in \mathcal{K}} $ und \defi{numerischen Fluss} (numerical flux) $ \Psi^* $. Wir zählen $ \mathcal{K} $ und $ \{ \eta_K \}_{K\in \mathcal{K}} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $ und $ \eta_{K_i} \coloneqq \eta_K \text{ für }K_i = K $. Weiter soll für die Zellenbasis $ \{\eta_i\}_{i=1}^N $ gelten
+\begin{itemize}
+	\item $ \{\eta_i\}_{i=1}^N $ ist eine Orthogonalbasis (im Allegemine aber keine ONB),
+	\item $ \forall \ i \in \{1, \dots , N\}:  \supp(\eta_i) \subseteq \overline{K_i}$.
+\end{itemize}
+Im folgenden betrachten wir zunächst den \defi{Finite-Volumen-Ansatzraum} $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $ und als numerischen Fluss den \defi{upwind flux}
 
-Wähle Lösungs-/Ansatzraum $ Q_h $ mit Zellenbasis $ \{ \eta_K \}_{K\in \mathcal{K}} $ und \defi{numerical flux} $ \Psi^* $ 
 
+\textbf{Ziel}: Wir wollen die semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ bzw eine Differenzialgleichung für $ \rho_h $ herzuleiten. 
 
-
-Mit folgender Berechnung erhalten wir $ \partial_t \rho $ der semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ 
+Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi_h \in Q_h $
+\[
+\sum_{K \in \mathcal{K}} \left(\partial_t \rho_h, \phi_h  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( \left(\dive(\Psi^*(\rho_h)), \phi_h \right)_K -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K \cap \Gammain} \bigg)
+\]
  
-  
+Durch einsetzen der Zeilenbasis und mit $ \supp(\eta_i) \subseteq \overline{K_i} (\ i \in \{1, \dots , N\})$ ergibt sich für alle $\ i \in \{1, \dots , N\}$ 
+\[ \left(\partial_t \rho_h, \eta_i  \right)_{K_i}  = \bigg( \left(\dive(\Psi^*(\rho_h)), \eta_i \right)_{K_i} - \sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^{K_i}, \eta_i \right)_{F} - \left(\rhoin q \cdot n^{K_i}, \eta_i \right)_{\partial K_i \cap \Gammain} \bigg)\]
 
 \subsubsection{Diskretisierung in der Zeit}
 
