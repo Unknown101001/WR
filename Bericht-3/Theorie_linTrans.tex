@@ -30,7 +30,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 
 
 \subsection{Erhaltungsgrößen der analytischen Lösung}
-\begin{Lemma}(Massenbilanz)
+\begin{Lemma}[Massenbilanz]
 	\label{Massenbilanz}
 	
 	Sei $ \rho $ Lösung von $ \lTG $. 
@@ -46,7 +46,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 		\item Masse, die in $ [0,t] $ abgeflossen ist.
 	\end{enumerate}
 
-\begin{Lemma}(Energiebilanz)
+\begin{Lemma}[Energiebilanz]
 	\label{Energiegleichung}
 	
 	Sei $ \dive(q) = 0 $ und $ \rho $ eine Lösung von $ \lTG $. 
@@ -205,4 +205,42 @@ ergibt sich die DGL
 
 
 \subsection{Erhaltungsgrößen der numerischen Lösung}
+
+\begin{Lemma}[diskrete Massenbilanz] \label{diskrete Massenbilanz}
+	Sei $ q = q_h \in W_h, \dive(q) = 0 $ und $ \rho_o \in Q_h $.
+	
+	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Massenbilanz}:
+	\[\forall t \in [0,T]: \int_\Omega \rho_h(t) \diff   = \int_\Omega \rho_0 \diff x - \int_{0}^{t} \left( \oint_{\Gammain} \rhoin(\tilde{t}) q \cdot n \diff a + \oint_{\Gammaout} \rho_h(\tilde{t}) q \cdot n \diff a  \right) \diff \tilde{t} \]
+\end{Lemma}
  
+\begin{Lemma}[diskrete Positivität] \label{disktrete Positivität}
+		Es gelten die gleichen Voraussetzungen wie in Lemma \ref{diskrete Massenbilanz}.
+	
+	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Positivität}:
+	\[ \rho_0 \geq 0 \text{ und } \rhoin \geq 0 \implies \rho_h \geq 0 \]
+\end{Lemma}
+
+\begin{Lemma}[diskrete Energiebilanz] \label{diskrete Energiebilanz}\unklar{Welche Voraussetzungen???}
+	
+	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Energiebilanz}:
+	
+	\begin{gather*}
+		\forall t \in [0,T]: \int_\Omega \abs{\rho_h(t)}^2 \diff x = \int_\Omega \abs{\rho_0}^2 \diff x + \int_{0}^{\unklar{t}} \left[ \oint_{\Gammain} \abs{\rhoin(\tilde{t})}^2 \abs{q \cdot n} \diff a - \oint_{\Gammaout} \abs{\rho_h(t)}^2 \abs{q \cdot n} \diff a \right. \\
+		\left. - \sum_{F\in \mathcal{F} \cap \Omega^\circ} \oint_F \abs{\rho_{h|K} - \rho_{h|K_F}}^2 \abs{q \cdot n} \diff a - \oint_{\Gammain} \abs{\rho_h - \rhoin}^2 \abs{q\cdot n} \diff a \right] \diff t
+	\end{gather*}
+	
+\end{Lemma}
+ 
+ 
+ \begin{remark}(zu Lemma \ref{diskrete Energiebilanz})
+ 	
+ 	$ \mathcal{F} \cap \Omega^\circ = \mathcal{F} \cap \Omega $ ist die Menge der inneren Kanten.
+ \end{remark}
+
+\begin{remark}(zu numerischen Flüssen)
+	
+	\begin{itemize}
+		\item \unklar{ Der \enquote{upwind flux} $ \Psi* $ ist masseerhaltend, aber nicht energieerhaltend (erfüllt also die diskrete Massenbilanz, aber i. A. nicht die diskrete Energiebilanz).}
+		\item \unklar{Der \enquote{\defi{central flux}} $ \Psi^c $ gegeben durch $ \Psi^c = \frac{1}{2} \left(\Psi(\rho_{h|K}) + \Psi(\rho_{h|K_F})\right)$ ist energieerhaltend, aber nicht monoton (d.h. erfüllt i.A. nicht die diskrete Postitvität). }
+	\end{itemize}
+\end{remark}
