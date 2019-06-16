@@ -110,7 +110,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
 
 \subsubsection{Diskretisierung im Raum}
-\unklar{Wir betrachten $ \rho $ als Lösung und schreiben das zu lösende Problem um.} Sei $ \mathcal{K} $ eine Triangulierung von $ \Omega $ wie bisher. 
+\unklar{Wir betrachten $ \rho $ als Lösung und schreiben das zu lösende Problem um.} Sei $ \mathcal{K} $ eine Triangulierung von $ \Omega $ wie bisher und $ (\cdot,\cdot)_A $ das $ L^2(A) $-Skalarprodukt. 
 \begin{define}(Flux)
 	
 	Zu gegebenen Fluss $ q:\Omega \to \R^2 $ definieren wir die \defi{Flussfunktion}/\defi{Flux} als
@@ -138,7 +138,7 @@ Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho 
 Wir wollen nun die semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ bzw eine Differenzialgleichung für $ \rho_h $ herzuleiten. 
 
 \textbf{Approximation}:
-Wähle Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ u \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werde, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux) $ \Psi^* $, welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
+Wähle Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ u \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werde, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux), welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
 Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi_h \in Q_h $
 \[
 \sum_{i = 1}^{N} \left(\partial_t \rho_h, \phi_h  \right)_{K_i}  = \sum_{i=1}^{N} \bigg(- \left(\Psi(\rho_h), \nabla\phi_h \right)_{K_i} -\sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K_i \cap \Gammain} \bigg)
@@ -147,29 +147,62 @@ Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi
 
 
 \textbf{Finite-Volumen}:
-Zunächst betrachten wir den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $ und als numerischen Fluss den \defi{upwind flux}. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
+Zunächst betrachten wir den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $ und als numerischen Fluss den \defi{upwind flux} $ \Psi^* $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
 \begin{gather*}
 	\text{Auf } F \text{ gilt }\Psi^*(\rho_h) = \begin{cases}
-	\Psi(\rho_{h|K}) &\text{, für } q \cdot n^K > 0\\
-	Psi(\rho_{h|K'}) &\text{, für } q\cdot n^K < 0 \text{ und } \overline{F} = \partial K \cap \partial K'\\
-	0 &\text{, für } q\cdot n^K < 0 \text{ und } F \subseteq \Gammain.
+	\Psi(\rho_{h|K}) &\text{, für } q \cdot n^K_{|F} > 0\\
+	\Psi(\rho_{h|K'}) &\text{, für } q\cdot n^K_{|F} < 0 \text{ und } \overline{F} = \partial K \cap \partial K'\\
+	0 &\text{, für } q\cdot n^K_{|F} < 0 \text{ und } F \subseteq \Gammain.
 	\end{cases}  
 \end{gather*}
-
-
-Weiter gilt für die Zellenbasis $ \{\eta_i\}_{i=1}^N $ mit $ \eta_i = \mathbbm{1}_{K_i} $ 
+\begin{remark}
+	Wir führen einen Notation für die Nachbarzelle an einer Kante ein.
+	
+	Für $ K \in \mathcal{K} $ und eine innere Kante $ F \in \mathcal{F}_K $ sei $ K_F \in \mathcal{K}$ die Zelle, sodass gilt \[ \overline{F} = \partial K \cap \partial K_F \]
+	
+	Gilt  $q\cdot n^K_{|F} < 0$ so ist $ \Psi^*(\rho_h) = \Psi(\rho_{h|K_F}) $.
+\end{remark}
+\bigskip
+Weiter gilt für die Zellenbasis $ \{\mu_i\}_{i=1}^N $ mit $ \mu_i = \mathbbm{1}_{K_i} $ 
 \begin{itemize}
-	\item $ Q_h = \spann\{\eta_1, \dots , \eta_N\} $,
-	\item $ \{\eta_i\}_{i=1}^N $ ist eine Orthogonalbasis (im Allegemine aber keine ONB da $ \norm{\eta_i}^2 = \lambda(K_i) $\,),
-	\item $ \forall \ i \in \{1, \dots , N\}:  \supp(\eta_i) \subseteq \overline{K_i}$.
+	\item $ Q_h = \spann\{\mu_1, \dots , \mu_N\} $,
+	\item \unklar{$ \{\mu_i\}_{i=1}^N $ ist eine Orthogonalbasis (im Allegemine aber keine ONB da $ \norm{\mu_i}^2 = \lambda(K_i) $\,),}
+	\item $ \forall \ i \in \{1, \dots , N\}:  \supp(\mu_i) \subseteq \overline{K_i}$.
 \end{itemize}
-
-
-
  
-Durch einsetzen der Zeilenbasis und mit $ \supp(\eta_i) \subseteq \overline{K_i} (\ i \in \{1, \dots , N\})$ ergibt sich für alle $\ i \in \{1, \dots , N\}$ 
-\[ \left(\partial_t \rho_h, \eta_i  \right)_{K_i}  = \bigg( -\underbrace{(\Psi(\rho_h), \nabla\eta_i)_{K_i}}_{=0 \text{, da } \nabla \eta_i = 0} - \sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^{K_i}, \eta_i \right)_{F} - \left(\rhoin q \cdot n^{K_i}, \eta_i \right)_{\partial K_i \cap \Gammain} \bigg)\]
+Durch einsetzen der Zeilenbasis und mit $ \supp(\mu_i) \subseteq \overline{K_i} (\ i \in \{1, \dots , N\})$ ergibt sich für alle $\ i \in \{1, \dots , N\}$ 
+\begin{align*}
+	\left(\partial_t \rho_h, \mu_i  \right)_{K_i}  &= \bigg( -\underbrace{(\Psi(\rho_h), \nabla\mu_i)_{K_i}}_{=0 \text{, da } \nabla \mu_i = 0} - \sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^{K_i}, \mu_i \right)_{F} - \left(\rhoin q \cdot n^{K_i}, \mu_i \right)_{\partial K_i \cap \Gammain} \bigg) \\
+	&= \bigg( - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} > 0} } \left(\Psi^*(\rho_h) \cdot n^{K_i}, \mu_i \right)_{F} - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} < 0} } \left(\Psi^*(\rho_h) \cdot n^{K_i}, \mu_i \right)_{F}\\
+	& \qquad \qquad \qquad \qquad \qquad \qquad  \qquad \qquad\qquad \qquad- \left(\rhoin q \cdot n^{K_i}, \mu_i \right)_{\partial K_i \cap \Gammain} \bigg)\qquad \qquad
+\end{align*} 
+
+Zusammen mit der Basisdarstellung von $ \rho_h $ in $\{\mu_i  \}_{i=1}^N$, $ \rho_h = \sum_{i=1}^{N} \underline{\rho}[i] \mu_i$, und 
+\begin{align*}
+&\text{\defi{Massenmatrix} } \underline{M}\in \R^{N \times N} \\  &\qquad \qquad \underline{M}[K,K'] \coloneqq \begin{dcases}
+\int_K \abs{\mu_K}^2 \diff x & \text{, für } K = K' \\
+0 &\text{, sonst}
+\end{dcases} \\
+&\text{\defi{Flussmatrix} } \underline{A}\in \R^{N \times N} \\ &\qquad \qquad \underline{A}[K,K'] \coloneqq \begin{dcases}
+- \sum_{\substack{F\in \mathcal{F}_K \\ F \text{ mit } q\cdot n^K_{|F} > 0}} \oint_F \mu_K^2 q \cdot n^K \diff a& \text{, für } K = K' \\
+- \oint_F \mu_K \mu_{K'} q \cdot n^K \diff a &\text{, für } q \cdot n^K< 0 \text{ und } \overline{F} = \partial K \cap \partial K'\\
+0 &\text{, sonst}
+\end{dcases} \\
+&\text{\defi{Lastvektor} } \underline{b}\in \R^{N} \\ &\qquad \qquad\underline{b}[K] \coloneqq \oint_{\partial K \cap \Gammain} \rhoin q \cdot n \diff a
+\end{align*}
+
+
+ergibt sich die DGL
+\begin{gather*}
+\begin{cases}
+\underline{M} \partial_t \underline{\rho} = \underline{A} \underline{\rho} + \underline{b} \\
+\underline{\rho}(0) = \underline{\rho_0}
+\end{cases}\\
+\implies \underline{\rho}(t) = \exp(t \underline{M}^{-1} \underline{A}) \left( \underline{\rho_0} + \int_{0}^{t} \exp(-s\underline{M}^{-1} \underline{A}) b(s) \diff s \right) 
+\end{gather*}
 
 \subsubsection{Diskretisierung in der Zeit}
 
+
+\subsection{Erhaltungsgrößen der numerischen Lösung}
  
