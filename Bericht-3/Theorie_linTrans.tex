@@ -125,7 +125,7 @@ Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho 
 	&\iff &&\sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} = - \left(\partial_t \rho, \phi  \right)_\Omega - \left(\Psi(\rho), \nabla\phi  \right)_\Omega \\
 	&\iff && \left(\partial_t \rho, \phi  \right)_\Omega  = - \left(\Psi(\rho), \nabla\phi  \right)_\Omega - \sum_{K \in \mathcal{K} } \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} \\
 	&\iff &&\left(\partial_t \rho, \phi  \right)_\Omega  = - \left(\Psi(\rho), \nabla \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
-	& \mkern-12mu \stackrel{\substack{\text{Kanten} \\ \text{Nullmengen}}}{\iff} &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = - \left(\Psi(\rho), \nabla \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
+	&\stackrel{\mathclap{\substack{\text{Kanten} \\ \text{Nullmengen}}}}{\iff} &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = - \left(\Psi(\rho), \nabla \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
 	&\iff  &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( - \left(\Psi(\rho), \nabla \phi \right)_K\\
 	&&&\qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F}- \sum_{\substack{F \in \mathcal{F}_K \\ F \subseteq \Gammain}} \left(\rhoin q \cdot n^K, \phi \right)_{F} \bigg)\\
 	&\iff  &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( -\left(\Psi(\rho), \nabla\phi \right)_K \\
@@ -149,7 +149,7 @@ Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi
 
 
 \textbf{Finite-Volumen}:
-Zunächst betrachten wir den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $. 
+Wir betrachten im folgenden nur den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $. 
 
 Als numerischen Fluss verwenden wir den \defi{upwind flux} $ \Psi^* $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
 \begin{gather*}
@@ -236,22 +236,22 @@ Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung 
 
  
 \begin{Lemma}[diskrete Nicht-Negativität] \label{disktrete Nicht-Negativität}
-		Sei $ q = q_h \in W_h, \dive(q) = 0 $ und $ \rho_o \in Q_h $.%Es gelten die gleichen Voraussetzungen wie in Lemma \ref{diskrete Massenbilanz}.
+		Sei $ q = q_h \in W_h, \dive(q) = 0 $ und $ \rho_0 \in Q_h $.$ \unklar{(?)} $ %Es gelten die gleichen Voraussetzungen wie in Lemma \ref{diskrete Massenbilanz}.
 	
-	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Nicht-Negativität}:
+	Dann gilt für die semidiskrete Approximation $ \rho_h \in Q_h$ mit \enquote{upwind flux} die \defi{diskrete Nicht-Negativität}:
 	\[ \rho_0 \geq 0 \text{ und } \rhoin \geq 0 \implies \rho_h \geq 0 \]
 \end{Lemma}
 
 \begin{Lemma}[diskrete Massenbilanz] \label{diskrete Massenbilanz}
 	Es gelten die gleichen Voraussetzungen wie in Lemma~\ref{disktrete Nicht-Negativität}.
 	
-	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Massenbilanz}:
+	Dann gilt für die semidiskrete Approximation $ \rho_h \in Q_h$ mit \enquote{upwind flux} oder mit \enquote{central flux} die \defi{diskrete Massenbilanz}:
 	\[\forall t \in [0,T]: \int_\Omega \rho_h(t) \diff   = \int_\Omega \rho_0 \diff x - \int_{0}^{t} \left( \oint_{\Gammain} \rhoin(\tilde{t}) q \cdot n \diff a + \oint_{\Gammaout} \rho_h(\tilde{t}) q \cdot n \diff a  \right) \diff \tilde{t} \]
 \end{Lemma}
 
-\begin{Lemma}[diskrete Energiebilanz] \label{diskrete Energiebilanz}\unklar{Welche Voraussetzungen???}
+\begin{Lemma}[diskrete Energiebilanz] \label{diskrete Energiebilanz}	Es gelten die gleichen Voraussetzungen wie in Lemma~\ref{disktrete Nicht-Negativität}.
 	
-	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Energiebilanz}:
+	Dann gilt für die semidiskrete Approximation $ \rho_h \in Q_h $ mit \enquote{central flux} die \defi{diskrete Energiebilanz}:
 	
 	\begin{gather*}
 		\forall t \in [0,T]: \int_\Omega \abs{\rho_h(t)}^2 \diff x = \int_\Omega \abs{\rho_0}^2 \diff x + \int_{0}^{\unklar{t}} \left[ \oint_{\Gammain} \abs{\rhoin(\tilde{t})}^2 \abs{q \cdot n} \diff a - \oint_{\Gammaout} \abs{\rho_h(t)}^2 \abs{q \cdot n} \diff a \right. \\
@@ -274,11 +274,15 @@ Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung 
 %	\end{itemize}
 
 	\begin{tabular}{c || c | c | c}
-		&\enquote{upwind flux} $ \Psi* $ & \enquote{central flusx} $ \Psi^c $ & Bedeutung \\ \hline 
+		&\enquote{upwind flux} $ \Psi^* $ & \enquote{central flux} $ \Psi^c $ & Bedeutung \\ \hline 
 		Masseerhaltend & $\checkmark$ & $\checkmark$ & diskrete Massenbilanz \\ \hline
 		Energieerhlatend &  x  & $ \checkmark $ & diskrete Energiebinalz\\ \hline
 		Monoton & $ \checkmark $ & x & diskrete Nicht-Negativität \\
 	\end{tabular}
+\end{remark}
+
+\begin{remark}\unklar{(discontiouous Galerkin Ansatzraum)}
+	
 \end{remark}
 
 
