@@ -30,6 +30,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 
 
 \subsection{Erhaltungsgrößen der analytischen Lösung}
+\label{subsec:Erhaltungsgroessen der analytischen Loesung}
 \begin{Lemma}[Massenbilanz]
 	\label{Massenbilanz}
 	
@@ -119,15 +120,16 @@ Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \r
 
 Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho = - \dive(\Psi(\rho)) $ und somit
 \begin{align*}
-	&\sum_{K \in \mathcal{K}} \oint_{\partial K} \phi \Psi(\rho) \cdot n^K \diff a \stackrel{(\star)}{=} \oint_{\partial \Omega} \phi \Psi(\rho) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(\Psi(\rho) \Phi) \diff x \\
-	& \quad = \int_{\Omega} \phi \dive(\Psi(\rho)) + \Psi(\rho) \cdot \nabla \phi \diff x = - \int_\Omega \partial_t \rho \phi \diff x + \int_\Omega \Psi(\rho) \cdot \nabla \phi \diff x \\
-	\iff &\sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} = - \left(\partial_t \rho, \phi  \right)_\Omega - \left(\Psi(\rho), \nabla\phi  \right)_\Omega \\
-	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = - \left(\Psi(\rho), \nabla\phi  \right)_\Omega - \sum_{K \in \mathcal{K} } \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} \\
-	\iff & \left(\partial_t \rho, \phi  \right)_\Omega  = - \left(\Psi(\rho), \nabla \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
-	\iff & \sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( - \left(\Psi(\rho), \nabla \phi \right)_K\\
-	&\qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F}- \sum_{\substack{F \in \mathcal{F}_K \\ F \subseteq \Gammain}} \left(\rhoin q \cdot n^K, \phi \right)_{F} \bigg)\\
-	\iff & \sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( -\left(\Psi(\rho), \nabla\phi \right)_K \\
-	&\qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K \cap \Gammain} \bigg) \tag{\sun}
+	&&&\sum_{K \in \mathcal{K}} \oint_{\partial K} \phi \Psi(\rho) \cdot n^K \diff a \stackrel{(\star)}{=} \oint_{\partial \Omega} \phi \Psi(\rho) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(\Psi(\rho) \Phi) \diff x \\
+	&&& \quad = \int_{\Omega} \phi \dive(\Psi(\rho)) + \Psi(\rho) \cdot \nabla \phi \diff x = - \int_\Omega \partial_t \rho \phi \diff x + \int_\Omega \Psi(\rho) \cdot \nabla \phi \diff x \\
+	&\iff &&\sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} = - \left(\partial_t \rho, \phi  \right)_\Omega - \left(\Psi(\rho), \nabla\phi  \right)_\Omega \\
+	&\iff && \left(\partial_t \rho, \phi  \right)_\Omega  = - \left(\Psi(\rho), \nabla\phi  \right)_\Omega - \sum_{K \in \mathcal{K} } \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} \\
+	&\iff &&\left(\partial_t \rho, \phi  \right)_\Omega  = - \left(\Psi(\rho), \nabla \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
+	& \mkern-12mu \stackrel{\substack{\text{Kanten} \\ \text{Nullmengen}}}{\iff} &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = - \left(\Psi(\rho), \nabla \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
+	&\iff  &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( - \left(\Psi(\rho), \nabla \phi \right)_K\\
+	&&&\qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F}- \sum_{\substack{F \in \mathcal{F}_K \\ F \subseteq \Gammain}} \left(\rhoin q \cdot n^K, \phi \right)_{F} \bigg)\\
+	&\iff  &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( -\left(\Psi(\rho), \nabla\phi \right)_K \\
+	&&& \qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K \cap \Gammain} \bigg) \tag{\sun}
 \end{align*}
 \begin{remark}
 	zu $ (\star) $: Integration über inneren Kanten $ F $ fällt weg, da für die beiden Nachbarzellen wegen der äußeren Normalen in unterschiedliche Richtungen integriert wird:
@@ -147,7 +149,9 @@ Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi
 
 
 \textbf{Finite-Volumen}:
-Zunächst betrachten wir den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $ und als numerischen Fluss den \defi{upwind flux} $ \Psi^* $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
+Zunächst betrachten wir den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $. 
+
+Als numerischen Fluss verwenden wir den \defi{upwind flux} $ \Psi^* $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
 \begin{gather*}
 	\text{Auf } F \text{ gilt }\Psi^*(\rho_h) = \begin{cases}
 	\Psi(\rho_{h|K}) &\text{, für } q \cdot n^K_{|F} > 0\\
@@ -155,12 +159,25 @@ Zunächst betrachten wir den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathc
 	0 &\text{, für } q\cdot n^K_{|F} < 0 \text{ und } F \subseteq \Gammain.
 	\end{cases}  
 \end{gather*}
+
+\begin{remark}(alternativer numerischer Fluss)
+	
+	Eine weitere interessante Möglichkeit für den numerischen Fluss ist der \defi{central flux} $ \Psi^c $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
+	\begin{gather*}
+		\text{Auf } F \text{ gilt }\Psi^c(\rho_h) = \begin{cases}
+		\frac{1}{2} \left( \Psi(\rho_{h|K}) + \Psi(\rho_{h|K'}  \right) &\text{, auf } \overline{F} = \partial K \cap \partial K'\\
+		\Psi(\rho_{h|K}) &\text{, auf } F \subseteq \Gammain\\
+		0 &\text{, auf } F \subseteq \Gammaout 
+		\end{cases}
+	\end{gather*}
+\end{remark}
+
 \begin{remark}
 	Wir führen einen Notation für die Nachbarzelle an einer Kante ein.
 	
 	Für $ K \in \mathcal{K} $ und eine innere Kante $ F \in \mathcal{F}_K $ sei $ K_F \in \mathcal{K}$ die Zelle, sodass gilt \[ \overline{F} = \partial K \cap \partial K_F \]
 	
-	Gilt  $q\cdot n^K_{|F} < 0$ so ist $ \Psi^*(\rho_h) = \Psi(\rho_{h|K_F}) $.
+	Gilt  $q\cdot n^K_{|F} < 0$ so ist $ \Psi^*(\rho_h) = \Psi(\rho_{h|K_F}) $ auf der inneren Kante $ F $.
 \end{remark}
 \bigskip
 Weiter gilt für die Zellenbasis $ \{\mu_i\}_{i=1}^N $ mit $ \mu_i = \mathbbm{1}_{K_i} $ 
@@ -173,11 +190,11 @@ Weiter gilt für die Zellenbasis $ \{\mu_i\}_{i=1}^N $ mit $ \mu_i = \mathbbm{1}
 Durch einsetzen der Zeilenbasis und mit $ \supp(\mu_i) \subseteq \overline{K_i} (\ i \in \{1, \dots , N\})$ ergibt sich für alle $\ i \in \{1, \dots , N\}$ 
 \begin{align*}
 	\left(\partial_t \rho_h, \mu_i  \right)_{K_i}  &= \bigg( -\underbrace{(\Psi(\rho_h), \nabla\mu_i)_{K_i}}_{=0 \text{, da } \nabla \mu_i = 0} - \sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^{K_i}, \mu_i \right)_{F} - \left(\rhoin q \cdot n^{K_i}, \mu_i \right)_{\partial K_i \cap \Gammain} \bigg) \\
-	&= \bigg( - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} > 0} } \left(\Psi^*(\rho_h) \cdot n^{K_i}, \mu_i \right)_{F} - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} < 0} } \left(\Psi^*(\rho_h) \cdot n^{K_i}, \mu_i \right)_{F}\\
+	&= \bigg( - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} > 0} } \left(\underbrace{\Psi^*(\rho_h)}_{= \rho_{h|K}\, q} \cdot n^{K_i}, \mu_i \right)_{F} - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} < 0} } \left(\underbrace{\Psi^*(\rho_h)}_{= \rho_{h|K_F} \, q} \cdot n^{K_i}, \mu_i \right)_{F}\\
 	& \qquad \qquad \qquad \qquad \qquad \qquad  \qquad \qquad\qquad \qquad- \left(\rhoin q \cdot n^{K_i}, \mu_i \right)_{\partial K_i \cap \Gammain} \bigg)\qquad \qquad
 \end{align*} 
 
-Zusammen mit der Basisdarstellung von $ \rho_h $ in $\{\mu_i  \}_{i=1}^N$, $ \rho_h = \sum_{i=1}^{N} \underline{\rho}[i] \mu_i$, und 
+Zusammen mit der Basisdarstellung von $ \rho_h $ in $\{\mu_i  \}_{i=1}^N$, $ \rho_h = \sum_{i=1}^{N} \underline{\rho}[i] \; \mu_i$, und 
 \begin{align*}
 &\text{\defi{Massenmatrix} } \underline{M}\in \R^{N \times N} \\  &\qquad \qquad \underline{M}[K,K'] \coloneqq \begin{dcases}
 \int_K \abs{\mu_K}^2 \diff x & \text{, für } K = K' \\
@@ -203,21 +220,33 @@ ergibt sich die DGL
 
 \subsubsection{Diskretisierung in der Zeit}
 
-
 \subsection{Erhaltungsgrößen der numerischen Lösung}
 
+\begin{repetition}
+	Wie in Abschnitt \ref{subsec:Erhaltungsgroessen der analytischen Loesung} \enquote{Erhaltungsgrößen der analytischen Lösung} gesehen gilt für die analytische Lösung:
+	\begin{itemize}
+		\item nicht-negativ (da der Zielraum von $ \rho: \Omega \times [0,T] \to \R_{\geq 0}$ $ \R_{\geq 0} $ ist)
+		\item Massenbilanz (Lemma \ref{Massenbilanz})
+		\item Endergiebilanz (Lemma \ref{Energiegleichung})
+	\end{itemize}
+\end{repetition}
+
+Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung $ \rho $ von der semi-diskreten Lösung $ \rho_h $ erhalten werden.
+
+
+ 
+\begin{Lemma}[diskrete Nicht-Negativität] \label{disktrete Nicht-Negativität}
+		Sei $ q = q_h \in W_h, \dive(q) = 0 $ und $ \rho_o \in Q_h $.%Es gelten die gleichen Voraussetzungen wie in Lemma \ref{diskrete Massenbilanz}.
+	
+	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Nicht-Negativität}:
+	\[ \rho_0 \geq 0 \text{ und } \rhoin \geq 0 \implies \rho_h \geq 0 \]
+\end{Lemma}
+
 \begin{Lemma}[diskrete Massenbilanz] \label{diskrete Massenbilanz}
-	Sei $ q = q_h \in W_h, \dive(q) = 0 $ und $ \rho_o \in Q_h $.
+	Es gelten die gleichen Voraussetzungen wie in Lemma~\ref{disktrete Nicht-Negativität}.
 	
 	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Massenbilanz}:
 	\[\forall t \in [0,T]: \int_\Omega \rho_h(t) \diff   = \int_\Omega \rho_0 \diff x - \int_{0}^{t} \left( \oint_{\Gammain} \rhoin(\tilde{t}) q \cdot n \diff a + \oint_{\Gammaout} \rho_h(\tilde{t}) q \cdot n \diff a  \right) \diff \tilde{t} \]
-\end{Lemma}
- 
-\begin{Lemma}[diskrete Positivität] \label{disktrete Positivität}
-		Es gelten die gleichen Voraussetzungen wie in Lemma \ref{diskrete Massenbilanz}.
-	
-	Dann gilt für die semidiskrete Approximation $ \rho_h $ die \defi{diskrete Positivität}:
-	\[ \rho_0 \geq 0 \text{ und } \rhoin \geq 0 \implies \rho_h \geq 0 \]
 \end{Lemma}
 
 \begin{Lemma}[diskrete Energiebilanz] \label{diskrete Energiebilanz}\unklar{Welche Voraussetzungen???}
@@ -239,8 +268,19 @@ ergibt sich die DGL
 
 \begin{remark}(zu numerischen Flüssen)
 	
-	\begin{itemize}
-		\item \unklar{ Der \enquote{upwind flux} $ \Psi* $ ist masseerhaltend, aber nicht energieerhaltend (erfüllt also die diskrete Massenbilanz, aber i. A. nicht die diskrete Energiebilanz).}
-		\item \unklar{Der \enquote{\defi{central flux}} $ \Psi^c $ gegeben durch $ \Psi^c = \frac{1}{2} \left(\Psi(\rho_{h|K}) + \Psi(\rho_{h|K_F})\right)$ ist energieerhaltend, aber nicht monoton (d.h. erfüllt i.A. nicht die diskrete Postitvität). }
-	\end{itemize}
+%	\begin{itemize}
+%		\item \unklar{ Der \enquote{upwind flux} $ \Psi^* $ ist masseerhaltend, aber nicht energieerhaltend (erfüllt also die diskrete Massenbilanz, aber i. A. nicht die diskrete Energiebilanz).}
+%		\item \unklar{Der \enquote{\defi{central flux}} $ \Psi^c $ gegeben durch $ \Psi^c = \frac{1}{2} \left(\Psi(\rho_{h|K}) + \Psi(\rho_{h|K_F})\right)$ ist energieerhaltend, aber nicht monoton (d.h. erfüllt i.A. nicht die diskrete Postitvität). }
+%	\end{itemize}
+
+	\begin{tabular}{c || c | c | c}
+		&\enquote{upwind flux} $ \Psi* $ & \enquote{central flusx} $ \Psi^c $ & Bedeutung \\ \hline 
+		Masseerhaltend & $\checkmark$ & $\checkmark$ & diskrete Massenbilanz \\ \hline
+		Energieerhlatend &  x  & $ \checkmark $ & diskrete Energiebinalz\\ \hline
+		Monoton & $ \checkmark $ & x & diskrete Nicht-Negativität \\
+	\end{tabular}
 \end{remark}
+
+
+%\newcommand*\diff{\mathop{}\!\mathrm{d}}
+%\[ = - \int_{0}^{t} \left( \int_{\Gamma_{\text{out}}} \rho_h \, q \cdot n \diff a  + \int_{\Gamma_{\text{in}}} \rho_{\text{in}} \, q \cdot n \diff a \right)  \diff \tilde{t}\]
