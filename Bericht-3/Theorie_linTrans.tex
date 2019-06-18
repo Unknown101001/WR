@@ -2,7 +2,7 @@
 \subsection{Analytische Betrachtung der linearen Transportgleichung}
 \textbf{Bisher} wollten wir aus gegebenen Randwerten den Fluss $ q $ berechnen.\\
 \textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wir betrachten nur zweidimensionale Gebiete) der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
-transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und die \defi{Einfluss} der Substanz über Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ ist gerade die Menge der Randpunkte an dem Substanz einfließen kann).
+transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ ist gerade die Menge der Randpunkte an dem Substanz einfließen kann).
 
 Gegebenenfalls betrachten wir $ \rho $ auch als 
 \[ \rho: [0,T] \to \Abb(\Omega, \R_{\geq 0}), t \mapsto \rho(\cdot,t). \]
@@ -12,7 +12,7 @@ Nach der physikalischen Modellierung gilt folgende Bilanzgleichung:
 	\forall \ K \subseteq \Omega, t \in [0,T]: \frac{\diff}{\diff t} \int_K \rho(x,t) \diff x + \oint_{\partial K} \rho(x,t) q(x) \cdot \nu(x) \diff a = 0 \\
 	\stackrel{\text{Gauß}}{\implies} \int_K \partial_t \rho(x,t) + \dive(\rho q)(x,t) \diff x = 0 
 \end{gather*}
-Da $ K \subseteq \Omega $ belibeig ist und \unklar{$ \rho, q \in C^1(\Omega) $} folgt die \defi{lineare Transportgleichung}
+Da $ K \subseteq \Omega $ beliebig ist und \unklar{$ \rho, q \in C^1(\Omega) $} folgt die \defi{lineare Transportgleichung}
 \begin{gather*}
 	\partial_t \rho + \dive(\rho q) = 0 \text{ in } \Omega \times (0,T) 
 \end{gather*}
@@ -28,7 +28,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 \end{gather*}
 
 
-
+\newpage
 \subsection{Erhaltungsgrößen der analytischen Lösung}
 \label{subsec:Erhaltungsgroessen der analytischen Loesung}
 \begin{Lemma}[Massenbilanz]
@@ -281,7 +281,7 @@ Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung 
 	\end{tabular}
 \end{remark}
 
-\begin{remark}\unklar{(discontiouous Galerkin Ansatzraum)}
+\begin{remark}\unklar{(discontiouous Galerkin Ansatzraum) TODO(STEFAN/TIM)}
 	
 \end{remark}
 
