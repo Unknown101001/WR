@@ -1,0 +1,75 @@
+start program on 4 procs at Wed May 29 17:07:39 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Mixed
+  reading ... Mesh = Rock
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 5
+  reading ... plevel = 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  default ... Overlap = none
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+32 cells on proc 0 of 128 cells on 4 procs -- min cells: 32  max cells: 32
+  default ... Overlap = none
+  reading ... Discretization = RT0_P0
+in RT0DoF with  m = 1
+  reading ... Discretization = RT0_P0
+  reading ... Problem = Rock
+  reading ... Permeability = 0.1
+  default ... AssembleVerbose = 1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = SuperLU
+  default ... PreconditionerVerbose = 0
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  default ... NewtonReduction = 1e-05
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 5
+
+ Level:          5
+ Dimension:      2
+ Cells:          8192
+ Problem size:   24800
+ Vertices:       8417
+ Edges:          16608
+ Mesh width:     [0.03125,0.03125]
+ Assemble        Raviart-Thomas
+
+ Problem:        Rock Problem
+ Discretization: RT0_P0
+
+ Newton: d(0)= 0.31041
+  GMRES: d(88)= 6.64761e-11 rate 0.776465 time  0.55 seconds
+ Newton: d(1)= 6.64761e-11 rate 2.14156e-10 time  1.03 seconds
+
+
+Prescribed Inflow   -3
+Prescribed Outflow  0
+Inflow              -3
+Outflow             3
+Flux Loss           2.93987e-12
+Flux Error          0
+
+LeftOutflow:        0.440109
+RightOutflow:       2.55989
+
+  reading ... Model = Mixed
+end program after  1.37 seconds on 4 procs at Wed May 29 17:07:40 2019
