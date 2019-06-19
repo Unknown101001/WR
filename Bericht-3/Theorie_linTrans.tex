@@ -2,7 +2,7 @@
 \subsection{Analytische Betrachtung der linearen Transportgleichung}
 \textbf{Bisher} wollten wir aus gegebenen Randwerten den Fluss $ q $ berechnen.\\
 \textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wir betrachten nur zweidimensionale Gebiete) der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
-transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und die \defi{Einfluss} der Substanz über Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ ist gerade die Menge der Randpunkte an dem Substanz einfließen kann).
+transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ ist gerade die Menge der Randpunkte an dem Substanz einfließen kann).
 
 Gegebenenfalls betrachten wir $ \rho $ auch als 
 \[ \rho: [0,T] \to \Abb(\Omega, \R_{\geq 0}), t \mapsto \rho(\cdot,t). \]
@@ -12,7 +12,7 @@ Nach der physikalischen Modellierung gilt folgende Bilanzgleichung:
 	\forall \ K \subseteq \Omega, t \in [0,T]: \frac{\diff}{\diff t} \int_K \rho(x,t) \diff x + \oint_{\partial K} \rho(x,t) q(x) \cdot \nu(x) \diff a = 0 \\
 	\stackrel{\text{Gauß}}{\implies} \int_K \partial_t \rho(x,t) + \dive(\rho q)(x,t) \diff x = 0 
 \end{gather*}
-Da $ K \subseteq \Omega $ belibeig ist und \unklar{$ \rho, q \in C^1(\Omega) $} folgt die \defi{lineare Transportgleichung}
+Da $ K \subseteq \Omega $ beliebig ist und \unklar{$ \rho, q \in C^1(\Omega) $} folgt die \defi{lineare Transportgleichung}
 \begin{gather*}
 	\partial_t \rho + \dive(\rho q) = 0 \text{ in } \Omega \times (0,T) 
 \end{gather*}
@@ -28,7 +28,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 \end{gather*}
 
 
-
+\newpage
 \subsection{Erhaltungsgrößen der analytischen Lösung}
 \label{subsec:Erhaltungsgroessen der analytischen Loesung}
 \begin{Lemma}[Massenbilanz]
@@ -149,7 +149,7 @@ Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi
 
 
 \textbf{Finite-Volumen}:
-Wir betrachten im folgenden nur den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $. 
+Wir betrachten im folgenden zunächst nur den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $. 
 
 Als numerischen Fluss verwenden wir den \defi{upwind flux} $ \Psi^* $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
 \begin{gather*}
@@ -187,7 +187,7 @@ Weiter gilt für die Zellenbasis $ \{\mu_i\}_{i=1}^N $ mit $ \mu_i = \mathbbm{1}
 	\item $ \forall \ i \in \{1, \dots , N\}:  \supp(\mu_i) \subseteq \overline{K_i}$.
 \end{itemize}
  
-Durch einsetzen der Zeilenbasis und mit $ \supp(\mu_i) \subseteq \overline{K_i} (\ i \in \{1, \dots , N\})$ ergibt sich für alle $\ i \in \{1, \dots , N\}$ 
+Durch Einsetzen der Zeilenbasis und mit $ \supp(\mu_i) \subseteq \overline{K_i} (\ i \in \{1, \dots , N\})$ ergibt sich für alle $\ i \in \{1, \dots , N\}$ 
 \begin{align*}
 	\left(\partial_t \rho_h, \mu_i  \right)_{K_i}  &= \bigg( -\underbrace{(\Psi(\rho_h), \nabla\mu_i)_{K_i}}_{=0 \text{, da } \nabla \mu_i = 0} - \sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^{K_i}, \mu_i \right)_{F} - \left(\rhoin q \cdot n^{K_i}, \mu_i \right)_{\partial K_i \cap \Gammain} \bigg) \\
 	&= \bigg( - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} > 0} } \left(\underbrace{\Psi^*(\rho_h)}_{= \rho_{h|K}\, q} \cdot n^{K_i}, \mu_i \right)_{F} - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} < 0} } \left(\underbrace{\Psi^*(\rho_h)}_{= \rho_{h|K_F} \, q} \cdot n^{K_i}, \mu_i \right)_{F}\\
@@ -280,5 +280,47 @@ Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung 
 		Monoton & $ \checkmark $ & x & diskrete Nicht-Negativität \\
 	\end{tabular}
 \end{remark}
+\newpage
+\subsection{Discontinuous-Galerkin-Verfahren}
+Wir wollen nun noch (kurz) auf das Discontinuous-Galerkin-Verfahren eingehen. Im Gegensatz zum Finite Volumen Verfahren, wollen wir uns hierbei aber auf die wesentlichen Unterschiede und Ideen beschränken und dabei auf eine vollständige Herleitung verzichten. \newline
+Im Gegensatz zum Finite Volumen Verfahren wählen wir beim Discontinuous-Galerkin-Verfahren $\Pi_{K\in\mathcal{K}} \mathbb{P}_k $ mit $ k \geq 1 $. Es sei noch einmal wie bereits beim Finite-Volumen-Verfahren erwähnt, dass hierbei für die Elemente aus $Q_h$ keine Stetigkeit auf $\Omega$ gefordert wird. \newline
+Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
+	\begin{align*}
+		(\partial_t \rho_h , \Phi_h)_{\Omega} &= -(\Psi(\rho_h),\nabla \Phi_h)_{\Omega}
+		- \sum_{K \in \mathcal{K}}(\Psi^*(\rho_h),\Phi_h)_{\partial K \setminus \Gammain}
+		-(\Psi(\rho_{in}),\Phi_h)_{\Gammain} \\
+		&= \sum_{K \in \mathcal{K}} [ -( \dive \Psi (\rho_h),\Phi_h)_{K}
+		+ \sum_{ F \subset \partial K \setminus \Gammain} ((\Psi(\rho_h)-\Psi ^* (\rho_h)) \cdot n_k , \Phi_h)_F ] \\		
+		&\qquad +(\Psi(\rho_h) - \Psi(\rho_{in}),\Phi_h)_{\Gammain} 
+		+ ( \Psi(\rho_h) \cdot n , \Phi )_{ \Gammain } \\
+		&\eqqcolon  (A_h \rho_h, \Phi_h )_{\Omega} + (\rho_{in} \mid qn \mid ,\Phi_h)_{\Gammain} \\
+		&\eqqcolon (A_h \rho_h, \Phi_h )_{\Omega} + (b_h,\Phi_h)_{\Gammain}
+	\end{align*}  
+\begin{remark}
+	\begin{enumerate} 
+		\item Für den DG-Operator $A_h: Q_h \rightarrow Q_h'$ gilt: 	\newline
+		\begin{align*}
+			(A_h,\rho_h,\rho_h)_{\Omega} &= - \int_{\partial 	\Omega} | \rho_h | ^2 | q \cdot n | da - \frac{1}{2} \sum_{F 	\in \mathcal{F} \backslash \partial \Omega} | \rho_k - 	\rho_{K_f} |^2 |q \cdot n| da \\
+			&\Rightarrow - \underline{A} \text{ ist positiv 	semidefinit}
+		\end{align*}
+		\item Lemma 5 (die diskrete Massebilanz) lässt sich auf das DG-Verfahren übertragen, indem statt punktweiser Erhaltung, Erhaltung im Mittel betrachtet wird.
+		\item Es gilt für die DG-Approximation mit Upwind-Flux: \newline
+		\begin{align*}
+			\int_{\Omega} | \rho_h (t) | ^2 dx &= \int_{\Omega} |\rho_0 |^2 dx 
+			+ \int_0^t \oint_{\Gammain} | \rho_{in} |^2 |q \cdot n | da d \tilde{t}
+			- \int_0^t \oint_{\Gamma_{out}} |\rho_h |^2 |q \cdot n | da d \tilde{t} \\
+			&- \sum_{F \in \mathcal{F}_h \cap \Omega^0} \int_0^t \oint_F | \rho_K - \rho_{K_f} |^2 |q \cdot n| da d \tilde{t}
+			- \int_0^t \oint_F |\rho_{in} - \rho_h |^2 |q \cdot n| da d \tilde{t}
+		\end{align*}
+	\end{enumerate}
+\end{remark}
 
+<<<<<<< HEAD
+=======
+	
+
+	
+
+
+>>>>>>> 2d6d045a6b4dcd715c8c990e85f9e231e22591f9
 

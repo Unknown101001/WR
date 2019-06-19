@@ -1,0 +1,154 @@
+start program on 2 procs at Wed May 22 12:24:20 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 0
+  reading ... TimeLevel = 0
+  reading ... Model = Laplace
+  reading ... Mesh = Square
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 8
+  reading ... plevel = 0
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  reading ... Overlap = dG1
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+0 cells on proc 0 of 1 cells on 2 procs -- min cells: 0  max cells: 1
+WARNING! At least one processor has no cells
+  reading ... Overlap = dG1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+3 unknowns  for CellDoF
+12 unknowns  for CellDoF
+48 unknowns  for CellDoF
+192 unknowns  for CellDoF
+768 unknowns  for CellDoF
+3072 unknowns  for CellDoF
+12288 unknowns  for CellDoF
+49152 unknowns  for CellDoF
+196608 unknowns  for CellDoF
+  reading ... Discretization = linear
+  reading ... Discretization = linear
+  default ... QuadratureCell = 2
+  default ... QuadratureBoundary = 1
+  reading ... Problem = Discontinuous
+  reading ... SetSolution = 1
+  default ... Scaling = 1
+  reading ... Mesh = Square
+4 unknowns  for VertexDoF
+9 unknowns  for VertexDoF
+25 unknowns  for VertexDoF
+81 unknowns  for VertexDoF
+289 unknowns  for VertexDoF
+1089 unknowns  for VertexDoF
+4225 unknowns  for VertexDoF
+16641 unknowns  for VertexDoF
+66049 unknowns  for VertexDoF
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = Multigrid
+  default ... PreconditionerVerbose = 0
+  reading ... presmoothing = 5
+  reading ... postsmoothing = 5
+  default ... cycle = V
+  default ... MultigridVerbose = 0
+  reading ... SmootherDamp = 0.8
+  reading ... Smoother = SGS
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  reading ... BaseSolver = LS
+  reading ... BasePreconditioner = LIB_PS
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  reading ... PS_checkdiagonal = 0
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... BaseSolverVerbose = -1
+  default ... BaseSolverSteps = 10
+  default ... BaseSolverLineSearchSteps = 3
+  default ... BaseSolverEpsilon = 1e-10
+  default ... BaseSolverReduction = 1e-05
+  default ... BaseSolverMinimalReduction = 1
+  default ... BaseSolverMinimalStepNumber = 0
+  reading ... Transfer = MatrixTransfer
+  default ... TransferVerbose = 0
+  default ... SimpleMatrixTransfer = 1
+  default ... TransferVerbose = 0
+  default ... SimpleMatrixTransfer = 1
+  default ... TransferVerbose = 0
+  default ... SimpleMatrixTransfer = 1
+  default ... TransferVerbose = 0
+  default ... SimpleMatrixTransfer = 1
+  default ... TransferVerbose = 0
+  default ... SimpleMatrixTransfer = 1
+  default ... TransferVerbose = 0
+  default ... SimpleMatrixTransfer = 1
+  default ... TransferVerbose = 0
+  default ... SimpleMatrixTransfer = 1
+  default ... TransferVerbose = 0
+  default ... SimpleMatrixTransfer = 1
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 100
+  reading ... NewtonLineSearchSteps = 3
+  default ... NewtonEpsilon = 1e-10
+  default ... NewtonReduction = 1e-05
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+
+Level 8
+
+
+Supremum interpolation error 0
+Energy interpolation error       -nan
+L2 interpolation error           0
+
+
+
+ Dimension:      2
+ Cells:          65536
+ Problem size:   66049
+ Vertices:       66049
+ Edges:          131584
+ Mesh width:     [0.00390625,0.00390625]
+ Assemble        Laplace
+
+ Problem:        Discontinuous Problem
+ Discretization: linear
+
+ Newton: d(0)= 0.383842
+  GMRES: d(7)= 3.95985e-11 rate 0.0374422 time  1.48 seconds
+ Newton: d(1)= 3.95942e-11 rate 1.03152e-10 time 14.81 seconds
+
+
+Supremum Error 0.260526
+Energy Error       -nan
+L2 Error average   50.569
+L2 Error           12.6423
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow     -1.00115
+Outflow    1.00078
+Flux Loss  -0.000365612
+Flux Error 0.00173316
+end program after 46.61 seconds on 2 procs at Wed May 22 12:25:07 2019
