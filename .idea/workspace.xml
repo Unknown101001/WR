@@ -10,14 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d635748c-25b6-452a-b0ab-f980818c5532" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe24/level2deg2/log/log.19-05-29-16:51:07" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe24/level2deg2/log/log.19-05-29-17:00:03" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe24/level2deg2/log/log.19-05-29-17:06:53" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe24/level2deg2/log/log.19-05-29-17:07:40" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe24/level2deg2/log/log.19-05-29-17:12:34" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe24/z_weitereVersionLevel2deg0/log.19-05-22-12:25:07" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Aufgabe24/z_weitereVersionLevel2deg0/log.19-05-24-18:01:15" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/riemann.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/riemann.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/transport.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/transport.conf" afterDir="false" />
@@ -42,8 +34,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/mpp/build/log/aufgabe24.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="197">
-                  <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+                <state relative-caret-position="44">
+                  <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#17#0" expanded="true" />
                   </folding>
@@ -212,12 +204,12 @@
       <workItem from="1560956113444" duration="7000" />
       <workItem from="1561018780615" duration="1774000" />
       <workItem from="1561029960265" duration="1046000" />
-      <workItem from="1561031090988" duration="5216000" />
+      <workItem from="1561031090988" duration="6260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14385000" />
+    <option name="totallyTimeSpent" value="15429000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -286,8 +278,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mpp/build/log/aufgabe24.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+        <state relative-caret-position="44">
+          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
