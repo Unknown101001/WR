@@ -1,0 +1,7 @@
+start program on 2 procs at Fri May 24 18:01:15 2019
+  default ... DebugLevel = 0
+  default ... TimeLevel = 0
+  default ... TimeLevel = 0
+  default ... Model = Laplace
+  default ... Mesh = UnitCube
+  default ... GeoPath = ./../Praktikum/
