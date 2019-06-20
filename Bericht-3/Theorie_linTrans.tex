@@ -220,6 +220,47 @@ ergibt sich die DGL
 
 \subsubsection{Diskretisierung in der Zeit}
 
+Wir wollen in diesem Kapitel noch auf die Herleitung der Zeitintegratoren eingehen. Der Ansatz hierbei besteht aus der 
+Integration der Differentialgleichung $\underline{M} \partial_t \underline{\rho} = \underline{A} \underline{\rho} + \underline{b}$ über die Zeit $t$ im Intervall $[t_i, t_{i+1}]$.
+Dabei ist $t_i = i \Delta t$. Hiermit folgt:
+\begin{align*}
+  \underline{M}\underline{\rho}(t_{i+1}) - \underline{M}\underline{\rho}(t_i) = \int_{t_i}^{t_{i+1}}
+  \underline{M} \partial_t \underline{\rho}(t) dt =\int_{t_i}^{t_{i+1}} \underline{A} \underline{\rho}(t) + \underline{b} dt.
+\end{align*}
+Mithilfe der Anwendung verschiedener Quadraturformeln lässt sich daraus ein Runge-Kutta Verfahren herleiten. Über die Rechteckformel 
+\begin{align*}
+  \int_{t_i}^{t_{i+1}}\underline{A} \underline{\rho}(t) + \underline{b} dt \approx (t_{i+1}-t_i) 
+  \underline{A} \underline{\rho}(t_i+1) + \underline{b} = \Delta t \underline{A} \underline{\rho}(t_{i+1}) + \underline{b}
+\end{align*}
+ergibt sich z.B. das implizite Euler Verfahren
+\begin{align*}
+  \underline{\rho}(t_{i+1}) = \underline{\rho}(t_{i}) + \Delta t \underline{M}^{-1}\underline{A} \underline{\rho}(t_{i+1}) + \underline{b}.
+\end{align*}
+Weitere Verfahren, die wir verwenden werden, sind zum einen das
+klassische Runge-Kutta Verfahren
+\begin{align*}
+  \underline{\rho}(t_{i+1}) = \underline{\rho}(t_{i}) +
+  \Delta t \underline{M}^{-1}\underline{A} (
+  \underline{\rho}(t_{i}) +
+  \frac{\Delta t}{2} \underline{M}^{-1}\underline{A} (
+  \underline{\rho}(t_{i}) +
+  \frac{\Delta t}{3} \underline{M}^{-1}\underline{A} (
+  \underline{\rho}(t_{i}) +
+  \frac{\Delta t}{4} \underline{M}^{-1}\underline{A} 
+  \underline{\rho}(t_{i}) )))
+\end{align*}
+und zum anderen die implizite Mittelpunktsregel 
+\begin{align*}
+  \underline{\rho}(t_{i+1}) = \underline{\rho}(t_{i}) +
+  \Delta t \underline{M}^{-1} (
+  \underline{A} 
+  \frac{1}{2}(\underline{\rho}(t_{i}) +
+  \underline{\rho}(t_{i+1}) )
+  +
+  \frac{1}{2} ( \underline{\rho}(t_{i}) +
+  \underline{\rho}(t_{i+1}) )).
+\end{align*}
+
 \subsection{Erhaltungsgrößen der numerischen Lösung}
 
 \begin{repetition}
