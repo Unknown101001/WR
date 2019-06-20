@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d635748c-25b6-452a-b0ab-f980818c5532" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/riemann.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/riemann.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/transport.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/transport.conf" afterDir="false" />
@@ -31,14 +32,23 @@
     <splitter split-orientation="horizontal" split-proportion="0.9">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/mpp/build/log/aufgabe24.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="44">
-                  <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+                  <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#17#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -131,7 +141,7 @@
               <item name="WR" type="462c0819:PsiDirectoryNode" />
               <item name="mpp" type="462c0819:PsiDirectoryNode" />
               <item name="Praktikum" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -204,12 +214,12 @@
       <workItem from="1560956113444" duration="7000" />
       <workItem from="1561018780615" duration="1774000" />
       <workItem from="1561029960265" duration="1046000" />
-      <workItem from="1561031090988" duration="6260000" />
+      <workItem from="1561031090988" duration="7743000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15429000" />
+    <option name="totallyTimeSpent" value="16912000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -244,9 +254,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/mpp/Praktikum/src/Problem.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-558" />
@@ -279,10 +286,17 @@
     <entry file="file://$PROJECT_DIR$/mpp/build/log/aufgabe24.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
-          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
         </state>
       </provider>
     </entry>
