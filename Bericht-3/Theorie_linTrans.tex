@@ -109,7 +109,9 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 \end{Lemma}
 
 \subsection{Numerische Approximation}
-Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
+Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren  um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
+
+Unser  Ansatz-/Lösungsraum wird $Q_h = \Pi_{K \in \mathcal{K}}  \mathbb{P}_k $ sein, also der Raum der Funktionen, die auf jeder Zelle ein Polynom von Grad $ \leq k $ sind. Im Vergleich zu den Finiten-Elementen-Methoden wird nicht mehr die Stetigkeit der Lösung auf ganz $ \Omega $ gefordert. Damit gilt $ Q_h \not \subseteq \mathcal{H}^1_0(\Omega)=\mathcal{W}^{1,2}_0(\Omega) $ und $ Q_h $ ist ein nicht-konformer Ansatz-/Lösungsraum.
 
 \subsubsection{Diskretisierung im Raum}
 \unklar{Wir betrachten $ \rho $ als Lösung und schreiben das zu lösende Problem um.} Sei $ \mathcal{K} $ eine Triangulierung von $ \Omega $ wie bisher und $ (\cdot,\cdot)_A $ das $ L^2(A) $-Skalarprodukt. 
@@ -141,7 +143,7 @@ Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho 
 Wir wollen nun die semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ bzw eine Differenzialgleichung für $ \rho_h $ herzuleiten. 
 
 \textbf{Approximation}:
-Wähle Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ u \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werde, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux), welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
+Wir wähle den Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ u \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werde, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux), welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
 Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi_h \in Q_h $
 \[
 \sum_{i = 1}^{N} \left(\partial_t \rho_h, \phi_h  \right)_{K_i}  = \sum_{i=1}^{N} \bigg(- \left(\Psi(\rho_h), \nabla\phi_h \right)_{K_i} -\sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K_i \cap \Gammain} \bigg)
@@ -315,11 +317,11 @@ Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung 
 %		\item \unklar{Der \enquote{\defi{central flux}} $ \Psi^c $ gegeben durch $ \Psi^c = \frac{1}{2} \left(\Psi(\rho_{h|K}) + \Psi(\rho_{h|K_F})\right)$ ist energieerhaltend, aber nicht monoton (d.h. erfüllt i.A. nicht die diskrete Postitvität). }
 %	\end{itemize}
 
-	\begin{tabular}{c || c | c | c}
-		&\enquote{upwind flux} $ \Psi^* $ & \enquote{central flux} $ \Psi^c $ & Bedeutung \\ \hline 
-		Masseerhaltend & $\checkmark$ & $\checkmark$ & diskrete Massenbilanz \\ \hline
-		Energieerhlatend &  x  & $ \checkmark $ & diskrete Energiebinalz\\ \hline
-		Monoton & $ \checkmark $ & x & diskrete Nicht-Negativität \\
+	\begin{tabular}{c || c | c}
+		&\enquote{upwind flux} $ \Psi^* $ & \enquote{central flux} $ \Psi^c $  \\ \hline 
+		diskrete Massenbilanz & $\checkmark$ & $\checkmark$  \\ \hline
+		diskrete Energiebinalz & x  & $ \checkmark $ \\ \hline
+		diskrete Nicht-Negativität & $ \checkmark $ & x  \\
 	\end{tabular}
 \end{remark}
 \newpage
