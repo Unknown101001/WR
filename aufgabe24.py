@@ -14,7 +14,7 @@ working_dir = "mpp/build"
 def run():
     '''
     runs M++ in working dir mpp/build with 4 kernels
-    :return:
+    :return: output
     '''
     stdout = subprocess.run(['mpirun', '-np', str(kernels), 'M++'], stdout=subprocess.PIPE,
                             cwd=working_dir).stdout.decode('utf-8')
