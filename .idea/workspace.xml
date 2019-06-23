@@ -28,7 +28,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/WR$aufgabe24.coverage" NAME="aufgabe24 Coverage Results" MODIFIED="1561043486024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WR$aufgabe24.coverage" NAME="aufgabe24 Coverage Results" MODIFIED="1561204310137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.9">
@@ -37,8 +37,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/aufgabe24.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-237">
-                  <caret line="33" column="59" lean-forward="true" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+                <state relative-caret-position="477">
+                  <caret line="186" column="20" selection-start-line="186" selection-start-column="20" selection-end-line="186" selection-end-column="20" />
                   <folding>
                     <element signature="e#0#17#0" expanded="true" />
                   </folding>
@@ -112,24 +112,24 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/mpp" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/aufgabe24.py" />
         <option value="$PROJECT_DIR$/mpp/aufgabe24.py" />
         <option value="$PROJECT_DIR$/mpp/Praktikum/src/DGTransport.h" />
         <option value="$PROJECT_DIR$/mpp/Praktikum/conf/m++conf" />
         <option value="$PROJECT_DIR$/mpp/Praktikum/conf/riemann.conf" />
         <option value="$PROJECT_DIR$/mpp/build/log/aufgabe24.py" />
+        <option value="$PROJECT_DIR$/aufgabe24.py" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="230" />
-    <option name="y" value="85" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
     <option name="width" value="1400" />
     <option name="height" value="1025" />
   </component>
@@ -139,7 +139,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -156,6 +155,12 @@
               <item name="WR" type="b2602c69:ProjectViewProjectNode" />
               <item name="WR" type="462c0819:PsiDirectoryNode" />
               <item name="mpp" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WR" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WR" type="462c0819:PsiDirectoryNode" />
+              <item name="mpp" type="462c0819:PsiDirectoryNode" />
               <item name="Praktikum" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -165,21 +170,31 @@
               <item name="Praktikum" type="462c0819:PsiDirectoryNode" />
               <item name="conf" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="WR" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WR" type="462c0819:PsiDirectoryNode" />
+              <item name="mpp" type="462c0819:PsiDirectoryNode" />
+              <item name="Praktikum" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+              <item name="geo" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Github/EyetrackerR/Gaze Pursuit share/data_kl" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Workspace\WR" />
       <recent name="C:\Workspace\WR\mpp\build\log" />
       <recent name="C:\Workspace\WR\mpp\build" />
       <recent name="C:\Workspace\WR\mpp" />
@@ -237,22 +252,25 @@
       <workItem from="1561018780615" duration="1774000" />
       <workItem from="1561029960265" duration="1046000" />
       <workItem from="1561031090988" duration="9560000" />
-      <workItem from="1561050961859" duration="232000" />
+      <workItem from="1561050961859" duration="1448000" />
+      <workItem from="1561199951151" duration="3352000" />
+      <workItem from="1561277190258" duration="1703000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18729000" />
+    <option name="totallyTimeSpent" value="25232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16308725" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1671141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3297587" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -328,8 +346,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aufgabe24.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-237">
-          <caret line="33" column="59" lean-forward="true" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+        <state relative-caret-position="477">
+          <caret line="186" column="20" selection-start-line="186" selection-start-column="20" selection-end-line="186" selection-end-column="20" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
