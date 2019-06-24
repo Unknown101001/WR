@@ -2,13 +2,13 @@
 % !TeX root = Bericht_main.tex
 \subsection{Analytische Betrachtung der linearen Transportgleichung}
 \textbf{Bisher} wollten wir aus gegebenen Randwerten den Fluss $ q $ berechnen.\\
-\textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wir betrachten nur zweidimensionale Gebiete) der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
-transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ ist gerade die Menge der Randpunkte an dem Substanz einfließen kann).
+\textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wie bisher betrachten wir nur zweidimensionale Gebiete) und der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
+transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ kann interpretiert werden als die Menge der Randpunkte an dem Substanz einfließen kann).
 
 Gegebenenfalls betrachten wir $ \rho $ auch als 
 \[ \rho: [0,T] \to \Abb(\Omega, \R_{\geq 0}), t \mapsto \rho(\cdot,t). \]
 
-Nach der physikalischen Modellierung gilt folgende Bilanzgleichung:
+Aus der physikalischen Modell gilt folgende Bilanzgleichung:
 \begin{gather*}
 	\forall \ K \subseteq \Omega, t \in [0,T]: \frac{\diff}{\diff t} \int_K \rho(x,t) \diff x + \oint_{\partial K} \rho(x,t) q(x) \cdot \nu(x) \diff a = 0 \\
 	\stackrel{\text{Gauß}}{\implies} \int_K \partial_t \rho(x,t) + \dive(\rho q)(x,t) \diff x = 0 
@@ -17,7 +17,7 @@ Da $ K \subseteq \Omega $ beliebig ist und \unklar{$ \rho, q \in C^1(\Omega) $} 
 \begin{gather*}
 	\partial_t \rho + \dive(\rho q) = 0 \text{ in } \Omega \times (0,T) 
 \end{gather*}
-Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,T)$ und der Anfangsbedingung $ \rho(x,0) = \rho_0(x) \text{ auf } \Omega $ folgt das zu lösende analytische Problem
+Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,T)$ und der Anfangsbedingung $ \rho(x,0) = \rho_0(x) \text{ auf } \Omega $ ergibt sich das zu lösende analytische Problem, welches wir in diesem Bericht numerisch approximieren wollen:
 \begin{gather*}
 	\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
 	\lTG
@@ -37,15 +37,15 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 	
 	Sei $ \rho $ Lösung von $ \lTG $. 
 	
-	Dann gilt die \defi{Massenbilanz}:
-	\[ \underbrace{\int_{\Omega} \rho(x,t) \diff x}_{(1)} = \underbrace{\int_{\Omega} \rho_0(x) \diff x}_{(2)}  \underbrace{-\int_{0}^{t} \int_{\Gammain} \rhoin(x,\tilde{t}) q(x) \cdot \nu(x) \diff a \diff \tilde{t}}_{(3)} \underbrace{- \int_{0}^{t} \int_{\Gammain} \rho(x,\tilde{t}) q(x) \cdot \nu(x) \diff a \diff \tilde{t}}_{(4)} \]
+	Dann gilt die \defi{Massenbilanz}: $ \forall t \in [0,T] $
+	\[ \underbrace{\int_{\Omega} \rho(x,t) \diff x}_{(1)} = \underbrace{\int_{\Omega} \rho_0(x) \diff x}_{(2)}  \underbrace{-\int_{0}^{t} \oint_{\Gammain} \rhoin(x,\tilde{t}) q(x) \cdot \nu(x) \diff a \diff \tilde{t}}_{(3)} \underbrace{- \int_{0}^{t} \oint_{\Gammaout} \rho(x,\tilde{t}) q(x) \cdot \nu(x) \diff a \diff \tilde{t}}_{(4)} \]
 \end{Lemma}
 	Interpretation der Terme:
 	\begin{enumerate}[label=(\arabic*)]
 		\item Masse zum Zeitpunkt $ t $,
 		\item Masse zum Anfangszeitpunkt $ 0 $,
-		\item Masse, die in $ [0,t] $ hinzu geflossen ist ($ \nu $ ist äußere Normale, deswegen \enquote{-} statt \enquote{+}),
-		\item Masse, die in $ [0,t] $ abgeflossen ist.
+		\item Masse, die in $ [0,t] $ über den Rand hinzu geflossen ist ($ \nu $ ist äußere Normale, deswegen \enquote{-} statt \enquote{+}),
+		\item Masse, die in $ [0,t] $ über den Rand abgeflossen ist.
 	\end{enumerate}
 
 \begin{Lemma}[Energiebilanz]
@@ -92,9 +92,9 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 		\begin{cases}
 		\displaystyle
 		\int_{\Omega} \rho_0 \phi(0) \diff x = \mkern-16mu &- \displaystyle \int_{0}^{T} \int_{\Omega} \rho (\partial_t \phi - q \nabla_{\unklar{x}} \phi ) \diff x \diff t \\
-		&+\displaystyle\int_{0}^{T} \left[ \oint_{\Gammain} \rhoin q \cdot \nu \phi \diff a + \oint_{\Gammaout} \rho q \cdot n \phi \diff a \right] \diff t
+		&+\displaystyle\int_{0}^{T}  \oint_{\Gammain} \rhoin q \cdot \nu \phi \diff a  \diff t
 		\end{cases}	\\
-		\unklar{\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega \text{ und } \phi = 0 \text{ auf } \Gammain \times (0,T).}
+		\unklar{\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega \text{ und } \phi = 0 \text{ auf } \Gammaout \times (0,T).}
 		\end{gather*}
 		heißt \defi{schwache Lösung}.
 	\end{itemize}
