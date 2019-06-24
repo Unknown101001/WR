@@ -112,7 +112,7 @@ Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \r
 Unser  Ansatz-/Lösungsraum wird $Q_h = \Pi_{K \in \mathcal{K}}  \mathbb{P}_k $ sein, also der Raum der Funktionen, die auf jeder Zelle ein Polynom von Grad $ \leq k $ sind. Im Vergleich zu den Finiten-Elementen-Methoden wird nicht mehr die Stetigkeit der Lösung auf ganz $ \Omega $ gefordert. Damit gilt $ Q_h \not \subseteq \mathcal{H}^1_0(\Omega)=\mathcal{W}^{1,2}_0(\Omega) $ und $ Q_h $ ist ein nicht-konformer Ansatz-/Lösungsraum.
 
 \subsubsection{Diskretisierung im Raum}
-\unklar{Wir betrachten $ \rho $ als Lösung und schreiben das zu lösende Problem um.} Sei $ \mathcal{K} $ eine Triangulierung von $ \Omega $ wie bisher und $ (\cdot,\cdot)_A $ das $ L^2(A) $-Skalarprodukt. 
+Wir betrachten $ \rho $ als Lösung von $ \swlTG $ und schreiben das zu lösende Problem um. Sei $ \mathcal{K} $ eine Triangulierung von $ \Omega $ wie bisher und $ (\cdot,\cdot)_A $ das $ L^2(A) $-Skalarprodukt. 
 \begin{define}(Flux)
 	
 	Zu gegebenen Fluss $ q:\Omega \to \R^2 $ definieren wir die \defi{Flussfunktion}/\defi{Flux} als
@@ -325,7 +325,7 @@ Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung 
 \newpage
 \subsection{Discontinuous-Galerkin-Verfahren}
 Wir wollen nun noch (kurz) auf das Discontinuous-Galerkin-Verfahren eingehen. Im Gegensatz zum Finite Volumen Verfahren, wollen wir uns hierbei aber auf die wesentlichen Unterschiede und Ideen beschränken und dabei auf eine vollständige Herleitung verzichten. \newline
-Im Gegensatz zum Finite Volumen Verfahren wählen wir beim Discontinuous-Galerkin-Verfahren $\Pi_{K\in\mathcal{K}} \mathbb{P}_k $ mit $ k \geq 1 $. Es sei noch einmal wie bereits beim Finite-Volumen-Verfahren erwähnt, dass hierbei für die Elemente aus $Q_h$ keine Stetigkeit auf $\Omega$ gefordert wird. \newline
+Im Gegensatz zum Finite Volumen Verfahren wählen wir beim Discontinuous-Galerkin-Verfahren $\Pi_{K\in\mathcal{K}} \mathbb{P}_k $ mit $ k \geq 1 $. Es sei noch einmal wie bereits beim Finite-Volumen-Verfahren erwähnt, dass hierbei für die Elemente aus $Q_h$ keine Stetigkeit auf $\Omega$ gefordert wird und somit kein konformer Lösungs-/Ansatzraum vorliegt. \newline
 Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
 	\begin{align*}
 		(\partial_t \rho_h , \Phi_h)_{\Omega} &= -(\Psi(\rho_h),\nabla \Phi_h)_{\Omega}
@@ -345,14 +345,14 @@ Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
 			(A_h,\rho_h,\rho_h)_{\Omega} &= - \int_{\partial 	\Omega} | \rho_h | ^2 | q \cdot n | da - \frac{1}{2} \sum_{F 	\in \mathcal{F} \backslash \partial \Omega} | \rho_k - 	\rho_{K_f} |^2 |q \cdot n| da \\
 			&\Rightarrow - \underline{A} \text{ ist positiv 	semidefinit}
 		\end{align*}
-		\item Lemma 5 (die diskrete Massebilanz) lässt sich auf das DG-Verfahren übertragen, indem statt punktweiser Erhaltung, Erhaltung im Mittel betrachtet wird.
+		\item Lemma \ref{diskrete Massenbilanz} (die diskrete Massebilanz) lässt sich auf das DG-Verfahren übertragen, indem statt punktweiser Erhaltung, Erhaltung im Mittel betrachtet wird.
 		\item Es gilt für die DG-Approximation mit Upwind-Flux: \newline
 		\begin{align*}
-			\int_{\Omega} | \rho_h (t) | ^2 dx &= \int_{\Omega} |\rho_0 |^2 dx 
-			+ \int_0^t \oint_{\Gammain} | \rho_{in} |^2 |q \cdot n | da d \tilde{t}
-			- \int_0^t \oint_{\Gamma_{out}} |\rho_h |^2 |q \cdot n | da d \tilde{t} \\
-			&- \sum_{F \in \mathcal{F}_h \cap \Omega^0} \int_0^t \oint_F | \rho_K - \rho_{K_f} |^2 |q \cdot n| da d \tilde{t}
-			- \int_0^t \oint_F |\rho_{in} - \rho_h |^2 |q \cdot n| da d \tilde{t}
+			\int_{\Omega} | \rho_h (t) | ^2 \diff x &= \int_{\Omega} |\rho_0 |^2 \diff x 
+			+ \int_0^t \oint_{\Gammain} | \rho_{in} |^2 |q \cdot n | \diff a \diff \tilde{t}
+			- \int_0^t \oint_{\Gamma_{out}} |\rho_h |^2 |q \cdot n | \diff a \diff \tilde{t} \\
+			&- \sum_{F \in \mathcal{F}_h \cap \Omega^0} \int_0^t \oint_F | \rho_K - \rho_{K_f} |^2 |q \cdot n| \diff a \diff \tilde{t}
+			- \int_0^t \oint_F |\rho_{in} - \rho_h |^2 |q \cdot n| \diff a \diff \tilde{t}
 		\end{align*}
 	\end{enumerate}
 \end{remark}
