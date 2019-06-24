@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import shutil
+import re
 from distutils.dir_util import copy_tree
 
 kernels = 4
@@ -119,7 +120,35 @@ def parse_mpp_output_regex():
     pass
 
 
-def parse_mpp_output_string(output=None):
+def parse_mpp_output_allg(paramlist, output=None):
+    '''
+    :param paramlist:
+    :param output:
+    :return:list of list of outputvalues
+    '''
+    out = []
+    if output is None:
+        logfile = "mpp/build/log/log"
+        with open(logfile) as file:
+            lines = file.readlines()
+    else:
+        lines = output
+    for param in paramlist:
+        out.append([])
+        for line in lines:
+            if "Step" in line and not "default" in line and not "reading" in line:
+                regex = r"[+-]?[0-9]+[.]?[0-9]*[eE]?[+-]?[0-9]*"
+                if param in line:
+                    tmp = line.split(param)[1]
+                    value = re.findall(regex, tmp)[0]
+                    print(value)
+                else:
+                    value = 0
+                out[paramlist.index(param)].append(value)
+    return out
+
+
+def parse_mpp_output_OutFlowRate(output=None):
     T = []
     Outflow = []
     if output is None:
@@ -151,7 +180,7 @@ def parse_mpp_output_string(output=None):
         return T, Outflow
 
 
-def parse_mpp_output_string2(logfile):
+def parse_mpp_output_EnergieMasse(logfile):
     T = []
     Energie = []
     Mass = []
@@ -172,10 +201,10 @@ def parse_mpp_output_string2(logfile):
 
 
 def plot2():
-    t, energie, mass = parse_mpp_output_string2("log")
+    time, energie, mass = parse_mpp_output_EnergieMasse("log")
     plt.figure()
-    plt.plot(t, energie, label="Energie")
-    plt.plot(t, mass, label="Masse")
+    plt.plot(time, energie, label="Energie")
+    plt.plot(time, mass, label="Masse")
     plt.grid()
     plt.legend()
     plt.xlabel("Zeit")
@@ -185,10 +214,11 @@ def plot2():
 
 
 if __name__ == "__main__":
-    delete_old()
+    # delete_old()
     # manipulate_conf("pollution.conf",[("deg","4")])
-    output = run()
-    t, out = parse_mpp_output_string(output)
-    print(t)
+    # output = run()
+    out = parse_mpp_output_allg(["Step", "OutFlowRate"])
     print(out)
-    save()
+    print(out[0])
+    print(out[1])
+    # save()
