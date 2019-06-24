@@ -62,7 +62,7 @@ erhalten wir die gewünschte schwache Formulierung, im Folgenden \defi{gemischte
 	\end{cases}	\\
 	\text{ für alle } (\Psi, \Phi) \text{ mit } \Psi \cdot n = 0 \text{ auf } \Gamma_N 
 \end{gather*}
-\unklar{\textbf{Idee der gemischten Finiten Elemente}: Diskretisieren wir (gFE), so erfüllt unsere numerische Lösung $ q_h $ die Forderung $ \dive(q_h) = 0 \text{ auf } K \ (K \in \mathcal{K}) $ und somit auch die Flussbilanz in jeder Zelle.}
+\textbf{Idee der gemischten Finiten Elemente}: Diskretisieren wir (gFE), so erfüllt unsere numerische Lösung $ q_h $ die Forderung $ \dive(q_h) = 0 \text{ auf } K \ (K \in \mathcal{K}) $ und somit auch die Flussbilanz in jeder Zelle.
 
 \subsection{Diskretisierung}
 
@@ -120,7 +120,7 @@ Wir nummerieren Seiten und Zellen durch:
 	Weiter definieren wir das \defi{diskrete gemischte Finite-Elemente-Problem}:
 	\begin{gather*}
 		\text{Bestimme } (q_h,u_h) \in W_h(-g_N) \times Q_h \text{ mit}\\
-		\text{(dgFE)}\begin{cases}
+		\dgFE\begin{cases}
 			\int_{\Omega} \kappa ^{-1} q_h \cdot \psi_h \diff x \mkern-15mu &- \int_{\Omega} u_h \dive(\psi_h) \diff x = - \int_{\Gamma_D} u_D \psi_h \cdot n \diff a\\
 			&- \int_{\Omega} \dive(q_h) \phi_h \diff x = 0
 		\end{cases} \\
@@ -320,8 +320,50 @@ Außerdem erhalten wir eine A-posteriori Schranke:
 
 \subsection{Hybridisierung}
 
-Beim Lösen von (uL gFE) gibt es das Problem, dass die Matrix \[ \begin{pmatrix}
-\underline{A} &\underline{B}^T\\
-\underline{B} &0
-\end{pmatrix} \] im Allgemeinen nicht symmetrisch positiv definit ist und somit das CG-Verfahren nicht zum Lösen verwendet werden kann. Durch die Hybridisierung erhalten wir ein LGS mit einer spd Matrix.
+%Beim Lösen von (uL gFE) gibt es das Problem, dass die Matrix \[ \begin{pmatrix}
+%\underline{A} &\underline{B}^T\\
+%\underline{B} &0
+%\end{pmatrix} \] im Allgemeinen nicht symmetrisch positiv definit ist und somit das CG-Verfahren nicht zum Lösen verwendet werden kann. Durch die Hybridisierung erhalten wir ein LGS mit einer spd Matrix.
+
+Wir betrachten die Räume
+\[ W_\mathcal{K} \coloneqq \Pi_{K \in \mathcal{K}} W_k, \qquad M_h \coloneqq \Pi_{F \in \mathcal{F}} \mathbb{P}_0(F) \]
+\[ M_h(u_D) \coloneqq \left\{ \mu_h \in M_h:\forall  F \in \Gamma_D \oint_F \mu_h \diff a = \oint_F u_D \diff a  \right\}\]
+
+und untersuchen folgende Problem:
+\begin{gather*}
+	\text{Bestimmme } (q_h,u_h, \lambda_h) \in W_\mathcal{K} \times Q_h \times M_h(u_D) \text{ mit}\\
+	\hFgFE\begin{dcases}
+		\int_K \kappa^{-1} q_h \psi_K \diff x - \int_K u_h \dive(\psi_K) \diff x = \oint_{\partial K} \lambda_h \psi_K \cdot n^K \diff a \\
+		\int_K \dive(q_h) \psi_K \diff x = 0\\
+		\sum_{K\in \mathcal{K}} \oint_{\partial K} q_h \cdot n \mu_h \diff a = - \oint_{\Gamma_N} g_N \mu_h \diff a
+	\end{dcases}\\
+	\text{für alle } \psi_K \in W_K (K \in \mathcal{K}) \text{ und } \mu_h \in M_h(0)
+\end{gather*}
+
+Dieses Problem ist äquivalent zu $ \dgFE $. Mit der Wahl einer Basis von $ W_\mathcal{K} $ und $ M_h $ ergibt sich eine Formulierung als LGS mit Nebenbedingung:
+\begin{gather*}
+	\text{Bestimme } \underline{q}_K, \underline{u}_K \text{ und } \underline{\lambda}_K \text{ mit}\\
+	\begin{cases}
+		\begin{pmatrix}
+			\underline{A}_K & \underline{B}_K \\
+			\underline{B}_K^T & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+			\underline{q}_K\\
+			\underline{u}_K
+		\end{pmatrix}
+		= \begin{pmatrix}
+			\underline{c} \, \underline{\lambda}_K \\
+			0
+		\end{pmatrix}\\
+		\qquad \quad \sum_{K \in \mathcal{K}} \underline{R}_K^T \underline{q}_K = \underline{b}_K		
+	\end{cases}
+\end{gather*}  
+
+Mit dem Schurkomplement können wir auch noch die Nebenbedingung im LGS unterbringen und erhalten ein globales System:
+\[
+	\underline{S} \, \underline{\lambda} = \underline{b}
+\]
+
+
 
