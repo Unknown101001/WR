@@ -5,15 +5,14 @@
 \textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wie bisher betrachten wir nur zweidimensionale Gebiete) und der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
 transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ kann interpretiert werden als die Menge der Randpunkte an dem Substanz einfließen kann).
 
-Gegebenenfalls betrachten wir $ \rho $ auch als 
-\[ \rho: [0,T] \to \Abb(\Omega, \R_{\geq 0}), t \mapsto \rho(\cdot,t). \]
+Gegebenenfalls werden wir Argumente von Funktionen weglassen, z. B. $ \rho(t) \coloneqq \rho(t,\cdot), \rho(x) \coloneqq \rho(\cdot, x) $. Es sollte aus dem Kontext und der Variablenbenennung klar werden was an der jeweiligen Stelle gemeint wird. Weiter bezeichnet $ \nabla \rho $ immer $ \nabla \rho(t,\cdot) $ für ein feste $ t \in [0,T] $, also der Gradient  im \enquote{Raum}. Analog wird für $ \dive(\rho q) $ verfahren.
 
 Aus der physikalischen Modell gilt folgende Bilanzgleichung:
 \begin{gather*}
 	\forall \ K \subseteq \Omega, t \in [0,T]: \frac{\diff}{\diff t} \int_K \rho(x,t) \diff x + \oint_{\partial K} \rho(x,t) q(x) \cdot \nu(x) \diff a = 0 \\
 	\stackrel{\text{Gauß}}{\implies} \int_K \partial_t \rho(x,t) + \dive(\rho q)(x,t) \diff x = 0 
 \end{gather*}
-Da $ K \subseteq \Omega $ beliebig ist und \unklar{$ \rho, q \in C^1(\Omega) $} folgt die \defi{lineare Transportgleichung}
+Da $ K \subseteq \Omega $ beliebig ist und $ \rho, q \in C^1(\Omega) $ folgt die \defi{lineare Transportgleichung}
 \begin{gather*}
 	\partial_t \rho + \dive(\rho q) = 0 \text{ in } \Omega \times (0,T) 
 \end{gather*}
@@ -29,7 +28,6 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 \end{gather*}
 
 
-\newpage
 \subsection{Erhaltungsgrößen der analytischen Lösung}
 \label{subsec:Erhaltungsgroessen der analytischen Loesung}
 \begin{Lemma}[Massenbilanz]
@@ -91,10 +89,10 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 		\swlTG
 		\begin{cases}
 		\displaystyle
-		\int_{\Omega} \rho_0 \phi(0) \diff x = \mkern-16mu &- \displaystyle \int_{0}^{T} \int_{\Omega} \rho (\partial_t \phi - q \nabla_{\unklar{x}} \phi ) \diff x \diff t \\
+		\int_{\Omega} \rho_0 \phi(0) \diff x = \mkern-16mu &- \displaystyle \int_{0}^{T} \int_{\Omega} \rho (\partial_t \phi - q \nabla \phi ) \diff x \diff t \\
 		&+\displaystyle\int_{0}^{T}  \oint_{\Gammain} \rhoin q \cdot \nu \phi \diff a  \diff t
 		\end{cases}	\\
-		\unklar{\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega \text{ und } \phi = 0 \text{ auf } \Gammaout \times (0,T).}
+		\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega \text{ und } \phi = 0 \text{ auf } \Gammaout \times (0,T).
 		\end{gather*}
 		heißt \defi{schwache Lösung}.
 	\end{itemize}
@@ -280,7 +278,7 @@ Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung 
 
  
 \begin{Lemma}[diskrete Nicht-Negativität] \label{disktrete Nicht-Negativität}
-		Sei $ q = q_h \in W_h, \dive(q) = 0 $ und $ \rho_0 \in Q_h $.$ \unklar{(?)} $ %Es gelten die gleichen Voraussetzungen wie in Lemma \ref{diskrete Massenbilanz}.
+		Sei $ q = q_h \in W_h, \dive(q) = 0 $ und $ \rho_0 \in Q_h $ %Es gelten die gleichen Voraussetzungen wie in Lemma \ref{diskrete Massenbilanz}.
 	
 	Dann gilt für die semidiskrete Approximation $ \rho_h \in Q_h$ mit \enquote{upwind flux} die \defi{diskrete Nicht-Negativität}:
 	\[ \rho_0 \geq 0 \text{ und } \rhoin \geq 0 \implies \rho_h \geq 0 \]
