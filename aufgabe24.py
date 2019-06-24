@@ -98,7 +98,7 @@ def check_dirs(name, aufgabe):
             pass
 
 
-def save(aufgabe=None,name="Neu" ):
+def save(aufgabe=None, name="Neu"):
     '''
     saves content in (aufgabe)/name
     :param name: optional default is "Neu"
@@ -219,11 +219,13 @@ def plot2():
 
 if __name__ == "__main__":
     delete_old()
-    manipulate_conf("m++conf", [("loadconf", "riemann.conf")])
-    manipulate_conf("riemann.conf", [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square4"), ("dt", "0.125")])
+    manipulate_conf("m++conf", [("loadconf", "transport.conf")])
+    manipulate_conf("transport.conf",
+                    [("rkorder", "-2"), ("deg", "2"), ("Mesh", "Square-10x10quad"), ("Problem", "Circle_Wave"),
+                     ("level", "5"), ("dt", "0.0015625")])
     output = run()
 
-    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy"], output)
+    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy", "Error"], output)
 
     print("Masse Ende: " + str(out[1][-1]))
     print("Masse Beginn: " + str(out[1][0]))
@@ -233,11 +235,12 @@ if __name__ == "__main__":
     plt.plot(out[0], out[1], label='mass')
     plt.plot(out[0], out[2], label='outflow')
     plt.plot(out[0], out[3], label='inflow')
-    #plt.plot(out[0], out[4], label='energy')
+    plt.plot(out[0], out[5], label='error')
+    # plt.plot(out[0], out[4], label='energy')
     plt.grid()
     plt.legend()
     plt.xlabel("Zeit")
     plt.ylabel("Wert")
     plt.grid(True)
     plt.savefig("plot.png")
-    save("Aufgabe21","Masseerhaltung")
+    save("Aufgabe21", "Masseerhaltung_b_deg_2")
