@@ -30,19 +30,19 @@ def manipulate_conf(confdatei, tupelliste):
     '''
     with open("mpp/Praktikum/conf/" + confdatei) as file:
         conf = file.readlines()
-        print(conf)
+        # print(conf)
         for tupel in tupelliste:
             key = tupel[0]
             value = tupel[1]
             if any(key in s for s in conf):
-                print("YES")
+                # print("YES")
                 index = conf.index(next((s for s in conf if key in s), None))
                 conf[index] = key + " = " + value + ";\n"
             else:
-                print("NO")
+                # print("NO")
                 new = key + " = " + value + ";\n"
                 conf.append(new)
-        print(conf)
+        # print(conf)
         with open("mpp/Praktikum/conf/" + confdatei, 'w') as file:
             file.writelines([item for item in conf])
 
@@ -82,23 +82,23 @@ def check_dirs(name, aufgabe):
     if aufgabe is not None:
         try:
             os.mkdir(aufgabe)
-            raise FileNotFoundError
+            # raise FileNotFoundError
         except OSError as e:
             pass
         try:
             os.mkdir(aufgabe + "/" + name)
-            raise FileNotFoundError
+            # raise FileNotFoundError
         except OSError as e:
             pass
     else:
         try:
             os.mkdir(name)
-            raise FileNotFoundError
+            # raise FileNotFoundError
         except OSError as e:
             pass
 
 
-def save(name="Neu", aufgabe=None):
+def save(aufgabe=None,name="Neu" ):
     '''
     saves content in (aufgabe)/name
     :param name: optional default is "Neu"
@@ -140,8 +140,8 @@ def parse_mpp_output_allg(paramlist, output=None):
                 regex = r"[+-]?[0-9]+[.]?[0-9]*[eE]?[+-]?[0-9]*"
                 if param in line:
                     tmp = line.split(param)[1]
-                    value = re.findall(regex, tmp)[0]
-                    print(value)
+                    value = float(re.findall(regex, tmp)[0])
+                    # print(value)
                 else:
                     value = 0
                 out[paramlist.index(param)].append(value)
@@ -181,6 +181,10 @@ def parse_mpp_output_OutFlowRate(output=None):
 
 
 def parse_mpp_output_EnergieMasse(logfile):
+    '''
+    :param logfile:
+    :return:
+    '''
     T = []
     Energie = []
     Mass = []
@@ -214,11 +218,26 @@ def plot2():
 
 
 if __name__ == "__main__":
-    # delete_old()
-    # manipulate_conf("pollution.conf",[("deg","4")])
-    # output = run()
-    out = parse_mpp_output_allg(["Step", "OutFlowRate"])
-    print(out)
-    print(out[0])
-    print(out[1])
-    # save()
+    delete_old()
+    manipulate_conf("m++conf", [("loadconf", "riemann.conf")])
+    manipulate_conf("riemann.conf", [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square4"), ("dt", "0.125")])
+    output = run()
+
+    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy"], output)
+
+    print("Masse Ende: " + str(out[1][-1]))
+    print("Masse Beginn: " + str(out[1][0]))
+    print("Outflow: " + str(sum(out[2])))
+    print("Inflow: " + str(sum(out[3])))
+
+    plt.plot(out[0], out[1], label='mass')
+    plt.plot(out[0], out[2], label='outflow')
+    plt.plot(out[0], out[3], label='inflow')
+    #plt.plot(out[0], out[4], label='energy')
+    plt.grid()
+    plt.legend()
+    plt.xlabel("Zeit")
+    plt.ylabel("Wert")
+    plt.grid(True)
+    plt.savefig("plot.png")
+    save("Aufgabe21","Masseerhaltung")
