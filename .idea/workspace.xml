@@ -10,10 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d635748c-25b6-452a-b0ab-f980818c5532" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bericht-3/Aufgaben_Ergebnisse.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Bericht-3/Aufgaben_Ergebnisse.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bericht-3/Bericht_main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Bericht-3/Bericht_main.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bericht-3/Theorie_linTrans.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Bericht-3/Theorie_linTrans.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aufgabe24.py" beforeDir="false" afterPath="$PROJECT_DIR$/aufgabe24.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/m++conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/m++conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" afterDir="false" />
@@ -38,11 +34,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aufgabe24.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="223" column="50" selection-start-line="223" selection-start-column="50" selection-end-line="223" selection-end-column="50" />
+            <state relative-caret-position="4216">
+              <caret line="248" lean-forward="true" selection-start-line="248" selection-end-line="248" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-                <element signature="e#328#602#0" />
               </folding>
             </state>
           </provider>
@@ -249,16 +244,15 @@
       <workItem from="1561283663052" duration="262000" />
       <workItem from="1561288826027" duration="1167000" />
       <workItem from="1561355108397" duration="753000" />
-      <workItem from="1561379347944" duration="3610000" />
+      <workItem from="1561379347944" duration="6564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33393000" />
+    <option name="totallyTimeSpent" value="36347000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17315437" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -275,8 +269,8 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.13672923" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3297587" />
-      <window_info anchor="right" x="0" y="0" width="337" height="678" id="Documentation" side_tool="true" visible="true" weight="0.3295302" />
+      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3297587" />
+      <window_info active="true" anchor="right" x="0" y="0" width="337" height="678" id="Documentation" side_tool="true" visible="true" weight="0.3295302" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -307,11 +301,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aufgabe24.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="223" column="50" selection-start-line="223" selection-start-column="50" selection-end-line="223" selection-end-column="50" />
+        <state relative-caret-position="4216">
+          <caret line="248" lean-forward="true" selection-start-line="248" selection-end-line="248" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#328#602#0" />
           </folding>
         </state>
       </provider>

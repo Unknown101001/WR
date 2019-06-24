@@ -216,8 +216,7 @@ def plot2():
     plt.grid(True)
     plt.savefig("plot2.png")
 
-
-if __name__ == "__main__":
+def main_transport():
     delete_old()
     manipulate_conf("m++conf", [("loadconf", "transport.conf")])
     manipulate_conf("transport.conf",
@@ -244,3 +243,6 @@ if __name__ == "__main__":
     plt.grid(True)
     plt.savefig("plot.png")
     save("Aufgabe21", "Masseerhaltung_b_deg_2")
+
+if __name__ == "__main__":
+    main_transport()
