@@ -216,20 +216,55 @@ def plot2():
     plt.grid(True)
     plt.savefig("plot2.png")
 
-def main_transport():
+def main_masse():
     delete_old()
-    manipulate_conf("m++conf", [("loadconf", "transport.conf")])
-    manipulate_conf("transport.conf",
-                    [("rkorder", "-2"), ("deg", "2"), ("Mesh", "Square-10x10quad"), ("Problem", "Circle_Wave"),
-                     ("level", "5"), ("dt", "0.0015625")])
+    dt = 0.5 * 0.03125
+    manipulate_conf("m++conf", [("loadconf", "riemann.conf")])
+    manipulate_conf("riemann.conf",
+                    [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square4"), ("Problem", "Riemann"),
+                     ("level", "6"), ("dt", str(dt))])
     output = run()
 
     out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy", "Error"], output)
-
+    outflow = [a * 4 * dt for a in out[2]]
+    inflow = [a * 4 * dt for a in out[3]]
+    print(out[0])
     print("Masse Ende: " + str(out[1][-1]))
     print("Masse Beginn: " + str(out[1][0]))
-    print("Outflow: " + str(sum(out[2])))
-    print("Inflow: " + str(sum(out[3])))
+    print("Outflow: " + str(sum(outflow)))
+    print("Inflow: " + str(sum(inflow)))
+    save("Aufgabe21", "Test")
+    dif = [out[1][i] + out[2][i] for i in range(len(out[2]))]
+    plt.plot(out[0], out[1], label='mass')
+    plt.plot(out[0], out[2], label='outflowrate')
+    plt.plot(out[0], out[3], label='inflowrate')
+    #plt.plot(out[0], out[5], label='error')
+    plt.plot(out[0], outflow, label='outflow')
+    plt.plot(out[0], inflow, label='inflow')
+
+    # plt.plot(out[0], out[4], label='energy')
+    plt.grid()
+    plt.legend()
+    plt.xlabel("Zeit")
+    plt.ylabel("Wert")
+    plt.grid(True)
+    plt.savefig("Aufgabe21/Test/plot.png")
+def main_transport():
+    delete_old()
+    dt = 0.5* 0.0015625
+    manipulate_conf("m++conf", [("loadconf", "transport.conf")])
+    manipulate_conf("transport.conf",
+                    [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square-10x10quad"), ("Problem", "Circle_Wave"),
+                     ("level", "6"), ("dt", str(dt))])
+    output = run()
+
+    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy", "Error"], output)
+    outflow = [a * 10* dt for a in out[2]]
+    inflow = [a * 10 * dt for a in out[3]]
+    print("Masse Ende: " + str(out[1][-1]))
+    print("Masse Beginn: " + str(out[1][0]))
+    print("Outflow: " + str(sum(outflow)))
+    print("Inflow: " + str(sum(inflow)))
 
     plt.plot(out[0], out[1], label='mass')
     plt.plot(out[0], out[2], label='outflow')
@@ -244,5 +279,46 @@ def main_transport():
     plt.savefig("plot.png")
     save("Aufgabe21", "Masseerhaltung_b_deg_2")
 
+
 if __name__ == "__main__":
-    main_transport()
+    reslist = []
+    beglist = []
+    dtlist = []
+    reslist2 = []
+    for i in range(6):
+        delete_old()
+
+        dt = 0.25 * 0.5**i
+        manipulate_conf("m++conf", [("loadconf", "riemann.conf")])
+        manipulate_conf("riemann.conf",
+                        [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square4"), ("Problem", "Riemann"),
+                         ("level", "6"), ("dt", str(dt))])
+        output = run()
+
+        out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate"], output)
+        mass_beg = out[1][0]
+        mass_end = out[1][-1]
+        outflow = [a * 4 * dt for a in out[2]]
+        inflow = [a * 4 * dt for a in out[3]]
+        res = mass_end + sum(outflow) + sum(inflow)
+        res2 = mass_end + sum(outflow)
+        folder = "Masserverhalten"+str(dt)
+        save("Aufgabe21",folder)
+        dtlist.append(dt)
+        reslist.append(res)
+        reslist2.append(res2)
+        beglist.append(mass_beg)
+
+    print(dt)
+    print(reslist)
+    plt.plot(dtlist,reslist,'--bo',label = 'Masse_Ende + Outflow + Inflow')
+    #plt.plot(dtlist,reslist2,label = 'Masse_Ende + Outflow')
+    plt.plot(dtlist,beglist,'--go', label = 'Masse_Beginn')
+    plt.xlim(0.25,0)
+    plt.grid()
+    plt.legend()
+    plt.xlabel("Zeitschrittweite")
+    plt.ylabel("Wert")
+    plt.grid(True)
+    plt.savefig("Aufgabe21/massoverdt2.png")
+
