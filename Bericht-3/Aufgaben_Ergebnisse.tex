@@ -127,31 +127,50 @@ Betrachtet man zudem noch den zeitlichen Verlauf der Masse und Energie, erhält 
 	\captionabove{Zeitverlauf von Energie/Masse beim Lösen des Riemannproblems (Level 6, dt 0,03125, Rk4)}
     \includegraphics[width=0.8\textwidth]{../Aufgabe21/zeitverlauf.png}
 \end{figure}
-Uns war es leider nicht möglich nachzuvollziehen, warum wir hierbei Masse verlieren und ein Fehler entsteht. In der Theorie sollte das verwendete Verfahren mit \enquote{upwind flux} und/oder \enquote{central flux} masseerhaltend sein. Leider lässt sich dieser Masseverlust auch nicht mit dem In- und Outflow erklären.
+Wir erklären zunächst das Verhalten der Masse, und gehen danach kurz auf die Energie ein:
+
 \begin{figure}[H]
 	\centering
-	\captionabove{Masse, Outflow und Inflow über die Zeit geplottet bei rkorder = -2, deg = 0, lvl = 6}
-	\includegraphics[width=0.8\textwidth]{../Aufgabe21/Masseerhaltung/plot.png}
+	\captionabove{Masse, Outflowrate und Inflowrate über die Zeit geplottet bei rkorder = -2, deg = 0, lvl = 6}
+	\includegraphics[width=0.8\textwidth]{../Aufgabe21/plotraten2.png}
 \end{figure}
-Wir erhalten als Werte:
+\remark Wir werden Outflow und Inflow gleich noch erläutern.
+\newline
+Wir erhalten dabei als Werte:
 \begin{itemize}
 	\item Masse bei $ t = 0 $: 20.3125
 	\item Masse bei $ t = 7 $: 14.4885
-	\item Outflow (aufsummiert) : 13.6301
-	\item Inflow (aufsummiert): -0.0989
 \end{itemize}
 
 
-Das gleiche Phänomen ist auch bei Problem B mit deg = 0 (Finite Volumen Ansatz) aufgetreten
 
+Wir versuchen nun den Masseverlust durch die entstehenden Ein- und Ausflüsse zu erklären. Dazu berechnen wir aus Ein- und Ausflussrate jeweils den Gesamtein- bzw. ausfluss.
+Dazu approximieren wir das Integral über die Zeit der Raten $r_{in}(t)$ und $r_{out}(t)$ wie folgt:
+\begin{align*}
+	\int_0^7 r_{in}(t) dt &\approx \sum\limits_{s = 0}^{S} r_{in}(s  \frac{7}{S})  \frac{7}{S} \approx  \sum\limits_{\tilde{s} = 0 }^{S / 4 } 4 r_{in}(4 \tilde{s}   \frac{7}{S})  \frac{7}{S}  \\
+	\int_0^7 r_{out}(t) dt &\approx \sum\limits_{s = 0}^{S} r_{out}(s  \frac{7}{S})  \frac{7}{S} \approx  \sum\limits_{\tilde{s} = 0 }^{S / 4 } 4 r_{out}(4 \tilde{s}   \frac{7}{S})  \frac{7}{S} 
+\end{align*}
 
+Dabei beschreiben $s$ die einzelnen Zeitschritte und $\tilde{s}$ die Zeitschritte, welche wir konkret auslesen (nur jeden vierten). $S$ ist die Gesamtzahl der Zeitschritte.
+Wir erhalten somit in obigem Beispiel die Werte:
+\begin{itemize}
+	\item Inflow: -0.04880445
+	\item Outflow: 6.07928039
+\end{itemize}
+Es ergibt sich so als Masseunterschied zwischen der Masse zum Zeitpunkt $t=0$ und der Masse zum Zeitpunkt $t=7$ unter Addition mit Outflow und Inflow gerade den Wert
+\begin{align*}
+	\Delta m = 0,20647594
+\end{align*} 
+Betrachtet man zudem noch den Verlauf dieser Größe für $dt \to 0$ erhält man gerade die auch in der Vorlesung für das Verfahren bewiesene Masseerhaltung.
 \begin{figure}[H]
 	\centering
-	\captionabove{Problem B}
-	\subfigure[deg = 0]{\includegraphics[width=0.49\textwidth]{../Aufgabe21/Masseerhaltung_b_deg_0/plot.png}}
-	\subfigure[deg = 2]{\includegraphics[width=0.49\textwidth]{../Aufgabe21/Masseerhaltung_b_deg_2/plot.png}}
+	\captionabove{Masse($t = 0$) und Masse($t=7$) + Outflow + Inflow für die Zeitschrittweite $dt \to 0$}
+	\includegraphics[width=0.8\textwidth]{../Aufgabe21/massoverdt2.png}
 \end{figure}
 
+
+Betrachten wir nun hingegen in Abbildung 5 den zeitlichen Verlauf der Energie, so stellen wir schnell fest, dass diese nicht erhalten wird. Dies deckt sich mit den theoretischen Resultaten der Vorlesung insofern, dass wir für das Finite Volumen Verfahren mit upwind-flux nachgewiesen haben, dass dieser zwar Masse- nicht aber Energieerhaltend ist. Diese fehlende Energieerhaltung wird im zeitlichen Verlauf sehr gut deutlich. Hier bedarf es also anderen Vorgehensweisen bzw. Verfahren um auch die Energieerhaltung sicherzustellen.
+\newpage
 \subsubsection{Problem B (CircleWave)}
 Wir setzen für das Problem CircleWave:
 \begin{align*}
