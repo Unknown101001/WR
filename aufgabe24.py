@@ -6,7 +6,7 @@ import shutil
 import re
 from distutils.dir_util import copy_tree
 
-kernels = 4
+kernels = 8
 working_dir = "mpp/build"
 
 
@@ -217,7 +217,7 @@ def plot2():
     plt.savefig("plot2.png")
 
 
-if __name__ == "__main__":
+def main_transport():
     delete_old()
     manipulate_conf("m++conf", [("loadconf", "transport.conf")])
     manipulate_conf("transport.conf",
@@ -244,3 +244,27 @@ if __name__ == "__main__":
     plt.grid(True)
     plt.savefig("plot.png")
     save("Aufgabe21", "Masseerhaltung_b_deg_2")
+
+
+if __name__ == "__main__":
+    delete_old()
+    manipulate_conf("pollution.conf", [("level", "3"), ("deg", "2")])
+    output = run()
+    print(output)
+    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy", "Error"], output)
+    print("Masse Ende: " + str(out[1][-1]))
+    print("Masse Beginn: " + str(out[1][0]))
+    print("Outflow: " + str(sum(out[2])))
+    print("Inflow: " + str(sum(out[3])))
+    save("Aufgabe24", "lvl3deg2")
+    plt.plot(out[0], out[1], label='mass')
+    plt.plot(out[0], out[2], label='outflow')
+    plt.plot(out[0], out[3], label='inflow')
+    plt.plot(out[0], out[5], label='error')
+    # plt.plot(out[0], out[4], label='energy')
+    plt.grid()
+    plt.legend()
+    plt.xlabel("Zeit")
+    plt.ylabel("Wert")
+    plt.grid(True)
+    plt.savefig("plot.png")
