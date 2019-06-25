@@ -1,0 +1,303 @@
+start program on 4 procs at Tue Jun 25 11:24:33 2019
+  default ... DebugLevel = 0
+  default ... TimeLevel = 0
+  reading ... Model = DGTransport
+  reading ... Mesh = Square4
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 6
+  reading ... plevel = 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  reading ... Overlap = dG1
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+4 cells on proc 0 of 16 cells on 4 procs -- min cells: 4  max cells: 4
+  reading ... Overlap = dG1
+  reading ... deg = 0
+matrixgraph on level 2: matrixgraph on level 3: matrixgraph on level 4: matrixgraph on level 5: matrixgraph on level 6:   default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  default ... vtkplot = 0
+  reading ... Problem = Riemann
+  default ... ProblemVerbose = 0
+  default ... ProblemExact = 0
+  default ... RHS = 0
+  default ... b_1 = 0
+  default ... b_2 = -1
+  reading ... TimeSeries = uniform
+  default ... t0 = 0
+  reading ... T  = 7
+  reading ... dt = 0.0078125
+  default ... dt_min = 0.0078125
+  default ... AssembleVerbose = 1
+  default ... flux_alpha = 1
+  default ... X0 = 8
+  default ... X1 = 10
+  reading ... Preconditioner = PointBlockJacobi
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerDamp = 1
+  reading ... LinearSolver = GMRES
+  reading ... LinearVerbose = -1
+  reading ... LinearSteps = 200
+  default ... LinearLineSearchSteps = 3
+  default ... LinearEpsilon = 1e-10
+  default ... LinearReduction = 1e-05
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerDamp = 1
+  reading ... LinearSolver = GMRES
+  reading ... LinearVerbose = -1
+  reading ... LinearSteps = 200
+  default ... LinearLineSearchSteps = 3
+  default ... LinearEpsilon = 1e-10
+  default ... LinearReduction = 1e-05
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... plot_tStep = 4
+  reading ... rkorder = -2
+  default ... Kmin = 2
+  reading ... Kmax = 250
+  reading ... Keps = 1e-10
+  reading ... gamma = 0.01
+  reading ... level = 6
+
+ Level:          6
+ Dimension:      2
+ Cells:          4096
+ Problem size:   4096
+ Vertices:       4225
+ Edges:          8320
+ Mesh width:     [0.15625,0.15625]
+ Assemble        DGTransportAssemble
+
+ Problem:        Riemann
+ Discretization: DGTransportDiscretization
+
+Step(0), t(0): Energy(u) = 10.1562 Mass(u) = 20.3125
+Implicit Midpoint Rule: gamma = 0.00390625
+Step(4), t(0.03125): Energy(u) = 9.5606 Mass(u) = 20.3125 InFlowRate(u) = -6.72695e-07
+Step(8), t(0.0625): Energy(u) = 9.24661 Mass(u) = 20.3125 InFlowRate(u) = -2.11256e-05
+Step(12), t(0.09375): Energy(u) = 9.01734 Mass(u) = 20.3125 InFlowRate(u) = -0.000141476
+Step(16), t(0.125): Energy(u) = 8.82781 Mass(u) = 20.3125 InFlowRate(u) = -0.000490399
+Step(20), t(0.15625): Energy(u) = 8.66235 Mass(u) = 20.3125 InFlowRate(u) = -0.00118432
+Step(24), t(0.1875): Energy(u) = 8.51356 Mass(u) = 20.3125 InFlowRate(u) = -0.00228409
+Step(28), t(0.21875): Energy(u) = 8.37722 Mass(u) = 20.3125 InFlowRate(u) = -0.00378641
+Step(32), t(0.25): Energy(u) = 8.25064 Mass(u) = 20.3125 InFlowRate(u) = -0.00563761
+Step(36), t(0.28125): Energy(u) = 8.13201 Mass(u) = 20.3125 InFlowRate(u) = -0.0077544
+Step(40), t(0.3125): Energy(u) = 8.02002 Mass(u) = 20.3125 InFlowRate(u) = -0.0100428
+Step(44), t(0.34375): Energy(u) = 7.9137 Mass(u) = 20.3125 InFlowRate(u) = -0.0124113
+Step(48), t(0.375): Energy(u) = 7.81232 Mass(u) = 20.3125 InFlowRate(u) = -0.0147792
+Step(52), t(0.40625): Energy(u) = 7.7153 Mass(u) = 20.3125 InFlowRate(u) = -0.0170802
+Step(56), t(0.4375): Energy(u) = 7.62219 Mass(u) = 20.3125 InFlowRate(u) = -0.0192628
+Step(60), t(0.46875): Energy(u) = 7.53261 Mass(u) = 20.3125 InFlowRate(u) = -0.0212903
+Step(64), t(0.5): Energy(u) = 7.44627 Mass(u) = 20.3125 InFlowRate(u) = -0.0231378
+Step(68), t(0.53125): Energy(u) = 7.36291 Mass(u) = 20.3125 InFlowRate(u) = -0.0247909
+Step(72), t(0.5625): Energy(u) = 7.28231 Mass(u) = 20.3125 InFlowRate(u) = -0.0262436
+Step(76), t(0.59375): Energy(u) = 7.20429 Mass(u) = 20.3125 InFlowRate(u) = -0.027496
+Step(80), t(0.625): Energy(u) = 7.12869 Mass(u) = 20.3125 InFlowRate(u) = -0.028553
+Step(84), t(0.65625): Energy(u) = 7.05536 Mass(u) = 20.3125 InFlowRate(u) = -0.0294227
+Step(88), t(0.6875): Energy(u) = 6.98418 Mass(u) = 20.3125 InFlowRate(u) = -0.0301156
+Step(92), t(0.71875): Energy(u) = 6.91504 Mass(u) = 20.3125 InFlowRate(u) = -0.0306437
+Step(96), t(0.75): Energy(u) = 6.84783 Mass(u) = 20.3125 InFlowRate(u) = -0.0310197
+Step(100), t(0.78125): Energy(u) = 6.78247 Mass(u) = 20.3125 InFlowRate(u) = -0.0312565
+Step(104), t(0.8125): Energy(u) = 6.71886 Mass(u) = 20.3125 InFlowRate(u) = -0.0313669
+Step(108), t(0.84375): Energy(u) = 6.65693 Mass(u) = 20.3125 InFlowRate(u) = -0.0313637
+Step(112), t(0.875): Energy(u) = 6.59661 Mass(u) = 20.3125 InFlowRate(u) = -0.0312586
+Step(116), t(0.90625): Energy(u) = 6.53782 Mass(u) = 20.3125 InFlowRate(u) = -0.0310632
+Step(120), t(0.9375): Energy(u) = 6.4805 Mass(u) = 20.3125 InFlowRate(u) = -0.0307881
+Step(124), t(0.96875): Energy(u) = 6.4246 Mass(u) = 20.3125 InFlowRate(u) = -0.0304431
+Step(128), t(1): Energy(u) = 6.37005 Mass(u) = 20.3125 InFlowRate(u) = -0.0300375
+Step(132), t(1.03125): Energy(u) = 6.31681 Mass(u) = 20.3125 InFlowRate(u) = -0.0295797
+Step(136), t(1.0625): Energy(u) = 6.26482 Mass(u) = 20.3125 InFlowRate(u) = -0.0290772
+Step(140), t(1.09375): Energy(u) = 6.21404 Mass(u) = 20.3125 InFlowRate(u) = -0.0285372
+Step(144), t(1.125): Energy(u) = 6.16442 Mass(u) = 20.3125 InFlowRate(u) = -0.0279659
+Step(148), t(1.15625): Energy(u) = 6.11593 Mass(u) = 20.3125 InFlowRate(u) = -0.027369
+Step(152), t(1.1875): Energy(u) = 6.06851 Mass(u) = 20.3125 InFlowRate(u) = -0.0267517
+Step(156), t(1.21875): Energy(u) = 6.02214 Mass(u) = 20.3125 InFlowRate(u) = -0.0261185
+Step(160), t(1.25): Energy(u) = 5.97677 Mass(u) = 20.3125 InFlowRate(u) = -0.0254736
+Step(164), t(1.28125): Energy(u) = 5.93237 Mass(u) = 20.3125 InFlowRate(u) = -0.0248206
+Step(168), t(1.3125): Energy(u) = 5.88892 Mass(u) = 20.3125 InFlowRate(u) = -0.0241628
+Step(172), t(1.34375): Energy(u) = 5.84637 Mass(u) = 20.3125 InFlowRate(u) = -0.0235031
+Step(176), t(1.375): Energy(u) = 5.80469 Mass(u) = 20.3125 InFlowRate(u) = -0.0228439
+Step(180), t(1.40625): Energy(u) = 5.76387 Mass(u) = 20.3125 InFlowRate(u) = -0.0221874
+Step(184), t(1.4375): Energy(u) = 5.72386 Mass(u) = 20.3125 InFlowRate(u) = -0.0215357
+Step(188), t(1.46875): Energy(u) = 5.68466 Mass(u) = 20.3125 InFlowRate(u) = -0.0208904
+Step(192), t(1.5): Energy(u) = 5.64622 Mass(u) = 20.3125 InFlowRate(u) = -0.0202528
+Step(196), t(1.53125): Energy(u) = 5.60852 Mass(u) = 20.3125 InFlowRate(u) = -0.0196244
+Step(200), t(1.5625): Energy(u) = 5.57155 Mass(u) = 20.3125 InFlowRate(u) = -0.0190061
+Step(204), t(1.59375): Energy(u) = 5.53528 Mass(u) = 20.3125 InFlowRate(u) = -0.0183988
+Step(208), t(1.625): Energy(u) = 5.49969 Mass(u) = 20.3125 InFlowRate(u) = -0.0178032
+Step(212), t(1.65625): Energy(u) = 5.46476 Mass(u) = 20.3125 InFlowRate(u) = -0.01722 OutFlowRate(u) = 1.32362e-07
+Step(216), t(1.6875): Energy(u) = 5.43046 Mass(u) = 20.3125 InFlowRate(u) = -0.0166497 OutFlowRate(u) = 2.01887e-07
+Step(220), t(1.71875): Energy(u) = 5.39679 Mass(u) = 20.3125 InFlowRate(u) = -0.0160925 OutFlowRate(u) = 3.0403e-07
+Step(224), t(1.75): Energy(u) = 5.36372 Mass(u) = 20.3125 InFlowRate(u) = -0.0155489 OutFlowRate(u) = 4.5229e-07
+Step(228), t(1.78125): Energy(u) = 5.33124 Mass(u) = 20.3125 InFlowRate(u) = -0.015019 OutFlowRate(u) = 6.65007e-07
+Step(232), t(1.8125): Energy(u) = 5.29932 Mass(u) = 20.3125 InFlowRate(u) = -0.014503 OutFlowRate(u) = 9.6683e-07
+Step(236), t(1.84375): Energy(u) = 5.26796 Mass(u) = 20.3125 InFlowRate(u) = -0.0140009 OutFlowRate(u) = 1.39053e-06
+Step(240), t(1.875): Energy(u) = 5.23714 Mass(u) = 20.3125 InFlowRate(u) = -0.0135127 OutFlowRate(u) = 1.97926e-06
+Step(244), t(1.90625): Energy(u) = 5.20683 Mass(u) = 20.3125 InFlowRate(u) = -0.0130385 OutFlowRate(u) = 2.78928e-06
+Step(248), t(1.9375): Energy(u) = 5.17704 Mass(u) = 20.3125 InFlowRate(u) = -0.012578 OutFlowRate(u) = 3.89323e-06
+Step(252), t(1.96875): Energy(u) = 5.14774 Mass(u) = 20.3125 InFlowRate(u) = -0.0121312 OutFlowRate(u) = 5.38414e-06
+Step(256), t(2): Energy(u) = 5.11892 Mass(u) = 20.3125 InFlowRate(u) = -0.011698 OutFlowRate(u) = 7.38005e-06
+Step(260), t(2.03125): Energy(u) = 5.09058 Mass(u) = 20.3125 InFlowRate(u) = -0.0112781 OutFlowRate(u) = 1.00296e-05
+Step(264), t(2.0625): Energy(u) = 5.06268 Mass(u) = 20.3125 InFlowRate(u) = -0.0108713 OutFlowRate(u) = 1.35182e-05
+Step(268), t(2.09375): Energy(u) = 5.03524 Mass(u) = 20.3125 InFlowRate(u) = -0.0104775 OutFlowRate(u) = 1.80757e-05
+Step(272), t(2.125): Energy(u) = 5.00822 Mass(u) = 20.3125 InFlowRate(u) = -0.0100964 OutFlowRate(u) = 2.3985e-05
+Step(276), t(2.15625): Energy(u) = 4.98163 Mass(u) = 20.3125 InFlowRate(u) = -0.00972765 OutFlowRate(u) = 3.15911e-05
+Step(280), t(2.1875): Energy(u) = 4.95545 Mass(u) = 20.3125 InFlowRate(u) = -0.00937109 OutFlowRate(u) = 4.13127e-05
+Step(284), t(2.21875): Energy(u) = 4.92967 Mass(u) = 20.3125 InFlowRate(u) = -0.00902641 OutFlowRate(u) = 5.36541e-05
+Step(288), t(2.25): Energy(u) = 4.90428 Mass(u) = 20.3125 InFlowRate(u) = -0.00869333 OutFlowRate(u) = 6.92188e-05
+Step(292), t(2.28125): Energy(u) = 4.87928 Mass(u) = 20.3125 InFlowRate(u) = -0.00837156 OutFlowRate(u) = 8.87245e-05
+Step(296), t(2.3125): Energy(u) = 4.85464 Mass(u) = 20.3125 InFlowRate(u) = -0.00806081 OutFlowRate(u) = 0.00011302
+Step(300), t(2.34375): Energy(u) = 4.83037 Mass(u) = 20.3125 InFlowRate(u) = -0.00776079 OutFlowRate(u) = 0.000143103
+Step(304), t(2.375): Energy(u) = 4.80645 Mass(u) = 20.3125 InFlowRate(u) = -0.0074712 OutFlowRate(u) = 0.000180138
+Step(308), t(2.40625): Energy(u) = 4.78288 Mass(u) = 20.3125 InFlowRate(u) = -0.00719174 OutFlowRate(u) = 0.000225482
+Step(312), t(2.4375): Energy(u) = 4.75965 Mass(u) = 20.3125 InFlowRate(u) = -0.00692213 OutFlowRate(u) = 0.0002807
+Step(316), t(2.46875): Energy(u) = 4.73675 Mass(u) = 20.3125 InFlowRate(u) = -0.00666208 OutFlowRate(u) = 0.000347596
+Step(320), t(2.5): Energy(u) = 4.71417 Mass(u) = 20.3124 InFlowRate(u) = -0.0064113 OutFlowRate(u) = 0.000428231
+Step(324), t(2.53125): Energy(u) = 4.69191 Mass(u) = 20.3124 InFlowRate(u) = -0.00616951 OutFlowRate(u) = 0.000524956
+Step(328), t(2.5625): Energy(u) = 4.66995 Mass(u) = 20.3124 InFlowRate(u) = -0.00593642 OutFlowRate(u) = 0.000640434
+Step(332), t(2.59375): Energy(u) = 4.6483 Mass(u) = 20.3124 InFlowRate(u) = -0.00571177 OutFlowRate(u) = 0.000777673
+Step(336), t(2.625): Energy(u) = 4.62694 Mass(u) = 20.3124 InFlowRate(u) = -0.00549527 OutFlowRate(u) = 0.000940049
+Step(340), t(2.65625): Energy(u) = 4.60587 Mass(u) = 20.3123 InFlowRate(u) = -0.00528668 OutFlowRate(u) = 0.00113134
+Step(344), t(2.6875): Energy(u) = 4.58508 Mass(u) = 20.3123 InFlowRate(u) = -0.00508572 OutFlowRate(u) = 0.00135576
+Step(348), t(2.71875): Energy(u) = 4.56456 Mass(u) = 20.3122 InFlowRate(u) = -0.00489215 OutFlowRate(u) = 0.00161798
+Step(352), t(2.75): Energy(u) = 4.54432 Mass(u) = 20.3122 InFlowRate(u) = -0.00470572 OutFlowRate(u) = 0.00192317
+Step(356), t(2.78125): Energy(u) = 4.52433 Mass(u) = 20.3121 InFlowRate(u) = -0.00452619 OutFlowRate(u) = 0.00227699
+Step(360), t(2.8125): Energy(u) = 4.50461 Mass(u) = 20.312 InFlowRate(u) = -0.00435332 OutFlowRate(u) = 0.0026857
+Step(364), t(2.84375): Energy(u) = 4.48514 Mass(u) = 20.312 InFlowRate(u) = -0.00418688 OutFlowRate(u) = 0.0031561
+Step(368), t(2.875): Energy(u) = 4.46592 Mass(u) = 20.3118 InFlowRate(u) = -0.00402665 OutFlowRate(u) = 0.00369562
+Step(372), t(2.90625): Energy(u) = 4.44693 Mass(u) = 20.3117 InFlowRate(u) = -0.00387242 OutFlowRate(u) = 0.00431228
+Step(376), t(2.9375): Energy(u) = 4.42819 Mass(u) = 20.3116 InFlowRate(u) = -0.00372396 OutFlowRate(u) = 0.00501481
+Step(380), t(2.96875): Energy(u) = 4.40968 Mass(u) = 20.3114 InFlowRate(u) = -0.00358109 OutFlowRate(u) = 0.00581258
+Step(384), t(3): Energy(u) = 4.3914 Mass(u) = 20.3112 InFlowRate(u) = -0.0034436 OutFlowRate(u) = 0.00671565
+Step(388), t(3.03125): Energy(u) = 4.37333 Mass(u) = 20.311 InFlowRate(u) = -0.00331129 OutFlowRate(u) = 0.00773483
+Step(392), t(3.0625): Energy(u) = 4.35549 Mass(u) = 20.3107 InFlowRate(u) = -0.00318398 OutFlowRate(u) = 0.00888161
+Step(396), t(3.09375): Energy(u) = 4.33787 Mass(u) = 20.3104 InFlowRate(u) = -0.0030615 OutFlowRate(u) = 0.0101682
+Step(400), t(3.125): Energy(u) = 4.32045 Mass(u) = 20.3101 InFlowRate(u) = -0.00294366 OutFlowRate(u) = 0.0116077
+Step(404), t(3.15625): Energy(u) = 4.30324 Mass(u) = 20.3097 InFlowRate(u) = -0.0028303 OutFlowRate(u) = 0.0132138
+Step(408), t(3.1875): Energy(u) = 4.28623 Mass(u) = 20.3093 InFlowRate(u) = -0.00272125 OutFlowRate(u) = 0.015001
+Step(412), t(3.21875): Energy(u) = 4.26942 Mass(u) = 20.3088 InFlowRate(u) = -0.00261636 OutFlowRate(u) = 0.0169845
+Step(416), t(3.25): Energy(u) = 4.2528 Mass(u) = 20.3082 InFlowRate(u) = -0.00251546 OutFlowRate(u) = 0.0191803
+Step(420), t(3.28125): Energy(u) = 4.23637 Mass(u) = 20.3076 InFlowRate(u) = -0.00241843 OutFlowRate(u) = 0.0216051
+Step(424), t(3.3125): Energy(u) = 4.22013 Mass(u) = 20.3068 InFlowRate(u) = -0.0023251 OutFlowRate(u) = 0.0242763
+Step(428), t(3.34375): Energy(u) = 4.20408 Mass(u) = 20.306 InFlowRate(u) = -0.00223534 OutFlowRate(u) = 0.0272121
+Step(432), t(3.375): Energy(u) = 4.1882 Mass(u) = 20.3051 InFlowRate(u) = -0.00214902 OutFlowRate(u) = 0.0304312
+Step(436), t(3.40625): Energy(u) = 4.17251 Mass(u) = 20.3041 InFlowRate(u) = -0.00206602 OutFlowRate(u) = 0.0339531
+Step(440), t(3.4375): Energy(u) = 4.15698 Mass(u) = 20.303 InFlowRate(u) = -0.0019862 OutFlowRate(u) = 0.0377978
+Step(444), t(3.46875): Energy(u) = 4.14163 Mass(u) = 20.3018 InFlowRate(u) = -0.00190945 OutFlowRate(u) = 0.0419858
+Step(448), t(3.5): Energy(u) = 4.12644 Mass(u) = 20.3004 InFlowRate(u) = -0.00183565 OutFlowRate(u) = 0.0465383
+Step(452), t(3.53125): Energy(u) = 4.11142 Mass(u) = 20.2989 InFlowRate(u) = -0.00176469 OutFlowRate(u) = 0.0514771
+Step(456), t(3.5625): Energy(u) = 4.09656 Mass(u) = 20.2972 InFlowRate(u) = -0.00169646 OutFlowRate(u) = 0.056824
+Step(460), t(3.59375): Energy(u) = 4.08185 Mass(u) = 20.2953 InFlowRate(u) = -0.00163086 OutFlowRate(u) = 0.0626016
+Step(464), t(3.625): Energy(u) = 4.06731 Mass(u) = 20.2932 InFlowRate(u) = -0.00156779 OutFlowRate(u) = 0.0688326
+Step(468), t(3.65625): Energy(u) = 4.05291 Mass(u) = 20.291 InFlowRate(u) = -0.00150716 OutFlowRate(u) = 0.0755402
+Step(472), t(3.6875): Energy(u) = 4.03867 Mass(u) = 20.2885 InFlowRate(u) = -0.00144886 OutFlowRate(u) = 0.0827476
+Step(476), t(3.71875): Energy(u) = 4.02457 Mass(u) = 20.2858 InFlowRate(u) = -0.00139282 OutFlowRate(u) = 0.0904782
+Step(480), t(3.75): Energy(u) = 4.01062 Mass(u) = 20.2829 InFlowRate(u) = -0.00133894 OutFlowRate(u) = 0.0987556
+Step(484), t(3.78125): Energy(u) = 3.9968 Mass(u) = 20.2796 InFlowRate(u) = -0.00128715 OutFlowRate(u) = 0.107603
+Step(488), t(3.8125): Energy(u) = 3.98313 Mass(u) = 20.2761 InFlowRate(u) = -0.00123735 OutFlowRate(u) = 0.117045
+Step(492), t(3.84375): Energy(u) = 3.9696 Mass(u) = 20.2723 InFlowRate(u) = -0.00118949 OutFlowRate(u) = 0.127103
+Step(496), t(3.875): Energy(u) = 3.95619 Mass(u) = 20.2682 InFlowRate(u) = -0.00114347 OutFlowRate(u) = 0.137802
+Step(500), t(3.90625): Energy(u) = 3.94292 Mass(u) = 20.2637 InFlowRate(u) = -0.00109924 OutFlowRate(u) = 0.149164
+Step(504), t(3.9375): Energy(u) = 3.92978 Mass(u) = 20.2588 InFlowRate(u) = -0.00105672 OutFlowRate(u) = 0.161211
+Step(508), t(3.96875): Energy(u) = 3.91677 Mass(u) = 20.2536 InFlowRate(u) = -0.00101584 OutFlowRate(u) = 0.173966
+Step(512), t(4): Energy(u) = 3.90388 Mass(u) = 20.248 InFlowRate(u) = -0.000976554 OutFlowRate(u) = 0.187451
+Step(516), t(4.03125): Energy(u) = 3.89111 Mass(u) = 20.2419 InFlowRate(u) = -0.000938786 OutFlowRate(u) = 0.201685
+Step(520), t(4.0625): Energy(u) = 3.87846 Mass(u) = 20.2354 InFlowRate(u) = -0.000902481 OutFlowRate(u) = 0.216691
+Step(524), t(4.09375): Energy(u) = 3.86592 Mass(u) = 20.2283 InFlowRate(u) = -0.000867583 OutFlowRate(u) = 0.232487
+Step(528), t(4.125): Energy(u) = 3.8535 Mass(u) = 20.2208 InFlowRate(u) = -0.000834039 OutFlowRate(u) = 0.249092
+Step(532), t(4.15625): Energy(u) = 3.84118 Mass(u) = 20.2128 InFlowRate(u) = -0.000801794 OutFlowRate(u) = 0.266524
+Step(536), t(4.1875): Energy(u) = 3.82898 Mass(u) = 20.2042 InFlowRate(u) = -0.0007708 OutFlowRate(u) = 0.2848
+Step(540), t(4.21875): Energy(u) = 3.81688 Mass(u) = 20.195 InFlowRate(u) = -0.000741008 OutFlowRate(u) = 0.303937
+Step(544), t(4.25): Energy(u) = 3.80488 Mass(u) = 20.1851 InFlowRate(u) = -0.000712371 OutFlowRate(u) = 0.323948
+Step(548), t(4.28125): Energy(u) = 3.79298 Mass(u) = 20.1747 InFlowRate(u) = -0.000684844 OutFlowRate(u) = 0.344849
+Step(552), t(4.3125): Energy(u) = 3.78117 Mass(u) = 20.1636 InFlowRate(u) = -0.000658385 OutFlowRate(u) = 0.366652
+Step(556), t(4.34375): Energy(u) = 3.76946 Mass(u) = 20.1518 InFlowRate(u) = -0.000632953 OutFlowRate(u) = 0.389368
+Step(560), t(4.375): Energy(u) = 3.75783 Mass(u) = 20.1392 InFlowRate(u) = -0.000608506 OutFlowRate(u) = 0.413006
+Step(564), t(4.40625): Energy(u) = 3.74629 Mass(u) = 20.1259 InFlowRate(u) = -0.000585008 OutFlowRate(u) = 0.437577
+Step(568), t(4.4375): Energy(u) = 3.73483 Mass(u) = 20.1119 InFlowRate(u) = -0.00056242 OutFlowRate(u) = 0.463088
+Step(572), t(4.46875): Energy(u) = 3.72345 Mass(u) = 20.097 InFlowRate(u) = -0.000540709 OutFlowRate(u) = 0.489543
+Step(576), t(4.5): Energy(u) = 3.71214 Mass(u) = 20.0813 InFlowRate(u) = -0.00051984 OutFlowRate(u) = 0.516949
+Step(580), t(4.53125): Energy(u) = 3.7009 Mass(u) = 20.0647 InFlowRate(u) = -0.00049978 OutFlowRate(u) = 0.545308
+Step(584), t(4.5625): Energy(u) = 3.68972 Mass(u) = 20.0472 InFlowRate(u) = -0.000480498 OutFlowRate(u) = 0.57462
+Step(588), t(4.59375): Energy(u) = 3.67861 Mass(u) = 20.0288 InFlowRate(u) = -0.000461963 OutFlowRate(u) = 0.604887
+Step(592), t(4.625): Energy(u) = 3.66755 Mass(u) = 20.0094 InFlowRate(u) = -0.000444147 OutFlowRate(u) = 0.636107
+Step(596), t(4.65625): Energy(u) = 3.65654 Mass(u) = 19.989 InFlowRate(u) = -0.000427021 OutFlowRate(u) = 0.668275
+Step(600), t(4.6875): Energy(u) = 3.64557 Mass(u) = 19.9676 InFlowRate(u) = -0.00041056 OutFlowRate(u) = 0.701388
+Step(604), t(4.71875): Energy(u) = 3.63465 Mass(u) = 19.9451 InFlowRate(u) = -0.000394736 OutFlowRate(u) = 0.735439
+Step(608), t(4.75): Energy(u) = 3.62376 Mass(u) = 19.9216 InFlowRate(u) = -0.000379525 OutFlowRate(u) = 0.77042
+Step(612), t(4.78125): Energy(u) = 3.6129 Mass(u) = 19.897 InFlowRate(u) = -0.000364904 OutFlowRate(u) = 0.806321
+Step(616), t(4.8125): Energy(u) = 3.60206 Mass(u) = 19.8712 InFlowRate(u) = -0.000350849 OutFlowRate(u) = 0.84313
+Step(620), t(4.84375): Energy(u) = 3.59123 Mass(u) = 19.8443 InFlowRate(u) = -0.000337339 OutFlowRate(u) = 0.880835
+Step(624), t(4.875): Energy(u) = 3.58042 Mass(u) = 19.8161 InFlowRate(u) = -0.000324352 OutFlowRate(u) = 0.919422
+Step(628), t(4.90625): Energy(u) = 3.5696 Mass(u) = 19.7868 InFlowRate(u) = -0.000311867 OutFlowRate(u) = 0.958873
+Step(632), t(4.9375): Energy(u) = 3.55878 Mass(u) = 19.7562 InFlowRate(u) = -0.000299867 OutFlowRate(u) = 0.999172
+Step(636), t(4.96875): Energy(u) = 3.54795 Mass(u) = 19.7243 InFlowRate(u) = -0.00028833 OutFlowRate(u) = 1.0403
+Step(640), t(5): Energy(u) = 3.5371 Mass(u) = 19.6912 InFlowRate(u) = -0.00027724 OutFlowRate(u) = 1.08223
+Step(644), t(5.03125): Energy(u) = 3.52623 Mass(u) = 19.6567 InFlowRate(u) = -0.00026658 OutFlowRate(u) = 1.12495
+Step(648), t(5.0625): Energy(u) = 3.51531 Mass(u) = 19.6209 InFlowRate(u) = -0.000256331 OutFlowRate(u) = 1.16844
+Step(652), t(5.09375): Energy(u) = 3.50435 Mass(u) = 19.5837 InFlowRate(u) = -0.000246479 OutFlowRate(u) = 1.21266
+Step(656), t(5.125): Energy(u) = 3.49334 Mass(u) = 19.5451 InFlowRate(u) = -0.000237008 OutFlowRate(u) = 1.25759
+Step(660), t(5.15625): Energy(u) = 3.48227 Mass(u) = 19.5051 InFlowRate(u) = -0.000227904 OutFlowRate(u) = 1.3032
+Step(664), t(5.1875): Energy(u) = 3.47113 Mass(u) = 19.4636 InFlowRate(u) = -0.000219151 OutFlowRate(u) = 1.34947
+Step(668), t(5.21875): Energy(u) = 3.45991 Mass(u) = 19.4207 InFlowRate(u) = -0.000210737 OutFlowRate(u) = 1.39636
+Step(672), t(5.25): Energy(u) = 3.4486 Mass(u) = 19.3763 InFlowRate(u) = -0.000202647 OutFlowRate(u) = 1.44384
+Step(676), t(5.28125): Energy(u) = 3.4372 Mass(u) = 19.3305 InFlowRate(u) = -0.000194871 OutFlowRate(u) = 1.49189
+Step(680), t(5.3125): Energy(u) = 3.42568 Mass(u) = 19.2831 InFlowRate(u) = -0.000187394 OutFlowRate(u) = 1.54046
+Step(684), t(5.34375): Energy(u) = 3.41405 Mass(u) = 19.2342 InFlowRate(u) = -0.000180206 OutFlowRate(u) = 1.58953
+Step(688), t(5.375): Energy(u) = 3.40229 Mass(u) = 19.1837 InFlowRate(u) = -0.000173296 OutFlowRate(u) = 1.63906
+Step(692), t(5.40625): Energy(u) = 3.39039 Mass(u) = 19.1317 InFlowRate(u) = -0.000166653 OutFlowRate(u) = 1.689
+Step(696), t(5.4375): Energy(u) = 3.37835 Mass(u) = 19.0782 InFlowRate(u) = -0.000160266 OutFlowRate(u) = 1.73934
+Step(700), t(5.46875): Energy(u) = 3.36615 Mass(u) = 19.023 InFlowRate(u) = -0.000154125 OutFlowRate(u) = 1.79002
+Step(704), t(5.5): Energy(u) = 3.35379 Mass(u) = 18.9663 InFlowRate(u) = -0.000148221 OutFlowRate(u) = 1.84101
+Step(708), t(5.53125): Energy(u) = 3.34124 Mass(u) = 18.908 InFlowRate(u) = -0.000142545 OutFlowRate(u) = 1.89227
+Step(712), t(5.5625): Energy(u) = 3.32851 Mass(u) = 18.848 InFlowRate(u) = -0.000137088 OutFlowRate(u) = 1.94376
+Step(716), t(5.59375): Energy(u) = 3.31558 Mass(u) = 18.7865 InFlowRate(u) = -0.000131841 OutFlowRate(u) = 1.99545
+Step(720), t(5.625): Energy(u) = 3.30245 Mass(u) = 18.7233 InFlowRate(u) = -0.000126796 OutFlowRate(u) = 2.04729
+Step(724), t(5.65625): Energy(u) = 3.28909 Mass(u) = 18.6585 InFlowRate(u) = -0.000121945 OutFlowRate(u) = 2.09923
+Step(728), t(5.6875): Energy(u) = 3.27551 Mass(u) = 18.5921 InFlowRate(u) = -0.000117282 OutFlowRate(u) = 2.15125
+Step(732), t(5.71875): Energy(u) = 3.2617 Mass(u) = 18.5241 InFlowRate(u) = -0.000112797 OutFlowRate(u) = 2.2033
+Step(736), t(5.75): Energy(u) = 3.24763 Mass(u) = 18.4544 InFlowRate(u) = -0.000108486 OutFlowRate(u) = 2.25534
+Step(740), t(5.78125): Energy(u) = 3.23332 Mass(u) = 18.3831 InFlowRate(u) = -0.00010434 OutFlowRate(u) = 2.30733
+Step(744), t(5.8125): Energy(u) = 3.21874 Mass(u) = 18.3102 InFlowRate(u) = -0.000100354 OutFlowRate(u) = 2.35923
+Step(748), t(5.84375): Energy(u) = 3.20388 Mass(u) = 18.2357 InFlowRate(u) = -9.65215e-05 OutFlowRate(u) = 2.41099
+Step(752), t(5.875): Energy(u) = 3.18875 Mass(u) = 18.1595 InFlowRate(u) = -9.28361e-05 OutFlowRate(u) = 2.46258
+Step(756), t(5.90625): Energy(u) = 3.17332 Mass(u) = 18.0818 InFlowRate(u) = -8.92924e-05 OutFlowRate(u) = 2.51395
+Step(760), t(5.9375): Energy(u) = 3.1576 Mass(u) = 18.0024 InFlowRate(u) = -8.58848e-05 OutFlowRate(u) = 2.56507
+Step(764), t(5.96875): Energy(u) = 3.14158 Mass(u) = 17.9214 InFlowRate(u) = -8.26083e-05 OutFlowRate(u) = 2.61589
+Step(768), t(6): Energy(u) = 3.12524 Mass(u) = 17.8389 InFlowRate(u) = -7.94575e-05 OutFlowRate(u) = 2.66638
+Step(772), t(6.03125): Energy(u) = 3.10859 Mass(u) = 17.7548 InFlowRate(u) = -7.64278e-05 OutFlowRate(u) = 2.7165
+Step(776), t(6.0625): Energy(u) = 3.09161 Mass(u) = 17.6691 InFlowRate(u) = -7.35144e-05 OutFlowRate(u) = 2.7662
+Step(780), t(6.09375): Energy(u) = 3.0743 Mass(u) = 17.5819 InFlowRate(u) = -7.07128e-05 OutFlowRate(u) = 2.81546
+Step(784), t(6.125): Energy(u) = 3.05665 Mass(u) = 17.4932 InFlowRate(u) = -6.80187e-05 OutFlowRate(u) = 2.86423
+Step(788), t(6.15625): Energy(u) = 3.03866 Mass(u) = 17.4029 InFlowRate(u) = -6.54279e-05 OutFlowRate(u) = 2.91247
+Step(792), t(6.1875): Energy(u) = 3.02033 Mass(u) = 17.3111 InFlowRate(u) = -6.29365e-05 OutFlowRate(u) = 2.96016
+Step(796), t(6.21875): Energy(u) = 3.00165 Mass(u) = 17.2179 InFlowRate(u) = -6.05406e-05 OutFlowRate(u) = 3.00725
+Step(800), t(6.25): Energy(u) = 2.98262 Mass(u) = 17.1232 InFlowRate(u) = -5.82366e-05 OutFlowRate(u) = 3.05371
+Step(804), t(6.28125): Energy(u) = 2.96323 Mass(u) = 17.0271 InFlowRate(u) = -5.60208e-05 OutFlowRate(u) = 3.09951
+Step(808), t(6.3125): Energy(u) = 2.94349 Mass(u) = 16.9295 InFlowRate(u) = -5.389e-05 OutFlowRate(u) = 3.14461
+Step(812), t(6.34375): Energy(u) = 2.92339 Mass(u) = 16.8305 InFlowRate(u) = -5.18407e-05 OutFlowRate(u) = 3.18899
+Step(816), t(6.375): Energy(u) = 2.90293 Mass(u) = 16.7302 InFlowRate(u) = -4.98699e-05 OutFlowRate(u) = 3.2326
+Step(820), t(6.40625): Energy(u) = 2.88211 Mass(u) = 16.6285 InFlowRate(u) = -4.79745e-05 OutFlowRate(u) = 3.27543
+Step(824), t(6.4375): Energy(u) = 2.86093 Mass(u) = 16.5255 InFlowRate(u) = -4.61516e-05 OutFlowRate(u) = 3.31745
+Step(828), t(6.46875): Energy(u) = 2.83939 Mass(u) = 16.4212 InFlowRate(u) = -4.43985e-05 OutFlowRate(u) = 3.35861
+Step(832), t(6.5): Energy(u) = 2.81749 Mass(u) = 16.3156 InFlowRate(u) = -4.27125e-05 OutFlowRate(u) = 3.39891
+Step(836), t(6.53125): Energy(u) = 2.79524 Mass(u) = 16.2087 InFlowRate(u) = -4.10909e-05 OutFlowRate(u) = 3.4383
+Step(840), t(6.5625): Energy(u) = 2.77263 Mass(u) = 16.1007 InFlowRate(u) = -3.95312e-05 OutFlowRate(u) = 3.47678
+Step(844), t(6.59375): Energy(u) = 2.74968 Mass(u) = 15.9915 InFlowRate(u) = -3.80312e-05 OutFlowRate(u) = 3.51431
+Step(848), t(6.625): Energy(u) = 2.72638 Mass(u) = 15.8811 InFlowRate(u) = -3.65885e-05 OutFlowRate(u) = 3.55087
+Step(852), t(6.65625): Energy(u) = 2.70274 Mass(u) = 15.7695 InFlowRate(u) = -3.52009e-05 OutFlowRate(u) = 3.58644
+Step(856), t(6.6875): Energy(u) = 2.67876 Mass(u) = 15.6569 InFlowRate(u) = -3.38662e-05 OutFlowRate(u) = 3.621
+Step(860), t(6.71875): Energy(u) = 2.65445 Mass(u) = 15.5432 InFlowRate(u) = -3.25825e-05 OutFlowRate(u) = 3.65453
+Step(864), t(6.75): Energy(u) = 2.62981 Mass(u) = 15.4285 InFlowRate(u) = -3.13478e-05 OutFlowRate(u) = 3.68701
+Step(868), t(6.78125): Energy(u) = 2.60486 Mass(u) = 15.3128 InFlowRate(u) = -3.01602e-05 OutFlowRate(u) = 3.71844
+Step(872), t(6.8125): Energy(u) = 2.5796 Mass(u) = 15.1961 InFlowRate(u) = -2.90179e-05 OutFlowRate(u) = 3.74878
+Step(876), t(6.84375): Energy(u) = 2.55403 Mass(u) = 15.0785 InFlowRate(u) = -2.79191e-05 OutFlowRate(u) = 3.77803
+Step(880), t(6.875): Energy(u) = 2.52817 Mass(u) = 14.96 InFlowRate(u) = -2.68623e-05 OutFlowRate(u) = 3.80617
+Step(884), t(6.90625): Energy(u) = 2.50202 Mass(u) = 14.8407 InFlowRate(u) = -2.58457e-05 OutFlowRate(u) = 3.83319
+Step(888), t(6.9375): Energy(u) = 2.47559 Mass(u) = 14.7205 InFlowRate(u) = -2.48678e-05 OutFlowRate(u) = 3.85909
+Step(892), t(6.96875): Energy(u) = 2.4489 Mass(u) = 14.5995 InFlowRate(u) = -2.39272e-05 OutFlowRate(u) = 3.88384
+Step(896), t(7): Energy(u) = 2.42195 Mass(u) = 14.4777 InFlowRate(u) = -2.30223e-05 OutFlowRate(u) = 3.90745
+end program after 1:02.00 minutes on 4 procs at Tue Jun 25 11:25:35 2019

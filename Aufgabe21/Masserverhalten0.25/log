@@ -1,0 +1,86 @@
+start program on 4 procs at Tue Jun 25 11:23:17 2019
+  default ... DebugLevel = 0
+  default ... TimeLevel = 0
+  reading ... Model = DGTransport
+  reading ... Mesh = Square4
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 6
+  reading ... plevel = 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  reading ... Overlap = dG1
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+4 cells on proc 0 of 16 cells on 4 procs -- min cells: 4  max cells: 4
+  reading ... Overlap = dG1
+  reading ... deg = 0
+matrixgraph on level 2: matrixgraph on level 3: matrixgraph on level 4: matrixgraph on level 5: matrixgraph on level 6:   default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  default ... vtkplot = 0
+  reading ... Problem = Riemann
+  default ... ProblemVerbose = 0
+  default ... ProblemExact = 0
+  default ... RHS = 0
+  default ... b_1 = 0
+  default ... b_2 = -1
+  reading ... TimeSeries = uniform
+  default ... t0 = 0
+  reading ... T  = 7
+  reading ... dt = 0.25
+  default ... dt_min = 0.25
+  default ... AssembleVerbose = 1
+  default ... flux_alpha = 1
+  default ... X0 = 8
+  default ... X1 = 10
+  reading ... Preconditioner = PointBlockJacobi
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerDamp = 1
+  reading ... LinearSolver = GMRES
+  reading ... LinearVerbose = -1
+  reading ... LinearSteps = 200
+  default ... LinearLineSearchSteps = 3
+  default ... LinearEpsilon = 1e-10
+  default ... LinearReduction = 1e-05
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerDamp = 1
+  reading ... LinearSolver = GMRES
+  reading ... LinearVerbose = -1
+  reading ... LinearSteps = 200
+  default ... LinearLineSearchSteps = 3
+  default ... LinearEpsilon = 1e-10
+  default ... LinearReduction = 1e-05
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... plot_tStep = 4
+  reading ... rkorder = -2
+  default ... Kmin = 2
+  reading ... Kmax = 250
+  reading ... Keps = 1e-10
+  reading ... gamma = 0.01
+  reading ... level = 6
+
+ Level:          6
+ Dimension:      2
+ Cells:          4096
+ Problem size:   4096
+ Vertices:       4225
+ Edges:          8320
+ Mesh width:     [0.15625,0.15625]
+ Assemble        DGTransportAssemble
+
+ Problem:        Riemann
+ Discretization: DGTransportDiscretization
+
+Step(0), t(0): Energy(u) = 10.1562 Mass(u) = 20.3125
+Implicit Midpoint Rule: gamma = 0.125
+Step(4), t(1): Energy(u) = 6.41642 Mass(u) = 20.3125 InFlowRate(u) = -0.0322104
+Step(8), t(2): Energy(u) = 5.14992 Mass(u) = 20.3125 InFlowRate(u) = -0.0115986 OutFlowRate(u) = 0.000123278
+Step(12), t(3): Energy(u) = 4.41374 Mass(u) = 20.3093 InFlowRate(u) = -0.00333524 OutFlowRate(u) = 0.0120654
+Step(16), t(4): Energy(u) = 3.92065 Mass(u) = 20.2328 InFlowRate(u) = -0.000935925 OutFlowRate(u) = 0.201166
+Step(20), t(5): Energy(u) = 3.55 Mass(u) = 19.6705 InFlowRate(u) = -0.000263342 OutFlowRate(u) = 1.0643
+Step(24), t(6): Energy(u) = 3.14032 Mass(u) = 17.85 InFlowRate(u) = -7.48056e-05 OutFlowRate(u) = 2.62639
+Step(28), t(7): Energy(u) = 2.44441 Mass(u) = 14.5208 InFlowRate(u) = -2.14859e-05 OutFlowRate(u) = 3.89814
+end program after  3.24 seconds on 4 procs at Tue Jun 25 11:23:20 2019

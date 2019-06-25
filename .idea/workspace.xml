@@ -11,6 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d635748c-25b6-452a-b0ab-f980818c5532" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/Bericht-3/Aufgaben_Ergebnisse.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Bericht-3/Aufgaben_Ergebnisse.tex" afterDir="false" />
+>>>>>>> 9b76c958f6a372a5b1e16cc4897d5cff02f3f0b5
       <change beforePath="$PROJECT_DIR$/aufgabe24.py" beforeDir="false" afterPath="$PROJECT_DIR$/aufgabe24.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/transport.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/transport.conf" afterDir="false" />
@@ -32,11 +36,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aufgabe24.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="37">
               <caret line="243" column="18" selection-start-line="243" selection-start-column="18" selection-end-line="243" selection-end-column="18" />
+=======
+            <state relative-caret-position="299">
+              <caret line="354" column="37" selection-start-line="354" selection-start-column="37" selection-end-line="354" selection-end-column="37" />
+>>>>>>> 9b76c958f6a372a5b1e16cc4897d5cff02f3f0b5
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-                <element signature="e#328#602#0" />
               </folding>
             </state>
           </provider>
@@ -243,18 +251,32 @@
       <workItem from="1561283663052" duration="262000" />
       <workItem from="1561288826027" duration="1167000" />
       <workItem from="1561355108397" duration="753000" />
+<<<<<<< HEAD
       <workItem from="1561379347944" duration="3610000" />
       <workItem from="1561401900701" duration="4956000" />
+=======
+      <workItem from="1561379347944" duration="6564000" />
+      <workItem from="1561449073235" duration="5457000" />
+      <workItem from="1561461197015" duration="791000" />
+>>>>>>> 9b76c958f6a372a5b1e16cc4897d5cff02f3f0b5
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="38349000" />
+=======
+    <option name="totallyTimeSpent" value="42595000" />
+>>>>>>> 9b76c958f6a372a5b1e16cc4897d5cff02f3f0b5
   </component>
   <component name="ToolWindowManager">
     <frame x="451" y="146" width="1400" height="1000" extended-state="0" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24477611" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17785235" />
+>>>>>>> 9b76c958f6a372a5b1e16cc4897d5cff02f3f0b5
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -269,7 +291,11 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.13672923" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3656286" />
+=======
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3297587" />
+>>>>>>> 9b76c958f6a372a5b1e16cc4897d5cff02f3f0b5
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -277,7 +303,11 @@
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" id="Database" order="6" />
+<<<<<<< HEAD
       <window_info anchor="right" x="0" y="0" width="337" height="678" id="Documentation" order="7" side_tool="true" visible="true" weight="0.3295302" />
+=======
+      <window_info active="true" anchor="right" x="0" y="0" width="337" height="678" id="Documentation" order="7" side_tool="true" visible="true" weight="0.3295302" />
+>>>>>>> 9b76c958f6a372a5b1e16cc4897d5cff02f3f0b5
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,11 +325,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aufgabe24.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="37">
           <caret line="243" column="18" selection-start-line="243" selection-start-column="18" selection-end-line="243" selection-end-column="18" />
+=======
+        <state relative-caret-position="299">
+          <caret line="354" column="37" selection-start-line="354" selection-start-column="37" selection-end-line="354" selection-end-column="37" />
+>>>>>>> 9b76c958f6a372a5b1e16cc4897d5cff02f3f0b5
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#328#602#0" />
           </folding>
         </state>
       </provider>
