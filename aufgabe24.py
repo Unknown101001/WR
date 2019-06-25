@@ -279,8 +279,7 @@ def main_transport():
     plt.savefig("plot.png")
     save("Aufgabe21", "Masseerhaltung_b_deg_2")
 
-
-if __name__ == "__main__":
+def main_masseerh():
     reslist = []
     beglist = []
     dtlist = []
@@ -288,7 +287,7 @@ if __name__ == "__main__":
     for i in range(6):
         delete_old()
 
-        dt = 0.25 * 0.5**i
+        dt = 0.25 * 0.5 ** i
         manipulate_conf("m++conf", [("loadconf", "riemann.conf")])
         manipulate_conf("riemann.conf",
                         [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square4"), ("Problem", "Riemann"),
@@ -302,8 +301,8 @@ if __name__ == "__main__":
         inflow = [a * 4 * dt for a in out[3]]
         res = mass_end + sum(outflow) + sum(inflow)
         res2 = mass_end + sum(outflow)
-        folder = "Masserverhalten"+str(dt)
-        save("Aufgabe21",folder)
+        folder = "Masserverhalten" + str(dt)
+        save("Aufgabe21", folder)
         dtlist.append(dt)
         reslist.append(res)
         reslist2.append(res2)
@@ -311,14 +310,48 @@ if __name__ == "__main__":
 
     print(dt)
     print(reslist)
-    plt.plot(dtlist,reslist,'--bo',label = 'Masse_Ende + Outflow + Inflow')
-    #plt.plot(dtlist,reslist2,label = 'Masse_Ende + Outflow')
-    plt.plot(dtlist,beglist,'--go', label = 'Masse_Beginn')
-    plt.xlim(0.25,0)
+    plt.plot(dtlist, reslist, '--bo', label='Masse_Ende + Outflow + Inflow')
+    # plt.plot(dtlist,reslist2,label = 'Masse_Ende + Outflow')
+    plt.plot(dtlist, beglist, '--go', label='Masse_Beginn')
+    plt.xlim(0.25, 0)
     plt.grid()
     plt.legend()
     plt.xlabel("Zeitschrittweite")
     plt.ylabel("Wert")
     plt.grid(True)
     plt.savefig("Aufgabe21/massoverdt2.png")
+if __name__ == "__main__":
+    delete_old()
+    dt = 0.03125
+    manipulate_conf("m++conf", [("loadconf", "riemann.conf")])
+    manipulate_conf("riemann.conf",
+                    [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square4"), ("Problem", "Riemann"),
+                     ("level", "6"), ("dt", str(dt))])
+    output = run()
+
+    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy", "Error"], output)
+    outflow = [a * 4 * dt for a in out[2]]
+    inflow = [a * 4 * dt for a in out[3]]
+    print(out[0])
+    print("Masse Ende: " + str(out[1][-1]))
+    print("Masse Beginn: " + str(out[1][0]))
+    print("Outflow: " + str(sum(outflow)))
+    print("Inflow: " + str(sum(inflow)))
+    #save("Aufgabe21", "Test")
+    dif = [out[1][i] + out[2][i] for i in range(len(out[2]))]
+    plt.plot(out[0], out[1], label='mass')
+    plt.plot(out[0], out[2], label='outflowrate')
+    plt.plot(out[0], out[3], label='inflowrate')
+    # plt.plot(out[0], out[5], label='error')
+    plt.plot(out[0], outflow, label='outflow')
+    plt.plot(out[0], inflow, label='inflow')
+
+    # plt.plot(out[0], out[4], label='energy')
+    plt.grid()
+    plt.legend()
+    plt.xlabel("Zeitschritt s")
+    plt.ylabel("Wert")
+    plt.grid(True)
+    plt.savefig("Aufgabe21/plotraten2.png")
+
 
