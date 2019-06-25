@@ -100,7 +100,7 @@ Sei $\Omega = \R ^D$ , $q_0 \in \R ^D$ , $n_0 \in \R ^D$ und
 	Bei allen nicht grün gefärbten Zielwerten bis auf Level 4 bei dt 0,25 handelt es sich um den Wert der Energie zum Zeitpunkt $\tilde{t}<T$,  bei dem das Programm aufgrund der auftretenden Divergenz stoppt.
 \end{remark}
 Anhand obiger Tabelle lässt sich die bereits genannte CFL-Bedingung für die Stabilität des Zeitintegrators sehr leicht nachvollziehen. \newline
-Für die Zeitschrittweite $\Delta t = 0,25$ liefert nur für Level 3 ein vernünftiges Ergebnis. Für Level 4 ist die Energie zum Zielzeitpunkt T bereits jenseits der Größenordnung der zu Beginn vorhandenen Energie, bei Level 5 und 6 sieht man sogar noch besser, dass die Lösung divergiert. Diese Ergebnisse lassen sich mit der CFL-Bedingung erklären: \newline
+Für die Zeitschrittweite $\Delta t = 0,25$ liefert nur Level 3 ein vernünftiges Ergebnis. Für Level 4 ist die Energie zum Zielzeitpunkt T bereits jenseits der Größenordnung der zu Beginn vorhandenen Energie, bei Level 5 und 6 sieht man sogar noch besser, dass die Lösung divergiert. Diese Ergebnisse lassen sich mit der CFL-Bedingung erklären: \newline
 Während wir bei Level 3 noch 
 \begin{align*}
 	\Delta t = 0,25 < C \cdot 1,25  = Ch
@@ -119,15 +119,15 @@ Wie man also auch anhand der Tabelle schön sieht erhalten wir für jede Halbier
 
 \end{figure}
 Im Gegensatz dazu sieht man bei Verwendung der impliziten Mittelpunktsregel, dass diese ohne CFL-Bedingung stabil ist und somit keine Divergenzen auftreten. Grund dafür ist, dass die implizite Mittelpunktsregel sogar A-stabil ist.
-Allerdings sind dafür die resultierenden Energiewerte für den Zeitpunkt T nicht mehr so schön konstant beim Vergleich verschiedener Zeitschrittweiten, wie zuvor bei den (konvergenten) Werten vom expliziten RK-Verfahren.
+Allerdings sind dafür die resultierenden Energiewerte für den Zeitpunkt T nicht mehr so schön konstant beim Vergleich verschiedener Zeitschrittweiten wie zuvor bei den (konvergenten) Werten vom expliziten RK-Verfahren.
 Während zuvor die Energiewerte zum Zeitpunkt T (im Falle der Konvergenz) stets übereinstimmten, unabhängig davon mit welcher Zeitschrittweite gerechnet wurde, erhalten wir nun schwach schwankende Ergebnisse.
-Betrachtet man zudem noch den zeitlichen Verlauf der Masse und Energie, erhält man Ansätze dafür wie die Fehler zur exakten Lösung zu den unterschiedlichen Zeitpunkten entstehen.
+Betrachtet man zudem noch den zeitlichen Verlauf der Masse und Energie, erhält man Ansätze dafür, wie die Fehler zur exakten Lösung zu den unterschiedlichen Zeitpunkten entstehen.
 \begin{figure}[H]
 	\centering
 	\captionabove{Zeitverlauf von Energie/Masse beim Lösen des Riemannproblems (Level 6, dt 0,03125, Rk4)}
     \includegraphics[width=0.8\textwidth]{../Aufgabe21/zeitverlauf.png}
 \end{figure}
-Wir erklären zunächst das Verhalten der Masse, und gehen danach kurz auf die Energie ein:
+Wir erklären zunächst das Verhalten der Masse und gehen danach kurz auf die Energie ein:
 
 \begin{figure}[H]
 	\centering
@@ -169,7 +169,7 @@ Betrachtet man zudem noch den Verlauf dieser Größe für $dt \to 0$ erhält man
 \end{figure}
 
 
-Betrachten wir nun hingegen in Abbildung 5 den zeitlichen Verlauf der Energie, so stellen wir schnell fest, dass diese nicht erhalten wird. Dies deckt sich mit den theoretischen Resultaten der Vorlesung insofern, dass wir für das Finite Volumen Verfahren mit upwind-flux nachgewiesen haben, dass dieser zwar Masse- nicht aber Energieerhaltend ist. Diese fehlende Energieerhaltung wird im zeitlichen Verlauf sehr gut deutlich. Hier bedarf es also anderen Vorgehensweisen bzw. Verfahren um auch die Energieerhaltung sicherzustellen.
+Betrachten wir nun hingegen in Abbildung 5 den zeitlichen Verlauf der Energie, so stellen wir schnell fest, dass diese nicht erhalten wird. Dies deckt sich mit den theoretischen Resultaten der Vorlesung insofern, dass wir für das Finite Volumen Verfahren mit upwind-flux nachgewiesen haben, dass dieser zwar masse- nicht aber energieerhaltend ist. Diese fehlende Energieerhaltung wird im zeitlichen Verlauf sehr gut deutlich. Hier bedarf es also anderen Vorgehensweisen bzw. Verfahren, um auch die Energieerhaltung sicherzustellen.
 \newpage
 \subsubsection{Problem B (CircleWave)}
 Wir setzen für das Problem CircleWave:
