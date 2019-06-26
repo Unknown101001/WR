@@ -6,7 +6,7 @@ import shutil
 import re
 from distutils.dir_util import copy_tree
 
-kernels = 4
+kernels = 8
 working_dir = "mpp/build"
 
 
@@ -224,7 +224,6 @@ def main_masse():
                     [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square4"), ("Problem", "Riemann"),
                      ("level", "6"), ("dt", str(dt))])
     output = run()
-
     out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy", "Error"], output)
     outflow = [a * 4 * dt for a in out[2]]
     inflow = [a * 4 * dt for a in out[3]]
@@ -278,7 +277,6 @@ def main_transport():
     plt.grid(True)
     plt.savefig("plot.png")
     save("Aufgabe21", "Masseerhaltung_b_deg_2")
-
 def main_masseerh():
     reslist = []
     beglist = []
@@ -320,6 +318,9 @@ def main_masseerh():
     plt.ylabel("Wert")
     plt.grid(True)
     plt.savefig("Aufgabe21/massoverdt2.png")
+
+
+
 if __name__ == "__main__":
     delete_old()
     dt = 0.03125
@@ -353,5 +354,4 @@ if __name__ == "__main__":
     plt.ylabel("Wert")
     plt.grid(True)
     plt.savefig("Aufgabe21/plotraten2.png")
-
 

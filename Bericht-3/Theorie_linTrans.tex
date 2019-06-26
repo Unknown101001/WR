@@ -5,14 +5,14 @@
 \textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wie bisher betrachten wir nur zweidimensionale Gebiete) und der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
 transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ kann interpretiert werden als die Menge der Randpunkte an dem Substanz einfließen kann).
 
-Gegebenenfalls werden wir Argumente von Funktionen weglassen, z. B. $ \rho(t) \coloneqq \rho(t,\cdot), \rho(x) \coloneqq \rho(\cdot, x) $. Es sollte aus dem Kontext und der Variablenbenennung klar werden was an der jeweiligen Stelle gemeint wird. Weiter bezeichnet $ \nabla \rho $ immer $ \nabla \rho(t,\cdot) $ für ein feste $ t \in [0,T] $, also der Gradient  im \enquote{Raum}. Analog wird für $ \dive(\rho q) $ verfahren.
+Gegebenenfalls werden wir Argumente von Funktionen weglassen, z. B. $ \rho(t) \coloneqq \rho(t,\cdot), \rho(x) \coloneqq \rho(\cdot, x) $. Es sollte aus dem Kontext und der Variablenbenennung klar werden, was an der jeweiligen Stelle gemeint wird. Weiter bezeichnet $ \nabla \rho $ immer $ \nabla \rho(t,\cdot) $ für ein feste $ t \in [0,T] $, also der Gradient  im \enquote{Raum}. Analog wird für $ \dive(\rho q) $ verfahren.
 
-Aus der physikalischen Modell gilt folgende Bilanzgleichung:
+Aus dem physikalischen Modell gilt folgende Bilanzgleichung:
 \begin{gather*}
 	\forall \ K \subseteq \Omega, t \in [0,T]: \frac{\diff}{\diff t} \int_K \rho(x,t) \diff x + \oint_{\partial K} \rho(x,t) q(x) \cdot \nu(x) \diff a = 0 \\
 	\stackrel{\text{Gauß}}{\implies} \int_K \partial_t \rho(x,t) + \dive(\rho q)(x,t) \diff x = 0 
 \end{gather*}
-Da $ K \subseteq \Omega $ beliebig ist und $ \rho, q \in C^1(\Omega) $ folgt die \defi{lineare Transportgleichung}
+Da $ K \subseteq \Omega $ beliebig ist und $ \rho, q \in C^1(\Omega) $, folgt die \defi{lineare Transportgleichung}
 \begin{gather*}
 	\partial_t \rho + \dive(\rho q) = 0 \text{ in } \Omega \times (0,T) 
 \end{gather*}
@@ -42,7 +42,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 	\begin{enumerate}[label=(\arabic*)]
 		\item Masse zum Zeitpunkt $ t $,
 		\item Masse zum Anfangszeitpunkt $ 0 $,
-		\item Masse, die in $ [0,t] $ über den Rand hinzu geflossen ist ($ \nu $ ist äußere Normale, deswegen \enquote{-} statt \enquote{+}),
+		\item Masse, die in $ [0,t] $ über den Rand hinzugeflossen ist ($ \nu $ ist äußere Normale, deswegen \enquote{-} statt \enquote{+}),
 		\item Masse, die in $ [0,t] $ über den Rand abgeflossen ist.
 	\end{enumerate}
 
@@ -107,7 +107,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 \end{Lemma}
 
 \subsection{Numerische Approximation}
-Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren  um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
+Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren,  um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
 
 Unser  Ansatz-/Lösungsraum wird $Q_h = \Pi_{K \in \mathcal{K}}  \mathbb{P}_k $ sein, also der Raum der Funktionen, die auf jeder Zelle ein Polynom von Grad $ \leq k $ sind. Im Vergleich zu den Finiten-Elementen-Methoden wird nicht mehr die Stetigkeit der Lösung auf ganz $ \Omega $ gefordert. Damit gilt $ Q_h \not \subseteq \mathcal{H}^1_0(\Omega)=\mathcal{W}^{1,2}_0(\Omega) $ und $ Q_h $ ist ein nicht-konformer Ansatz-/Lösungsraum.
 
@@ -133,14 +133,14 @@ Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho 
 	&&& \qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K \cap \Gammain} \bigg) \tag{\sun}
 \end{align*}
 \begin{remark}
-	zu $ (\star) $: Integration über inneren Kanten $ F $ fällt weg. Denn über jede innere Kante genau zwei mal integriert wird, einmal pro anliegender Zelle und da die äußeren Normale jeweils entgegengesetzt sind, fällt die Integration weg. Genauer:
+	zu $ (\star) $: Integration über die inneren Kanten $ F $ fällt weg. Denn über jede innere Kante wird genau zwei mal integriert, einmal pro anliegender Zelle. Da die äußeren Normale bei anliegenden Zellen jeweils entgegengesetzt sind, fällt die Integration über die gemeinsame Kante weg. Genauer:
 	\[ F = K \cap K': \oint_{F}  \phi \Psi(\rho) \cdot n^K \diff a = - \oint_{F} \phi \Psi(\rho) \cdot n^{K'} \diff a\]
 \end{remark}
 \ \newline
-\textbf{Ziel}:Eine semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ bzw eine Differenzialgleichung für $ \rho_h $ herzuleiten
+\textbf{Ziel}:Eine semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ bzw. eine Differenzialgleichung für $ \rho_h $ herzuleiten
 
 \textbf{Approximation}:
-Wir wähle den Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ u \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werde, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux), welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
+Wir wählen den Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ u \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werden, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux), welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
 Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi_h \in Q_h $
 \[
 \sum_{i = 1}^{N} \left(\partial_t \rho_h, \phi_h  \right)_{K_i}  = \sum_{i=1}^{N} \bigg(- \left(\Psi(\rho_h), \nabla\phi_h \right)_{K_i} -\sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K_i \cap \Gammain} \bigg)
@@ -149,7 +149,7 @@ Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi
 
 
 \textbf{Finite-Volumen}:
-Wir betrachten im folgenden zunächst nur den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $. 
+Wir betrachten im Folgenden zunächst nur den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $. 
 
 Als numerischen Fluss verwenden wir den \defi{upwind flux} $ \Psi^* $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
 \begin{gather*}
@@ -264,11 +264,11 @@ und zum anderen die implizite Mittelpunktsregel
 \subsection{Erhaltungsgrößen der numerischen Lösung}
 
 \begin{repetition}
-	Wie in Abschnitt \ref{subsec:Erhaltungsgroessen der analytischen Loesung} \enquote{Erhaltungsgrößen der analytischen Lösung} gesehen gilt für die analytische Lösung:
+	Wie in Abschnitt \ref{subsec:Erhaltungsgroessen der analytischen Loesung} \enquote{Erhaltungsgrößen der analytischen Lösung} gesehen, gilt für die analytische Lösung:
 	\begin{itemize}
 		\item nicht-negativ (da der Zielraum von $ \rho: \Omega \times [0,T] \to \R_{\geq 0}$ $ \R_{\geq 0} $ ist)
 		\item Massenbilanz (Lemma \ref{Massenbilanz})
-		\item Endergiebilanz (Lemma \ref{Energiegleichung})
+		\item Energiebilanz (Lemma \ref{Energiegleichung})
 	\end{itemize}
 \end{repetition}
 
@@ -326,7 +326,7 @@ Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung 
 
 \subsection{Discontinuous-Galerkin-Verfahren}
 Wir wollen nun noch (kurz) auf das Discontinuous-Galerkin-Verfahren eingehen. Im Gegensatz zum Finite Volumen Verfahren, wollen wir uns hierbei aber auf die wesentlichen Unterschiede und Ideen beschränken und dabei auf eine vollständige Herleitung verzichten. \newline
-Im Gegensatz zum Finite Volumen Verfahren wählen wir beim Discontinuous-Galerkin-Verfahren $\Pi_{K\in\mathcal{K}} \mathbb{P}_k $ mit $ k \geq 1 $. Es sei noch einmal wie bereits beim Finite-Volumen-Verfahren erwähnt, dass hierbei für die Elemente aus $Q_h$ keine Stetigkeit auf $\Omega$ gefordert wird und somit kein konformer Lösungs-/Ansatzraum vorliegt. \newline
+Im Gegensatz zum Finite Volumen Verfahren wählen wir beim Discontinuous-Galerkin-Verfahren $\Pi_{K\in\mathcal{K}} \mathbb{P}_k $ mit $ k \geq 1 $. Es sei noch einmal, wie bereits beim Finite-Volumen-Verfahren, erwähnt, dass hierbei für die Elemente aus $Q_h$ keine Stetigkeit auf $\Omega$ gefordert wird und somit kein konformer Lösungs-/Ansatzraum vorliegt. \newline
 Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
 	\begin{align*}
 		(\partial_t \rho_h , \Phi_h)_{\Omega} &= -(\Psi(\rho_h),\nabla \Phi_h)_{\Omega}
@@ -346,7 +346,7 @@ Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
 			(A_h,\rho_h,\rho_h)_{\Omega} &= - \int_{\partial 	\Omega} | \rho_h | ^2 | q \cdot n | da - \frac{1}{2} \sum_{F 	\in \mathcal{F} \backslash \partial \Omega} | \rho_k - 	\rho_{K_f} |^2 |q \cdot n| da \\
 			&\Rightarrow - \underline{A} \text{ ist positiv 	semidefinit}
 		\end{align*}
-		\item Lemma \ref{diskrete Massenbilanz} (die diskrete Massebilanz) lässt sich auf das DG-Verfahren übertragen, indem statt punktweiser Erhaltung, Erhaltung im Mittel betrachtet wird.
+		\item Lemma \ref{diskrete Massebilanz} (die diskrete Massebilanz) lässt sich auf das DG-Verfahren übertragen, indem, statt punktweiser Erhaltung, Erhaltung im Mittel betrachtet wird.
 		\item Es gilt für die DG-Approximation mit Upwind-Flux: \newline
 		\begin{align*}
 			\int_{\Omega} | \rho_h (t) | ^2 \diff x &= \int_{\Omega} |\rho_0 |^2 \diff x 
