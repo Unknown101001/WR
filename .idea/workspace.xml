@@ -10,9 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d635748c-25b6-452a-b0ab-f980818c5532" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bericht-3/Aufgaben_Ergebnisse.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Bericht-3/Aufgaben_Ergebnisse.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aufgabe24.py" beforeDir="false" afterPath="$PROJECT_DIR$/aufgabe24.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/m++conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/m++conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/pollution.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpp/Praktikum/conf/riemann.conf" beforeDir="false" afterPath="$PROJECT_DIR$/mpp/Praktikum/conf/riemann.conf" afterDir="false" />
@@ -36,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aufgabe24.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="354" column="37" selection-start-line="354" selection-start-column="37" selection-end-line="354" selection-end-column="37" />
+            <state relative-caret-position="639">
+              <caret line="353" column="18" selection-start-line="353" selection-start-column="18" selection-end-line="353" selection-end-column="18" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -248,16 +245,15 @@
       <workItem from="1561355108397" duration="753000" />
       <workItem from="1561379347944" duration="6564000" />
       <workItem from="1561449073235" duration="5457000" />
-      <workItem from="1561461197015" duration="791000" />
+      <workItem from="1561461197015" duration="1389000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42595000" />
+    <option name="totallyTimeSpent" value="43193000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17785235" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -306,8 +302,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aufgabe24.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="354" column="37" selection-start-line="354" selection-start-column="37" selection-end-line="354" selection-end-column="37" />
+        <state relative-caret-position="639">
+          <caret line="353" column="18" selection-start-line="353" selection-start-column="18" selection-end-line="353" selection-end-column="18" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
