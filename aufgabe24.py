@@ -216,6 +216,7 @@ def plot2():
     plt.grid(True)
     plt.savefig("plot2.png")
 
+
 def main_masse():
     delete_old()
     dt = 0.5 * 0.03125
@@ -237,7 +238,7 @@ def main_masse():
     plt.plot(out[0], out[1], label='mass')
     plt.plot(out[0], out[2], label='outflowrate')
     plt.plot(out[0], out[3], label='inflowrate')
-    #plt.plot(out[0], out[5], label='error')
+    # plt.plot(out[0], out[5], label='error')
     plt.plot(out[0], outflow, label='outflow')
     plt.plot(out[0], inflow, label='inflow')
 
@@ -248,9 +249,11 @@ def main_masse():
     plt.ylabel("Wert")
     plt.grid(True)
     plt.savefig("Aufgabe21/Test/plot.png")
+
+
 def main_transport():
     delete_old()
-    dt = 0.5* 0.0015625
+    dt = 0.5 * 0.0015625
     manipulate_conf("m++conf", [("loadconf", "transport.conf")])
     manipulate_conf("transport.conf",
                     [("rkorder", "-2"), ("deg", "0"), ("Mesh", "Square-10x10quad"), ("Problem", "Circle_Wave"),
@@ -258,7 +261,7 @@ def main_transport():
     output = run()
 
     out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate", "InFlowRate", "Energy", "Error"], output)
-    outflow = [a * 10* dt for a in out[2]]
+    outflow = [a * 10 * dt for a in out[2]]
     inflow = [a * 10 * dt for a in out[3]]
     print("Masse Ende: " + str(out[1][-1]))
     print("Masse Beginn: " + str(out[1][0]))
@@ -277,6 +280,8 @@ def main_transport():
     plt.grid(True)
     plt.savefig("plot.png")
     save("Aufgabe21", "Masseerhaltung_b_deg_2")
+
+
 def main_masseerh():
     reslist = []
     beglist = []
@@ -320,8 +325,7 @@ def main_masseerh():
     plt.savefig("Aufgabe21/massoverdt2.png")
 
 
-
-if __name__ == "__main__":
+def main_bericht3():
     delete_old()
     dt = 0.03125
     manipulate_conf("m++conf", [("loadconf", "riemann.conf")])
@@ -338,7 +342,7 @@ if __name__ == "__main__":
     print("Masse Beginn: " + str(out[1][0]))
     print("Outflow: " + str(sum(outflow)))
     print("Inflow: " + str(sum(inflow)))
-    #save("Aufgabe21", "Test")
+    # save("Aufgabe21", "Test")
     dif = [out[1][i] + out[2][i] for i in range(len(out[2]))]
     plt.plot(out[0], out[1], label='mass')
     plt.plot(out[0], out[2], label='outflowrate')
@@ -354,4 +358,95 @@ if __name__ == "__main__":
     plt.ylabel("Wert")
     plt.grid(True)
     plt.savefig("Aufgabe21/plotraten2.png")
+def main_27a():
+    rels = [-2.5 , -1, 0, 1, 2.5, 5]
+    for react in rels:
+        print("running")
+        delete_old()
+        manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
+        manipulate_conf("hybridreaction.conf",
+                        [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
+                         ("T", "1.6"),
+                         ("dt", "0.05"), ("Diffusion", "0.001"), ("delta", "0"),("Reaction = ",react)])
+        output = run()
+        out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
+        name = "reaction=" + str(react)
+        save("Aufgabe27", name)
+        fig = plt.figure()
+        time = [0.05 * a for a in out[0]]
+        plt.subplot(211)
+        plt.plot(time, out[1], label='Masse')
+        plt.grid()
+        plt.legend()
+        plt.xlabel("Zeit")
+        plt.ylabel("Wert")
+        plt.grid(True)
+        plt.subplot(212)
+        plt.plot(time, out[2], label='OutFlowRate')
+        plt.grid()
+        plt.legend()
+        plt.xlabel("Zeit")
+        plt.ylabel("Wert")
+        plt.grid(True)
+
+        plt.subplots_adjust(hspace=0.35)
+        plt.savefig("Aufgabe27/" + name + "/plot.png")
+        print(react)
+        print("done")
+def main_27_b():
+    diffls = [0.0001]#, 0.00001, 0.000001]
+    for diff in diffls:
+        delete_old()
+        manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
+        manipulate_conf("hybridreaction.conf",
+                        [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
+                         ("T", "1.6"),
+                         ("dt", "0.05"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction =", "5")])
+        7
+        output = run()
+        name = "reaction=5_diffusion=" + str(diff)
+        save("Aufgabe27", name)
+
+        delete_old()
+        manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
+        manipulate_conf("hybridreaction.conf",
+                        [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
+                         ("T", "1.6"),
+                         ("dt", "0.05"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction =", "0")])
+        7
+        output = run()
+        name = "reaction=0_diffusion=" + str(diff)
+        save("Aufgabe27", name)
+def main_27_c():
+    diffls = [0.0001]  # , 0.00001, 0.000001]
+    for diff in diffls:
+        delete_old()
+        manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
+        manipulate_conf("hybridreaction.conf",
+                        [("HybridProblem", "HybridReaction"), ("Discretization", "serendipity"), ("level", "2"),
+                         ("T", "1.6"),
+                         ("dt", "0.05"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction =", "5")])
+        7
+        output = run()
+        name = "serendipity_lvl=2_reaction=5_diffusion=" + str(diff)
+        save("Aufgabe27", name)
+
+        delete_old()
+        manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
+        manipulate_conf("hybridreaction.conf",
+                        [("HybridProblem", "HybridReaction"), ("Discretization", "serendipity"), ("level", "3"),
+                         ("T", "1.6"),
+                         ("dt", "0.05"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction =", "5")])
+        7
+        output = run()
+        name = "serendipity_lvl=3_reaction=5_diffusion=" + str(diff)
+        save("Aufgabe27", name)
+
+if __name__ == "__main__":
+    main_27_c()
+
+
+
+
+
 
