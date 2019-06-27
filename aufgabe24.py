@@ -34,7 +34,8 @@ def manipulate_conf(confdatei, tupelliste):
         for tupel in tupelliste:
             key = tupel[0]
             value = tupel[1]
-            if any(key in s for s in conf):
+            search = key + " =" #looks behind
+            if any((search in s and s.split(search)[0]=="") for s in conf):
                 # print("YES")
                 index = conf.index(next((s for s in conf if key in s), None))
                 conf[index] = key + " = " + value + ";\n"
@@ -361,17 +362,17 @@ def main_bericht3():
 def main_27a():
     rels = [-2.5 , -1, 0, 1, 2.5, 5]
     for react in rels:
-        print("running")
         delete_old()
         manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
         manipulate_conf("hybridreaction.conf",
                         [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
                          ("T", "1.6"),
-                         ("dt", "0.05"), ("Diffusion", "0.001"), ("delta", "0"),("Reaction = ",react)])
+                         ("dt", "0.025"), ("Diffusion", "0.001"), ("delta", "0"),("Reaction",str(react)),("Model","HybridReaction")])
         output = run()
-        out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
+
         name = "reaction=" + str(react)
         save("Aufgabe27", name)
+        out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
         fig = plt.figure()
         time = [0.05 * a for a in out[0]]
         plt.subplot(211)
@@ -394,55 +395,108 @@ def main_27a():
         print(react)
         print("done")
 def main_27_b():
-    diffls = [0.0001]#, 0.00001, 0.000001]
+    diffls = [0.0001, 0.00001, 0.000001]
     for diff in diffls:
         delete_old()
         manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
         manipulate_conf("hybridreaction.conf",
                         [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
                          ("T", "1.6"),
-                         ("dt", "0.05"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction =", "5")])
+                         ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction", "5"),("Model","HybridReaction")])
         7
         output = run()
         name = "reaction=5_diffusion=" + str(diff)
-        save("Aufgabe27", name)
+        print(name)
+        print("done")
+        #save("Aufgabe27", name)
 
         delete_old()
         manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
         manipulate_conf("hybridreaction.conf",
                         [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
                          ("T", "1.6"),
-                         ("dt", "0.05"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction =", "0")])
+                         ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction", "0"),("Model","HybridReaction")])
         7
         output = run()
         name = "reaction=0_diffusion=" + str(diff)
-        save("Aufgabe27", name)
+        print(name)
+        print("done")
+        #save("Aufgabe27", name)
+        out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
+        fig = plt.figure()
+        time = [0.05 * a for a in out[0]]
+        plt.subplot(211)
+        plt.plot(time, out[1], label='Masse')
+        plt.grid()
+        plt.legend()
+        plt.xlabel("Zeit")
+        plt.ylabel("Wert")
+        plt.grid(True)
+        plt.subplot(212)
+        plt.plot(time, out[2], label='OutFlowRate')
+        plt.grid()
+        plt.legend()
+        plt.xlabel("Zeit")
+        plt.ylabel("Wert")
+        plt.grid(True)
+
+        plt.subplots_adjust(hspace=0.35)
+        plt.savefig("Aufgabe27/" + name + "/plot.png")
+        print("done")
 def main_27_c():
-    diffls = [0.0001]  # , 0.00001, 0.000001]
+    diffls = [0.000001]# , 0.00001, 0.000001]
     for diff in diffls:
+        '''
         delete_old()
         manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
         manipulate_conf("hybridreaction.conf",
                         [("HybridProblem", "HybridReaction"), ("Discretization", "serendipity"), ("level", "2"),
                          ("T", "1.6"),
-                         ("dt", "0.05"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction =", "5")])
+                         ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction", "5"),("Model","HybridReaction")])
         7
         output = run()
         name = "serendipity_lvl=2_reaction=5_diffusion=" + str(diff)
+        print(name)
+        print("done")
         save("Aufgabe27", name)
-
+        '''
         delete_old()
         manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
         manipulate_conf("hybridreaction.conf",
                         [("HybridProblem", "HybridReaction"), ("Discretization", "serendipity"), ("level", "3"),
                          ("T", "1.6"),
-                         ("dt", "0.05"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction =", "5")])
+                         ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction", "5"),("Model","HybridReaction")])
         7
         output = run()
         name = "serendipity_lvl=3_reaction=5_diffusion=" + str(diff)
-        save("Aufgabe27", name)
+        print(name)
+        print("done")
+        #save("Aufgabe27", name)
+        out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
+        fig = plt.figure()
+        time = [0.05 * a for a in out[0]]
+        plt.subplot(211)
+        plt.plot(time, out[1], label='Masse')
+        plt.grid()
+        plt.legend()
+        plt.xlabel("Zeit")
+        plt.ylabel("Wert")
+        plt.grid(True)
+        plt.subplot(212)
+        plt.plot(time, out[2], label='OutFlowRate')
+        plt.grid()
+        plt.legend()
+        plt.xlabel("Zeit")
+        plt.ylabel("Wert")
+        plt.grid(True)
+
+        plt.subplots_adjust(hspace=0.35)
+        plt.savefig("Aufgabe27/" + name + "/plot.png")
+        print("done")
 
 if __name__ == "__main__":
+    #main_27a()
+    #main_27_b()
     main_27_c()
 
 
