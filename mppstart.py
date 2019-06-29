@@ -7,7 +7,7 @@ import re
 from distutils.dir_util import copy_tree
 import sys
 
-kernels = 8
+kernels = 4
 working_dir = "mpp/build"
 
 
