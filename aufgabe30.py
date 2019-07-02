@@ -9,7 +9,7 @@ def main():
     manipulate_conf("hybridreaction.conf",
                     [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
                      ("T", "1.6"),
-                     ("dt", "0.025"), ("Diffusion", "0.001"), ("delta", "0"), ("Reaction", str(react)),
+                     ("dt", "0.05"), ("Diffusion", "0.001"), ("delta", "0"), ("Reaction_0","1"),("Reaction_1","1"),
                      ("Model", "HybridReaction"),("Convection","0.1")])
     output = run()
     out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
@@ -37,3 +37,7 @@ def main():
     plt.savefig("Aufgabe30/" + name + "/plot.png")
 
     print("saved")
+
+
+if __name__ == "__main__":
+    main()
