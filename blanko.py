@@ -5,7 +5,7 @@ from mppstart import *
 def main():
     delete_old()
     manipulate_conf("m++conf", [()])
-    manipulate_conf(None,
+    manipulate_conf("",
                     [(), ()])
     output = run()
     out = parse_mpp_output_allg([], output)
