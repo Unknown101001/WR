@@ -9,8 +9,8 @@ def main_30():
     manipulate_conf("hybridreaction.conf",
                     [("HybridProblem", "HybridReaction_logistic"), ("Discretization", "linear"), ("level", "2"),
                      ("T", "1.6"),
-                     ("dt", "0.05"), ("Diffusion", "0.001"), ("delta", "0"), ("Reaction_0","1"),("Reaction_1","0"),
-                     ("Model", "HybridReaction"),("Convection","1")])
+                     ("dt", "0.05"), ("Diffusion", "0.001"), ("delta", "0"), ("Reaction_0","5"),("Reaction_1","5"),
+                     ("Model", "HybridReaction"),("Convection","0.2")])
     output = run()
     out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
     name = "Test"
@@ -127,4 +127,5 @@ def main_32():
 
 
 if __name__ == "__main__":
-    main_32()
+    #main_32()
+    main_30()
