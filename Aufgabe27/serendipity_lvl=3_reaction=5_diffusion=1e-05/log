@@ -1,0 +1,510 @@
+start program on 8 procs at Wed Jun 26 23:29:39 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 0
+  reading ... Model = HybridReaction
+  reading ... Mesh = Square500
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 3
+  reading ... plevel = 0
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  default ... Overlap = none
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+59 cells on proc 0 of 478 cells on 8 procs -- min cells: 59  max cells: 60
+  default ... Overlap = none
+in RT0DoF with  m = 1
+  reading ... Problem = Simple2D
+  default ... SetSolution = 1
+  default ... AssembleVerbose = 1
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  default ... PS_checkdiagonal = 1
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... LinearSolver = GMRES
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-11
+  reading ... LinearReduction = 1e-08
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 10
+  reading ... NewtonLineSearchSteps = 3
+  reading ... NewtonEpsilon = 1e-07
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 3
+
+ Level:          3
+ Dimension:      2
+ Cells:          30592
+ Problem size:   46416
+ Vertices:       15808
+ Edges:          46416
+ Mesh width:     [0.0078125,0.0110485]
+ Assemble        Hybrid
+
+ Problem:        Simple Problem 2D
+ Discretization: RT0_P0
+
+ Newton: d(0)= 0.0883883
+  GMRES: d(1)= 2.96646e-13 rate 3.35617e-12 time  0.02 seconds
+ Newton: d(1)= 3.13509e-13 rate 3.54695e-12 time  6.69 seconds
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 0
+  reading ... Discretization = serendipity
+  reading ... Discretization = serendipity
+  reading ... HybridProblem = HybridReaction
+  reading ... Diffusion = 1e-05
+  reading ... Convection = 1
+  reading ... Reaction = 5
+  default ... AssembleVerbose = 1
+  reading ... delta = 0
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = LIB_PS
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  default ... PS_checkdiagonal = 1
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-11
+  reading ... LinearReduction = 1e-08
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 10
+  reading ... NewtonLineSearchSteps = 3
+  reading ... NewtonEpsilon = 1e-07
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 3
+
+ Level:          3
+ Dimension:      2
+ Cells:          30592
+ Problem size:   62224
+ Vertices:       15808
+ Edges:          46416
+ Mesh width:     [0.0078125,0.0110485]
+ Assemble        Reaction
+
+ Problem:        Hybrid-Reaction Problem
+ Discretization: serendipity
+
+  default ... EulerVerbose = 1
+  default ... EulerExtrapolate = 1
+  default ... ReferenceCalculation = 0
+  default ... EulerSteps = 100000
+  default ... EulerConvergence = 1
+  default ... TimeSeries = uniform
+  default ... t0 = 0
+  reading ... T  = 1.6
+  reading ... dt = 0.025
+  default ... dt_min = 0.025
+Step(0), t(0): Mass(u) = 0.0245768 InFlowRate(u) = 0 OutFlowRate(u) = 0
+
+Euler step 1 from 0 to 0.025 (0.025) Wed Jun 26 23:29:54 2019
+ Newton: d(0)= 0.0277986
+  GMRES: d(1)= 2.40942e-16 rate 8.66743e-15 time  0.04 seconds
+ Newton: d(1)= 2.44821e-16 rate 8.80698e-15 time 12.96 seconds
+Step(1), t(0.025): Mass(u) = 0.0279369 InFlowRate(u) = 1.42635e-17 OutFlowRate(u) = 4.53231e-13
+
+Euler step 2 from 0.025 to 0.05 (0.025) Wed Jun 26 23:30:08 2019
+ Newton: d(0)= 0.0485235
+  GMRES: d(1)= 1.23e-16 rate 2.53486e-15 time  0.04 seconds
+ Newton: d(1)= 1.24619e-16 rate 2.56822e-15 time 13.05 seconds
+Step(2), t(0.05): Mass(u) = 0.0318375 InFlowRate(u) = -8.3619e-18 OutFlowRate(u) = 1.44133e-11
+
+Euler step 3 from 0.05 to 0.075 (0.025) Wed Jun 26 23:30:22 2019
+ Newton: d(0)= 0.014011
+  GMRES: d(1)= 8.52738e-17 rate 6.08622e-15 time  0.04 seconds
+ Newton: d(1)= 8.54107e-17 rate 6.09599e-15 time 13.05 seconds
+Step(3), t(0.075): Mass(u) = 0.0363547 InFlowRate(u) = -2.41511e-16 OutFlowRate(u) = 2.29356e-10
+
+Euler step 4 from 0.075 to 0.1 (0.025) Wed Jun 26 23:30:36 2019
+ Newton: d(0)= 0.00858941
+  GMRES: d(1)= 3.9266e-17 rate 4.57144e-15 time  0.04 seconds
+ Newton: d(1)= 4.14357e-17 rate 4.82404e-15 time 13.02 seconds
+Step(4), t(0.1): Mass(u) = 0.0415395 InFlowRate(u) = -8.93833e-16 OutFlowRate(u) = 2.43516e-09
+
+Euler step 5 from 0.1 to 0.125 (0.025) Wed Jun 26 23:30:50 2019
+ Newton: d(0)= 0.00655832
+  GMRES: d(1)= 3.83051e-17 rate 5.84069e-15 time  0.04 seconds
+ Newton: d(1)= 4.07471e-17 rate 6.21303e-15 time 12.99 seconds
+Step(5), t(0.125): Mass(u) = 0.0474711 InFlowRate(u) = -2.06261e-15 OutFlowRate(u) = 1.94078e-08
+
+Euler step 6 from 0.125 to 0.15 (0.025) Wed Jun 26 23:31:04 2019
+ Newton: d(0)= 0.00546427
+  GMRES: d(1)= 3.52782e-17 rate 6.45617e-15 time  0.04 seconds
+ Newton: d(1)= 3.86518e-17 rate 7.07355e-15 time 13.11 seconds
+Step(6), t(0.15): Mass(u) = 0.054253 InFlowRate(u) = -3.65605e-15 OutFlowRate(u) = 1.23852e-07
+
+Euler step 7 from 0.15 to 0.175 (0.025) Wed Jun 26 23:31:19 2019
+ Newton: d(0)= 0.00482387
+  GMRES: d(1)= 2.73892e-17 rate 5.67785e-15 time  0.05 seconds
+ Newton: d(1)= 3.17393e-17 rate 6.57965e-15 time 12.91 seconds
+Step(7), t(0.175): Mass(u) = 0.0620069 InFlowRate(u) = -5.43154e-15 OutFlowRate(u) = 6.59243e-07
+
+Euler step 8 from 0.175 to 0.2 (0.025) Wed Jun 26 23:31:33 2019
+ Newton: d(0)= 0.00444524
+  GMRES: d(1)= 2.88709e-17 rate 6.4948e-15 time  0.02 seconds
+ Newton: d(1)= 3.36632e-17 rate 7.57287e-15 time 13.05 seconds
+Step(8), t(0.2): Mass(u) = 0.0708712 InFlowRate(u) = -7.1065e-15 OutFlowRate(u) = 3.01061e-06
+
+Euler step 9 from 0.2 to 0.225 (0.025) Wed Jun 26 23:31:47 2019
+ Newton: d(0)= 0.00422919
+  GMRES: d(1)= 2.51596e-17 rate 5.94903e-15 time  0.05 seconds
+ Newton: d(1)= 3.11298e-17 rate 7.36069e-15 time 13.01 seconds
+Step(9), t(0.225): Mass(u) = 0.0810031 InFlowRate(u) = -8.4713e-15 OutFlowRate(u) = 1.2042e-05
+
+Euler step 10 from 0.225 to 0.25 (0.025) Wed Jun 26 23:32:01 2019
+ Newton: d(0)= 0.00412425
+  GMRES: d(1)= 2.87121e-17 rate 6.96177e-15 time  0.04 seconds
+ Newton: d(1)= 3.49784e-17 rate 8.48114e-15 time 12.88 seconds
+Step(10), t(0.25): Mass(u) = 0.0925809 InFlowRate(u) = -9.45516e-15 OutFlowRate(u) = 4.28583e-05
+
+Euler step 11 from 0.25 to 0.275 (0.025) Wed Jun 26 23:32:15 2019
+ Newton: d(0)= 0.00410325
+  GMRES: d(1)= 3.24872e-17 rate 7.91744e-15 time  0.04 seconds
+ Newton: d(1)= 4.01701e-17 rate 9.78983e-15 time 13.07 seconds
+Step(11), t(0.275): Mass(u) = 0.105808 InFlowRate(u) = -1.01287e-14 OutFlowRate(u) = 0.000137428
+
+Euler step 12 from 0.275 to 0.3 (0.025) Wed Jun 26 23:32:29 2019
+ Newton: d(0)= 0.00414969
+  GMRES: d(1)= 2.99358e-17 rate 7.21398e-15 time  0.02 seconds
+ Newton: d(1)= 3.93894e-17 rate 9.49213e-15 time 12.90 seconds
+Step(12), t(0.3): Mass(u) = 0.120913 InFlowRate(u) = -1.06538e-14 OutFlowRate(u) = 0.000401055
+
+Euler step 13 from 0.3 to 0.325 (0.025) Wed Jun 26 23:32:44 2019
+ Newton: d(0)= 0.00425248
+  GMRES: d(1)= 2.42238e-17 rate 5.69639e-15 time  0.05 seconds
+ Newton: d(1)= 3.81673e-17 rate 8.97532e-15 time 13.04 seconds
+Step(13), t(0.325): Mass(u) = 0.138153 InFlowRate(u) = -1.12108e-14 OutFlowRate(u) = 0.0010741
+
+Euler step 14 from 0.325 to 0.35 (0.025) Wed Jun 26 23:32:58 2019
+ Newton: d(0)= 0.00440453
+  GMRES: d(1)= 2.93299e-17 rate 6.65902e-15 time  0.04 seconds
+ Newton: d(1)= 4.49661e-17 rate 1.0209e-14 time 13.05 seconds
+Step(14), t(0.35): Mass(u) = 0.157808 InFlowRate(u) = -1.19341e-14 OutFlowRate(u) = 0.00265857
+
+Euler step 15 from 0.35 to 0.375 (0.025) Wed Jun 26 23:33:12 2019
+ Newton: d(0)= 0.0046023
+  GMRES: d(1)= 2.97226e-17 rate 6.45821e-15 time  0.04 seconds
+ Newton: d(1)= 4.72578e-17 rate 1.02683e-14 time 13.04 seconds
+Step(15), t(0.375): Mass(u) = 0.18017 InFlowRate(u) = -1.28799e-14 OutFlowRate(u) = 0.00611807
+
+Euler step 16 from 0.375 to 0.4 (0.025) Wed Jun 26 23:33:26 2019
+ Newton: d(0)= 0.00484464
+  GMRES: d(1)= 3.08454e-17 rate 6.36692e-15 time  0.04 seconds
+ Newton: d(1)= 4.89007e-17 rate 1.00938e-14 time 13.05 seconds
+Step(16), t(0.4): Mass(u) = 0.205525 InFlowRate(u) = -1.4029e-14 OutFlowRate(u) = 0.0131581
+
+Euler step 17 from 0.4 to 0.425 (0.025) Wed Jun 26 23:33:40 2019
+ Newton: d(0)= 0.00513114
+  GMRES: d(1)= 3.22947e-17 rate 6.29386e-15 time  0.04 seconds
+ Newton: d(1)= 5.41533e-17 rate 1.05539e-14 time 13.05 seconds
+Step(17), t(0.425): Mass(u) = 0.234117 InFlowRate(u) = -1.53138e-14 OutFlowRate(u) = 0.0265673
+
+Euler step 18 from 0.425 to 0.45 (0.025) Wed Jun 26 23:33:55 2019
+ Newton: d(0)= 0.00546031
+  GMRES: d(1)= 3.3944e-17 rate 6.21649e-15 time  0.05 seconds
+ Newton: d(1)= 6.00537e-17 rate 1.09982e-14 time 13.04 seconds
+Step(18), t(0.45): Mass(u) = 0.266108 InFlowRate(u) = -1.66523e-14 OutFlowRate(u) = 0.0505604
+
+Euler step 19 from 0.45 to 0.475 (0.025) Wed Jun 26 23:34:09 2019
+ Newton: d(0)= 0.00582685
+  GMRES: d(1)= 3.55085e-17 rate 6.09395e-15 time  0.04 seconds
+ Newton: d(1)= 6.70121e-17 rate 1.15006e-14 time 13.05 seconds
+Step(19), t(0.475): Mass(u) = 0.301512 InFlowRate(u) = -1.79742e-14 OutFlowRate(u) = 0.0910176
+
+Euler step 20 from 0.475 to 0.5 (0.025) Wed Jun 26 23:34:23 2019
+ Newton: d(0)= 0.00621772
+  GMRES: d(1)= 3.80169e-17 rate 6.11428e-15 time  0.05 seconds
+ Newton: d(1)= 7.43364e-17 rate 1.19556e-14 time 13.13 seconds
+Step(20), t(0.5): Mass(u) = 0.34013 InFlowRate(u) = -1.92354e-14 OutFlowRate(u) = 0.15548
+
+Euler step 21 from 0.5 to 0.525 (0.025) Wed Jun 26 23:34:37 2019
+ Newton: d(0)= 0.00660921
+  GMRES: d(1)= 4.11803e-17 rate 6.23074e-15 time  0.04 seconds
+ Newton: d(1)= 8.24227e-17 rate 1.24709e-14 time 13.07 seconds
+Step(21), t(0.525): Mass(u) = 0.381483 InFlowRate(u) = -2.04196e-14 OutFlowRate(u) = 0.252762
+
+Euler step 22 from 0.525 to 0.55 (0.025) Wed Jun 26 23:34:52 2019
+ Newton: d(0)= 0.00696838
+  GMRES: d(1)= 4.1742e-17 rate 5.9902e-15 time  0.05 seconds
+ Newton: d(1)= 8.8696e-17 rate 1.27284e-14 time 13.11 seconds
+Step(22), t(0.55): Mass(u) = 0.424763 InFlowRate(u) = -2.15346e-14 OutFlowRate(u) = 0.392079
+
+Euler step 23 from 0.55 to 0.575 (0.025) Wed Jun 26 23:35:06 2019
+ Newton: d(0)= 0.00726098
+  GMRES: d(1)= 4.61486e-17 rate 6.35569e-15 time  0.04 seconds
+ Newton: d(1)= 1.00768e-16 rate 1.3878e-14 time 13.16 seconds
+Step(23), t(0.575): Mass(u) = 0.468806 InFlowRate(u) = -2.26052e-14 OutFlowRate(u) = 0.581715
+
+Euler step 24 from 0.575 to 0.6 (0.025) Wed Jun 26 23:35:20 2019
+ Newton: d(0)= 0.00746541
+  GMRES: d(1)= 4.60199e-17 rate 6.16442e-15 time  0.05 seconds
+ Newton: d(1)= 1.10555e-16 rate 1.4809e-14 time 13.15 seconds
+Step(24), t(0.6): Mass(u) = 0.512122 InFlowRate(u) = -2.36671e-14 OutFlowRate(u) = 0.827346
+
+Euler step 25 from 0.6 to 0.625 (0.025) Wed Jun 26 23:35:35 2019
+ Newton: d(0)= 0.007589
+  GMRES: d(1)= 5.36387e-17 rate 7.06795e-15 time  0.04 seconds
+ Newton: d(1)= 1.27327e-16 rate 1.67779e-14 time 13.05 seconds
+Step(25), t(0.625): Mass(u) = 0.552968 InFlowRate(u) = -2.47603e-14 OutFlowRate(u) = 1.13033
+
+Euler step 26 from 0.625 to 0.65 (0.025) Wed Jun 26 23:35:49 2019
+ Newton: d(0)= 0.00767862
+  GMRES: d(1)= 4.93135e-17 rate 6.42218e-15 time  0.04 seconds
+ Newton: d(1)= 1.349e-16 rate 1.75683e-14 time 13.07 seconds
+Step(26), t(0.65): Mass(u) = 0.589477 InFlowRate(u) = -2.5922e-14 OutFlowRate(u) = 1.48634
+
+Euler step 27 from 0.65 to 0.675 (0.025) Wed Jun 26 23:36:03 2019
+ Newton: d(0)= 0.00781277
+  GMRES: d(1)= 5.15361e-17 rate 6.59639e-15 time  0.04 seconds
+ Newton: d(1)= 1.49477e-16 rate 1.91323e-14 time 13.04 seconds
+Step(27), t(0.675): Mass(u) = 0.619822 InFlowRate(u) = -2.7179e-14 OutFlowRate(u) = 1.88462
+
+Euler step 28 from 0.675 to 0.7 (0.025) Wed Jun 26 23:36:17 2019
+ Newton: d(0)= 0.00806589
+  GMRES: d(1)= 5.31396e-17 rate 6.58819e-15 time  0.04 seconds
+ Newton: d(1)= 1.56799e-16 rate 1.94397e-14 time 12.97 seconds
+Step(28), t(0.7): Mass(u) = 0.642394 InFlowRate(u) = -2.85392e-14 OutFlowRate(u) = 2.30832
+
+Euler step 29 from 0.7 to 0.725 (0.025) Wed Jun 26 23:36:32 2019
+ Newton: d(0)= 0.00845766
+  GMRES: d(1)= 5.45472e-17 rate 6.44944e-15 time  0.05 seconds
+ Newton: d(1)= 1.56118e-16 rate 1.84588e-14 time 13.01 seconds
+Step(29), t(0.725): Mass(u) = 0.655975 InFlowRate(u) = -2.99848e-14 OutFlowRate(u) = 2.73576
+
+Euler step 30 from 0.725 to 0.75 (0.025) Wed Jun 26 23:36:46 2019
+ Newton: d(0)= 0.00892709
+  GMRES: d(1)= 5.3191e-17 rate 5.95838e-15 time  0.05 seconds
+ Newton: d(1)= 1.67112e-16 rate 1.87197e-14 time 13.05 seconds
+Step(30), t(0.75): Mass(u) = 0.659865 InFlowRate(u) = -3.14696e-14 OutFlowRate(u) = 3.14268
+
+Euler step 31 from 0.75 to 0.775 (0.025) Wed Jun 26 23:37:00 2019
+ Newton: d(0)= 0.00935537
+  GMRES: d(1)= 5.17835e-17 rate 5.53517e-15 time  0.04 seconds
+ Newton: d(1)= 1.70738e-16 rate 1.82503e-14 time 13.07 seconds
+Step(31), t(0.775): Mass(u) = 0.653954 InFlowRate(u) = -3.29206e-14 OutFlowRate(u) = 3.50498
+
+Euler step 32 from 0.775 to 0.8 (0.025) Wed Jun 26 23:37:14 2019
+ Newton: d(0)= 0.00961642
+  GMRES: d(1)= 5.25742e-17 rate 5.46713e-15 time  0.04 seconds
+ Newton: d(1)= 1.73497e-16 rate 1.80417e-14 time 13.01 seconds
+Step(32), t(0.8): Mass(u) = 0.638719 InFlowRate(u) = -3.42448e-14 OutFlowRate(u) = 3.80153
+
+Euler step 33 from 0.8 to 0.825 (0.025) Wed Jun 26 23:37:29 2019
+ Newton: d(0)= 0.00962127
+  GMRES: d(1)= 4.96313e-17 rate 5.15849e-15 time  0.04 seconds
+ Newton: d(1)= 1.71099e-16 rate 1.77834e-14 time 13.18 seconds
+Step(33), t(0.825): Mass(u) = 0.615157 InFlowRate(u) = -3.53401e-14 OutFlowRate(u) = 4.01657
+
+Euler step 34 from 0.825 to 0.85 (0.025) Wed Jun 26 23:37:43 2019
+ Newton: d(0)= 0.00934213
+  GMRES: d(1)= 4.83675e-17 rate 5.17735e-15 time  0.04 seconds
+ Newton: d(1)= 1.70525e-16 rate 1.82533e-14 time 13.11 seconds
+Step(34), t(0.85): Mass(u) = 0.584662 InFlowRate(u) = -3.61082e-14 OutFlowRate(u) = 4.14121
+
+Euler step 35 from 0.85 to 0.875 (0.025) Wed Jun 26 23:37:57 2019
+ Newton: d(0)= 0.00881711
+  GMRES: d(1)= 4.36247e-17 rate 4.94774e-15 time  0.05 seconds
+ Newton: d(1)= 1.64642e-16 rate 1.8673e-14 time 13.13 seconds
+Step(35), t(0.875): Mass(u) = 0.548869 InFlowRate(u) = -3.64674e-14 OutFlowRate(u) = 4.17402
+
+Euler step 36 from 0.875 to 0.9 (0.025) Wed Jun 26 23:38:11 2019
+ Newton: d(0)= 0.00813997
+  GMRES: d(1)= 4.53493e-17 rate 5.57119e-15 time  0.05 seconds
+ Newton: d(1)= 1.52847e-16 rate 1.87773e-14 time 12.96 seconds
+Step(36), t(0.9): Mass(u) = 0.509492 InFlowRate(u) = -3.63631e-14 OutFlowRate(u) = 4.12043
+
+Euler step 37 from 0.9 to 0.925 (0.025) Wed Jun 26 23:38:26 2019
+ Newton: d(0)= 0.00743733
+  GMRES: d(1)= 3.82815e-17 rate 5.14721e-15 time  0.04 seconds
+ Newton: d(1)= 1.47824e-16 rate 1.98759e-14 time 13.07 seconds
+Step(37), t(0.925): Mass(u) = 0.468178 InFlowRate(u) = -3.57737e-14 OutFlowRate(u) = 3.99145
+
+Euler step 38 from 0.925 to 0.95 (0.025) Wed Jun 26 23:38:40 2019
+ Newton: d(0)= 0.0068337
+  GMRES: d(1)= 4.57812e-17 rate 6.69933e-15 time  0.04 seconds
+ Newton: d(1)= 1.52939e-16 rate 2.23801e-14 time 12.96 seconds
+Step(38), t(0.95): Mass(u) = 0.426391 InFlowRate(u) = -3.47127e-14 OutFlowRate(u) = 3.80177
+
+Euler step 39 from 0.95 to 0.975 (0.025) Wed Jun 26 23:38:54 2019
+ Newton: d(0)= 0.00640861
+  GMRES: d(1)= 3.58014e-17 rate 5.58646e-15 time  0.04 seconds
+ Newton: d(1)= 1.51684e-16 rate 2.36687e-14 time 13.01 seconds
+Step(39), t(0.975): Mass(u) = 0.385337 InFlowRate(u) = -3.32264e-14 OutFlowRate(u) = 3.56772
+
+Euler step 40 from 0.975 to 1 (0.025) Wed Jun 26 23:39:08 2019
+ Newton: d(0)= 0.0061655
+  GMRES: d(1)= 3.37295e-17 rate 5.47068e-15 time  0.05 seconds
+ Newton: d(1)= 1.48248e-16 rate 2.40448e-14 time 12.97 seconds
+Step(40), t(1): Mass(u) = 0.345934 InFlowRate(u) = -3.13872e-14 OutFlowRate(u) = 3.30548
+
+Euler step 41 from 1 to 1.025 (0.025) Wed Jun 26 23:39:23 2019
+ Newton: d(0)= 0.00603957
+  GMRES: d(1)= 3.3104e-17 rate 5.48118e-15 time  0.05 seconds
+ Newton: d(1)= 1.40744e-16 rate 2.33037e-14 time 13.05 seconds
+Step(41), t(1.025): Mass(u) = 0.308813 InFlowRate(u) = -2.92861e-14 OutFlowRate(u) = 3.02957
+
+Euler step 42 from 1.025 to 1.05 (0.025) Wed Jun 26 23:39:37 2019
+ Newton: d(0)= 0.00594023
+  GMRES: d(1)= 3.08092e-17 rate 5.18652e-15 time  0.02 seconds
+ Newton: d(1)= 1.36495e-16 rate 2.29781e-14 time 12.93 seconds
+Step(42), t(1.05): Mass(u) = 0.274354 InFlowRate(u) = -2.70225e-14 OutFlowRate(u) = 2.752
+
+Euler step 43 from 1.05 to 1.075 (0.025) Wed Jun 26 23:39:51 2019
+ Newton: d(0)= 0.00579188
+  GMRES: d(1)= 3.05717e-17 rate 5.27836e-15 time  0.05 seconds
+ Newton: d(1)= 1.3261e-16 rate 2.28958e-14 time 13.05 seconds
+Step(43), t(1.075): Mass(u) = 0.242729 InFlowRate(u) = -2.4696e-14 OutFlowRate(u) = 2.48183
+
+Euler step 44 from 1.075 to 1.1 (0.025) Wed Jun 26 23:40:05 2019
+ Newton: d(0)= 0.00555124
+  GMRES: d(1)= 3.57932e-17 rate 6.44778e-15 time  0.05 seconds
+ Newton: d(1)= 1.31336e-16 rate 2.36589e-14 time 12.97 seconds
+Step(44), t(1.1): Mass(u) = 0.213958 InFlowRate(u) = -2.23982e-14 OutFlowRate(u) = 2.22523
+
+Euler step 45 from 1.1 to 1.125 (0.025) Wed Jun 26 23:40:19 2019
+ Newton: d(0)= 0.00520636
+  GMRES: d(1)= 3.12869e-17 rate 6.00935e-15 time  0.04 seconds
+ Newton: d(1)= 1.13634e-16 rate 2.1826e-14 time 12.99 seconds
+Step(45), t(1.125): Mass(u) = 0.187956 InFlowRate(u) = -2.0207e-14 OutFlowRate(u) = 1.98584
+
+Euler step 46 from 1.125 to 1.15 (0.025) Wed Jun 26 23:40:33 2019
+ Newton: d(0)= 0.00476871
+  GMRES: d(1)= 2.48151e-17 rate 5.20374e-15 time  0.04 seconds
+ Newton: d(1)= 1.12901e-16 rate 2.36754e-14 time 12.94 seconds
+Step(46), t(1.15): Mass(u) = 0.164575 InFlowRate(u) = -1.81827e-14 OutFlowRate(u) = 1.76533
+
+Euler step 47 from 1.15 to 1.175 (0.025) Wed Jun 26 23:40:47 2019
+ Newton: d(0)= 0.00426487
+  GMRES: d(1)= 2.66695e-17 rate 6.25331e-15 time  0.04 seconds
+ Newton: d(1)= 1.08205e-16 rate 2.53711e-14 time 13.01 seconds
+Step(47), t(1.175): Mass(u) = 0.143639 InFlowRate(u) = -1.63668e-14 OutFlowRate(u) = 1.56392
+
+Euler step 48 from 1.175 to 1.2 (0.025) Wed Jun 26 23:41:01 2019
+ Newton: d(0)= 0.00373001
+  GMRES: d(1)= 2.03021e-17 rate 5.4429e-15 time  0.05 seconds
+ Newton: d(1)= 1.02601e-16 rate 2.7507e-14 time 13.07 seconds
+Step(48), t(1.2): Mass(u) = 0.124963 InFlowRate(u) = -1.47817e-14 OutFlowRate(u) = 1.38097
+
+Euler step 49 from 1.2 to 1.225 (0.025) Wed Jun 26 23:41:15 2019
+ Newton: d(0)= 0.00320305
+  GMRES: d(1)= 1.54065e-17 rate 4.80994e-15 time  0.02 seconds
+ Newton: d(1)= 9.74969e-17 rate 3.04387e-14 time 12.93 seconds
+Step(49), t(1.225): Mass(u) = 0.108366 InFlowRate(u) = -1.34327e-14 OutFlowRate(u) = 1.21535
+
+Euler step 50 from 1.225 to 1.25 (0.025) Wed Jun 26 23:41:30 2019
+ Newton: d(0)= 0.00272279
+  GMRES: d(1)= 1.46065e-17 rate 5.36454e-15 time  0.04 seconds
+ Newton: d(1)= 8.90587e-17 rate 3.27086e-14 time 13.04 seconds
+Step(50), t(1.25): Mass(u) = 0.0936791 InFlowRate(u) = -1.23111e-14 OutFlowRate(u) = 1.06576
+
+Euler step 51 from 1.25 to 1.275 (0.025) Wed Jun 26 23:41:44 2019
+ Newton: d(0)= 0.00232344
+  GMRES: d(1)= 1.33382e-17 rate 5.7407e-15 time  0.04 seconds
+ Newton: d(1)= 7.70567e-17 rate 3.31649e-14 time 12.97 seconds
+Step(51), t(1.275): Mass(u) = 0.0807441 InFlowRate(u) = -1.13972e-14 OutFlowRate(u) = 0.9309
+
+Euler step 52 from 1.275 to 1.3 (0.025) Wed Jun 26 23:41:58 2019
+ Newton: d(0)= 0.00202776
+  GMRES: d(1)= 1.03129e-17 rate 5.08583e-15 time  0.05 seconds
+ Newton: d(1)= 7.17444e-17 rate 3.53811e-14 time 13.02 seconds
+Step(52), t(1.3): Mass(u) = 0.069417 InFlowRate(u) = -1.06641e-14 OutFlowRate(u) = 0.809568
+
+Euler step 53 from 1.3 to 1.325 (0.025) Wed Jun 26 23:42:12 2019
+ Newton: d(0)= 0.00183841
+  GMRES: d(1)= 1.12904e-17 rate 6.14142e-15 time  0.04 seconds
+ Newton: d(1)= 6.08895e-17 rate 3.31208e-14 time 13.05 seconds
+Step(53), t(1.325): Mass(u) = 0.0595652 InFlowRate(u) = -1.00811e-14 OutFlowRate(u) = 0.70066
+
+Euler step 54 from 1.325 to 1.35 (0.025) Wed Jun 26 23:42:26 2019
+ Newton: d(0)= 0.00173459
+  GMRES: d(1)= 8.91285e-18 rate 5.13829e-15 time  0.04 seconds
+ Newton: d(1)= 5.52251e-17 rate 3.18375e-14 time 13.05 seconds
+Step(54), t(1.35): Mass(u) = 0.0510673 InFlowRate(u) = -9.61672e-15 OutFlowRate(u) = 0.603164
+
+Euler step 55 from 1.35 to 1.375 (0.025) Wed Jun 26 23:42:40 2019
+ Newton: d(0)= 0.00168158
+  GMRES: d(1)= 1.09888e-17 rate 6.53481e-15 time  0.04 seconds
+ Newton: d(1)= 5.25388e-17 rate 3.12436e-14 time 13.01 seconds
+Step(55), t(1.375): Mass(u) = 0.0438138 InFlowRate(u) = -9.2414e-15 OutFlowRate(u) = 0.516123
+
+Euler step 56 from 1.375 to 1.4 (0.025) Wed Jun 26 23:42:54 2019
+ Newton: d(0)= 0.00164632
+  GMRES: d(1)= 9.08303e-18 rate 5.51718e-15 time  0.04 seconds
+ Newton: d(1)= 4.98646e-17 rate 3.02885e-14 time 13.04 seconds
+Step(56), t(1.4): Mass(u) = 0.0377074 InFlowRate(u) = -8.92921e-15 OutFlowRate(u) = 0.438612
+
+Euler step 57 from 1.4 to 1.425 (0.025) Wed Jun 26 23:43:08 2019
+ Newton: d(0)= 0.00160683
+  GMRES: d(1)= 8.49348e-18 rate 5.28587e-15 time  0.05 seconds
+ Newton: d(1)= 4.42539e-17 rate 2.75412e-14 time 13.04 seconds
+Step(57), t(1.425): Mass(u) = 0.0326645 InFlowRate(u) = -8.65914e-15 OutFlowRate(u) = 0.369722
+
+Euler step 58 from 1.425 to 1.45 (0.025) Wed Jun 26 23:43:22 2019
+ Newton: d(0)= 0.00155311
+  GMRES: d(1)= 9.66488e-18 rate 6.22294e-15 time  0.04 seconds
+ Newton: d(1)= 4.07817e-17 rate 2.62582e-14 time 13.02 seconds
+Step(58), t(1.45): Mass(u) = 0.0286162 InFlowRate(u) = -8.41575e-15 OutFlowRate(u) = 0.308562
+
+Euler step 59 from 1.45 to 1.475 (0.025) Wed Jun 26 23:43:37 2019
+ Newton: d(0)= 0.00148409
+  GMRES: d(1)= 8.75837e-18 rate 5.90152e-15 time  0.02 seconds
+ Newton: d(1)= 3.76024e-17 rate 2.53371e-14 time 13.04 seconds
+Step(59), t(1.475): Mass(u) = 0.0255097 InFlowRate(u) = -8.18922e-15 OutFlowRate(u) = 0.254274
+
+Euler step 60 from 1.475 to 1.5 (0.025) Wed Jun 26 23:43:51 2019
+ Newton: d(0)= 0.00140427
+  GMRES: d(1)= 8.01775e-18 rate 5.70955e-15 time  0.04 seconds
+ Newton: d(1)= 3.58668e-17 rate 2.55413e-14 time 13.05 seconds
+Step(60), t(1.5): Mass(u) = 0.0233079 InFlowRate(u) = -7.97504e-15 OutFlowRate(u) = 0.206061
+
+Euler step 61 from 1.5 to 1.525 (0.025) Wed Jun 26 23:44:05 2019
+ Newton: d(0)= 0.00132113
+  GMRES: d(1)= 8.67868e-18 rate 6.56915e-15 time  0.01 seconds
+ Newton: d(1)= 3.39848e-17 rate 2.57241e-14 time 12.97 seconds
+Step(61), t(1.525): Mass(u) = 0.0219893 InFlowRate(u) = -7.77334e-15 OutFlowRate(u) = 0.163226
+
+Euler step 62 from 1.525 to 1.55 (0.025) Wed Jun 26 23:44:19 2019
+ Newton: d(0)= 0.00124339
+  GMRES: d(1)= 6.63108e-18 rate 5.33308e-15 time  0.04 seconds
+ Newton: d(1)= 3.07863e-17 rate 2.476e-14 time 13.04 seconds
+Step(62), t(1.55): Mass(u) = 0.0215458 InFlowRate(u) = -7.58795e-15 OutFlowRate(u) = 0.125204
+
+Euler step 63 from 1.55 to 1.575 (0.025) Wed Jun 26 23:44:33 2019
+ Newton: d(0)= 0.00117976
+  GMRES: d(1)= 7.9103e-18 rate 6.70504e-15 time  0.05 seconds
+ Newton: d(1)= 3.13013e-17 rate 2.6532e-14 time 13.02 seconds
+Step(63), t(1.575): Mass(u) = 0.0219795 InFlowRate(u) = -7.42541e-15 OutFlowRate(u) = 0.0915983
+
+Euler step 64 from 1.575 to 1.6 (0.025) Wed Jun 26 23:44:47 2019
+ Newton: d(0)= 0.00113769
+  GMRES: d(1)= 7.61167e-18 rate 6.69044e-15 time  0.04 seconds
+ Newton: d(1)= 2.99525e-17 rate 2.63274e-14 time 12.91 seconds
+Step(64), t(1.6): Mass(u) = 0.0232988 InFlowRate(u) = -7.29391e-15 OutFlowRate(u) = 0.0622043
+Euler: 64 steps in 15:08.00 minutes
+end program after 15:22.00 minutes on 8 procs at Wed Jun 26 23:45:01 2019
