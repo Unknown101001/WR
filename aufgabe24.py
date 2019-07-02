@@ -22,15 +22,14 @@ def run():
     return stdout.split('\n')
     '''
     output = []
-    process = subprocess.Popen('mpirun -np '+ str(kernels)+' M++', stdout=subprocess.PIPE,
-                               cwd=working_dir,shell = True)    #.stdout.decode('utf-8')
-    for line in iter(process.stdout.readline,b''):
+    process = subprocess.Popen('mpirun -np ' + str(kernels) + ' M++', stdout=subprocess.PIPE,
+                               cwd=working_dir, shell=True)  # .stdout.decode('utf-8')
+    for line in iter(process.stdout.readline, b''):
         l = line.decode('utf-8')
         sys.stdout.write(l)
         output.append(l.rstrip())
 
     return output
-
 
 
 def manipulate_conf(confdatei, tupelliste):
@@ -265,6 +264,7 @@ def main_masse():
     plt.savefig("Aufgabe21/Test/plot.png")
     '''
 
+
 def main_transport():
     delete_old()
     dt = 0.5 * 0.0015625
@@ -387,7 +387,7 @@ def main_27a():
         output = run()
 
         name = "reaction=" + str(react)
-        #save("Aufgabe27", name)
+        # save("Aufgabe27", name)
         out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
         fig = plt.figure()
         time = [0.05 * a for a in out[0]]
@@ -519,8 +519,45 @@ def main_27_c():
         print("done")
 
 
+def main_27_24():
+    delete_old()
+    manipulate_conf("m++conf", [("loadconf", "pollution.conf")])
+    manipulate_conf("pollution.conf",
+                    [("Discretization","linear"),("level", "2"),
+                     ("T", "1.6"),
+                     ("dt", "0.025"),
+                     ("deg","2")
+                     ])
+    output = run()
+    name = "Transportvgl"
+
+    save("Aufgabe30", name)
+
+    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
+    fig = plt.figure()
+    time = [0.05 * a for a in out[0]]
+    plt.subplot(211)
+    plt.plot(time, out[1], label='Masse')
+    plt.grid()
+    plt.legend()
+    plt.xlabel("Zeit")
+    plt.ylabel("Wert")
+    plt.grid(True)
+    plt.subplot(212)
+    plt.plot(time, out[2], label='OutFlowRate')
+    plt.grid()
+    plt.legend()
+    plt.xlabel("Zeit")
+    plt.ylabel("Wert")
+    plt.grid(True)
+
+    plt.subplots_adjust(hspace=0.35)
+    plt.savefig("Aufgabe30/" + name + "/plot.png")
+    print("done")
+
 if __name__ == "__main__":
-    main_27a()
+    #main_27a()
     # main_27_b()
-    #main_27_c()
-    #main_masse()
+    # main_27_c()
+    # main_masse()
+    main_27_24()

@@ -128,7 +128,7 @@ def save(aufgabe=None, name="Neu"):
     copy_tree(fromDirectory2, toDirectory)
 
 
-def parse_mpp_output_allg(paramlist, output=None):
+def parse_mpp_output_allg(paramlist, output=None , logfile = "mpp/build/log/log"):
     '''
     :param paramlist:
     :param output:
@@ -136,7 +136,7 @@ def parse_mpp_output_allg(paramlist, output=None):
     '''
     out = []
     if output is None:
-        logfile = "mpp/build/log/log"
+        #logfile = "mpp/build/log/log"
         with open(logfile) as file:
             lines = file.readlines()
     else:
