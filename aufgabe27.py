@@ -184,7 +184,7 @@ def gen_plots():
 def gen_plots():
     #for dt in ["0.0001","1e-05","1e-06"]:  #c/serendipity_lvl=3_ #
     for r in ["-2.5","-1","0","1","2.5","5"]:
-        #path = "Aufgabe27/b/reaction=0_diffusion="+dt   
+        #path = "Aufgabe27/b/reaction=0_diffusion="+dt
         path = "Aufgabe27/a/reaction="+r
         out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], logfile=path+"/log")
         fig = plt.figure()
