@@ -128,7 +128,7 @@ def main_27_c():
                          ("T", "1.6"),
                          ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction", "5"),
                          ("Model", "HybridReaction")])
-        7
+
         output = run()
         name = "serendipity_lvl=3_reaction=5_diffusion=" + str(diff)
         print(name)
