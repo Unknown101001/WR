@@ -1,1 +1,26 @@
 % !TeX root = Bericht_main.tex
+\subsection{Die Konvektions-Reaktions-Diffusions-Gleichung}
+Wir wollen, im Vergleich zum vorherigen Kapitel, neben dem Transport einer Substanz nun auch Diffusion und chemische Reaktionen der Substanz simulieren. Dazu sei die folgenden Größen vorgegeben:
+\begin{align*}
+&\text{\underline{\textbf{Geg.:}}}\\
+&&&&&\Omega \subseteq \R^d \text{ Gebiet}\\
+&&\text{\defi{Diffusionstensor}} &&&\kappa_c:\Omega \to \R^{d \times d}_{\sym}\text{ mit } \kappa_c^T \equiv \kappa_c \text{ und }\\
+								&&&&& \qquad \exists \ \lambda_c > 0 \ \forall \ y \in \R^d: y^T \kappa_c y \geq \lambda_c \abs{y}^2\\
+&&\text{\defi{Flussvektor}} &&&q:\Omega \to \R^d \text{ mit } \dive(q) = 0\\
+&&\text{\defi{Reaktionsrate}} &&&r:\Omega\times[0,T]\times\R \to \R\\
+&\text{\underline{\textbf{Ges.:}}}\\
+	&&\text{\defi{Konzentrationsrate der Stoffes}} &&&c:[0,T]\times\Omega \to \R
+\end{align*}
+Aus der Physik erhalten wir wieder Bilanz- und Konstitutionsgleichungen:\\
+\underline{\textbf{Bilanzgleichung:}}
+\begin{gather*}
+\forall \ (t_0,t_1)\times K \subseteq [0,T] \times \Omega: \\
+\underbrace{\int_K \left( c(t_1,x) - c(t_0,x) \right) \diff x}_{\text{Konzentrationsänderung auf } K\text{ in } (t_0,t_1)} + \underbrace{\int_{t_0}^{t_1} \oint_{\partial K} \Psi(c) \cdot \nu \diff a \diff t }_{\text{Konzentrationsänderung auf dem Rand } \partial K \text{ in } (t_0,t_1) } \\
+= \underbrace{\int_{t_0}^{t_1} \int_K r(t,x,c(t,x)) \diff x \diff t}_{\text{Reaktion (Produktion und Abbau) auf } K \text{ in } (t_0,t_1) }
+\end{gather*}
+\underline{\textbf{Konstitutionsgl.:}}
+\begin{gather*}
+	\Psi(c) = \underbrace{c \cdot q}_{\text{vgl. \enquote{Transportgl}}} - \underbrace{\kappa_c \nabla c}_{vgl \enquote{Potentialströme}}
+\end{gather*}
+Es folgt, die als \defi{Konvektions-Reaktions-Diffusions-Gleichung} bezeichnete Gleichung
+\[ \partial_t c + \dive(c q - \kappa_c \nabla c) = r(c) \text{ in } (0,T) \times \Omega \]
