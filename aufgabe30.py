@@ -4,9 +4,10 @@ from mppstart import *
 
 
 def main_30():
-    fig = plt.figure()
-    for r1 in ["0.5", "2.5", "5", "10", "20"]:
-        '''
+    '''
+    fig = plt.figure('Name',figsize=(8,16))
+
+    for r1 in ["1.5","40"]:
         delete_old()
         manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
         manipulate_conf("hybridreaction.conf",
@@ -16,7 +17,10 @@ def main_30():
                          ("Reaction_1", r1),
                          ("Model", "HybridReaction"), ("Convection", "0.1")])
         output = run()
-        '''
+        name = "r0=2_r1=" + r1
+        save("Aufgabe30",name)
+
+    for r1 in ["0.5", "1.5","2.5", "5", "10", "20","40"]:
         name = "r0=2_r1=" + r1
         logfile = "Aufgabe30/"+name+"/log"
         out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], logfile=logfile)
@@ -31,6 +35,20 @@ def main_30():
     plt.ylabel("Masse")
     plt.grid(True)
     plt.savefig("Aufgabe30/vergleichsplot.png")
+    '''
+    delete_old()
+    r0 = str(40)
+    r1 = str(19.9)
+    manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
+    manipulate_conf("hybridreaction.conf",
+                    [("HybridProblem", "HybridReaction_logistic"), ("Discretization", "linear"), ("level", "2"),
+                     ("T", "1.6"),
+                     ("dt", "0.05"), ("Diffusion", "0.001"), ("delta", "0"), ("Reaction_0", r0),
+                     ("Reaction_1", r1),
+                     ("Model", "HybridReaction"), ("Convection", "0.1"),("dt_min","0.0125")])
+    output = run()
+    name = "r0="+r0+"_r1=" + r1
+    save("Aufgabe30", name)
 
 
 def main_31():
@@ -132,7 +150,7 @@ def main_32():
         plt.savefig("Aufgabe32/" + name + "/plot.png")
         '''
         delete_old()
-        manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
+        manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])   
         manipulate_conf("hybridreaction.conf",
                         [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
                          ("T", "1.6"),
