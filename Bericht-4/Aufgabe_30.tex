@@ -27,7 +27,7 @@ Zugleich konnten wir aber auch das unterschiedliche Verhalten der Masse bezogen 
 \begin{figure}[H]
 	\label{vergleichsplot}
 	\centering
-	\captionabove{Implementierung der Klasse HybridReactionProblem\_logistic in Problem.C}
+	\captionabove{Vergleich der Masseverläufe für $r_0 = 2.5$ und unterschiedliche $r_1$}
     \includegraphics[width=0.80\textwidth]{../Aufgabe30/vergleichsplot.png}
 \end{figure}
 Man sieht sehr gut, dass sich das Verhalten immer mehr von dem des exponentiellen Wachstums entfernt, je größer wir den Parameter $r_1$ wählen.  
@@ -37,10 +37,10 @@ Betrachten wir die Gleichung des logistischen Wachstums genauer, können wir die
 	&=r_1c(\frac{r_0}{r_1}-c)
 \end{align*}
 Für den Grenzwert erhalten wir somit gerade $G = \frac{r_0}{r_1}$
-Ist $G >> c_0 $ so erhalten wir auf dem betrachteten Zeitintervall $t \in [0,1.6]$ einen nahezu exponentiellen Verlauf, wie beispielsweise in  Abbildung 6 bei $r_1 = 0.5$. Genauso sieht man für $G<0$ (beispielsweise in Abbildung 6 bei $r_1 = 40$), dass sich der Masseverlauf "umkehrt" und wir zunächst Masse verlieren, bevor wir uns dem Niveau $G$ annähern.
-Für Werte $G \approx c_0 $ bzw. $G$ leicht größer als $c_0$ erwarten wir eigentlich einen "typisch logistischen" Verlauf, dieser ist aber sehr schwer zu erreichen, da die vorliegenden Größen von Diffusion und Ausfluss (welcher von der Konvektion abhängt) durch fortwährende kleine Masseverluste ein solches Verhalten nahezu verhindern.
+Ist $G >> c_0 $ so erhalten wir auf dem betrachteten Zeitintervall $t \in [0,1.6]$ einen nahezu exponentiellen Verlauf, wie beispielsweise in  Abbildung 6 bei $r_1 = 0.5$. Genauso sieht man für $G<0$ (beispielsweise in Abbildung 6 bei $r_1 = 40$), dass sich der Masseverlauf 'umkehrt' und wir zunächst Masse verlieren, bevor wir uns dem Niveau $G$ annähern.
+Für Werte $G \approx c_0 $ bzw. $G$ leicht größer als $c_0$ erwarten wir eigentlich einen 'typisch logistischen' Verlauf, dieser ist aber sehr schwer zu erreichen, da die vorliegenden Größen von Diffusion und Ausfluss (welcher von der Konvektion abhängt) durch fortwährende kleine Masseverluste ein solches Verhalten nahezu verhindern.
 \newline
-In der folgenden Abbildung wird aber vielleicht zumindest dieser "typisch logistische" Verlauf deutlich, auch wenn das Abflachen des Masseplots nicht allein durch die Annäherung an den Grenzwert, sondern auch durch den (wenn auch schwach) ansteigenden Ausfluss zu erklären ist. 
+In der folgenden Abbildung wird aber vielleicht zumindest dieser 'typisch logistische' Verlauf deutlich, auch wenn das Abflachen des Masseplots nicht allein durch die Annäherung an den Grenzwert, sondern auch durch den (wenn auch schwach) ansteigenden Ausfluss zu erklären ist. 
 \begin{figure}[H]
 	\centering
 	\captionabove{Masse und Ausflussverhalten bei $r_0 = 10 $ und $r_1 = 4.9 $}
@@ -48,11 +48,11 @@ In der folgenden Abbildung wird aber vielleicht zumindest dieser "typisch logist
 \end{figure}
 
 Außerdem erwähnenswert ist, dass es möglich ist bei bestimmten Werten für $r_0$ und $r_1$ in dem verwendeten Verfahren das in der Vorlesung vorgestellte Implizite Euler-Verfahren mit Newton-Iteration in jedem Zeitschritt wiederzuerkennen.
-Nachfolgender Auschnitt zeigt einen Schritt für $r_0 = 40$, $r_1=19.9$,$dt = 0.05$,$dt_min=0.0125$:
+Nachfolgender Auschnitt zeigt einen Schritt für $r_0 = 40$ , $r_1=19.9$ , $dt = 0.05$ , $dt_{min}=0.0125$:
 \begin{figure}[H]
 	\centering
-	\captionabove{Newtoniteration für den ersten Eulerschritt}
+	\captionabove{Newton-Iteration für den ersten Eulerschritt}
 	\includegraphics[width=0.80\textwidth]{../Aufgabe30/algorithmus.png}
 \end{figure}
-Vor allem erkennt man sehr schön zum einen die lineare Suche, welche aufgerufen wird, wenn der Wert der Newtoniteration zu schlecht ist, zum anderen erkennt man auch den Schritt 8) sehr schön: 
-Falls nämlich keine Konvergenz vorliegt, wird im Verfahren der Eulerschritt mit der halben Zeitschrittweite erneut durchgeführt. Dies geschieht entweder solange, bis $dt_min$ erreicht wurde, oder (wie in obigem Fall) ein zufriedenstellendes Ergebnis vorliegt.
+Vor allem erkennt man sehr schön zum einen die lineare Suche, welche aufgerufen wird, wenn der Wert der Newton-Iteration zu schlecht ist zum anderen erkennt man auch den Schritt 8) sehr schön: 
+Falls nämlich keine Konvergenz vorliegt, wird im Verfahren der Eulerschritt mit der halben Zeitschrittweite erneut durchgeführt. Dies geschieht entweder solange, bis $dt_{min}$ erreicht wurde, oder (wie in obigem Fall) ein zufriedenstellendes Ergebnis vorliegt.
