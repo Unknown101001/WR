@@ -13,10 +13,10 @@ def main_32():
         manipulate_conf("hybridreaction.conf",
                         [("HybridProblem", "HybridReaction"), ("Discretization", "linear"), ("level", "2"),
                          ("T", "1.6"),
-                         ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "0.1"), ("Reaction", "5"),
+                         ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "5"), ("Reaction", "0"),
                          ("Model", "HybridReaction"), ("Convection", "1")])
         output = run()
-        name = "delta=0.025_diffusion=" + str(diff)
+        name = "delta=5_diffusion=" + str(diff) + "Reaktion=0"
         print(name)
         print("done")
         save("Aufgabe32", name)
