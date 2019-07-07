@@ -91,7 +91,7 @@ def main_31b():
             #newi = s1.integral(0,1.6)
             if lvl != "0":
                 print(lvl + ";" + dt)
-                maxi = max([abs(a - b) for a, b in zip(mass[::2], oldmass)])
+                maxi = max([abs(a - b) for a, b in zip(mass, oldmass)])
                 #maxi = abs(newi-oldi)
                 print(maxi)
                 dlvl.append(maxi)
@@ -146,7 +146,7 @@ def plot_heat(d, d2):
            '0.00625': [d[7], d[15], d[23]]
     }
     data = pd.DataFrame(data=dat)
-    ax = sns.heatmap(data, annot=True, cbar_kws={"orientation": "horizontal"}, cmap="YlGnBu")
+    ax = sns.heatmap(data, annot=True, cbar_kws={"orientation": "horizontal"}, cmap="YlGnBu",vmin= 0.01,vmax= 0.06)
     plt.yticks(rotation=0)
     plt.xticks(rotation=0)
 
@@ -173,7 +173,7 @@ def plot_heat(d, d2):
            '0.00625': [d2[21], d2[22], d2[23]]
     }
     data = pd.DataFrame(data=dat)
-    ax = sns.heatmap(data, annot=True, cbar_kws={"orientation": "horizontal"}, cmap="YlGnBu")
+    ax = sns.heatmap(data, annot=True, cbar_kws={"orientation": "horizontal"}, cmap="YlGnBu",vmin= 0.01,vmax= 0.06)
     plt.yticks(rotation=0)
     plt.xticks(rotation=0)
     plt.subplots_adjust(hspace=0.4)
