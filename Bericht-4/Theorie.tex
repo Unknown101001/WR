@@ -97,7 +97,49 @@ Wir erhalten somit die alternative Formulierung:
 \subsection{Diskretisierung der KDR-Gleichung}
 
 \subsection{Analyse für verschwindende Diffusion: $ \kappa_c \to 0 $}
+Wir betrachten die verschwindende Diffusion ($ \kappa_c \ to 0 $) nur im Spezialfall
+\begin{itemize}
+	\item  $ \exists \kappa_0 > 0 (const.): \kappa_c = \kappa_0 \, I_n $ (stationärer Diffusion)
+	\item $ \GammaR = \Gammaout $
+	\item $ \alpha_R = q \cdot n $
+	\item $ g_R = 0 $
+	\item $ r = 0 $
+\end{itemize}
+und erhalten somit das Problem
+\begin{gather*}
+	\text{Bestimme }  c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
+	\sDKDR\begin{cases}
+		\partial_t c + \dive(c q - \kappa_0 \nabla c) = 0 &\text{, in } (0,T) \time \Omega\\
+		c(0) = c_0  &\text{, in } \Omega\\
+		c = c_D &\text{, auf } (0,T) \times \GammaD \\
+		\kappa_0 \nabla c \cdot n + (q \cdot n) c = 0 &\text{, auf } (0,T) \times \GammaR
+	\end{cases}
+\end{gather*}
 
+%\begin{examples}(in 1D)
+	
+%	Mit $ \Omega = (0,1), q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$ gilt für $ \sDKDR $
+%	\begin{gather*}
+%	\text{Bestimme }  c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
+%	\begin{cases}
+%		\partial_t c + \dive(c q - \kappa_0 \nabla c) = 0 &\text{, in } (0,T) \time \Omega\\
+%		c(0) = c_0  &\text{, in } \Omega\\
+%		c = c_D &\text{, auf } (0,T) \times \GammaD \\
+%		\kappa_0 \nabla c \cdot n + (q \cdot n) c = 0 &\text{, auf } (0,T) \times \GammaR
+%	\end{cases}
+%	\end{gather*}
+%	Außerdem sei $ \kappa_0 $ sehr klein
+%	
+%	Dann ist die Lösung von $ \sDKDR $
+%\end{examples}
+
+\begin{Lemma}(A-Priori-Schranke)
+	
+	Es gilt
+	\begin{align*}
+		\int_\Omega \abs{c(T)}^2 \diff x \leq \int_\Omega \abs{c_0}^2 + \int_{0}^{T} \left( \oint_{\GammaD} c_D^2 \abs{q \cdot n} \diff a + 2 \oint_{\GammaD} \kappa_0 \nabla c \cdot n \, c_D \diff a\right) \diff t
+	\end{align*}
+\end{Lemma}
 \subsection{Streamline-Upwind-Petrov-Galerkin}
 
 
