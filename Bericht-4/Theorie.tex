@@ -119,20 +119,20 @@ und erhalten somit das Problem
 
 \begin{examples}(in 1D)
 	\label{1D-Bsp}
-	%TODO
-%	Mit $ \Omega = (0,1), q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$ gilt für $ \sDKDR $
-%	\begin{gather*}
-%	\text{Bestimme }  c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
-%	\begin{cases}
-%		\partial_t c + \dive(c q - \kappa_0 \nabla c) = 0 &\text{, in } (0,T) \time \Omega\\
-%		c(0) = c_0  &\text{, in } \Omega\\
-%		c = c_D &\text{, auf } (0,T) \times \GammaD \\
-%		\kappa_0 \nabla c \cdot n + (q \cdot n) c = 0 &\text{, auf } (0,T) \times \GammaR
-%	\end{cases}
-%	\end{gather*}
-%	Außerdem sei $ \kappa_0 $ sehr klein
-%	
-%	Dann ist die Lösung von $ \sDKDR $
+
+	Mit $ \Omega = (0,1), q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$ gilt für $ \sDKDR $
+	\begin{gather*}
+	\text{Bestimme }  c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
+	\begin{cases}
+		\partial_t c + \dive(c q - \kappa_0 \nabla c) = 0 &\text{, in } (0,T) \time \Omega\\
+		c(0) = c_0  &\text{, in } \Omega\\
+		c = c_D &\text{, auf } (0,T) \times \GammaD \\
+		\kappa_0 \nabla c \cdot n + (q \cdot n) c = 0 &\text{, auf } (0,T) \times \GammaR
+	\end{cases}
+	\end{gather*}
+	Außerdem sei $ \kappa_0 $ sehr klein ($ \kappa_0 << 1 $)
+	
+	Dann ist die Lösung von $ \sDKDR $
 \end{examples}
 
 \begin{Lemma}(A-Priori-Schranke)
@@ -234,6 +234,19 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 	
 	Dann gilt für alle $ \phi_h \in V(0) $
 	\[ \mathcal{A}_h(\phi_h, \phi_h) \geq \norm{\phi_h}_{\SD}^2. \]
-	
-	
 \end{Lemma}
+
+\begin{remark}\
+	\begin{enumerate}[label=\Alph*)]
+		\item $ \CinV $ hängt \textbf{nur} vom Gitter ab uns ist bei uniformer Verfeinerung beschränkt.
+		\item Für $ \Pe_K < 1 $ ist $ \delta_K \in \mathcal{O}(h_K) $.
+		\item \textbf{Anwendung}: Wenn $ c_D $ nach $ \overline{\Omega} $ fortsetzbar ist, so ist
+		\begin{gather*}
+			\begin{rcases}
+				\mathcal{A}_h(\underbrace{c_h-c_D}_{\in V_h(0)}, c_h - c_D ) \geq \norm{c_h - c_D}_{\SD}^2 \\
+				\abs{b_h(c_h-c_D)} \leq C(f,g_R, g_N) \norm{c_h - c_D}_{\SD}
+			\end{rcases} \implies \norm{c_h}_{\SD} \leq \norm{c_D}_{\SD} + C(f,g_R,g_N)\\
+			\implies A \coloneqq \left( \mathcal{A}_h(\lambda_j, \lambda_k) \right)_{j,k} \in \R{N \times N} \text{ ist positiv definit} \approx> \text{ Stabilität für } \kappa_0 \to 0.
+		\end{gather*}
+	\end{enumerate}
+\end{remark}
