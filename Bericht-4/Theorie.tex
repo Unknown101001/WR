@@ -95,6 +95,60 @@ Wir erhalten somit die alternative Formulierung:
 \end{gather*}
 
 \subsection{Diskretisierung der KDR-Gleichung}
+Erneut wählen $ V_h \coloneqq \spann_{z \in \mathcal{V}_h} \{ \lambda_z \} $ also Spann der Eckenbasis/\enquote{Hütchenfunktionen} und definieren
+\begin{itemize}
+	\item $ A_h: V_h \to V_h $ gegeben durch $ (A_h \, c_h, \phi_h)_\Omega = (A \, c_h, \phi_h) \ (c_h, \phi_h \in V_h)$
+	\item $ M_h: V_h \to V_h $ gegeben durch $ (M_h \, c_h, \phi_h)_\Omega = (M \, c_h, \phi_h) \ (c_h, \phi_h \in V_h)$
+	\item $ R_h(c): V_h \to V_h $ gegeben durch $ (R_h(c_h), \phi_h)_\Omega = (R(c_h), \phi_h) \ (c_h, \phi_h \in V_h)$
+\end{itemize}
+und die dazugehörigen Abbildungsmatrizen
+\begin{itemize}
+	\item $\underline{A} \coloneqq \bigg( (A_h \lambda_k, \lambda_j) \bigg)_{k,j} \in \R^{N \times N}$
+	\item $\underline{M} \coloneqq \bigg( (M_h \lambda_k, \lambda_j) \bigg)_{k,j} \in \R^{N \times N}$
+	\item $ \underline{R}(\underline{c}) \coloneqq \bigg( (R(c_h),\lambda_k) \bigg)_k \in \R^N \text{ wobei } c_h = \sum_k \underline{c}[k] \, \lambda_k $
+\end{itemize}
+Die Diskreditierung erfolgt wieder zunächst im Raum und dann in der Zeit:
+
+Zunächst die semi-diskrete \defi{Galerkin-Approximation} (für festes $ t \in [0,T]$) 
+\begin{gather*}
+	\text{Bestimme } c_h(t,\cdot) \in V_h(c_D(t)) \text{, sodass gilt}\\
+	\sdKDR\begin{cases}
+		(M_h \, \partial_t c_h + A_h \, c_h, \phi_h)_\Omega = (R_h(c_h), \phi_h)_\Omega
+	\end{cases}\\
+	\text{ für alle Testfunktionen} \phi_h \in V_h(0) 
+\end{gather*}
+
+beziehungsweise in Matrizenschreibweise 
+\[ \underline{M} \, \underline{\dot{c}} + \underline{A} \, \underline{c} = \underline{R}(\underline{c})  \]
+
+als ODE in $ \R^N $.\\
+Nun Diskreditieren wir mit dem impl. Euler-Verfahren auch in der Zeit und erhalten für $ t_n \coloneqq n \, \Delta t  $ das voll-diskrete Problem
+\begin{gather*}
+\vdKDR \begin{cases}
+	\left( \frac{1}{\Delta t} M_h(c_h^n - c_h^{n-1}) + A_h c_h^n, \phi_h \right)_\Omega = (R_h^n(c_h^n),\phi_h)_\Omega \quad (\phi_h \in V_h(0))
+\end{cases}
+\end{gather*}
+
+\begin{define}(Operator für $ \vdKDR $)
+	\begin{align*}
+		&F_h^n: V_h \to V_h \text{ gegeben durch }\\ & \qquad (F_h^n(c_h), \phi_h) = \bigg( \frac{1}{\Delta t} M_h \, c_h + A_h \, c_h, \phi_h  \bigg)_\Omega + \bigg( R_h^n(c_h), \phi_h \bigg)_\Omega - \bigg( \frac{1}{\Delta} M_h c_h^{\textcolor{red}{n-1}}, \phi_h \bigg)_\Omega \\
+		&\text{und } J_h^n \coloneqq D F_h^n
+	\end{align*} 
+\end{define}
+
+\begin{Satz}(Lösbarkeit von $ \vdKDR $ und Konvergenz des Verfahrens)\\
+	Sei $ \kappa_c $ uniform positiv definit, \unklar{$ r = \frac{1}{\Delta t} - R' $ }monoton fallend in der dritten Komponente (also $ \partial_3 r \le 0 $), weiter gelte $ q \cdot n \ge 0 \text{ auf } \GammaN $ und $ \alpha_R + \frac{1}{2} q \cdot n \ge 0 \text{ auf } \GammaR $.
+	
+	Dann hat $ \vdKDR $ eine eindeutige Lösung und die Jacobi-Matrix $ J_h^n $ ist positiv definit.
+	
+\end{Satz}
+
+\begin{remark}\
+	\begin{enumerate}
+		\item Die ODE $\underline{M} \, \underline{\dot{c}} + \underline{A} \, \underline{c} = \underline{R}(\underline{c})$ ist dissipativ, daher sind B-stabile Runge-Kutter-Verfahren geeignet
+		\item Für $ \partial_3 r > 0 $ und $ R' $ beschränkt, konvergiert das \unklar{Newton}-Verfahren mit $ \frac{1}{\Delta t} - \partial_3 r >0$ $ \implies$ Zeitschrittbeschränkung
+	\end{enumerate}
+\end{remark}
 
 \subsection{Analyse für verschwindende Diffusion: $ \kappa_c \to 0 $}
 \label{Analyse für verschwindende Diffusion}
