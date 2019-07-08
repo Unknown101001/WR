@@ -140,6 +140,21 @@ und erhalten somit das Problem
 		\int_\Omega \abs{c(T)}^2 \diff x \leq \int_\Omega \abs{c_0}^2 + \int_{0}^{T} \left( \oint_{\GammaD} c_D^2 \abs{q \cdot n} \diff a + 2 \oint_{\GammaD} \kappa_0 \nabla c \cdot n \, c_D \diff a\right) \diff t
 	\end{align*}
 \end{Lemma}
+
+\begin{Lemma}(Konvergenz für $ \kappa_0 \to 0 $)
+	
+	Sei $ c $ eine Lösung von $ \sDKDR $ und $ \rho $ eine Lösung von $ \lTG $, also 
+	\[ \partial_t \rho + \dive(\rho q) = 0, \rho = \rho_0 = c_D \text{ auf } \GammaD \text{ und }  \rho(0) = \rho_0 = c_0.  \]
+	
+	Dann gilt 
+	\[ \int_\Omega \abs{c(T) - \rho(T)}^2 \diff x \leq \kappa_0 \int_{0}^{T} \norm{\nabla c}_\Omega\, \norm{\nabla(\rho - c)}_\Omega \diff t \]
+\end{Lemma}
+
+\begin{Korollar}~
+	
+	Falls $ \norm{\nabla c}_\Omega $ und $ \norm{\nabla \rho}_\Omega $ unabhängig von $ \kappa_0 $ beschränkt sind, folgt
+	\[ c \stackrel{\mathcal{L}^2}{\to} \rho \ (\kappa_0 \to 0) \]
+\end{Korollar}
 \subsection{Streamline-Upwind-Petrov-Galerkin}
 
 
