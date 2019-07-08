@@ -50,7 +50,7 @@ Wir erhalten so folgende Werte als Heatmap:
 \begin{figure}[H]
 	\centering
 	\captionabove{Annäherungen an Fehler der Zeit- und Ortsdiskretisierung}
-	\subfigure[auf Level = 0]{\includegraphics[width=0.85\textwidth]{../Aufgabe31/Maxdiff/Heatmapblub.png}}
+	\includegraphics[width=0.85\textwidth]{../Aufgabe31/Maxdiff/Heatmapblub.png}
 \end{figure}
 Dabei sind die Werte in 'Unterschied zwischen den Zeitschrittschritten' gerade der oben erklärte Wert $r_{Zeit}$ und die Werte in  'Unterschiede zwischen den Leveln' gerade der Wert $r_{Ort}$
 
@@ -58,10 +58,37 @@ Damit können wir folgende sinnvolle Werte für die Zeitschrittweite herauslesen
 \begin{figure}[H]
 	\centering
 	\captionabove{Sinnvolle Werte für die Zeitschrittweite abhängig vom Level}
-	\subfigure[auf Level = 0]{\includegraphics[width=0.85\textwidth]{../Aufgabe31/Maxdiff/Heatmapblub1.png}}
+	\includegraphics[width=0.85\textwidth]{../Aufgabe31/Maxdiff/Heatmapblub1.png}
 \end{figure}
 Für Level 0  reicht uns bereits die geringste Zeitschrittweite $dt = 0.8$, anders ausgedrückt, der Fehler der Orstdiskretisierung ist schlichtweg zu groß. Für Level 1 erhalten wir $dt= 0.1$ als sinnvolle Wahl, denn für eine geringere Zeitschrittweite überwiegt der Fehler der Orstdiskretisierung, für eine größere Wahl von dt ist hingegen der Fehler der Zeitdiskretisierung nicht mehr kleiner als der Fehler der Fehler der Orstdiskretisierung.
 Nach analogem Auswahlverfahren erhalten wir für Level 2 $dt = 0.0125$ als sinnvolle Wahl für die Zeitschrittweite.
+\newline
+Diese Ergebnisse ließen sich auch für andere "Metriken" nachvollziehen.
+So versuchten wir uns anschließend an der L2-Norm. Zunächst müssen wir dazu die Massewerte interpolieren, dazu wählen wir (für $dt = 0.8$ quadratische, ansonsten) kubische Splines. Anschließend erhielten wir den Fehler der Orts- /Zeitdiskretisierung wie folgt:
+\begin{align*}
+r_{Ort}  &\approx \int_0^{1.6} |f_{m_{lvl}}(t) - f_{m_{lvl + 1}}  (t) |^2 dt  \\
+r_{Zeit}  &\approx \int_0^{1.6}  |f_{m_{dt}}(t) - f_{m_{dt/2} }(t) |^2 dt
+\end{align*}
+dabei bezeichne $f_{m_{  \star }}$ jeweils die Interpolationsfunktion zu den entsprechenden Massewerten (vgl. die Erklärungen dazu weiter oben).
+Wir erhalten so: 
+\begin{figure}[H]
+	\centering
+	\captionabove{Annäherungen an Fehler der Zeit- und Ortsdiskretisierung durch L2-Norm}
+	\includegraphics[width=0.85\textwidth]{../Aufgabe31/Maxdiff/Heatmapblubintegral.png}
+\end{figure}
+Dabei finden wir erneut, wenn auch nichtmehr ganz so eindeutig, unsere oben ermittelten Werte für sinnvolle Zeitschrittweiten abhängig vom Level:
+\begin{figure}[H]
+	\centering
+	\captionabove{Resultierende sinnvolle Werte für die Zeitschrittweite abhängig vom Level}
+	\includegraphics[width=0.85\textwidth]{../Aufgabe31/Maxdiff/Heatmapblubintegral1.png}
+\end{figure}
+Zur Erinnerung, wir hatten als sinnvolle Werte ermittelt:
+\begin{itemize}
+	\item Für Level 0: \qquad $dt = 0.8$ (Ortsfehler einfach zu groß)
+	\item Für Level 1: \qquad $dt = 0.1$ 
+	\item Für Level 2: \qquad $dt = 0.0125$
+\end{itemize}
+ 
 
 
 
