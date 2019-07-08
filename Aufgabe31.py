@@ -46,7 +46,7 @@ def main_31b():
     dlvl = []
 
     for lvl in ["0", "1", "2", "3"]:
-        fig = plt.figure()
+        #fig = plt.figure()
         oldmass = []
         print(lvl)
         for i in range(9):
@@ -58,16 +58,21 @@ def main_31b():
             path = "Aufgabe31/" + name + "/log"
             out = parse_mpp_output_allg(["Step", "Mass"], logfile=path)
             time = [0.8 * 0.5 ** i * a for a in out[0]]
+            print(time)
             mass = out[1]
-            #s1 = UnivariateSpline(time, [abs(m) for m in mass], k=3)
-            #newi = s1.integral(0, 1.6)
             if i > 0:
-                maxi = max([abs(a - b) for a, b in zip(mass[::2], oldmass)])
-                #maxi = abs(newi - oldi)
+                if i > 1:
+                    k = 3
+                else:
+                    k = 2
+                print([abs(a - b) for a, b in zip(mass[::2], oldmass)])
+                s1 = UnivariateSpline(time[::2], [abs(a - b)**2 for a, b in zip(mass[::2], oldmass)], k=k)
+                maxi = s1.integral(0, 1.6)
                 print(maxi)
                 ddt.append(maxi)
             oldmass = mass
-            #oldi = newi
+
+            '''
             plt.plot(time, mass, label=name)
         plt.grid(True)
         plt.legend()
@@ -76,10 +81,11 @@ def main_31b():
         plt.ylabel("Wert")
         newname = "zeitvergleich_lvl=" + lvl
         plt.savefig("Aufgabe31/" + newname + "_plot.png")
+        '''
 
     for i in range(8):
         oldmass = []
-        fig = plt.figure()
+        #fig = plt.figure()
         dt = str(0.8 * 0.5 ** i)
         for lvl in ["0", "1", "2", "3"]:
             name = "lvl=" + lvl + "_dt=" + dt
@@ -87,16 +93,21 @@ def main_31b():
             out = parse_mpp_output_allg(["Step", "Mass"], logfile=path)
             time = [0.8 * 0.5 ** i * a for a in out[0]]
             mass = out[1]
-            #s1 = UnivariateSpline(time,[abs(m) for m in mass],k=3)
-            #newi = s1.integral(0,1.6)
             if lvl != "0":
                 print(lvl + ";" + dt)
-                maxi = max([abs(a - b) for a, b in zip(mass, oldmass)])
-                #maxi = abs(newi-oldi)
+                #maxi = max([abs(a - b) for a, b in zip(mass, oldmass)])
+                if i > 1:
+                    k = 3
+                else:
+                    k = 2
+
+                s1 = UnivariateSpline(time, [abs(a - b)**2 for a, b in zip(mass, oldmass)], k=k)
+                maxi = s1.integral(0,1.6)
                 print(maxi)
                 dlvl.append(maxi)
             oldmass = mass
-            #oldi = newi
+
+            '''
             plt.plot(time, mass, label=name)
         plt.ylim(-0.025, 0.32)
         plt.grid(True)
@@ -105,6 +116,7 @@ def main_31b():
         plt.ylabel("Wert")
         newname = lvl + "vergleich_dt=" + dt
         plt.savefig("Aufgabe31/" + newname + "_plot.png")
+        '''
 
     return ddt, dlvl
 
@@ -146,7 +158,7 @@ def plot_heat(d, d2):
            '0.00625': [d[7], d[15], d[23]]
     }
     data = pd.DataFrame(data=dat)
-    ax = sns.heatmap(data, annot=True, cbar_kws={"orientation": "horizontal"}, cmap="YlGnBu",vmin= 0.01,vmax= 0.06)
+    ax = sns.heatmap(data, annot=True, cbar_kws={"orientation": "horizontal"}, cmap="YlGnBu")
     plt.yticks(rotation=0)
     plt.xticks(rotation=0)
 
@@ -173,11 +185,11 @@ def plot_heat(d, d2):
            '0.00625': [d2[21], d2[22], d2[23]]
     }
     data = pd.DataFrame(data=dat)
-    ax = sns.heatmap(data, annot=True, cbar_kws={"orientation": "horizontal"}, cmap="YlGnBu",vmin= 0.01,vmax= 0.06)
+    ax = sns.heatmap(data, annot=True, cbar_kws={"orientation": "horizontal"}, cmap="YlGnBu")
     plt.yticks(rotation=0)
     plt.xticks(rotation=0)
     plt.subplots_adjust(hspace=0.4)
-    plt.savefig("Aufgabe31/Heatmapblub.png")
+    plt.savefig("Aufgabe31/Heatmapblubintegral.png")
 
 
 if __name__ == "__main__":
