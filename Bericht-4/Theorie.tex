@@ -120,19 +120,32 @@ und erhalten somit das Problem
 \begin{examples}(in 1D)
 	\label{1D-Bsp}
 
-	Mit $ \Omega = (0,1), q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$ gilt für $ \sDKDR $
+	Mit $ \Omega = (0,1), q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$. Außerdem sei $ \kappa_0 $ sehr klein ($ \kappa_0 << 1 $).
+	
+	Es gilt für $ \sDKDR $
 	\begin{gather*}
-	\text{Bestimme }  c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
+	\text{Bestimme }  c:[0,T] \times (0,1) \to \R \text{, sodass gilt}\\
 	\begin{cases}
-		\partial_t c + \dive(c q - \kappa_0 \nabla c) = 0 &\text{, in } (0,T) \time \Omega\\
-		c(0) = c_0  &\text{, in } \Omega\\
-		c = c_D &\text{, auf } (0,T) \times \GammaD \\
-		\kappa_0 \nabla c \cdot n + (q \cdot n) c = 0 &\text{, auf } (0,T) \times \GammaR
+		-\kappa_0 \, c'' + c' = 0 \\
+		c(0) = 1  \\
+		\kappa_0 c'(1) + c(1) = 0
 	\end{cases}
 	\end{gather*}
-	Außerdem sei $ \kappa_0 $ sehr klein ($ \kappa_0 << 1 $)
 	
-	Dann ist die Lösung von $ \sDKDR $
+	und für die lineare Transportgleichung $ \lTG $
+	\begin{gather}
+		\text{Bestimme } \rho:[0,T] \times (0,1) \to \R \text{, sodass gilt}\\
+		\begin{cases}
+			\rho' = 0\\
+			\rho(0) = 1
+		\end{cases}
+	\end{gather}
+	
+	Wir erhalten die Lösungen
+	\begin{align*}
+		&c(x) = a_1 + a_2 \exp(\frac{x}{\kappa_0}) \text{ mit } a_1 = \frac{2}{2 - \exp(- \frac{1}{\kappa_0})} \text{ und } a_2 = \frac{1}{1 - 2 \exp(\frac{1}{\kappa_0})}\\
+		&\rho(x) = 1
+	\end{align*}
 \end{examples}
 
 \begin{Lemma}(A-Priori-Schranke)
@@ -178,7 +191,42 @@ Wir betrachten nun folgendes Problem:
 Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 
 \begin{examples}(In der Situation von Beispiel \ref{1D-Bsp})
-	%TODO
+	
+	Wir betrachten wieder $ \Omega = (0,1) $ mit der äquidistanten \enquote{Triangulierung}
+	 \[ \mathcal{K} \coloneqq \left\{K_j\mid j \in \{1, \dots ,N\}\right\} \text{ wobei } K_j \coloneqq (x_{j-1}, x_j), x_j \coloneqq j \cdot h \text{ und } h \coloneqq \frac{1}{N}.\]
+	 
+	 \begin{itemize}
+	 	\item \underline{Finite Elemente,$ \kappa_0 << h $ und \enquote{central flux}:}
+	 	
+	 	Weiter arbeiten wir mit der Eckenbasis/\enquote{Hütchenfunktionen}:
+	 	\[ \lambda_j(x) \coloneqq \max\left\{ 0, 1 - \frac{\abs{x-x_j}}{h} \right\} \quad (j \in [N])\]
+	 	und 
+	 	\begin{align*}
+		 	A[j,k] \coloneqq& \int_{0}^{1} (\kappa_0 \lambda_k' \lambda_j' + \lambda_k \lambda_j) \diff x\\
+		 	=& \begin{dcases}
+			 	\frac{\kappa_0}{h^2}2h &\text{, für } k = j\\
+			 	-\frac{\kappa_0}{h^2} h \pm \frac{1}{2h} h &\text{, für } k \neq j
+		 	\end{dcases} \quad (j,k\in[N])
+	 	\end{align*}
+	 	
+	 	Somit ergibt sich
+	 	\[\kappa_0 << 1 \implies A \approx \begin{pmatrix}
+	 	0& 1& & \\
+	 	-1& \ddots&\ddots & \\
+	 	& \ddots& \ddots& 1\\
+	 	& & -1& 0\\
+	 	\end{pmatrix} \]
+	 	
+	 	\item \underline{Finite Volumen. $ \kappa_0 = 0 $ und \enquote{upwind flux}:}
+	 	
+	 	Es kommt raus:
+	 	\[A_0 =  \begin{pmatrix}
+	 	1& & & \\
+	 	-1& \ddots& & \\
+	 	& \ddots& \ddots& \\
+	 	& & -1& 1\\
+	 	\end{pmatrix}  \]
+	 \end{itemize}
 \end{examples}
 
 \underline{\textbf{Beobachtung:}}
