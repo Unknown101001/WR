@@ -97,6 +97,7 @@ Wir erhalten somit die alternative Formulierung:
 \subsection{Diskretisierung der KDR-Gleichung}
 
 \subsection{Analyse für verschwindende Diffusion: $ \kappa_c \to 0 $}
+\label{Analyse für verschwindende Diffusion}
 Wir betrachten die verschwindende Diffusion ($ \kappa_c \ to 0 $) nur im Spezialfall
 \begin{itemize}
 	\item  $ \exists \kappa_0 > 0 (const.): \kappa_c = \kappa_0 \, I_n $ (stationärer Diffusion)
@@ -116,8 +117,9 @@ und erhalten somit das Problem
 	\end{cases}
 \end{gather*}
 
-%\begin{examples}(in 1D)
-	
+\begin{examples}(in 1D)
+	\label{1D-Bsp}
+	%TODO
 %	Mit $ \Omega = (0,1), q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$ gilt für $ \sDKDR $
 %	\begin{gather*}
 %	\text{Bestimme }  c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
@@ -131,7 +133,7 @@ und erhalten somit das Problem
 %	Außerdem sei $ \kappa_0 $ sehr klein
 %	
 %	Dann ist die Lösung von $ \sDKDR $
-%\end{examples}
+\end{examples}
 
 \begin{Lemma}(A-Priori-Schranke)
 	
@@ -155,6 +157,83 @@ und erhalten somit das Problem
 	Falls $ \norm{\nabla c}_\Omega $ und $ \norm{\nabla \rho}_\Omega $ unabhängig von $ \kappa_0 $ beschränkt sind, folgt
 	\[ c \stackrel{\mathcal{L}^2}{\to} \rho \ (\kappa_0 \to 0) \]
 \end{Korollar}
+
 \subsection{Streamline-Upwind-Petrov-Galerkin}
+In diesem Abschnitt wollen wir einen Lösungsmethode für sehr kleine Diffusion finden. Wir betrachten weiterhin nur stationäre Diffusion (d.h. $ \exists \kappa_0 > 0: \kappa_c \equiv \kappa_0 I_n $) und Linearisieren die Reaktion (d.h. $ R(c) \approx r c \text{ mit } \unklar{r =  R' - \frac{1}{\Delta t}}$)
 
+Im vorherigen Abschnitt \ref{Analyse für verschwindende Diffusion} haben wir bereits gesehen das unter gewissen Voraussetzungen die Lösung von $ \sDKDR $ gegen die Lösung der linearen Transportgleichung $ \lTG $ konvergiert (für $ \kappa_0 \to 0 $). Daher liegt es nahe für kleine $ \kappa_0  $ ähnliche Ideen zu verwenden (auch wenn durch $ \kappa_0 \neq 0 $ die Ideen nicht direkt übertragen werden können).
 
+Wir haben bei der \enquote{Finite-Volumen} bzw. \enquote{dG}-Methode gesehen, das die Wahl von unstetigen (somit inbs. nicht-konformen) Approximationsräumen durchaus sinnvoll sein kann. Jedoch werden wir im folgenden nur die Testfunktionen unstetig und den Lösungsraum konform wählen.
+
+Wir betrachten nun folgendes Problem:
+\begin{gather*}
+	\text{Bestimme } c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
+	\begin{cases}
+		- \dive(\kappa_0 \nabla c) + q \cdot \nabla c + r \, c = f &\text{, in } \Omega\\
+		c = c_D &\text{, auf } \GammaD (\text{wir fordern } \Gammain \subseteq \GammaD)\\
+		\kappa_0 \nabla c \cdot n = g_N &\text{, auf } \GammaN\\
+		\kappa_0 \nabla c \cdot n  + \underbrace{\alpha_R}_{= q \cdot n} c = g_R &\text{, auf } \GammaR
+	\end{cases}
+\end{gather*}
+Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
+
+\begin{examples}(In der Situation von Beispiel \ref{1D-Bsp})
+	%TODO
+\end{examples}
+
+\underline{\textbf{Beobachtung:}}
+\begin{enumerate}
+	\item Die Lösung mit \enquote{central flux} kann stark oszillieren.
+	\item Die Lösung mit \enquote{uqwind} ist monoton, die Matrix $ A_0 $ ist eine M-Matrix, also $ A_0^{-1}[j,k]~\geq~0 $ für alle $ j,k $.
+	\item Die Differenz
+	\[ A_0 - A \approx \frac{1}{2}
+	\begin{pmatrix} 
+	2 & -1 & & 0\\
+	-1& \ddots &\ddots & \\
+	  & \ddots& \ddots & -1\\	
+	0 & & -1 & 2\\		
+	\end{pmatrix} \] 
+	entspricht einer Diffusionsmatrix $ \approx> $ \enquote{upwind} = \enquote{central flux} + \enquote{diffusion}
+\end{enumerate}
+
+\subsubsection{Variationsformulierung}
+\begin{gather*}
+	\text{Bestimmme } c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
+	\begin{cases}
+		c_{|\GammaD} = c_D &\\
+		\mathcal{A}(c,\phi) = b(\phi) &(\phi: \overline{\Omega} \to \R, \phi_{|\GammaD} = 0)
+	\end{cases}\\
+	\text{wobei } \mathcal{A}(c,\phi) = \int_\Omega (\kappa_0 \nabla c \cdot \nabla \phi + q \cdot \nabla c \phi + r \, c \, \phi) \diff x + \oint_{\GammaR} \alpha_R \phi \diff a\\
+	\text{und } b(\phi) = \oint_{\GammaN} g_N \phi \diff a + \oint_{\GammaR} g_R \phi \diff a + \int_\Omega f \phi \diff x.
+\end{gather*}
+
+\underline{\textbf{Wahl der Lösungs- /Testräume:}}
+\begin{itemize}
+	\item \defi{Galerkin}: Lösungs- und Testraum gleich\\ $ c_h, \phi_h \in V_h$
+	\item \defi{Petrov-Gaerkin}: Lösungsraum und Testraum unterschiedlich\\ Lösungsfunktion $ c_h \in V_h $ und Testfunktion $ \phi_h + \delta_K q \cdot \nabla \phi_h $ auf $ K \in \mathcal{K} $ und mit $ \delta_K > 0 $.
+\end{itemize}
+
+\begin{define}(Approximierte (Bi-)Linearform)
+	\begin{align*}
+		\mathcal{A}_h(c_h, \phi_h) &\coloneqq \mathcal{A}(c_h, \phi_h) + \sum_{K \in \mathcal{K}} \delta_K + \left(-\dive(\kappa_0 \nabla c_h) + q \nabla c_h + r c_h, q \cdot \nabla \phi_h\right)_K \\
+		b_h(\phi_h) &\coloneqq b(\phi_h) + \sum_{K \in \mathcal{K}} \delta_K \left( f, q\cdot \nabla \phi_h \right)_K
+	\end{align*}
+\end{define}
+
+\begin{define}(\defi{Pekle-Zahl})
+	\[ \Pe_K \coloneqq \frac{h \, \norm{q}_{\infty, K}}{\norm{\kappa}_{\infty, K}} \]
+\end{define}
+
+\begin{define}(\defi{Streamline-Deffusion-Norm})
+	 \[ \norm{\phi_h}_{\SD} \coloneqq \left( \frac{\kappa_0}{2} \norm{\nabla \phi_h}_\Omega^2 + \frac{\unklar{r_0}}{2} \norm{\phi_h}_\Omega^2+ \sum_{K \in \mathcal{K}} \frac{\delta_K}{2} \norm{q \cdot \nabla \phi}_K^2  \right)^{1/2}  \]
+\end{define}
+
+\begin{Lemma}(Koerzivität von $ \mathcal{A}_h $)
+	
+	Sei $ \kappa_c = \kappa_0 I_n, \kappa_0 > 0, r \geq r_0 > 0, \Gammain \subseteq \GammaD, q \text{ mit } \dive(q) = 0 $ und \[ 0 < \delta_K \leq \frac{1}{2} \min\left\{ \frac{\kappa_0 h_K^2}{\norm{\kappa_0}_{\infty,K}^2 \CinV^2} , \frac{r_0}{\norm{r}_{\infty, K}}   \right\}\] mit $ \CinV > 0 $, sodass  \[ \norm{\dive(\kappa_0 \nabla \phi)}_K \leq h_K^{-1} \norm{\kappa}_{\infty,K} \CinV \norm{\nabla \phi}_K. \]
+	
+	Dann gilt für alle $ \phi_h \in V(0) $
+	\[ \mathcal{A}_h(\phi_h, \phi_h) \geq \norm{\phi_h}_{\SD}^2. \]
+	
+	
+\end{Lemma}
