@@ -30,7 +30,7 @@ def main_27a():
         save("Aufgabe27", name)
         out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"], output)
         fig = plt.figure()
-        time = [0.05 * a for a in out[0]]
+        time = [0.025 * a for a in out[0]]
         plt.subplot(211)
         plt.plot(time, out[1], label='Masse')
         plt.grid()
@@ -128,7 +128,7 @@ def main_27_c():
                          ("T", "1.6"),
                          ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "0"), ("Reaction", "5"),
                          ("Model", "HybridReaction")])
-        7
+
         output = run()
         name = "serendipity_lvl=3_reaction=5_diffusion=" + str(diff)
         print(name)
@@ -211,7 +211,7 @@ def gen_plots():
 
 
 if __name__ == "__main__":
-    #main_27a()
+    main_27a()
     #main_27_b()
     #main_27_c()
-    gen_plots()
+    #gen_plots()
