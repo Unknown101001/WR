@@ -16,7 +16,7 @@ def main_32():
                          ("dt", "0.025"), ("Diffusion", str(diff)), ("delta", "0.1"), ("Reaction", "0"),
                          ("Model", "HybridReaction"), ("Convection", "1")])
         output = run()
-        name = "delta=0.0025_diffusion=" + str(diff) + "Reaktion=0"
+        name = "delta=0.1_diffusion=" + str(diff) + "Reaktion=0"
         print(name)
         print("done")
         save("Aufgabe32", name)
