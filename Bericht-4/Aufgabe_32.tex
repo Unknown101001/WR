@@ -36,11 +36,14 @@ Wir können nun noch für die Reaktionsrate $r=0$ unsere Lösungen der Konvektio
 \begin{figure}[H]
 	\centering
 	\captionabove{Vergleich unterschiedlicher Verfahren bei Diffusion 0.000001 zum Zeitpunkt $t=0.7$ mit den Lösungen des reinen Transportproblems.}
-	\subfigure[TP Lösung mit FVM]{\includegraphics[width=0.32\textwidth]{../Aufgabe24/animation28.png}}	 
-	\subfigure[TP Lösung mit DGV]{\includegraphics[width=0.32\textwidth]{../Aufgabe24/animation28_2.png}}
+	\subfigure[TP Lösung mit DGV]{\includegraphics[width=0.32\textwidth]{../Aufgabe24/animation28.png}}	 
+	\subfigure[TP Lösung mit FVM]{\includegraphics[width=0.32\textwidth]{../Aufgabe24/animation28_2.png}} \\
 	\subfigure[KDR Lösung mit FEM] {\includegraphics[width=0.32\textwidth]{../Aufgabe27/b/reaction=0_diffusion=1e-06/animation28.png}}
-	\subfigure[KDR Lösung mit Serendipity lv2]{\includegraphics[width=0.32\textwidth]{../Aufgabe27/serendipity_lvl=2_reaction=0_diffusion=1e-06/animation28.png}}
+	\subfigure[KDR Lösung mit Serendipity lv2]{\includegraphics[width=0.32\textwidth]{../Aufgabe27/serendipity_lvl=2_reaction=0_diffusion=1e-06/animation28.png}} \\
 	\subfigure[SDV Delta 0.025]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=0.025_diffusion=1e-06Reaktion=0/animation28.png}}
 	\subfigure[SDV Delta 0.1]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=0.1_diffusion=1e-06Reaktion=0/animation28.png}}  
 	\subfigure[SDV Delta 5]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=5_diffusion=1e-06Reaktion=0/animation28.png}}
 \end{figure}
+
+Man sieht allerdings, dass wir bei all unseren bisherigen Verfahren ein ähnliches Problem haben, wie beim Lösen des Transportproblems mit FVM: Die Lösung 'verwischt' relativ schnell. Beim Transportproblem hatten wir gesehen, dass wir diesem Problem durch den Einsatz des DGV beikommen können (siehe (a)).
+In der Vorlesung werden wir deshalb auch noch einen DG-Ansatz für die KDR-Gleichung kennenlernen.
