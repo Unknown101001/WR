@@ -107,7 +107,7 @@ und die dazugehörigen Abbildungsmatrizen
 	\item $\underline{M} \coloneqq \bigg( (M_h \lambda_k, \lambda_j) \bigg)_{k,j} \in \R^{N \times N}$
 	\item $ \underline{R}(\underline{c}) \coloneqq \bigg( (R(c_h),\lambda_k) \bigg)_k \in \R^N \text{ wobei } c_h = \sum_k \underline{c}[k] \, \lambda_k $
 \end{itemize}
-Die Diskreditierung erfolgt wieder zunächst im Raum und dann in der Zeit:
+Die Diskretisierung erfolgt wieder zunächst im Raum und dann in der Zeit:
 
 Zunächst die semi-diskrete \defi{Galerkin-Approximation} (für festes $ t \in [0,T]$) 
 \begin{gather*}
@@ -259,7 +259,8 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 		 	A[j,k] \coloneqq& \int_{0}^{1} (\kappa_0 \lambda_k' \lambda_j' + \lambda_k \lambda_j) \diff x\\
 		 	=& \begin{dcases}
 			 	\frac{\kappa_0}{h^2}2h &\text{, für } k = j\\
-			 	-\frac{\kappa_0}{h^2} h \pm \frac{1}{2h} h &\text{, für } k \neq j
+			 	-\frac{\kappa_0}{h^2} h \pm \frac{1}{2h} h &\text{, für } k = j \pm 1 \\
+			 	0 &\text{, sonst}
 		 	\end{dcases} \quad (j,k\in[N])
 	 	\end{align*}
 	 	
