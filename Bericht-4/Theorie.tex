@@ -228,7 +228,7 @@ und erhalten somit das Problem
 \subsection{Streamline-Upwind-Petrov-Galerkin}
 In diesem Abschnitt wollen wir einen Lösungsmethode für sehr kleine Diffusion finden. Wir betrachten weiterhin nur stationäre Diffusion (d.h. $ \exists \kappa_0 > 0: \kappa_c \equiv \kappa_0 I_n $) und Linearisieren die Reaktion (d.h. $ R(c) \approx r c \text{ mit } \unklar{r =  R' - \frac{1}{\Delta t}}$)
 
-Im vorherigen Abschnitt \ref{Analyse für verschwindende Diffusion} haben wir bereits gesehen das unter gewissen Voraussetzungen die Lösung von $ \sDKDR $ gegen die Lösung der linearen Transportgleichung $ \lTG $ konvergiert (für $ \kappa_0 \to 0 $). Daher liegt es nahe für kleine $ \kappa_0  $ ähnliche Ideen zu verwenden (auch wenn durch $ \kappa_0 \neq 0 $ die Ideen nicht direkt übertragen werden können).
+Im vorherigen Abschnitt \ref{Analyse für verschwindende Diffusion} haben wir bereits gesehen, dass unter gewissen Voraussetzungen die Lösung von $ \sDKDR $ gegen die Lösung der linearen Transportgleichung $ \lTG $ konvergiert (für $ \kappa_0 \to 0 $). Daher liegt es nahe für kleine $ \kappa_0  $ ähnliche Ideen zu verwenden (auch wenn durch $ \kappa_0 \neq 0 $ die Ideen nicht direkt übertragen werden können).
 
 Wir haben bei der \enquote{Finite-Volumen} bzw. \enquote{dG}-Methode gesehen, das die Wahl von unstetigen (somit inbs. nicht-konformen) Approximationsräumen durchaus sinnvoll sein kann. Jedoch werden wir im folgenden nur die Testfunktionen unstetig und den Lösungsraum konform wählen.
 
@@ -265,7 +265,7 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 	 	\end{align*}
 	 	
 	 	Somit ergibt sich
-	 	\[\kappa_0 << 1 \implies A \approx \begin{pmatrix}
+	 	\[\kappa_0 << 1 \implies A \approx \frac{1}{2} \begin{pmatrix}
 	 	0& 1& & \\
 	 	-1& \ddots&\ddots & \\
 	 	& \ddots& \ddots& 1\\
@@ -313,7 +313,7 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 \underline{\textbf{Wahl der Lösungs- /Testräume:}}
 \begin{itemize}
 	\item \defi{Galerkin}: Lösungs- und Testraum gleich\\ $ c_h, \phi_h \in V_h$
-	\item \defi{Petrov-Gaerkin}: Lösungsraum und Testraum unterschiedlich\\ Lösungsfunktion $ c_h \in V_h $ und Testfunktion $ \phi_h + \delta_K q \cdot \nabla \phi_h $ auf $ K \in \mathcal{K} $ und mit $ \delta_K > 0 $.
+	\item \defi{Petrov-Galerkin}: Lösungsraum und Testraum unterschiedlich\\ Lösungsfunktion $ c_h \in V_h $ und Testfunktion $ \phi_h + \delta_K q \cdot \nabla \phi_h $ auf $ K \in \mathcal{K} $ und mit $ \delta_K > 0 $.
 \end{itemize}
 
 \begin{define}(Approximierte (Bi-)Linearform)
@@ -323,11 +323,11 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 	\end{align*}
 \end{define}
 
-\begin{define}(\defi{Pekle-Zahl})
+\begin{define}(\defi{P\'{e}clet-Zahl})
 	\[ \Pe_K \coloneqq \frac{h \, \norm{q}_{\infty, K}}{\norm{\kappa}_{\infty, K}} \]
 \end{define}
 
-\begin{define}(\defi{Streamline-Deffusion-Norm})
+\begin{define}(\defi{Streamline-Diffusion-Norm})
 	 \[ \norm{\phi_h}_{\SD} \coloneqq \left( \frac{\kappa_0}{2} \norm{\nabla \phi_h}_\Omega^2 + \frac{\unklar{r_0}}{2} \norm{\phi_h}_\Omega^2+ \sum_{K \in \mathcal{K}} \frac{\delta_K}{2} \norm{q \cdot \nabla \phi}_K^2  \right)^{1/2}  \]
 \end{define}
 
