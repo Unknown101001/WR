@@ -226,7 +226,7 @@ und erhalten somit das Problem
 \end{Korollar}
 
 \subsection{Streamline-Upwind-Petrov-Galerkin}
-In diesem Abschnitt wollen wir einen Lösungsmethode für sehr kleine Diffusion finden. Wir betrachten weiterhin nur stationäre Diffusion (d.h. $ \exists \kappa_0 > 0: \kappa_c \equiv \kappa_0 I_n $) und Linearisieren die Reaktion (d.h. $ R(c) \approx r c \text{ mit } \unklar{r =  R' - \frac{1}{\Delta t}}$)
+In diesem Abschnitt wollen wir einen Lösungsmethode für sehr kleine Diffusion finden. Wir betrachten weiterhin nur stationäre Diffusion (d.h. $ \exists \kappa_0 > 0: \kappa_c \equiv \kappa_0 I_n $) und Linearisieren die Reaktion (d.h. $ R(c) \approx r c \text{ mit } \unklar{r =  \frac{1}{\Delta t} - R'}$)
 
 Im vorherigen Abschnitt \ref{Analyse für verschwindende Diffusion} haben wir bereits gesehen, dass unter gewissen Voraussetzungen die Lösung von $ \sDKDR $ gegen die Lösung der linearen Transportgleichung $ \lTG $ konvergiert (für $ \kappa_0 \to 0 $). Daher liegt es nahe für kleine $ \kappa_0  $ ähnliche Ideen zu verwenden (auch wenn durch $ \kappa_0 \neq 0 $ die Ideen nicht direkt übertragen werden können).
 
@@ -305,10 +305,12 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 	\begin{cases}
 		c_{|\GammaD} = c_D &\\
 		\mathcal{A}(c,\phi) = b(\phi) &(\phi: \overline{\Omega} \to \R, \phi_{|\GammaD} = 0)
-	\end{cases}\\
-	\text{wobei } \mathcal{A}(c,\phi) = \int_\Omega (\kappa_0 \nabla c \cdot \nabla \phi + q \cdot \nabla c \phi + r \, c \, \phi) \diff x + \oint_{\GammaR} \alpha_R \phi \diff a\\
-	\text{und } b(\phi) = \oint_{\GammaN} g_N \phi \diff a + \oint_{\GammaR} g_R \phi \diff a + \int_\Omega f \phi \diff x.
+	\end{cases}
 \end{gather*}
+\begin{align*}
+	\text{wobei } &\mathcal{A}(c,\phi) = \int_\Omega (\kappa_0 \nabla c \cdot \nabla \phi + q \cdot \nabla c \phi + r \, c \, \phi) \diff x + \oint_{\GammaR} \alpha_R \phi \diff a\\
+	\text{und } &b(\phi) = \oint_{\GammaN} g_N \phi \diff a + \oint_{\GammaR} g_R \phi \diff a + \int_\Omega f \phi \diff x.
+\end{align*}
 
 \underline{\textbf{Wahl der Lösungs- /Testräume:}}
 \begin{itemize}
