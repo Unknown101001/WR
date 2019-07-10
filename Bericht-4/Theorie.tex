@@ -1,6 +1,6 @@
 % !TeX root = Bericht_main.tex
 \subsection{Die Konvektions-Reaktions-Diffusions-Gleichung}
-Wir wollen, im Vergleich zum vorherigen Kapitel, neben dem Transport einer Substanz nun auch Diffusion und chemische Reaktionen der Substanz simulieren. Dazu sei die folgenden Größen vorgegeben:
+Wir wollen, im Vergleich zum vorherigen Kapitel, neben dem Transport einer Substanz nun auch Diffusion und chemische Reaktionen der Substanz simulieren. Dazu seien die folgenden Größen vorgegeben:
 \begin{align*}
 &\text{\underline{\textbf{Geg.:}}}\\
 &&&&&\Omega \subseteq \R^d \text{ Gebiet}\\
@@ -24,7 +24,7 @@ Aus der Physik erhalten wir wieder Bilanz- und Konstitutionsgleichungen:\\
 \end{gather*}
 Es folgt, die als \defi{Konvektions-Reaktions-Diffusions-Gleichung} bezeichnete Gleichung
 \[ \partial_t c + \dive(c q - \kappa_c \nabla c) = r(c) \text{ in } (0,T) \times \Omega \]
-Wie sonst auch geben wir uns auch Anfangs- und Randwerte in Form von $ c_0, c_D, g_N, g_R $vor und erhalten das Problem
+Wie sonst geben wir uns auch Anfangs- und Randwerte in Form von $ c_0, c_D, g_N, g_R $vor und erhalten das Problem
 \begin{gather*}
 	\text{Bestimmme } c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
 	\KDR \begin{cases}
@@ -72,7 +72,7 @@ Wie sonst auch geben wir uns auch Anfangs- und Randwerte in Form von $ c_0, c_D,
 	für alle Testfunktionen $ \phi $  mit $ \phi_{|\GammaD} = 0 $.
 \end{Lemma}
 
-Wir schreiben das Problem $ \KDR $, genauer die schwache Formulierung von $ \KDR $ aus Lemma \ref{schwache Formulierung zu KDR}, mithilfe der folgende Operatoren um
+Wir schreiben das Problem $ \KDR $, genauer die schwache Formulierung von $ \KDR $ aus Lemma \ref{schwache Formulierung zu KDR}, mithilfe der folgenden Operatoren um
 \begin{define}(Operatoren für KDR)
 	\begin{itemize}
 		\item Definiere A durch
@@ -122,7 +122,7 @@ beziehungsweise in Matrizenschreibweise
 \[ \underline{M} \, \underline{\dot{c}} + \underline{A} \, \underline{c} = \underline{R}(\underline{c})  \]
 
 als ODE in $ \R^N $.\\
-Nun Diskreditieren wir mit dem impl. Euler-Verfahren auch in der Zeit und erhalten für $ t_n \coloneqq n \, \Delta t  $ das voll-diskrete Problem
+Nun diskretisieren wir mit dem impl. Euler-Verfahren auch in der Zeit und erhalten für $ t_n \coloneqq n \, \Delta t  $ das voll-diskrete Problem
 \begin{gather*}
 \vdKDR \begin{cases}
 	\left( \frac{1}{\Delta t} M_h(c_h^n - c_h^{n-1}) + A_h c_h^n, \phi_h \right)_\Omega = (R_h^n(c_h^n),\phi_h)_\Omega \quad (\phi_h \in V_h(0))
@@ -226,7 +226,7 @@ und erhalten somit das Problem
 \end{Korollar}
 
 \subsection{Streamline-Upwind-Petrov-Galerkin}
-In diesem Abschnitt wollen wir einen Lösungsmethode für sehr kleine Diffusion finden. Wir betrachten weiterhin nur stationäre Diffusion (d.h. $ \exists \kappa_0 > 0: \kappa_c \equiv \kappa_0 I_n $) und Linearisieren die Reaktion (d.h. $ R(c) \approx r c \text{ mit } \unklar{r =  \frac{1}{\Delta t} - R'}$)
+In diesem Abschnitt wollen wir eine Lösungsmethode für sehr kleine Diffusion finden. Wir betrachten weiterhin nur stationäre Diffusion (d.h. $ \exists \kappa_0 > 0: \kappa_c \equiv \kappa_0 I_n $) und Linearisieren die Reaktion (d.h. $ R(c) \approx r c \text{ mit } \unklar{r =  \frac{1}{\Delta t} - R'}$)
 
 Im vorherigen Abschnitt \ref{Analyse für verschwindende Diffusion} haben wir bereits gesehen, dass unter gewissen Voraussetzungen die Lösung von $ \sDKDR $ gegen die Lösung der linearen Transportgleichung $ \lTG $ konvergiert (für $ \kappa_0 \to 0 $). Daher liegt es nahe für kleine $ \kappa_0  $ ähnliche Ideen zu verwenden (auch wenn durch $ \kappa_0 \neq 0 $ die Ideen nicht direkt übertragen werden können).
 
@@ -343,7 +343,7 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 
 \begin{remark}\
 	\begin{enumerate}[label=\Alph*)]
-		\item $ \CinV $ hängt \textbf{nur} vom Gitter ab uns ist bei uniformer Verfeinerung beschränkt.
+		\item $ \CinV $ hängt \textbf{nur} vom Gitter ab und ist bei uniformer Verfeinerung beschränkt.
 		\item Für $ \Pe_K < 1 $ ist $ \delta_K \in \mathcal{O}(h_K) $.
 		\item \textbf{Anwendung}: Wenn $ c_D $ nach $ \overline{\Omega} $ fortsetzbar ist, so ist
 		\begin{gather*}
