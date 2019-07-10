@@ -154,3 +154,26 @@ def parse_mpp_output_allg(paramlist, output=None , logfile = "mpp/build/log/log"
                     value = 0
                 out[paramlist.index(param)].append(value)
     return out
+
+def parse_mpp_output_single_inform(paramlist, output= None, logfile = "mpp/build/log/log"):
+    out = []
+    if output is None:
+        # logfile = "mpp/build/log/log"
+        with open(logfile) as file:
+            lines = file.readlines()
+    else:
+        lines = output
+    for param in paramlist:
+        out.append([])
+        for line in lines:
+            regex = r"[+-]?[0-9]+[.]?[0-9]*[eE]?[+-]?[0-9]*"
+            if param in line:
+                tmp = line.split(param)[1]
+                try:
+                    value = float(re.findall(regex, tmp)[0])
+                except:
+                    continue
+            else:
+                value = 0
+            out[paramlist.index(param)].append(value)
+    return out

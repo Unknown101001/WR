@@ -1,0 +1,70 @@
+start program on 4 procs at Wed Jul 10 16:00:48 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Laplace
+  reading ... Mesh = Square500
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 2
+  reading ... plevel = 0
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  reading ... Overlap = dG1
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+119 cells on proc 0 of 478 cells on 4 procs -- min cells: 119  max cells: 120
+  reading ... Overlap = dG1
+  reading ... Discretization = serendipity
+  reading ... Discretization = serendipity
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... Problem = Simple2D
+  reading ... SetSolution = 0
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = GaussSeidel
+  default ... PreconditionerVerbose = 0
+  default ... SHIFTspecial = 0
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 2000
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  default ... NewtonReduction = 1e-05
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 2
+
+ Level:          2
+ Dimension:      2
+ Cells:          7648
+ Problem size:   16526
+ Vertices:       4072
+ Edges:          11736
+ Mesh width:     [0.015625,0.0220971]
+ Assemble        Laplace
+
+ Problem:        Simple Problem 2D
+ Discretization: serendipity
+
+ Newton: d(0)= 0.0930967
+  GMRES: d(2000)= 3.72302e-06 rate 0.994949 time  1.58 seconds
+ Newton: d(1)= 3.72302e-06 rate 3.99909e-05 time  1.82 seconds
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow              -1.40426
+Outflow             1.39833
+Flux Loss           -0.00592896
+Flux Error          0.681194
+end program after  1.99 seconds on 4 procs at Wed Jul 10 16:00:50 2019
