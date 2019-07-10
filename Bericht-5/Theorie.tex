@@ -14,11 +14,23 @@ Wir betrachten erneut das Potentialströmungsproblem
 \end{gather*}
 Dabei ist $ \partial \Omega = \GammaN \cupdot \GammaD $. Sei weiter $ \mathcal{K} $ eine zulässige Triangulierung mit Kantenmenge $ \mathcal{F} $ und Eckenmenge $ \mathcal{V} $. Außerdem sei $ \Omega_h \coloneqq \bigcup_{K \in \mathcal{K}} K$ und $ \partial \Omega_h \coloneqq \overline{\Omega} \setminus \Omega_h $.
 
-Es gilt für alle $ K\in\mathcal{K} $
-\begin{gather*}
-	\oint_{\partial K} \phi_h q \cdot n^K \diff a = \int_K \dive(\phi_h q) \diff x = \int_K \nabla\phi_h \cdot q \diff x + \int_K \phi_h \underbrace{\dive(q)}_{=0} \diff x\\
-	\implies \oint_{\partial K} \phi_h q \cdot n^K \diff a = \int_K \nabla\phi_h \cdot q \diff x \ 
-\end{gather*}
+Es gilt 
+\begin{align*}
+	&\forall K \in \mathcal{K}: \oint_{\partial K} \phi_h q \cdot n^K \diff a = \int_K \dive(\phi_h q) \diff x = \int_K \nabla\phi_h \cdot q \diff x + \int_K \phi_h \underbrace{\dive(q)}_{=0} \diff x\\
+	\implies &\forall K \in \mathcal{K}: -\oint_{\partial K} \phi_h q \cdot n^K \diff a + \int_K \nabla\phi_h \cdot q \diff x  = 0 \\
+	\implies &\sum_{K \in \mathcal{K}} \left( - \int_K q \cdot \nabla \phi_h \diff + \oint_{\partial K \setminus \GammaN} q \cdot n \underbrace{\phi_K}_{\coloneqq \phi_{h|K}} \diff a  \right) = \oint_{\GammaN} g_N \phi_h \diff a
+\end{align*}
 
+\begin{Satz}(\defi{DG-Formel})\\
+	Sei $ \overline{F} = \partial K \cap \partial K_F $ mit $ K \ne K_F $ (also ist $ F $ eine innere Kante) und $ ( \underbrace{q_{K} }_{\coloneqq q_{|K}}- \underbrace{q_{K_F}}_{\coloneqq q_{|K_F}} )  \cdot n^K = 0$.
+	
+	Dann gilt:
+	\[ q_K \cdot n^K \phi_K + q_{K_F} \cdot n^{K_F} \phi_{K_F} = \{q\}_F \cdot [\phi_h]_F \]
+	mit
+	\begin{align*}
+		\{q\}_F &\coloneqq \frac{1}{2} (q_K + q_{K_F})\\
+		[\phi_h]_F &\coloneqq \underbrace{\phi_K \, n^K + \phi_{K_F} \, n^{K_F}}_{\substack{\text{Benötigt keine}\\ \text{Vorzeichen-/Richtungswahl}}} = (\phi_K - \phi_{K_F}) \, n^K
+	\end{align*}
+\end{Satz}
 
 
