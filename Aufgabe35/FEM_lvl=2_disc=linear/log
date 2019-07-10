@@ -1,4 +1,4 @@
-start program on 4 procs at Wed Jul 10 16:00:47 2019
+start program on 4 procs at Wed Jul 10 16:12:56 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
@@ -59,8 +59,8 @@ start program on 4 procs at Wed Jul 10 16:00:47 2019
  Discretization: linear
 
  Newton: d(0)= 0.124511
-  GMRES: d(937)= 9.75712e-11 rate 0.977872 time  0.23 seconds
- Newton: d(1)= 9.75712e-11 rate 7.83637e-10 time  0.38 seconds
+  GMRES: d(937)= 9.75712e-11 rate 0.977872 time  0.33 seconds
+ Newton: d(1)= 9.75712e-11 rate 7.83637e-10 time  0.44 seconds
 
 
 Prescribed Inflow   -1
@@ -69,4 +69,4 @@ Inflow              -1.81027
 Outflow             1.79743
 Flux Loss           -0.0128437
 Flux Error          0.983003
-end program after  0.57 seconds on 4 procs at Wed Jul 10 16:00:48 2019
+end program after  0.66 seconds on 4 procs at Wed Jul 10 16:12:57 2019

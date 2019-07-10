@@ -5,7 +5,7 @@ from mppstart import *
 
 def main():
 
-    '''
+
     for lvl in ["0", "1", "2", "3"]:
         for disc in ["linear", "serendipity"]:
             delete_old()
@@ -17,13 +17,13 @@ def main():
             # out = parse_mpp_output_allg(["Step","Flux Error","Flux Loss","Problem size"], output)
             # out2 = parse_mpp_output_single_inform(["Problem size"])+
             name = "FEM_lvl=" + lvl + "_disc=" + disc
-            print(name + "  done")
             save("Aufgabe35", name)
-    '''
+
     # 2)
-    '''
+
     for lvl in ["0", "1", "2", "3"]:
         for konf in ["sym", "nonsym"]:
+            delete_old()
             manipulate_conf("m++conf", [("loadconf", "dglaplace.conf")])
             if konf == "sym":
                 manipulate_conf("dglaplace.conf",
@@ -40,10 +40,11 @@ def main():
             # out2 = parse_mpp_output_single_inform(["Problem size"])+
             name = "DG_lvl=" + lvl + "_konf=" + konf
             save("Aufgabe35", name)
-    '''
+
     # 3a)
 
     for lvl in ["0", "1", "2", "3"]:
+        delete_old()
         manipulate_conf("m++conf", [("loadconf", "dglaplace.conf")])
         manipulate_conf("dglaplace.conf",
                         [("Model", "DGLaplace"), ("Problem", "Simple2D"), ("Mesh", "Square500"),
@@ -56,6 +57,7 @@ def main():
         save("Aufgabe35", name)
     #3b)
     for penalty in ["0","1","5","10","25","50","100"]:
+        delete_old()
         manipulate_conf("m++conf", [("loadconf", "dglaplace.conf")])
         manipulate_conf("dglaplace.conf",
                         [("Model", "DGLaplace"), ("Problem", "Simple2D"), ("Mesh", "Square500"),
@@ -67,5 +69,16 @@ def main():
         name = "DG3_penalty=" + penalty
         save("Aufgabe35", name)
 
+def read_error():
+    for lvl in ["0", "1", "2", "3"]:
+        for disc in ["linear", "serendipity"]:
+            name = "FEM_lvl=" + lvl + "_disc=" + disc
+            logfile = "Aufgabe35/"+name+"/log"
+            out = parse_mpp_output_single_inform(["Flux Error","Flux Loss","Problem size"],logfile=logfile)
+            print(out)
+            print(get_time(out))
+
+
 if __name__ == "__main__":
-    main()
+    #main()
+    read_error()

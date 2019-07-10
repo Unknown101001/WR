@@ -1,4 +1,4 @@
-start program on 4 procs at Wed Jul 10 16:00:46 2019
+start program on 4 procs at Wed Jul 10 16:12:55 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
@@ -69,4 +69,4 @@ Inflow              -2.28269
 Outflow             2.27662
 Flux Loss           -0.00606726
 Flux Error          1.44483
-end program after  0.04 seconds on 4 procs at Wed Jul 10 16:00:46 2019
+end program after  0.04 seconds on 4 procs at Wed Jul 10 16:12:55 2019

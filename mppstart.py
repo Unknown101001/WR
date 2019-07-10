@@ -22,15 +22,14 @@ def run():
     return stdout.split('\n')
     '''
     output = []
-    process = subprocess.Popen('mpirun -np '+ str(kernels)+' M++', stdout=subprocess.PIPE,
-                               cwd=working_dir,shell = True)    #.stdout.decode('utf-8')
-    for line in iter(process.stdout.readline,b''):
+    process = subprocess.Popen('mpirun -np ' + str(kernels) + ' M++', stdout=subprocess.PIPE,
+                               cwd=working_dir, shell=True)  # .stdout.decode('utf-8')
+    for line in iter(process.stdout.readline, b''):
         l = line.decode('utf-8')
         sys.stdout.write(l)
         output.append(l.rstrip())
 
     return output
-
 
 
 def manipulate_conf(confdatei, tupelliste):
@@ -128,7 +127,7 @@ def save(aufgabe=None, name="Neu"):
     copy_tree(fromDirectory2, toDirectory)
 
 
-def parse_mpp_output_allg(paramlist, output=None , logfile = "mpp/build/log/log"):
+def parse_mpp_output_allg(paramlist, output=None, logfile="mpp/build/log/log"):
     '''
     :param paramlist:
     :param output:
@@ -136,7 +135,7 @@ def parse_mpp_output_allg(paramlist, output=None , logfile = "mpp/build/log/log"
     '''
     out = []
     if output is None:
-        #logfile = "mpp/build/log/log"
+        # logfile = "mpp/build/log/log"
         with open(logfile) as file:
             lines = file.readlines()
     else:
@@ -155,7 +154,8 @@ def parse_mpp_output_allg(paramlist, output=None , logfile = "mpp/build/log/log"
                 out[paramlist.index(param)].append(value)
     return out
 
-def parse_mpp_output_single_inform(paramlist, output= None, logfile = "mpp/build/log/log"):
+
+def parse_mpp_output_single_inform(paramlist, output=None, logfile="mpp/build/log/log"):
     out = []
     if output is None:
         # logfile = "mpp/build/log/log"
@@ -171,9 +171,30 @@ def parse_mpp_output_single_inform(paramlist, output= None, logfile = "mpp/build
                 tmp = line.split(param)[1]
                 try:
                     value = float(re.findall(regex, tmp)[0])
+                    out[paramlist.index(param)].append(value)
                 except:
                     continue
             else:
-                value = 0
+                value = np.nan
+        if len(out[paramlist.index(param)]) < 1:
             out[paramlist.index(param)].append(value)
+
     return out
+
+def get_time(output = None, logfile="mpp/build/log/log"):
+    out = []
+    if output is None:
+        with open(logfile) as file:
+            lines = file.readlines()
+    else:
+        lines = output
+        regex_float = "[+-]?[0-9]+[.]?[0-9]*[eE]?[+-]?[0-9]*"
+        regex_time = "[0-9]?[0-9][:][0-9][0-9][.][0-9][0-9]"
+        regex = r"([+-]?[0-9]+[.]?[0-9]*[eE]?[+-]?[0-9]*)|([0-9]?[0-9][:][0-9][0-9][.][0-9][0-9])"
+        ll = lines[-1]
+        print(ll)
+        value = float(re.findall(regex_float,ll)[0])
+        print(value)
+
+
+

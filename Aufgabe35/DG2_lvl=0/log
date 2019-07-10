@@ -1,4 +1,4 @@
-start program on 4 procs at Wed Jul 10 16:07:53 2019
+start program on 4 procs at Wed Jul 10 16:14:03 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = DGLaplace
@@ -74,8 +74,8 @@ matrixgraph on level 0:   default ... AssembleVerbose = 1
  Discretization: DGLaplaceDiscretization
 
  Newton: d(0)= 0.176777
-  GMRES: d(16)= 1.32754e-11 rate 0.23293 time  0.04 seconds
- Newton: d(1)= 1.32742e-11 rate 7.50901e-11 time  0.09 seconds
+  GMRES: d(16)= 1.32754e-11 rate 0.23293 time  0.05 seconds
+ Newton: d(1)= 1.32742e-11 rate 7.50901e-11 time  0.10 seconds
 
 
 Prescribed Inflow   -1
@@ -84,4 +84,4 @@ Inflow              -1.56425
 Outflow             1.55244
 Flux Loss           -0.0118087
 Flux Error          0.6363
-end program after  0.11 seconds on 4 procs at Wed Jul 10 16:07:53 2019
+end program after  0.12 seconds on 4 procs at Wed Jul 10 16:14:04 2019
