@@ -62,7 +62,7 @@ Zunächst betrachten wir hier die Verläufe für die Reaktionsrate $0$. Dabei f�
 	\subfigure[$t=1$]{\includegraphics[width=0.32\textwidth]{../Aufgabe27/b/reaction=0_diffusion=1e-06/animation40.png}}
 \end{figure}
 
-Anhand der zugehörigen Lösungsplots lassen sich allerdings leichte 'Verschmierungen' des Fluides erkennen. Diese fallen für die Reaktionsrate $0$ aber noch so gering aus, dass es sich nicht in dem Masseverlauf wiederspiegelt.
+Anhand der zugehörigen Lösungsplots lassen sich allerdings leichte Oszillationen des Fluides erkennen. Diese fallen für die Reaktionsrate $0$ aber noch so gering aus, dass es sich nicht in dem Masseverlauf wiederspiegelt.
 
 \begin{figure}[H]
 	\centering
@@ -84,7 +84,7 @@ Betrachten wir nun die Verläufe mit der Reaktionsrate $5$. Für die größte Di
 \end{figure}
 
 Hieran sehen wir, dass die Lösung bereits zum Zeitpunkt $t=0.5$
-erhebliche 'Verschmierungen' hat. Zu späteren Zeitpunkten lässt sich keinerlei Bezug zu vorherigen Zeitpunkten herstellen. Dies ist der Tatsache geschuldet, dass sich unser bisheriges Verfahren, die klassische Finite Elemente Methode (FEM), nicht zum Lösen der Konvektions-Diffusions-Reaktions-Gleichung für niedrige Diffusion eignet.
+erhebliche Oszillationen hat. Zu späteren Zeitpunkten lässt sich keinerlei Bezug zu vorherigen Zeitpunkten herstellen. Dies ist der Tatsache geschuldet, dass sich unser bisheriges Verfahren, die klassische Finite Elemente Methode (FEM), nicht zum Lösen der Konvektions-Diffusions-Reaktions-Gleichung für niedrige Diffusion eignet.
 Unser Ziel in den nächsten Aufgaben (27.3 und 32) besteht nun unter anderem darin, dass wir ein Verfahren finden, welches dieses Problem löst.
 
 \subsubsection{Aufgabe 27.3}
@@ -101,7 +101,7 @@ Zuerst schauen wir uns die Massen- und Ausflussverläufe für die Reaktionsrate 
 	\subfigure[Level=3, Diffusion=0.000001]{\includegraphics[width=0.32\textwidth]{../Aufgabe27/c/serendipity_lvl=3_reaction=5_diffusion=1e-06/plot.png}}
 \end{figure}
 
-Hierbei löst unser Verfahren für beide Level die Diffusion 0.0001 gut. Bei Level 2 erhalten wir aber, im Gegensatz zum Level 3, bereits wieder 'Verschmierungen'. Dadurch können wir festhalten, dass man durch die Halbierung der Gitterweite dem Problem entgegen wirken kann. Bei der kleinsten Diffusion sind aber trotzdem bei beiden Levels große Probleme festzustellen.
+Hierbei löst unser Verfahren für beide Level die Diffusion 0.0001 gut. Bei Level 2 erhalten wir aber, im Gegensatz zum Level 3, bereits wieder Oszillationen. Dadurch können wir festhalten, dass man durch die Halbierung der Gitterweite dem Problem entgegen wirken kann. Bei der kleinsten Diffusion sind aber trotzdem bei beiden Levels große Probleme festzustellen.
 
 Im Folgenden vergleichen wir die Lösungsplots der FEM auf Level 2 mit dem serendipity Verfahren auf Level 2 und 3:
  
@@ -129,7 +129,7 @@ Im Folgenden vergleichen wir die Lösungsplots der FEM auf Level 2 mit dem seren
 	\subfigure[$t=1.0$]{\includegraphics[width=0.32\textwidth]{../Aufgabe27/c/serendipity_lvl=3_reaction=5_diffusion=1e-05/animation40.png}}
 \end{figure}
 
-An den Lösungsplots erkennen wir, dass das serendipity Verfahren auf gleichem Level zum Zeitpunkt $t=0.5$ etwas besser ist, da es weniger 'Verschmierungen' hat. Allerdings wird auch anhand des Zeitpunktes $t=1.0$ deutlich, dass das Verfahren trotzdem mit der Zeit immer mehr 'Verschmierungen' entwickelt und somit unbrauchbar ist.
+An den Lösungsplots erkennen wir, dass das serendipity Verfahren auf gleichem Level zum Zeitpunkt $t=0.5$ etwas besser ist, da es weniger Oszillationen hat. Allerdings wird auch anhand des Zeitpunktes $t=1.0$ deutlich, dass das Verfahren trotzdem mit der Zeit immer mehr Oszillationen entwickelt und somit unbrauchbar ist.
 Auf Level 3 ist das serendipity Verfahren hingegen für diese Diffusion noch geeignet. Insgesamt erhalten wir damit durch das serendipity Verfahren einen etwas besseren Löser als die FEM.
 
 
