@@ -69,5 +69,16 @@ def main():
         name = "DG3_penalty=" + penalty
         save("Aufgabe35", name)
 
+def read_error():
+    for lvl in ["0", "1", "2", "3"]:
+        for disc in ["linear", "serendipity"]:
+            name = "FEM_lvl=" + lvl + "_disc=" + disc
+            logfile = "Aufgabe35/"+name+"/log"
+            out = parse_mpp_output_single_inform(["Flux Error","Flux Loss","Problem size"],logfile=logfile)
+            print(out)
+            print(get_time(out))
+
+
 if __name__ == "__main__":
-    main()
+    #main()
+    read_error()
