@@ -14,10 +14,10 @@ Wir betrachten erneut das Potentialströmungsproblem
 \end{gather*}
 Dabei ist $ \partial \Omega = \GammaN \cupdot \GammaD $. Sei weiter $ \mathcal{K} $ eine zulässige Triangulierung mit Kantenmenge $ \mathcal{F} $ und Eckenmenge $ \mathcal{V} $. Außerdem sei $ \Omega_h \coloneqq \bigcup_{K \in \mathcal{K}} K$ und $ \partial \Omega_h \coloneqq \overline{\Omega} \setminus \Omega_h $.
 
-Es gilt
+Es gilt für alle $ K\in\mathcal{K} $
 \begin{gather*}
 	\oint_{\partial K} \phi_h q \cdot n^K \diff a = \int_K \dive(\phi_h q) \diff x = \int_K \nabla\phi_h \cdot q \diff x + \int_K \phi_h \underbrace{\dive(q)}_{=0} \diff x\\
-	\implies \oint_{\partial K} \phi_h q \cdot n^K \diff a = \int_K \nabla\phi_h \cdot q \diff x \ (K\in\mathcal{K})
+	\implies \oint_{\partial K} \phi_h q \cdot n^K \diff a = \int_K \nabla\phi_h \cdot q \diff x \ 
 \end{gather*}
 
 
