@@ -181,20 +181,16 @@ def parse_mpp_output_single_inform(paramlist, output=None, logfile="mpp/build/lo
 
     return out
 
-def get_time(output = None, logfile="mpp/build/log/log"):
+
+def get_time(output=None, logfile="mpp/build/log/log"):
     out = []
     if output is None:
         with open(logfile) as file:
             lines = file.readlines()
     else:
         lines = output
-        regex_float = "[+-]?[0-9]+[.]?[0-9]*[eE]?[+-]?[0-9]*"
-        regex_time = "[0-9]?[0-9][:][0-9][0-9][.][0-9][0-9]"
-        regex = r"([+-]?[0-9]+[.]?[0-9]*[eE]?[+-]?[0-9]*)|([0-9]?[0-9][:][0-9][0-9][.][0-9][0-9])"
-        ll = lines[-1]
-        print(ll)
-        value = float(re.findall(regex_float,ll)[0])
-        print(value)
-
-
-
+    ll = lines[-1]
+    # return ll
+    value = ll.split()[3]
+    einheit = ll.split()[4]
+    return value, einheit

@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mppstart import *
+import csv
 
 
 def main():
@@ -69,16 +70,63 @@ def main():
         name = "DG3_penalty=" + penalty
         save("Aufgabe35", name)
 
-def read_error():
+def read_values():
+    saveload = []
     for lvl in ["0", "1", "2", "3"]:
         for disc in ["linear", "serendipity"]:
             name = "FEM_lvl=" + lvl + "_disc=" + disc
             logfile = "Aufgabe35/"+name+"/log"
-            out = parse_mpp_output_single_inform(["Flux Error","Flux Loss","Problem size"],logfile=logfile)
-            print(out)
-            print(get_time(out))
+            out = parse_mpp_output_single_inform(["Problem size","Flux Error","Flux Loss"],logfile=logfile)
+            time, einheit = get_time(logfile=logfile)
+            liste = [name,out[0][0],out[1][0],out[2][0],time,einheit]
+            #print(liste)
+            saveload.append(liste)
+    for lvl in ["0", "1", "2", "3"]:
+        for konf in ["sym", "nonsym"]:
+            name = "DG_lvl=" + lvl + "_konf=" + konf
+            logfile = "Aufgabe35/" + name + "/log"
+            out = parse_mpp_output_single_inform(["Problem size", "Flux Error", "Flux Loss"], logfile=logfile)
+            time, einheit = get_time(logfile=logfile)
+            liste = [name, out[0][0], out[1][0], out[2][0], time, einheit]
+            #print(liste)
+            saveload.append(liste)
+    for lvl in ["0", "1", "2", "3"]:
+        name = "DG2_lvl=" + lvl
+        logfile = "Aufgabe35/" + name + "/log"
+        out = parse_mpp_output_single_inform(["Problem size", "Flux Error", "Flux Loss"], logfile=logfile)
+        time, einheit = get_time(logfile=logfile)
+        liste = [name, out[0][0], out[1][0], out[2][0], time, einheit]
+        #print(liste)
+        saveload.append(liste)
+    for penalty in ["0", "1", "5", "10", "25", "50", "100"]:
+        name = "DG3_penalty=" + penalty
+        logfile = "Aufgabe35/" + name + "/log"
+        out = parse_mpp_output_single_inform(["Problem size", "Flux Error", "Flux Loss"], logfile=logfile)
+        time, einheit = get_time(logfile=logfile)
+        liste = [name, out[0][0], out[1][0], out[2][0], time, einheit]
+        #print(liste)
+        saveload.append(liste)
+
+    return saveload
+
+def write_to_csv(saveload):
+    outputfile = "Aufgabe35/data.csv"
+    with open(outputfile,'w',newline='',encoding='utf-8')as csvfile:
+        writer = csv.writer(csvfile,delimiter=';')
+        writer.writerow([a[0] for a in saveload])  #names
+        writer.writerow([int(a[1]) for a in saveload])  #Problem Size
+        writer.writerow([float(a[2]) for a in saveload])  #Flux Error
+        writer.writerow([float(a[3]) for a in saveload])  #Flux Loss
+        writer.writerow([a[4] for a in saveload])  #time
+        writer.writerow([a[5] for a in saveload])  #einheit
+
+
+
+
+
 
 
 if __name__ == "__main__":
     #main()
-    read_error()
+    saveload = read_values()
+    write_to_csv(saveload)
