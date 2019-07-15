@@ -8,7 +8,7 @@ Wir betrachten erneut das Potentialströmungsproblem
 	\PS \begin{cases}
 		\dive(q) = 0 &\text{, in }\Omega\\
 		q = - \kappa \nabla u &\text{, in } \Omega\\
-		-q \cdot \nu = g_N &\text{, auf }\GammaN\\
+		q \cdot n = g_N &\text{, auf }\GammaN\\
 		u = u_D &\text{, aud } \GammaD. 
 	\end{cases}
 \end{gather*}
@@ -32,5 +32,14 @@ Es gilt
 		[\phi_h]_F &\coloneqq \underbrace{\phi_K \, n^K + \phi_{K_F} \, n^{K_F}}_{\substack{\text{Benötigt keine}\\ \text{Vorzeichen-/Richtungswahl}}} = (\phi_K - \phi_{K_F}) \, n^K
 	\end{align*}
 \end{Satz}
+
+Wir wollen wieder Testfunktionen $ \phi_h \in Q_h \coloneqq \Pi_{K \in \mathcal{K}} \mathbb{P}_k(K)$ betrachten, wie beim letzten Mal bei \enquote{dG-Verfahren}. Da diese Funktionen sind nur auf $ K \in \mathcal{K} $, aber nicht unbedingt auf $ \Omega $. Es gilt
+\begin{align*}
+	&\oint_{\partial K} \kappa \phi_h \nabla u \cdot n \diff x = \int_K \dive(\underbrace{\kappa \nabla u}_{= -q} \phi_h) \diff x = \int_K \underbrace{\dive(-q)}_{=0} \phi_h + (-q) \nabla \phi_h \diff x = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x\\
+	\implies &\int_{\GammaN} g_N \phi_h \cdot n \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \int_{\partial K \setminus \GammaN} \kappa \nabla u \phi_h \cdot n \diff a\\
+	\implies &\int_{\GammaN} g_N \phi_h \cdot n \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x + \int_{\partial K \setminus \GammaN} q \phi_h \cdot n \diff a\\
+	%\implies &\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F} \cap \Omega_h} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a - \sum_{F \in \mathcal{F} \cap \GammaD} \int_{F} \kappa \nabla u \phi_h \cdot n \diff a = \int_{\GammaN} g_N \phi_h \cdot n \diff a\\
+	\implies &\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F} \setminus \GammaN} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a = \int_{\GammaN} g_N \phi_h \cdot n \diff a
+\end{align*}
 
 
