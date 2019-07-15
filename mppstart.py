@@ -167,7 +167,7 @@ def parse_mpp_output_single_inform(paramlist, output=None, logfile="mpp/build/lo
         out.append([])
         for line in lines:
             regex = r"[+-]?[0-9]+[.]?[0-9]*[eE]?[+-]?[0-9]*"
-            if param in line:
+            if (param in line and line.split(param)[0] == "") or (param in line and param in ["Problem size"]):
                 tmp = line.split(param)[1]
                 try:
                     value = float(re.findall(regex, tmp)[0])
