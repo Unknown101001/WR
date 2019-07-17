@@ -1,3 +1,7 @@
+'''
+author: Tim Buchholz
+WR SS19 KIT
+'''
 import subprocess
 import numpy as np
 import matplotlib.pyplot as plt
