@@ -121,6 +121,27 @@ def write_to_csv(saveload):
         writer.writerow([float(a[5]) for a in saveload])  #Flux Loss
         writer.writerow([a[6] for a in saveload])  #time
         writer.writerow([a[7] for a in saveload])  #einheit
+def testit():
+    delete_old()
+    manipulate_conf("m++conf", [("loadconf", "laplace.conf")])
+    manipulate_conf("laplace.conf",
+                    [("Model", "Laplace"), ("Problem", "Simple2D"), ("Mesh", "UnitSquare2Triangles"),
+                     ("Discretization", "linear"), ("level", "4")])
+    output = run()
+    # out = parse_mpp_output_allg(["Step","Flux Error","Flux Loss","Problem size"], output)
+    # out2 = parse_mpp_output_single_inform(["Problem size"])+
+    name = "test"
+    save("Aufgabe35", name)
+def aufgabe38():
+    delete_old()
+    manipulate_conf("m++conf", [("loadconf", "laplace.conf")])
+    manipulate_conf("dgreaction.conf",
+                    [("HybridProblem","HybridDGReaction"),("T","1.6"),("dt","0.001"),("Reaction","0"),("Diffusion","0.000001")])
+    output = run()
+    # out = parse_mpp_output_allg(["Step","Flux Error","Flux Loss","Problem size"], output)
+    # out2 = parse_mpp_output_single_inform(["Problem size"])+
+    name = "Test"
+    save("Aufgabe38", name)
 
 
 
@@ -130,5 +151,6 @@ def write_to_csv(saveload):
 
 if __name__ == "__main__":
     #main()
-    saveload = read_values()
-    write_to_csv(saveload)
+    #saveload = read_values()
+    #write_to_csv(saveload)
+    testit()
