@@ -1,5 +1,5 @@
 '''
-author: Tim Buchholz
+authors: Tim Buchholz, Stefan Karch, Florian Döttling
 WR SS19 KIT
 '''
 import subprocess
