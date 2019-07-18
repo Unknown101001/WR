@@ -45,12 +45,14 @@ Erstaunlich ist dabei, dass die Programmdauer bei minimal größerer Problemgrö
 
 
 \subsubsection{Aufgabe 35.2}
-Als nächstes wollen wir uns dem DG-Ansatz widmen. Wir vergleich hier zunächst ???
+Als nächstes wollen wir uns dem DG-Ansatz widmen. Wir vergleichen hierbei  \unklar{EINLEITUNG???}
+
 \begin{figure}[H]
 	\centering
 	\captionabove{symmetric}
 	\subfigure{\includegraphics[width=0.99\textwidth]{../Aufgabe35/35_2_sym.png}}	 
 \end{figure}
+
 
 \begin{figure}[H]
 	\centering
@@ -58,6 +60,8 @@ Als nächstes wollen wir uns dem DG-Ansatz widmen. Wir vergleich hier zunächst 
 	\subfigure{\includegraphics[width=0.99\textwidth]{../Aufgabe35/35_2_nonsym.png}}	 
 \end{figure}
 
+Wir wollen nun auf die Vor- und Nachteile bei symmetrischer und nicht-symmetrischer Konfiguration eingehen.
+Schnell fällt ins Auge, dass die Ergebnisse des nicht-symmetrischen Verfahrens deutlich besser sind als mit symmetrischer Konfiguration. Während nämlich der Flux Error auf allen Leveln bei der symmetrischen Konfiguration nahe 1 ist, bewegen wir uns bei nicht-symmetrischer Konfiguration im Bereich von (sogar meist besser als) $10^-6$. Allerdings sieht man auch sehr schnell ein, dass dies nur auf Kosten der Programmdauer möglich ist. Während auf Level 3 der symmetrische Fall nur 4,4 Sekunden dauert, benötigt das nicht-symmetrische Verfahren sogar fast das 10-fache (ca. 40 Sekunden). 
 
 \subsubsection{Aufgabe 35.3}
 \begin{figure}[H]
@@ -66,11 +70,58 @@ Als nächstes wollen wir uns dem DG-Ansatz widmen. Wir vergleich hier zunächst 
 	\subfigure{\includegraphics[width=0.99\textwidth]{../Aufgabe35/35_3_level.png}}	 
 \end{figure}
 
+Wie bei vorherigen Berichten berechnen wir auch hierzu mithilfe des Flux Errors eine Annäherung an die Konvergenzrate $p$ für den DG Ansatz mit quadratischen Ansatzelementen und symmetrischer Konfiguration.
+Wir erhalten 
+\begin{align*}
+ \frac{e_l^{flux}}{e_{l+1}^{flux}} \approx 1.1508.
+\end{align*}
+Daraus erhalten wir die Konvergenzrate
+\begin{align*}
+  p \approx 0.2027.
+\end{align*}
+
+\subsubsection*{Penalty}
+Wir betrachten nun den Einfluss des Parameters penalty auf das symmetrische DGV mit quadratischen Ansatzelementen.
+
 \begin{figure}[H]
 	\centering
 	\captionabove{deg = 2, symmetrisch, level = 3}
 	\subfigure{\includegraphics[width=0.99\textwidth]{../Aufgabe35/35_3_dauer.png}}	 
 \end{figure}
+
+Wie wir anhand der Tabelle sehen, ist das Verfahren für zu kleinen penalty instabil. Für penalty = 0,1,5 liefert das Verfahren keine brauchbaren Ergebnisse und benötigt eine lange Programmlaufzeit.
+Für penalty = 10 erhalten wir eine gute Lösung bei relativ geringer Programmlaufzeit. Erhöhen wir nun den penalty noch weiter, so wird die Programmlaufzeit größer und zugleich die Lösung sogar schlechter. Es gilt also den penalty optimal in der Hinsicht zu wählen, dass das Verfahren stabil ist und der penalty trotzdem möglichst gering.
+
+
+
+\subsubsection*{Problemgröße}
+Wir wollen uns im Folgenden überlegen, wie die Anzahl der Unbekannten bei den unterschiedlichen Konfigurationen zustande kommen. 
+Betrachten wir hierbei zunächst die FEM mit linearen Ansatzelementen stellen wir fest, dass sich die Problemgröße ungefähr in der Größenordnung der Anzahl der Knoten bewegt.
+Wir können dies dadurch erklären, dass wir in unserem Ansatzraum für jeden Einzelknoten eine 'Hütchenfunktion' wählen können, welche einen Freiheitsgrad in der Gesamtapproximation ergibt.
+Was wir allerdings noch beachten müssen, ist, dass die Dirichletränder bereits fest in unserem Ansatzraum $V_h(0)$ eingebaut sind, weswegen wir Knoten an Dirichleträndern nicht betrachten dürfen.
+Es war uns leider nicht möglich die genaue Zusammensetzung der Problemgröße nachzuvollziehen. Was uns verwundert, ist, dass selbst auf verschiedenen Meshes mit gleich vielen Knoten bei gleichem Problem unterschiedliche Problemgrößen zustandekommen:
+\begin{itemize}
+  \item UnitSquare Lv4 = 289 (=Anzahl der Knoten)
+  \item 2Triangles Lv4 = 321
+  \item 8Triangles Lv3 = 353
+  \item Square500  Lv0 = 342
+\end{itemize} 
+Sehr schön sieht man allerdings, dass wir pro Level ungefähr eine Vervierfachung der Problemgröße erhalten. Dies ist der Tatsache geschuldet, dass wir durch die Halbierung der Gitterweite viermal so viele Knoten erhalten.
+
+Betrachten wir nun quadratische Ansatzelemente, erhalten wir auf Level 0 im Vergleich zu lineare Ansatzelementen ebenfalls etwa das Vierfache. Auch dies versuchen wir wieder anschaulich zu erklären: 
+Wir können uns bei der Überlegung, wieviele Freiheitsgrade hinzukommen, einer einfachen Analogie bedienen: 
+Durch die Wahl von quadratischen Ansatzelementen erhalten wir auf jeder Kante, also zwischen zwei Knoten, einen zusätzlichen Freiheitsgrad. Man kann also einsehen \textcolor{green}{??? BILD}, dass wir insgesamt in etwa so viele Freiheitsgrade erhalten, wie bei einem Gitter halber Gitterweite vorliegen. Das heißt wir erhalten beim Schritt von linearen zu quadratischen Ansatzelementen auch wieder ungefähr eine Vervierfachung des Ausgangswertes. Innerhalb der Diskretisierung mit quadratischen Ansatzelementen sehen wir erneut das Verhalten wie zuvor bei den linearen Ansatzelementen, d.h. eine Erhöhung des Levels um 1 hat eine Vervierfachung der Problemgröße zu folge.
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Problemgröße}
+	\subfigure{\includegraphics[width=0.99\textwidth]{../Aufgabe35/blub.png}}	 
+\end{figure}
+
+Betrachten wir nun das Discontinous Galerkin Verfahren. Wir müssen hierbei beachten, dass wir nun auch unstetige Ansätze erlauben. Es sind also auf den Knoten auch Sprungstellen erlaubt. Wir können uns auch hier einer einfachen Analogie bedienen und betrachten für jeden Knoten für jede anliegende Zelle einen eigenen Hilfsknoten. In unserem Fall erhalten wir bei linearen Ansatzelementen für jede Zelle gerade drei dieser Hilfsknoten (Square500 ist aus Dreiecken aufgebaut). Wir erhalten also für Level 0 (478 Zellen) gerade $3 \cdot 478 = 1434$ Freiheitsgrade. Mit steigendem Level erhalten dann exakt viermal so viele Freiheitsgrade, da bei Halbierung der Gitterweite sich die Zellenanzahl vervierfacht. 
+
+Betrachten wir nun erneut den Schritt von deg = 1 auf deg = 2 können wir die gleiche Analogie wie bereits bei der FEM nutzen. Wir erhalten also bei den quadratischen Ansatzelementen jeweils auf den Kanten einen weiteren Freiheitsgrad. Nun ist aber auch dieser Parameter wieder unstetig wählbar. Mit dem gleichen Trick wie zuvor bei deg = 1 können wir uns also überlegen, dass wir nun auch für jede Kante für jede angrenzende Zelle einen Freiheitsgrad erhalten und so gerade auf das sechsfache der Zellenanzahl kommen (jede Zelle hat 3 Ecken und 3 Kanten).
+Auch diese Werte lassen sich genau so in der Tabelle wiederfinden und wir können insgesamt die Verdopplung der Freiheitsgrade beim Schritt von deg = 1 auf deg = 2 feststellen.
 
 
 
