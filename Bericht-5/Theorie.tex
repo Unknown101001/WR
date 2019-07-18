@@ -36,10 +36,88 @@ Es gilt
 Wir wollen wieder Testfunktionen $ \phi_h \in Q_h \coloneqq \Pi_{K \in \mathcal{K}} \mathbb{P}_k(K)$ betrachten, wie beim letzten Mal bei \enquote{dG-Verfahren}. Da diese Funktionen sind nur auf $ K \in \mathcal{K} $, aber nicht unbedingt auf $ \Omega $. Es gilt
 \begin{align*}
 	&\oint_{\partial K} \kappa \phi_h \nabla u \cdot n \diff x = \int_K \dive(\underbrace{\kappa \nabla u}_{= -q} \phi_h) \diff x = \int_K \underbrace{\dive(-q)}_{=0} \phi_h + (-q) \nabla \phi_h \diff x = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x\\
-	\implies &\int_{\GammaN} g_N \phi_h \cdot n \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \int_{\partial K \setminus \GammaN} \kappa \nabla u \phi_h \cdot n \diff a\\
-	\implies &\int_{\GammaN} g_N \phi_h \cdot n \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x + \int_{\partial K \setminus \GammaN} q \phi_h \cdot n \diff a\\
-	%\implies &\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F} \cap \Omega_h} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a - \sum_{F \in \mathcal{F} \cap \GammaD} \int_{F} \kappa \nabla u \phi_h \cdot n \diff a = \int_{\GammaN} g_N \phi_h \cdot n \diff a\\
-	\implies &\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F} \setminus \GammaN} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a = \int_{\GammaN} g_N \phi_h \cdot n \diff a
+	\implies &\int_{\GammaN} g_N \phi_h \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \int_{\partial K \setminus \GammaN} \kappa \nabla u \phi_h \cdot n \diff a\\
+	\implies &\int_{\GammaN} g_N \phi_h \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x + \int_{\partial K \setminus \GammaN} q \phi_h \cdot n \diff a\\
+	\implies &\underbrace{\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F} \cap \Omega} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a - \sum_{F \in \mathcal{F} \cap \GammaD} \int_{F} \kappa \nabla u \phi_h \cdot n \diff a}_{\coloneqq a^{(1)}_h(u,\phi_h)}\\
+	&\qquad = \underbrace{\int_{\GammaN} g_N \phi_h \diff a}_{\coloneqq b^{(1)}_h(\phi_h)}\\
+	%&\text{Setzen wir nun für } F \subseteq \GammaD: \{\kappa \nabla u \}_F \coloneqq \kappa \nabla u \text{ und } [\phi_h]_F \coloneqq \phi_h \cdot n \text{ erhalten wir:}\\ 
+	%\implies &\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F} \setminus \GammaN} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a = \int_{\GammaN} g_N \phi_h \cdot n \diff a
 \end{align*}
+Wir haben somit eine erste schwache Formulierung gefunden:
+\begin{gather*}
+\text{Bestimme } u_h \in Q_h \text{, sodass}\\
+\begin{cases}
+	a^{(1)}(u_h,\phi_h) = b^{(1)}(\phi_h) (\phi_h \in Q_h)\\
+	u_h = u_D \text{ auf }\GammaD
+\end{cases}
+\end{gather*}
+
+\begin{notation}
+	Um die Notation übersichtlicher zu machen erweitern wir die Definition von $ \{\cdot\}_F $ und $ [\cdot]_F $. Sei $ g \in Q_h $ und $ F \in \mathcal{F}_h \setminus \GammaN $
+	\begin{align*}
+		&\{ g \}_F \coloneqq
+		 \begin{cases}
+					\frac{1}{2} (g_K + g_{K_F} ) &\text{für } F \subseteq \Omega\\
+					f &\text{für } F \subseteq \GammaD
+		\end{cases}
+	  &[g]_F \coloneqq \begin{cases}
+			g_K n^K + g_{K_F} n^{K_F} &\text{für } F \subseteq \Omega\\
+			g  n &\text{für } F \subseteq \GammaD
+		\end{cases}
+	\end{align*}
+	
+	Somit lässt sich $ a^{(1)} $ schreiben als
+	\[a^{(1)}(u_h, \phi_h) = \sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F}_h \setminus \GammaN} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a. \]
+\end{notation}
 
 
+
+
+
+Wir wollen diese Formulierung des Problems allerdings noch ein wenig abändern. Zum einen fehlen noch die Dirichlet-RW in der Formulierung. Zum anderen wünschen wir uns eine symmetrische, koerzive Bilinearform, damit unsere numerisches Verfahren schöne Eigenschaften hat (z.B. die numerische Lösung bleibt beschränkt).\\
+Im nächsten Schritt bauen wir die Dietrich-RW in die schwache Formulierung ein.
+
+Falls $ u_h = u_D $ auf $ \GammaD $, so gilt für $ F \subseteq \GammaD  $:
+\begin{align}
+	\label{D-RW1}& 0=\int_F (u_h - u_D) \phi_h \diff a &&\iff \int_F \underbrace{[u_h]_F [\phi_h]_F}_{= u_h \phi_h n \cdot n = u_h \phi_h} \diff a = \int_F u_D \phi_h \diff a  \\
+	\label{D-RW2}& 0  = \int_F (u_h - u_D) \kappa \nabla \phi_h \cdot n \diff a  &&\iff \int_F [u_h]_F \cdot \{\kappa \nabla\phi_h\}_F \diff a = \int_F u_D \kappa \nabla \phi_h \cdot n \diff a 
+\end{align} 
+Wir wählen diese Formulierung um die Forderung $ u_h = u_D $ auf $ \GammaD $ zu erfüllen, da wir nun durch die Hinzunahme von weiteren Termin, welche für eine stetige Lösung von $ \PS $ = 0 sind, eine symmetrische koerzive Bilinearform erhalten.\\
+Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial K_F $ mit $ u_K = u_{K_F} $ gilt $ [u_h]_F = 0 $ und somit
+\begin{align}
+	\label{innen1} &\int_F [u_h]_F \cdot [\phi_h]_F \diff a = 0\\
+	\label{innen2}&\int_F [u_h]_F \cdot \{ \kappa\nabla\phi_h \}_F \diff a = 0
+\end{align}
+
+\begin{define}
+	\begin{align*}
+		\asip(u_h, \phi_h) \coloneqq &\underbrace{\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \F\setminus\FN } \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a}_{= a_h^{(1)}(u_h, \phi_h)}\\
+		&- \sum_{F \in \FIn} \underbrace{\int_F [u_h]_F \cdot \{ \kappa \nabla \phi_h \}_F \diff a}_{(\ref{innen2})} - \sum_{F \in \FD} \underbrace{\int_F [u_h]_F \cdot \{ \kappa \nabla \phi_h \}_F \diff a}_{(\ref{D-RW2})}\\
+		&+\sum_{F \in \FIn} \gamma_F \underbrace{\int_F [u_h]_F \cdot [\phi_h]_F \diff a}_{(\ref{innen1})} + \sum_{F \in \FD} \gamma_F \underbrace{\int_F [u_h]_F \cdot [\phi_h]_F \diff a}_{(\ref{D-RW1})}\\
+		=& \sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x + \sum_{F \in \F\setminus\FN}  \gamma_F \int_F [u_h]_F \cdot [\phi_h]_F \diff a\\
+		&- \sum_{F \in \F\setminus\FN} \int_F \left(  \{\kappa \nabla u \}_F [\phi_h]_F + [u_h]_F \{\kappa \nabla \phi_h \}_F  \right) \diff a\\
+		\bsip(\phi_h) \coloneqq & \underbrace{\int_{\GammaN} g_N \phi_h \diff a}_{=b_h^{(1)}(\phi_h)} \underbrace{\textcolor{red}{-} \int_{\GammaD} u_D \kappa \nabla \phi_h \cdot n \diff a}_{(\ref{D-RW2})} + \underbrace{\sum_{F \in \FD} \gamma_F \int_F u_D \phi_h \diff a}_{(\ref{D-RW1})}
+	\end{align*}
+\end{define}
+\begin{remark}\textcolor{red}{Bei Korrektur}\\
+	Das \enquote{$-$}-Zeichen vor dem zweiten Integral bei $ b_h $ sollte dort stehen, allerdings ist es nicht auf den Folien nicht so.
+\end{remark}
+
+\paragraph{Eigenschaften:}
+\begin{itemize}
+	\item $ \asip(\cdot,\cdot) $ ist eine symmetrischen Bilinearform und unter gweissen Voraussetzungen an $ \gamma_F $ ist $ \asip(\cdot,\cdot) $ koerzive bezüglich der Norm $ \norm{\cdot}_{\text{DG}} $ (siehe VL. Lemma (7.2))
+	\item $ \bsip_h $ ist ein beschränktes lineares Funktional bezüglich $ \norm{\cdot}_{\text{DG}} $ 
+\end{itemize}
+
+\paragraph{Konsistenz:}~\\
+Für eine Lösung $ u $ von $ \PS $ mit $ u \in C(\overline{\Omega}) $ (u stetig auf $ \overline{\Omega} $) und  \textcolor{red}{$ \{\kappa \nabla u\}_F =0 (F \in \FIn)$}
+gilt die Gleichung
+\[ \asip(u,\phi_h) = \bsip(\phi_h) \ (\phi_h \in Q_h) \]
+
+\paragraph{Stabilität:}~\\
+Sei $ u_h \in Q_h $ eine Lösung von $ \asip(u_h, \phi_h) = \bsip(\phi_h) \ (\phi_h \in Q_h) $. Dann gilt
+\[ \norm{u_h}_{\text{DG}}^2 \le \asip(u_h, u_h) = \bsip(u_h) \le C \norm{u_h}_{\text{DG}} \implies \norm{u_h}_{\text{DG}} \le C \]
+Also ist unsere numerische Lösung beschränkt. 
+
+\paragraph{Wohldefiniertheit des Verfahrens:}~\\
+Man kann zeigen, dass das durch $ \asip(u_h, \phi_h) = \bsip(\phi_h) \ (\phi_h \in Q_h) $ gegebene LGS eindeutig lösbar ist (da die durch $ \asip(\cdot, \cdot)  $ gegebene Abbildungsmatrix symetrisch positiv definit ist).
