@@ -14,12 +14,14 @@ Wir betrachten erneut das Potentialströmungsproblem
 \end{gather*}
 Dabei ist $ \partial \Omega = \GammaN \cupdot \GammaD $. Sei weiter $ \mathcal{K} $ eine zulässige Triangulierung mit Kantenmenge $ \mathcal{F} $ und Eckenmenge $ \mathcal{V} $. Außerdem sei $ \Omega_h \coloneqq \bigcup_{K \in \mathcal{K}} K$ und $ \partial \Omega_h \coloneqq \overline{\Omega} \setminus \Omega_h $.
 
-Es gilt 
-\begin{align*}
-	&\forall K \in \mathcal{K}: \oint_{\partial K} \phi_h q \cdot n^K \diff a = \int_K \dive(\phi_h q) \diff x = \int_K \nabla\phi_h \cdot q \diff x + \int_K \phi_h \underbrace{\dive(q)}_{=0} \diff x\\
-	\implies &\forall K \in \mathcal{K}: -\oint_{\partial K} \phi_h q \cdot n^K \diff a + \int_K \nabla\phi_h \cdot q \diff x  = 0 \\
-	\implies &\sum_{K \in \mathcal{K}} \left( - \int_K q \cdot \nabla \phi_h \diff + \oint_{\partial K \setminus \GammaN} q \cdot n \underbrace{\phi_K}_{\coloneqq \phi_{h|K}} \diff a  \right) = \oint_{\GammaN} g_N \phi_h \diff a
-\end{align*}
+Weiter wollen wir wieder Testfunktionen $ \phi_h \in Q_h \coloneqq \Pi_{K \in \mathcal{K}} \mathbb{P}_k(K)$ betrachten, wie beim letzten Mal bei \enquote{dG-Verfahren}. Da diese Funktionen sind nur auf $ K \in \mathcal{K} $, aber nicht unbedingt auf $ \Omega $. 
+
+%Es gilt 
+%\begin{align*}
+%	&\forall K \in \mathcal{K}: \oint_{\partial K} \phi_h q \cdot n^K \diff a = \int_K \dive(\phi_h q) \diff x = \int_K \nabla\phi_h \cdot q \diff x + \int_K \phi_h \underbrace{\dive(q)}_{=0} \diff x\\
+%	\implies &\forall K \in \mathcal{K}: -\oint_{\partial K} \phi_h q \cdot n^K \diff a + \int_K \nabla\phi_h \cdot q \diff x  = 0 \\
+%	\implies &\sum_{K \in \mathcal{K}} \left( - \int_K q \cdot \nabla \phi_h \diff + \oint_{\partial K \setminus \GammaN} q \cdot n \underbrace{\phi_K}_{\coloneqq \phi_{h|K}} \diff a  \right) = \oint_{\GammaN} g_N \phi_h \diff a
+%\end{align*}
 
 \begin{Satz}(\defi{DG-Formel})\\
 	Sei $ \overline{F} = \partial K \cap \partial K_F $ mit $ K \ne K_F $ (also ist $ F $ eine innere Kante) und $ ( \underbrace{q_{K} }_{\coloneqq q_{|K}}- \underbrace{q_{K_F}}_{\coloneqq q_{|K_F}} )  \cdot n^K = 0$.
@@ -33,12 +35,20 @@ Es gilt
 	\end{align*}
 \end{Satz}
 
-Wir wollen wieder Testfunktionen $ \phi_h \in Q_h \coloneqq \Pi_{K \in \mathcal{K}} \mathbb{P}_k(K)$ betrachten, wie beim letzten Mal bei \enquote{dG-Verfahren}. Da diese Funktionen sind nur auf $ K \in \mathcal{K} $, aber nicht unbedingt auf $ \Omega $. Es gilt
+\begin{notation}~
+	\begin{itemize}
+		\item $ \FIn: $ Menge der inneren Kanten
+		\item $ \FD: $ Menge der Kanten auf dem Dirichlet-Rand
+		\item $ \FN: $ Menge der Kanten auf dem Neumann-Rand
+	\end{itemize}
+\end{notation}
+
+Es gilt
 \begin{align*}
 	&\oint_{\partial K} \kappa \phi_h \nabla u \cdot n \diff x = \int_K \dive(\underbrace{\kappa \nabla u}_{= -q} \phi_h) \diff x = \int_K \underbrace{\dive(-q)}_{=0} \phi_h + (-q) \nabla \phi_h \diff x = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x\\
 	\implies &\int_{\GammaN} g_N \phi_h \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \int_{\partial K \setminus \GammaN} \kappa \nabla u \phi_h \cdot n \diff a\\
 	\implies &\int_{\GammaN} g_N \phi_h \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x + \int_{\partial K \setminus \GammaN} q \phi_h \cdot n \diff a\\
-	\implies &\underbrace{\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F} \cap \Omega} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a - \sum_{F \in \mathcal{F} \cap \GammaD} \int_{F} \kappa \nabla u \phi_h \cdot n \diff a}_{\coloneqq a^{(1)}_h(u,\phi_h)}\\
+	\implies &\underbrace{\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \FIn} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a - \sum_{F \in \FD} \int_{F} \kappa \nabla u \phi_h \cdot n \diff a}_{\coloneqq a^{(1)}_h(u,\phi_h)}\\
 	&\qquad = \underbrace{\int_{\GammaN} g_N \phi_h \diff a}_{\coloneqq b^{(1)}_h(\phi_h)}\\
 	%&\text{Setzen wir nun für } F \subseteq \GammaD: \{\kappa \nabla u \}_F \coloneqq \kappa \nabla u \text{ und } [\phi_h]_F \coloneqq \phi_h \cdot n \text{ erhalten wir:}\\ 
 	%\implies &\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F} \setminus \GammaN} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a = \int_{\GammaN} g_N \phi_h \cdot n \diff a
@@ -67,7 +77,7 @@ Wir haben somit eine erste schwache Formulierung gefunden:
 	\end{align*}
 	
 	Somit lässt sich $ a^{(1)} $ schreiben als
-	\[a^{(1)}(u_h, \phi_h) = \sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \mathcal{F}_h \setminus \GammaN} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a. \]
+	\[a^{(1)}(u_h, \phi_h) = \sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \F \setminus \FN} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a. \]
 \end{notation}
 
 
