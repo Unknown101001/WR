@@ -37,7 +37,7 @@ Wir erhalten dann im folgenden Lemma eine Aussage über die Güte unserer Approx
 \end{Lemma}
 Mit anderen Worten heißt das: Die berechnete Galerkin Approximation ist bezüglich einer geeigneten Norm eine Bestapproximation in unserem Ansatzraum $V$.
 Die Vorraussetzungen des obigen Lemmas sind sowohl für die FEM als auch für das DGV erfüllt (vgl. Bericht 1-3 und
-\textcolor{green}{ ? siehe Theorie }
+Eigenschaften von $ \asip(\cdot,\cdot) $ im ersten Kapitel).
 Wir erhalten deshalb für quadratische Ansatzelemente auch eine etwas bessere Lösung, denn der Ansatzraum $V_h^{lin}$ der linearen Ansatzelemente ist natürlich Teilmenge des Ansatzraumes $V_h^{quad}$ der quadratischen Ansatzelemente. Da es sich bei der Finite Elemente Lösung um eine Galerkin-Approximation handelt und diese nach obigem Lemma eine Bestapproximation im zugehörigen Ansatzraum darstellt, kann die Lösung im größeren Ansatzraum $V_h^{quad}$ nur besser ausfallen.
 
 Erstaunlich ist dabei, dass die Programmdauer bei minimal größerer Problemgröße und zudem besserer Genauigkeit bei den quadratischen Ansatzelementen für ungefähr gleiche Problemgröße dennoch meist geringer ausfällt als bei linearen Ansatzelementen. Zum Beispiel liefert Level 2 bei den lineare Ansatzelementen eine Programmdauer von 0.66 Sekunden, bei den quadratischen Ansatzelementen auf Level 1 aber nur von 0.37 Sekunden (Problemgröße $\approx 4350$ bei beiden).
@@ -61,7 +61,7 @@ Als nächstes wollen wir uns dem DG-Ansatz widmen. Wir vergleichen hierbei  \unk
 \end{figure}
 
 Wir wollen nun auf die Vor- und Nachteile bei symmetrischer und nicht-symmetrischer Konfiguration eingehen.
-Schnell fällt ins Auge, dass die Ergebnisse des nicht-symmetrischen Verfahrens deutlich besser sind als mit symmetrischer Konfiguration. Während nämlich der Flux Error auf allen Leveln bei der symmetrischen Konfiguration nahe 1 ist, bewegen wir uns bei nicht-symmetrischer Konfiguration im Bereich von (sogar meist besser als) $10^-6$. Allerdings sieht man auch sehr schnell ein, dass dies nur auf Kosten der Programmdauer möglich ist. Während auf Level 3 der symmetrische Fall nur 4,4 Sekunden dauert, benötigt das nicht-symmetrische Verfahren sogar fast das 10-fache (ca. 40 Sekunden). 
+Schnell fällt ins Auge, dass die Ergebnisse des nicht-symmetrischen Verfahrens deutlich besser sind als mit symmetrischer Konfiguration. Während nämlich der Flux Error auf allen Leveln bei der symmetrischen Konfiguration nahe 1 ist, bewegen wir uns bei nicht-symmetrischer Konfiguration im Bereich von (sogar meist besser als) $10^{-6}$. Allerdings sieht man auch sehr schnell ein, dass dies nur auf Kosten der Programmdauer möglich ist. Während auf Level 3 der symmetrische Fall nur 4,4 Sekunden dauert, benötigt das nicht-symmetrische Verfahren sogar fast das 10-fache (ca. 40 Sekunden). 
 
 \subsubsection{Aufgabe 35.3}
 \begin{figure}[H]
