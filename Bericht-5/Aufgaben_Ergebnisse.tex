@@ -45,7 +45,7 @@ Erstaunlich ist dabei, dass die Programmdauer bei minimal größerer Problemgrö
 
 
 \subsubsection{Aufgabe 35.2}
-Als nächstes wollen wir uns dem DG-Ansatz widmen. Wir vergleichen hierbei  \unklar{EINLEITUNG???}
+Als nächstes wollen wir uns dem DG-Ansatz widmen. Wir vergleichen hierbei  zwischen einem symmetrischen ($ \gamma_F  > 0$) und einem nichtsymmetrischen Ansatz (auch $ \gamma_F < 0 $ erlaubt; vgl. Theorieteil).
 
 \begin{figure}[H]
 	\centering
@@ -82,6 +82,7 @@ Daraus erhalten wir die Konvergenzrate
 
 \subsubsection*{Penalty}
 Wir betrachten nun den Einfluss des Parameters penalty auf das symmetrische DGV mit quadratischen Ansatzelementen.
+Grundsätzlich gilt $ \gamma_F  = \sigma \cdot p$, dabei ist $\sigma \in \{ \pm 1 \} $ und $p$ der penalty.
 
 \begin{figure}[H]
 	\centering
@@ -110,7 +111,7 @@ Sehr schön sieht man allerdings, dass wir pro Level ungefähr eine Vervierfachu
 
 Betrachten wir nun quadratische Ansatzelemente, erhalten wir auf Level 0 im Vergleich zu lineare Ansatzelementen ebenfalls etwa das Vierfache. Auch dies versuchen wir wieder anschaulich zu erklären: 
 Wir können uns bei der Überlegung, wieviele Freiheitsgrade hinzukommen, einer einfachen Analogie bedienen: 
-Durch die Wahl von quadratischen Ansatzelementen erhalten wir auf jeder Kante, also zwischen zwei Knoten, einen zusätzlichen Freiheitsgrad. Man kann also einsehen \textcolor{green}{??? BILD}, dass wir insgesamt in etwa so viele Freiheitsgrade erhalten, wie bei einem Gitter halber Gitterweite vorliegen. Das heißt wir erhalten beim Schritt von linearen zu quadratischen Ansatzelementen auch wieder ungefähr eine Vervierfachung des Ausgangswertes. Innerhalb der Diskretisierung mit quadratischen Ansatzelementen sehen wir erneut das Verhalten wie zuvor bei den linearen Ansatzelementen, d.h. eine Erhöhung des Levels um 1 hat eine Vervierfachung der Problemgröße zu folge.
+Durch die Wahl von quadratischen Ansatzelementen erhalten wir auf jeder Kante, also zwischen zwei Knoten, einen zusätzlichen Freiheitsgrad. Man kann also einsehen, dass wir insgesamt in etwa so viele Freiheitsgrade erhalten, wie bei einem Gitter halber Gitterweite vorliegen. Das heißt wir erhalten beim Schritt von linearen zu quadratischen Ansatzelementen auch wieder ungefähr eine Vervierfachung des Ausgangswertes. Innerhalb der Diskretisierung mit quadratischen Ansatzelementen sehen wir erneut das Verhalten wie zuvor bei den linearen Ansatzelementen, d.h. eine Erhöhung des Levels um 1 hat eine Vervierfachung der Problemgröße zu folge.
 
 \begin{figure}[H]
 	\centering
@@ -118,11 +119,12 @@ Durch die Wahl von quadratischen Ansatzelementen erhalten wir auf jeder Kante, a
 	\subfigure{\includegraphics[width=0.99\textwidth]{../Aufgabe35/blub.png}}	 
 \end{figure}
 
-Betrachten wir nun das Discontinous Galerkin Verfahren. Wir müssen hierbei beachten, dass wir nun auch unstetige Ansätze erlauben. Es sind also auf den Knoten auch Sprungstellen erlaubt. Wir können uns auch hier einer einfachen Analogie bedienen und betrachten für jeden Knoten für jede anliegende Zelle einen eigenen Hilfsknoten. In unserem Fall erhalten wir bei linearen Ansatzelementen für jede Zelle gerade drei dieser Hilfsknoten (Square500 ist aus Dreiecken aufgebaut). Wir erhalten also für Level 0 (478 Zellen) gerade $3 \cdot 478 = 1434$ Freiheitsgrade. Mit steigendem Level erhalten dann exakt viermal so viele Freiheitsgrade, da bei Halbierung der Gitterweite sich die Zellenanzahl vervierfacht. 
+Betrachten wir nun das Discontinous Galerkin Verfahren. Wir müssen hierbei beachten, dass wir nun auch unstetige Ansätze erlauben. Es sind also auf den Knoten auch Sprungstellen erlaubt. Wir können uns auch hier einer einfachen Analogie bedienen und betrachten für jeden Knoten für jede anliegende Zelle einen eigenen leicht ins Innere der Zelle gerückten Hilfsknoten. In unserem Fall erhalten wir bei linearen Ansatzelementen also für jede Zelle gerade drei dieser Hilfsknoten (Square500 ist aus Dreiecken aufgebaut). Wir erhalten also für Level 0 (478 Zellen) gerade $3 \cdot 478 = 1434$ Freiheitsgrade. Mit steigendem Level erhalten dann exakt viermal so viele Freiheitsgrade, da bei Halbierung der Gitterweite sich die Zellenanzahl vervierfacht. 
 
 Betrachten wir nun erneut den Schritt von deg = 1 auf deg = 2 können wir die gleiche Analogie wie bereits bei der FEM nutzen. Wir erhalten also bei den quadratischen Ansatzelementen jeweils auf den Kanten einen weiteren Freiheitsgrad. Nun ist aber auch dieser Parameter wieder unstetig wählbar. Mit dem gleichen Trick wie zuvor bei deg = 1 können wir uns also überlegen, dass wir nun auch für jede Kante für jede angrenzende Zelle einen Freiheitsgrad erhalten und so gerade auf das sechsfache der Zellenanzahl kommen (jede Zelle hat 3 Ecken und 3 Kanten).
 Auch diese Werte lassen sich genau so in der Tabelle wiederfinden und wir können insgesamt die Verdopplung der Freiheitsgrade beim Schritt von deg = 1 auf deg = 2 feststellen.
 
+\remark Wir werden diesen Bericht hinsichtlich der endgültigen Fassung noch um einen Abschnitt über MLMC erweitern.
 
 
 

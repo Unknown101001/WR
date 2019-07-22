@@ -14,7 +14,7 @@ Wir betrachten erneut das Potentialströmungsproblem
 \end{gather*}
 Dabei ist $ \partial \Omega = \GammaN \cupdot \GammaD $. Sei weiter $ \mathcal{K} $ eine zulässige Triangulierung mit Kantenmenge $ \mathcal{F}_h $ und Eckenmenge $ \mathcal{V} $. Außerdem sei $ \Omega_h \coloneqq \bigcup_{K \in \mathcal{K}} K$ und $ \partial \Omega_h \coloneqq \overline{\Omega} \setminus \Omega_h $.
 
-Weiter wollen wir wieder Testfunktionen $ \phi_h \in Q_h \coloneqq \Pi_{K \in \mathcal{K}} \mathbb{P}_k(K)$ betrachten, wie beim letzten Mal bei \enquote{dG-Verfahren}. Da diese Funktionen sind nur auf $ K \in \mathcal{K} $, aber nicht unbedingt auf $ \Omega $. 
+Weiter wollen wir wieder Testfunktionen $ \phi_h \in Q_h \coloneqq \Pi_{K \in \mathcal{K}} \mathbb{P}_k(K)$ betrachten, wie beim letzten Mal bei \enquote{dG-Verfahren}. Diese Funktionen sind nur stetig auf $ K \in \mathcal{K} $, aber nicht unbedingt auf $ \Omega $. 
 
 %Es gilt 
 %\begin{align*}
@@ -85,14 +85,15 @@ Wir haben somit eine erste schwache Formulierung gefunden:
 
 
 Wir wollen diese Formulierung des Problems allerdings noch ein wenig abändern. Zum einen fehlen noch die Dirichlet-RW in der Formulierung. Zum anderen wünschen wir uns eine symmetrische, koerzive Bilinearform, damit unsere numerisches Verfahren schöne Eigenschaften hat (z.B. die numerische Lösung bleibt beschränkt).\\
-Im nächsten Schritt bauen wir die Dietrich-RW in die schwache Formulierung ein.
+Im nächsten Schritt bauen wir die Dirichlet-RW in die schwache Formulierung ein:
 
 Falls $ u_h = u_D $ auf $ \GammaD $, so gilt für $ F \subseteq \GammaD  $:
 \begin{align}
 	\label{D-RW1}& 0=\int_F (u_h - u_D) \phi_h \diff a &&\iff \int_F \underbrace{[u_h]_F [\phi_h]_F}_{= u_h \phi_h n \cdot n = u_h \phi_h} \diff a = \int_F u_D \phi_h \diff a  \\
 	\label{D-RW2}& 0  = \int_F (u_h - u_D) \kappa \nabla \phi_h \cdot n \diff a  &&\iff \int_F [u_h]_F \cdot \{\kappa \nabla\phi_h\}_F \diff a = \int_F u_D \kappa \nabla \phi_h \cdot n \diff a 
 \end{align} 
-Wir wählen diese Formulierung um die Forderung $ u_h = u_D $ auf $ \GammaD $ zu erfüllen, da wir nun durch die Hinzunahme von weiteren Termin, welche für eine stetige Lösung $ u $ von $ \PS $ = 0 sind, eine symmetrische koerzive Bilinearform erhalten.\\
+Wir wählen diese Formulierung, um die Forderung $ u_h = u_D $ auf $ \GammaD $ zu erfüllen. 
+Außerdem können wir nun durch die Hinzunahme von weiteren Termen, welche für eine stetige Lösung $ u $ von $ \PS $ = 0 sind (also sogenannte Strafterme für unstetige Lösungen), eine symmetrische koerzive Bilinearform erhalten.\\
 Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial K_F $ mit $ u_K = u_{K_F} $ gilt $ [u_h]_F = 0 $ und somit
 \begin{align}
 	\label{innen1} &\int_F [u_h]_F \cdot [\phi_h]_F \diff a = 0\\
@@ -115,12 +116,12 @@ Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial
 
 \paragraph{Eigenschaften:}
 \begin{itemize}
-	\item $ \asip(\cdot,\cdot) $ ist eine symmetrischen Bilinearform und unter gweissen Voraussetzungen an $ \gamma_F $ ist $ \asip(\cdot,\cdot) $ koerzive bezüglich der Norm $ \norm{\cdot}_{\text{DG}} $ (siehe VL. Lemma (7.2))
+	\item $ \asip(\cdot,\cdot) $ ist eine symmetrischen Bilinearform und unter gewissen Voraussetzungen an $ \gamma_F $ ist $ \asip(\cdot,\cdot) $ koerzive bezüglich der Norm $ \norm{\cdot}_{\text{DG}} $ (siehe VL. Lemma (7.2))
 	\item $ \bsip_h $ ist ein beschränktes lineares Funktional bezüglich $ \norm{\cdot}_{\text{DG}} $ 
 \end{itemize}
 
 \paragraph{Konsistenz:}~\\
-Für eine Lösung $ u $ von $ \PS $ mit $ u \in C(\overline{\Omega}) $ (u stetig auf $ \overline{\Omega} $) und  \textcolor{red}{$ \{\kappa \nabla u\}_F =0 (F \in \FIn)$}
+Für eine Lösung $ u $ von $ \PS $ mit $ u \in C(\overline{\Omega}) $ (u stetig auf $ \overline{\Omega} $) und  \textcolor{red}{$ \{\kappa \nabla u\}_F =0$  $(F \in \FIn)$}
 gilt die Gleichung
 \[ \asip(u,\phi_h) = \bsip(\phi_h) \ (\phi_h \in Q_h) \]
 
