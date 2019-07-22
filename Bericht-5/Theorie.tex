@@ -9,7 +9,7 @@ Wir betrachten erneut das Potentialströmungsproblem
 		\dive(q) = 0 &\text{, in }\Omega\\
 		q = - \kappa \nabla u &\text{, in } \Omega\\
 		q \cdot n = g_N &\text{, auf }\GammaN\\
-		u = u_D &\text{, aud } \GammaD. 
+		u = u_D &\text{, auf } \GammaD. 
 	\end{cases}
 \end{gather*}
 Dabei ist $ \partial \Omega = \GammaN \cupdot \GammaD $. Sei weiter $ \mathcal{K} $ eine zulässige Triangulierung mit Kantenmenge $ \mathcal{F}_h $ und Eckenmenge $ \mathcal{V} $. Außerdem sei $ \Omega_h \coloneqq \bigcup_{K \in \mathcal{K}} K$ und $ \partial \Omega_h \coloneqq \overline{\Omega} \setminus \Omega_h $.
@@ -84,7 +84,7 @@ Wir haben somit eine erste schwache Formulierung gefunden:
 
 
 
-Wir wollen diese Formulierung des Problems allerdings noch ein wenig abändern. Zum einen fehlen noch die Dirichlet-RW in der Formulierung. Zum anderen wünschen wir uns eine symmetrische, koerzive Bilinearform, damit unsere numerisches Verfahren schöne Eigenschaften hat (z.B. die numerische Lösung bleibt beschränkt).\\
+Wir wollen diese Formulierung des Problems allerdings noch ein wenig abändern. Zum einen fehlen noch die Dirichlet-RW in der Formulierung, zum anderen wünschen wir uns eine symmetrische, koerzive Bilinearform, damit unser numerisches Verfahren schöne Eigenschaften hat (z.B. die numerische Lösung bleibt beschränkt).\\
 Im nächsten Schritt bauen wir die Dirichlet-RW in die schwache Formulierung ein:
 
 Falls $ u_h = u_D $ auf $ \GammaD $, so gilt für $ F \subseteq \GammaD  $:
