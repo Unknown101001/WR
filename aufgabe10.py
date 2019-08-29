@@ -186,6 +186,27 @@ def main_Jac_CG_probs():
         name = prec + "_" + ls + "_" + lvl+"_Problem-"+prob
         save("Aufgabe10", name)
 
+def main_Jac_CMRES_probs():
+    for prob in ["Discontinuous","Divergent","Simple2D"]:
+        lvl = "6"
+        prec = "Jacobi"
+        ls = "GMRES"
+        delete_old()
+        manipulate_conf("m++conf", [("loadconf", "laplace.conf")])
+        manipulate_conf("laplace.conf",
+                        [("Problem", prob),
+                         ("Mesh", "UnitSquare"),
+                         ("level", lvl),
+                         ("Preconditioner", prec),
+                         ("LinearSteps", "800"),
+                         ("LinearSolver", ls),
+                         ("LinearVerbose","1")])
+        output = run(1)
+        # out = parse_mpp_output_allg([], output)
+        # print(out)
+        name = prec + "_" + ls + "_" + lvl+"_Problem-"+prob
+        save("Aufgabe10", name)
+
 
 def main_Jac_LS():
     lvl = "3"
@@ -222,10 +243,13 @@ if __name__ == "__main__":
     main_SGS_CG()
     '''
 
+    '''
     main_Jac_CG_2()
     main_Jac_CG_4()
 
     main_Jac_CG_probs()
 
     main_Jac_LS()
+    '''
+    main_Jac_CMRES_probs()
 

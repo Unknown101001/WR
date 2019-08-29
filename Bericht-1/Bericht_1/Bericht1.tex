@@ -517,7 +517,17 @@ Die Lösung ist also bereits für einzelne Zellen nicht korrekt, weswegen auch d
 
 Auf dem dritten Übungsblatt haben wir uns mit den von M++ verwendeten iterativen Lösern und Vorkonditionieren beschäftigt.
 Dabei ging es vor allem um den praktischen Vergleich der verschiedenen Löser und deren Anwendung auf die bereits beschriebenen Probleme.
-Zunächst betrachteten wir dabei die Anwendung des Jacobi-Vorkonditionierers 
+Zunächst betrachteten wir dabei die Anwendung des Jacobi-Vorkonditionierers auf das Problem Simple2D mit CG- und GMRES-Verfahren als iterativen Löser.
+
+Bei der Lösung mit dem CG-Verfahren fällt auf, dass der Fehler in jedem Schritt zunächst konstant (diesen Wert nennen wir ab jetzt Fehler 1) ist und sich erst im letzten Schritt (den Fehler im letzten Schritt nennen wir Fehler 2) schlagartig ändert:
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Fehlerentwicklung bei CG-Verfahren mit Jacobi-Vorkonditionierer auf Level 4}
+	\subfigure{\includegraphics[width=0.5\textwidth]{../../Aufgabe10/blubblub.png}}	 
+\end{figure}
+
+Wir erhalten so für die Level $3, \dots,9$ die folgenden Werte:
 
 \begin{figure}[H]
 	\centering
@@ -525,17 +535,32 @@ Zunächst betrachteten wir dabei die Anwendung des Jacobi-Vorkonditionierers
 	\subfigure{\includegraphics[width=0.67\textwidth]{../../Aufgabe10/Jacobi-CG.png}}	 
 \end{figure}
 
+Man sieht dabei außerdem sehr schön, dass für jedes Level stets doppelt so viele Iterationschritte benötigt werden, wie im vorherigen. Außerdem sieht man, dass die Konvergenzrate wie zu erwarten bei höherem Level schlechter wird. 
+\textcolor{red}{WIE KANN MAN RATE BESTIMMEN -LOG?}
+Anschließend können wir die Ergebnisse auch noch mit der Anwendung des Jacobi-Vorkonditionierers auf das GMRES-Verfahren zum gleichen Problem vergleichen:
+
 \begin{figure}[H]
 	\centering
 	\captionabove{Iterativer Löser: GMRES-Verfahren, Vorkonditionierer: Jacobi}
 	\subfigure{\includegraphics[width=0.33\textwidth]{../../Aufgabe10/Jacobi-GMRES.png}}	 
 \end{figure}
 
+Hierbei fällt sehr schnell die extreme Verschlechterung der Konvergenzrate zwischen den Leveln 6 und 7.
+Bis Level 6 verhalten sich die so entstehenden Ergebnisse noch sehr ähnlich, wie zuvor beim CG-Verfahren.
+Ab Level 7 hingegen ist die Konvergenzrate sehr schlecht (nahe 1) und der iterative Löser bricht erst nach 800 (das ist bereits die eingestellte maximale Schrittanzahl des iterativen Lösers) ab. Dies lässt sich auf folgenden Sachverhalt zurückführen:
+\textcolor{red}{WOHER ZUM TEUFEL SOLL ICH DAS WISSEN HINWEIS REDUZIERUNG DES SPEICHERBEDARFS}
+\newline
+Anschließend haben wir die bereits beschriebenen Ergebnisse mit denen von weiteren Vorkonditionierer/Löser-Kombinationen verglichen:
+
 \begin{figure}[H]
 	\centering
 	\captionabove{Weitere Iterative Löser mit verschiedenen Vorkonditionierern}
 	\subfigure{\includegraphics[width=0.99\textwidth]{../../Aufgabe10/blub.png}}	 
 \end{figure}
+
+Besonders fallen hier die Verfahren mit Multigrid-Konditionierer auf, welche beide sehr gute Konvergenzraten bei sehr wenigen Iterationsschritten vorweisen.
+Weiter sieht man, dass das symmetrische GaussSeidel-Verfahren sich noch zumindest annehmbar gut als Vorkonditionierer für das CG-Verfahren eignet, während ein GaussSeidel-Vorkonditionierer kombiniert mit dem GMRES-Verfahren ähnlich schlecht abschneidet, wie zuvor das GMRES-Verfahren mit Jacobi-Vorkonditionierer.
+Grundsätzlich sieht man, dass es  sich lohnt für ein symmetrisches Problem wie Simple2D das CG-Verfahren zu benutzen.
 
 
 
