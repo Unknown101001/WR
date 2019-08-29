@@ -1,0 +1,119 @@
+start program on 1 procs at Thu Aug 29 11:31:32 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Laplace
+  reading ... Mesh = UnitSquare
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 3
+  reading ... plevel = 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  reading ... Overlap = dG1
+  reading ... Distribution = RCB
+  reading ... Discretization = linear
+  reading ... Discretization = linear
+  default ... QuadratureCell = 2
+  default ... QuadratureBoundary = 1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... Problem = Divergent
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = CG
+  reading ... Preconditioner = Jacobi
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerDamp = 1
+  default ... SHIFTspecial = 0
+  reading ... LinearVerbose = 1
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  default ... NewtonReduction = 1e-05
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 3
+
+ Level:          3
+ Dimension:      2
+ Cells:          64
+ Problem size:   81
+ Vertices:       81
+ Edges:          144
+ Mesh width:     [0.125,0.125]
+ Assemble        Laplace
+
+ Problem:        Divergent Problem
+ Discretization: linear
+
+ Newton: d(0)= 0.342327
+  PCG: d(0)= 0.342327
+  PCG: d(1)= 0.571825
+  PCG: d(2)= 0.495111
+  PCG: d(3)= 0.376059
+  PCG: d(4)= 0.400907
+  PCG: d(5)= 0.38059
+  PCG: d(6)= 0.330332
+  PCG: d(7)= 0.396576
+  PCG: d(8)= 0.486089
+  PCG: d(9)= 0.499432
+  PCG: d(10)= 0.358703
+  PCG: d(11)= 0.398352
+  PCG: d(12)= 0.321373
+  PCG: d(13)= 0.448084
+  PCG: d(14)= 0.442721
+  PCG: d(15)= 0.313531
+  PCG: d(16)= 0.214278
+  PCG: d(17)= 0.147567
+  PCG: d(18)= 0.0918193
+  PCG: d(19)= 0.0756993
+  PCG: d(20)= 0.0674433
+  PCG: d(21)= 0.0654874
+  PCG: d(22)= 0.0385394
+  PCG: d(23)= 0.0261753
+  PCG: d(24)= 0.0271231
+  PCG: d(25)= 0.0154545
+  PCG: d(26)= 0.00895106
+  PCG: d(27)= 0.00579837
+  PCG: d(28)= 0.00588756
+  PCG: d(29)= 0.00355502
+  PCG: d(30)= 0.00132602
+  PCG: d(31)= 0.000574716
+  PCG: d(32)= 0.000232914
+  PCG: d(33)= 0.000183772
+  PCG: d(34)= 0.000163318
+  PCG: d(35)= 8.99701e-05
+  PCG: d(36)= 7.15776e-05
+  PCG: d(37)= 6.33939e-05
+  PCG: d(38)= 2.35954e-05
+  PCG: d(39)= 1.03027e-05
+  PCG: d(40)= 3.32837e-06
+  PCG: d(41)= 8.94713e-07
+  PCG: d(42)= 2.61524e-07
+  PCG: d(43)= 1.03523e-07
+  PCG: d(44)= 2.69269e-08
+  PCG: d(45)= 9.14913e-09
+  PCG: d(46)= 3.57885e-09
+  PCG: d(47)= 1.30315e-09
+  PCG: d(48)= 3.75492e-10
+  PCG: d(49)= 1.05416e-10
+  PCG: d(50)= 3.10068e-11 rate 0.62971 time  0.01 seconds
+ Newton: d(1)= 3.1009e-11 rate 9.05831e-11 time  0.01 seconds
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow              -3.91407
+Outflow             3.69918
+Flux Loss           -0.214888
+Flux Error          9.00484
+end program after  0.02 seconds on 1 procs at Thu Aug 29 11:31:32 2019

@@ -1,0 +1,359 @@
+
+% !TeX root = Bericht_main.tex
+\subsection{Analytische Betrachtung der linearen Transportgleichung}
+\textbf{Bisher} wollten wir aus gegebenen Randwerten den Fluss $ q $ berechnen.\\
+\textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wie bisher betrachten wir nur zweidimensionale Gebiete) und der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
+transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ kann interpretiert werden als die Menge der Randpunkte an dem Substanz einfließen kann).
+
+Gegebenenfalls werden wir Argumente von Funktionen weglassen, z. B. $ \rho(t) \coloneqq \rho(t,\cdot), \rho(x) \coloneqq \rho(\cdot, x) $. Es sollte aus dem Kontext und der Variablenbenennung klar werden, was an der jeweiligen Stelle gemeint wird. Weiter bezeichnet $ \nabla \rho $ immer $ \nabla \rho(t,\cdot) $ für ein feste $ t \in [0,T] $, also der Gradient  im \enquote{Raum}. Analog wird für $ \dive(\rho q) $ verfahren.
+
+Aus dem physikalischen Modell gilt folgende Bilanzgleichung:
+\begin{gather*}
+	\forall \ K \subseteq \Omega, t \in [0,T]: \frac{\diff}{\diff t} \int_K \rho(x,t) \diff x + \oint_{\partial K} \rho(x,t) q(x) \cdot \nu(x) \diff a = 0 \\
+	\stackrel{\text{Gauß}}{\implies} \int_K \partial_t \rho(x,t) + \dive(\rho q)(x,t) \diff x = 0 
+\end{gather*}
+Da $ K \subseteq \Omega $ beliebig ist und $ \rho, q \in C^1(\Omega) $, folgt die \defi{lineare Transportgleichung}
+\begin{gather*}
+	\partial_t \rho + \dive(\rho q) = 0 \text{ in } \Omega \times (0,T) 
+\end{gather*}
+Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,T)$ und der Anfangsbedingung $ \rho(x,0) = \rho_0(x) \text{ auf } \Omega $ ergibt sich das zu lösende analytische Problem, welches wir in diesem Bericht numerisch approximieren wollen:
+\begin{gather*}
+	\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
+	\lTG
+	\begin{cases}
+		\partial_t \rho + \dive(\rho q) = 0 &\text{ in } \Omega \times (0,T)\\
+		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times (0,T)\\
+		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega
+	\end{cases}
+\end{gather*}
+
+
+\subsection{Erhaltungsgrößen der analytischen Lösung}
+\label{subsec:Erhaltungsgroessen der analytischen Loesung}
+\begin{Lemma}[Massenbilanz]
+	\label{Massenbilanz}
+	
+	Sei $ \rho $ Lösung von $ \lTG $. 
+	
+	Dann gilt die \defi{Massenbilanz}: $ \forall t \in [0,T] $
+	\[ \underbrace{\int_{\Omega} \rho(x,t) \diff x}_{(1)} = \underbrace{\int_{\Omega} \rho_0(x) \diff x}_{(2)}  \underbrace{-\int_{0}^{t} \oint_{\Gammain} \rhoin(x,\tilde{t}) q(x) \cdot \nu(x) \diff a \diff \tilde{t}}_{(3)} \underbrace{- \int_{0}^{t} \oint_{\Gammaout} \rho(x,\tilde{t}) q(x) \cdot \nu(x) \diff a \diff \tilde{t}}_{(4)} \]
+\end{Lemma}
+	Interpretation der Terme:
+	\begin{enumerate}[label=(\arabic*)]
+		\item Masse zum Zeitpunkt $ t $,
+		\item Masse zum Anfangszeitpunkt $ 0 $,
+		\item Masse, die in $ [0,t] $ über den Rand hinzugeflossen ist ($ \nu $ ist äußere Normale, deswegen \enquote{-} statt \enquote{+}),
+		\item Masse, die in $ [0,t] $ über den Rand abgeflossen ist.
+	\end{enumerate}
+
+\begin{Lemma}[Energiebilanz]
+	\label{Energiegleichung}
+	
+	Sei $ \dive(q) = 0 $ und $ \rho $ eine Lösung von $ \lTG $. 
+	
+	Dann gilt die \defi{Energiebilanz}: $ \forall \ t\in [0,T] $
+	\[\int_{\Omega} \abs{\rho(x,t)}^2 \diff x = \int_{\Omega} \abs{\rho_0(x)}^2 \diff x  + \int_{0}^{T} \left[ \int_{\Gammain}\abs{\rhoin(t)}^2 \abs{q\cdot n} \diff a - \int_{\Gammaout} \abs{\rho(t)}^2 \abs{q\cdot n} \diff a  \right] \]
+\end{Lemma}
+
+\subsection{Lösungsbegriffe von $ \lTG $}
+
+\begin{define}(Lösungsbegriffe)
+	
+	\begin{itemize}
+		\item Eine Lösung von
+		\begin{gather*}
+		\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
+		\lTG
+		\begin{cases}
+		\partial_t \rho + \dive(\rho q) = 0 &\text{ in } \Omega \times (0,T)\\
+		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times (0,T)\\
+		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega.
+		\end{cases}
+		\end{gather*}
+		heißt \defi{klassische Lösung}.
+%		\item Eine Lösung von 
+%		\begin{gather*}
+%		\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
+%		\stlTG
+%		\begin{cases}
+%		\int_{\Omega} \int_{0}^{T} \partial_t \rho + \dive(\rho q) \phi \diff t \diff x = 0 &\text{ in } \Omega \times (0,T)\\
+%		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times (0,T)\\
+%		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega
+%		\end{cases}\\
+%		\text{ für alle } \phi: \Omega \times (0,T) \to \R.
+%		\end{gather*}
+%		heißt \defi{starke Lösung}.
+		\item Eine Lösung von 
+		\begin{gather*} 
+		\text{Bestimme } \rho \in L^1(\Omega \times [0,T], \R_{\geq 0}) \text{, sodass}\\
+		\swlTG
+		\begin{cases}
+		\displaystyle
+		\int_{\Omega} \rho_0 \phi(0) \diff x = \mkern-16mu &- \displaystyle \int_{0}^{T} \int_{\Omega} \rho (\partial_t \phi - q \nabla \phi ) \diff x \diff t \\
+		&+\displaystyle\int_{0}^{T}  \oint_{\Gammain} \rhoin q \cdot \nu \phi \diff a  \diff t
+		\end{cases}	\\
+		\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega \text{ und } \phi = 0 \text{ auf } \Gammaout \times (0,T).
+		\end{gather*}
+		heißt \defi{schwache Lösung}.
+	\end{itemize}
+\end{define}
+
+\begin{Lemma}(Zusammenhang der Lösungsbegriffe)
+	
+	\begin{enumerate}
+		\item Ist $ \rho $ eine klassische Lösung, so ist $ \rho $ auch eine schwache Lösung.
+		\item Ist $ \rho $ glatt genug und eine schwache Lösung, so ist $ \rho $ eine klassische Lösung. 
+	\end{enumerate}
+\end{Lemma}
+
+\subsection{Numerische Approximation}
+Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren,  um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
+
+Unser  Ansatz-/Lösungsraum wird $Q_h = \Pi_{K \in \mathcal{K}}  \mathbb{P}_k $ sein, also der Raum der Funktionen, die auf jeder Zelle ein Polynom von Grad $ \leq k $ sind. Im Vergleich zu den Finiten-Elementen-Methoden wird nicht mehr die Stetigkeit der Lösung auf ganz $ \Omega $ gefordert. Damit gilt $ Q_h \not \subseteq \mathcal{H}^1_0(\Omega)=\mathcal{W}^{1,2}_0(\Omega) $ und $ Q_h $ ist ein nicht-konformer Ansatz-/Lösungsraum.
+
+\subsubsection{Diskretisierung im Raum}
+Wir betrachten $ \rho $ als Lösung von $ \swlTG $ und schreiben das zu lösende Problem um. Sei $ \mathcal{K} $ eine Triangulierung von $ \Omega $ wie bisher und $ (\cdot,\cdot)_A $ das $ L^2(A) $-Skalarprodukt. 
+\begin{define}(Flux)
+	
+	Zu gegebenen Fluss $ q:\Omega \to \R^2 $ definieren wir die \defi{Flussfunktion}/\defi{Flux} als
+	\[ \Psi: \Abb(\Omega \times [0,T], \R) \to \Abb(\Omega \times [0,T], \R^2), \Psi(\rho) = \rho q \]
+\end{define}
+
+Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho = - \dive(\Psi(\rho)) $ und somit
+\begin{align*}
+	&&&\sum_{K \in \mathcal{K}} \oint_{\partial K} \phi \Psi(\rho) \cdot n^K \diff a \stackrel{(\star)}{=} \oint_{\partial \Omega} \phi \Psi(\rho) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(\Psi(\rho) \Phi) \diff x \\
+	&&& \quad = \int_{\Omega} \phi \dive(\Psi(\rho)) + \Psi(\rho) \cdot \nabla \phi \diff x = - \int_\Omega \partial_t \rho \phi \diff x + \int_\Omega \Psi(\rho) \cdot \nabla \phi \diff x \\
+	&\iff &&\sum_{K \in \mathcal{K}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} = - \left(\partial_t \rho, \phi  \right)_\Omega - \left(\Psi(\rho), \nabla\phi  \right)_\Omega \\
+	&\iff && \left(\partial_t \rho, \phi  \right)_\Omega  = - \left(\Psi(\rho), \nabla\phi  \right)_\Omega - \sum_{K \in \mathcal{K} } \left(\Psi(\rho) \cdot n^K, \phi \right)_{\partial K} \\
+	&\iff &&\left(\partial_t \rho, \phi  \right)_\Omega  = - \left(\Psi(\rho), \nabla \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
+	&\stackrel{\mathclap{\substack{\text{Kanten} \\ \text{Nullmengen}}}}{\iff} &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = - \left(\Psi(\rho), \nabla \phi  \right)_\Omega - \sum_{K \in \mathcal{K}} \sum_{F \in \mathcal{F}_K} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} \\
+	&\iff  &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( - \left(\Psi(\rho), \nabla \phi \right)_K\\
+	&&&\qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F}- \sum_{\substack{F \in \mathcal{F}_K \\ F \subseteq \Gammain}} \left(\rhoin q \cdot n^K, \phi \right)_{F} \bigg)\\
+	&\iff  &&\sum_{K \in \mathcal{K}} \left(\partial_t \rho, \phi  \right)_K  = \sum_{K \in \mathcal{K}} \bigg( -\left(\Psi(\rho), \nabla\phi \right)_K \\
+	&&& \qquad\qquad\qquad\qquad -\sum_{\substack{F \in \mathcal{F}_K \\ F \not\subseteq \Gammain}} \left(\Psi(\rho) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K \cap \Gammain} \bigg) \tag{\sun}
+\end{align*}
+\begin{remark}
+	zu $ (\star) $: Integration über die inneren Kanten $ F $ fällt weg. Denn über jede innere Kante wird genau zwei mal integriert, einmal pro anliegender Zelle. Da die äußeren Normale bei anliegenden Zellen jeweils entgegengesetzt sind, fällt die Integration über die gemeinsame Kante weg. Genauer:
+	\[ F = K \cap K': \oint_{F}  \phi \Psi(\rho) \cdot n^K \diff a = - \oint_{F} \phi \Psi(\rho) \cdot n^{K'} \diff a\]
+\end{remark}
+\ \newline
+\textbf{Ziel}:Eine semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ bzw. eine Differenzialgleichung für $ \rho_h $ herzuleiten
+
+\textbf{Approximation}:
+Wir wählen den Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ u \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werden, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux), welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
+Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi_h \in Q_h $
+\[
+\sum_{i = 1}^{N} \left(\partial_t \rho_h, \phi_h  \right)_{K_i}  = \sum_{i=1}^{N} \bigg(- \left(\Psi(\rho_h), \nabla\phi_h \right)_{K_i} -\sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K_i \cap \Gammain} \bigg)
+\]
+
+
+
+\textbf{Finite-Volumen}:
+Wir betrachten im Folgenden zunächst nur den Finite-Volumen-Ansatzraum $ Q_h = \Pi_{K \in \mathcal{K}} \mathbb{P}_0 $. 
+
+Als numerischen Fluss verwenden wir den \defi{upwind flux} $ \Psi^* $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
+\begin{gather*}
+	\text{Auf } F \text{ gilt }\Psi^*(\rho_h) = \begin{cases}
+	\Psi(\rho_{h|K}) &\text{, für } q \cdot n^K_{|F} > 0\\
+	\Psi(\rho_{h|K'}) &\text{, für } q\cdot n^K_{|F} < 0 \text{ und } \overline{F} = \partial K \cap \partial K'\\
+	0 &\text{, für } q\cdot n^K_{|F} < 0 \text{ und } F \subseteq \Gammain.
+	\end{cases}  
+\end{gather*}
+
+\begin{remark}(alternativer numerischer Fluss)
+	
+	Eine weitere interessante Möglichkeit für den numerischen Fluss ist der \defi{central flux} $ \Psi^c $. Dieser ist gegeben für alle $ K \in \mathcal{K} $ und $ F \in \mathcal{F}_K $ durch:
+	\begin{gather*}
+		\text{Auf } F \text{ gilt }\Psi^c(\rho_h) = \begin{cases}
+		\frac{1}{2} \left( \Psi(\rho_{h|K}) + \Psi(\rho_{h|K'}  \right) &\text{, auf } \overline{F} = \partial K \cap \partial K'\\
+		\Psi(\rho_{h|K}) &\text{, auf } F \subseteq \Gammain\\
+		0 &\text{, auf } F \subseteq \Gammaout 
+		\end{cases}
+	\end{gather*}
+\end{remark}
+
+\begin{remark}
+	Wir führen einen Notation für die Nachbarzelle an einer Kante ein.
+	
+	Für $ K \in \mathcal{K} $ und eine innere Kante $ F \in \mathcal{F}_K $ sei $ K_F \in \mathcal{K}$ die Zelle, sodass gilt \[ \overline{F} = \partial K \cap \partial K_F \]
+	
+	Gilt  $q\cdot n^K_{|F} < 0$ so ist $ \Psi^*(\rho_h) = \Psi(\rho_{h|K_F}) $ auf der inneren Kante $ F $.
+\end{remark}
+\bigskip
+Außerdem gilt für die Zellenbasis $ \{\mu_i\}_{i=1}^N $ mit $ \mu_i = \mathbbm{1}_{K_i} $ 
+\begin{itemize}
+	\item $ Q_h = \spann\{\mu_1, \dots , \mu_N\} $,
+	\item $ \{\mu_i\}_{i=1}^N $ ist eine Orthogonalbasis (im Allegemine aber keine ONB da $ \norm{\mu_i}^2 = \lambda(K_i) $\,),
+	\item $ \forall \ i \in \{1, \dots , N\}:  \supp(\mu_i) \subseteq \overline{K_i}$.
+\end{itemize}
+ 
+Durch Einsetzen der Zeilenbasis und mit $ \supp(\mu_i) \subseteq \overline{K_i} (\ i \in \{1, \dots , N\})$ ergibt sich für alle $\ i \in \{1, \dots , N\}$ 
+\begin{align*}
+	\left(\partial_t \rho_h, \mu_i  \right)_{K_i}  &= \bigg( -\underbrace{(\Psi(\rho_h), \nabla\mu_i)_{K_i}}_{=0 \text{, da } \nabla \mu_i = 0} - \sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^{K_i}, \mu_i \right)_{F} - \left(\rhoin q \cdot n^{K_i}, \mu_i \right)_{\partial K_i \cap \Gammain} \bigg) \\
+	&= \bigg( - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} > 0} } \left(\underbrace{\Psi^*(\rho_h)}_{= \rho_{h|K}\, q} \cdot n^{K_i}, \mu_i \right)_{F} - \sum_{\substack{F \in \mathcal{F}_{K_i}, F \not\subseteq \Gammain\\ F \text{ mit }q \cdot n^K_{|F} < 0} } \left(\underbrace{\Psi^*(\rho_h)}_{= \rho_{h|K_F} \, q} \cdot n^{K_i}, \mu_i \right)_{F}\\
+	& \qquad \qquad \qquad \qquad \qquad \qquad  \qquad \qquad\qquad \qquad- \left(\rhoin q \cdot n^{K_i}, \mu_i \right)_{\partial K_i \cap \Gammain} \bigg)\qquad \qquad
+\end{align*} 
+
+Zusammen mit der Basisdarstellung von $ \rho_h $ in $\{\mu_i  \}_{i=1}^N$, $ \rho_h = \sum_{i=1}^{N} \underline{\rho}[i] \; \mu_i$, und 
+\begin{align*}
+&\text{\defi{Massenmatrix} } \underline{M}\in \R^{N \times N} \\  &\qquad \qquad \underline{M}[K,K'] \coloneqq \begin{dcases}
+\int_K \abs{\mu_K}^2 \diff x & \text{, für } K = K' \\
+0 &\text{, sonst}
+\end{dcases} \\
+&\text{\defi{Flussmatrix} } \underline{A}\in \R^{N \times N} \\ &\qquad \qquad \underline{A}[K,K'] \coloneqq \begin{dcases}
+- \sum_{\substack{F\in \mathcal{F}_K \\ F \text{ mit } q\cdot n^K_{|F} > 0}} \oint_F \mu_K^2 q \cdot n^K \diff a& \text{, für } K = K' \\
+- \oint_F \mu_K \mu_{K'} q \cdot n^K \diff a &\text{, für } q \cdot n^K< 0 \text{ und } \overline{F} = \partial K \cap \partial K'\\
+0 &\text{, sonst}
+\end{dcases} \\
+&\text{\defi{Lastvektor} } \underline{b}\in \R^{N} \\ &\qquad \qquad\underline{b}[K] \coloneqq \oint_{\partial K \cap \Gammain} \rhoin q \cdot n \diff a
+\end{align*}
+
+
+ergibt sich die DGL
+\begin{gather*}
+\begin{cases}
+\underline{M} \partial_t \underline{\rho} = \underline{A} \underline{\rho} + \underline{b} \\
+\underline{\rho}(0) = \underline{\rho_0}
+\end{cases}\\
+\implies \underline{\rho}(t) = \exp(t \underline{M}^{-1} \underline{A}) \left( \underline{\rho_0} + \int_{0}^{t} \exp(-s\underline{M}^{-1} \underline{A}) b(s) \diff s \right) 
+\end{gather*}
+
+\subsubsection{Diskretisierung in der Zeit}
+
+Wir wollen in diesem Kapitel noch auf die Herleitung der Zeitintegratoren eingehen. Der Ansatz hierbei besteht aus der 
+Integration der Differentialgleichung $\underline{M} \partial_t \underline{\rho} = \underline{A} \underline{\rho} + \underline{b}$ über die Zeit $t$ im Intervall $[t_i, t_{i+1}]$.
+Dabei ist $t_i = i \Delta t$. Hiermit folgt:
+\begin{align*}
+  \underline{M}\underline{\rho}(t_{i+1}) - \underline{M}\underline{\rho}(t_i) = \int_{t_i}^{t_{i+1}}
+  \underline{M} \partial_t \underline{\rho}(t) dt =\int_{t_i}^{t_{i+1}} \underline{A} \underline{\rho}(t) + \underline{b} dt.
+\end{align*}
+Mithilfe der Anwendung verschiedener Quadraturformeln lässt sich daraus ein Runge-Kutta Verfahren herleiten. Über die Rechteckformel 
+\begin{align*}
+  \int_{t_i}^{t_{i+1}}\underline{A} \underline{\rho}(t) + \underline{b} dt \approx (t_{i+1}-t_i) 
+  \underline{A} \underline{\rho}(t_i+1) + \underline{b} = \Delta t \underline{A} \underline{\rho}(t_{i+1}) + \underline{b}
+\end{align*}
+ergibt sich z.B. das implizite Euler Verfahren
+\begin{align*}
+  \underline{\rho}(t_{i+1}) = \underline{\rho}(t_{i}) + \Delta t \underline{M}^{-1}\underline{A} \underline{\rho}(t_{i+1}) + \underline{b}.
+\end{align*}
+Weitere Verfahren, die wir verwenden werden, sind zum einen das
+klassische Runge-Kutta Verfahren
+\begin{align*}
+  \underline{\rho}(t_{i+1}) = \underline{\rho}(t_{i}) +
+  \Delta t \underline{M}^{-1}\underline{A} (
+  \underline{\rho}(t_{i}) +
+  \frac{\Delta t}{2} \underline{M}^{-1}\underline{A} (
+  \underline{\rho}(t_{i}) +
+  \frac{\Delta t}{3} \underline{M}^{-1}\underline{A} (
+  \underline{\rho}(t_{i}) +
+  \frac{\Delta t}{4} \underline{M}^{-1}\underline{A} 
+  \underline{\rho}(t_{i}) )))
+\end{align*}
+und zum anderen die implizite Mittelpunktsregel 
+\begin{align*}
+  \underline{\rho}(t_{i+1}) = \underline{\rho}(t_{i}) +
+  \Delta t \underline{M}^{-1} (
+  \underline{A} 
+  \frac{1}{2}(\underline{\rho}(t_{i}) +
+  \underline{\rho}(t_{i+1}) )
+  +
+  \frac{1}{2} ( \underline{\rho}(t_{i}) +
+  \underline{\rho}(t_{i+1}) )).
+\end{align*}
+
+\subsection{Erhaltungsgrößen der numerischen Lösung}
+
+\begin{repetition}
+	Wie in Abschnitt \ref{subsec:Erhaltungsgroessen der analytischen Loesung} \enquote{Erhaltungsgrößen der analytischen Lösung} gesehen, gilt für die analytische Lösung:
+	\begin{itemize}
+		\item nicht-negativ (da der Zielraum von $ \rho: \Omega \times [0,T] \to \R_{\geq 0}$ $ \R_{\geq 0} $ ist)
+		\item Massenbilanz (Lemma \ref{Massenbilanz})
+		\item Energiebilanz (Lemma \ref{Energiegleichung})
+	\end{itemize}
+\end{repetition}
+
+Wir interessieren uns, in wie weit diese Eigenschaften der analytischen Lösung $ \rho $ von der semi-diskreten Lösung $ \rho_h $ erhalten werden.
+
+
+ 
+\begin{Lemma}[diskrete Nicht-Negativität] \label{disktrete Nicht-Negativität}
+		Sei $ q = q_h \in W_h, \dive(q) = 0 $ und $ \rho_0 \in Q_h $ %Es gelten die gleichen Voraussetzungen wie in Lemma \ref{diskrete Massenbilanz}.
+	
+	Dann gilt für die semidiskrete Approximation $ \rho_h \in Q_h$ mit \enquote{upwind flux} die \defi{diskrete Nicht-Negativität}:
+	\[ \rho_0 \geq 0 \text{ und } \rhoin \geq 0 \implies \rho_h \geq 0 \]
+\end{Lemma}
+
+\begin{Lemma}[diskrete Massenbilanz] \label{diskrete Massenbilanz}
+	Es gelten die gleichen Voraussetzungen wie in Lemma~\ref{disktrete Nicht-Negativität}.
+	
+	Dann gilt für die semidiskrete Approximation $ \rho_h \in Q_h$ mit \enquote{upwind flux} oder mit \enquote{central flux} die \defi{diskrete Massenbilanz}:
+	\[\forall t \in [0,T]: \int_\Omega \rho_h(t) \diff   = \int_\Omega \rho_0 \diff x - \int_{0}^{t} \left( \oint_{\Gammain} \rhoin(\tilde{t}) q \cdot n \diff a + \oint_{\Gammaout} \rho_h(\tilde{t}) q \cdot n \diff a  \right) \diff \tilde{t} \]
+\end{Lemma}
+
+\begin{Lemma}[diskrete Energiebilanz] \label{diskrete Energiebilanz}	Es gelten die gleichen Voraussetzungen wie in Lemma~\ref{disktrete Nicht-Negativität}.
+	
+	Dann gilt für die semidiskrete Approximation $ \rho_h \in Q_h $ mit \enquote{central flux} die \defi{diskrete Energiebilanz}:
+	
+	\begin{gather*}
+		\forall t \in [0,T]: \int_\Omega \abs{\rho_h(t)}^2 \diff x = \int_\Omega \abs{\rho_0}^2 \diff x + \int_{0}^{t} \left[ \oint_{\Gammain} \abs{\rhoin(\tilde{t})}^2 \abs{q \cdot n} \diff a - \oint_{\Gammaout} \abs{\rho_h(t)}^2 \abs{q \cdot n} \diff a \right. \\
+		\left. - \sum_{F\in \mathcal{F} \cap \Omega^\circ} \oint_F \abs{\rho_{h|K} - \rho_{h|K_F}}^2 \abs{q \cdot n} \diff a - \oint_{\Gammain} \abs{\rho_h - \rhoin}^2 \abs{q\cdot n} \diff a \right] \diff \tilde{t}
+	\end{gather*}
+	
+\end{Lemma}
+ 
+ 
+ \begin{remark}(zu Lemma \ref{diskrete Energiebilanz})
+ 	
+ 	$ \mathcal{F} \cap \Omega^\circ = \mathcal{F} \cap \Omega $ ist die Menge der inneren Kanten.
+ \end{remark}
+
+\begin{remark}(zu numerischen Flüssen)
+	
+%	\begin{itemize}
+%		\item \unklar{ Der \enquote{upwind flux} $ \Psi^* $ ist masseerhaltend, aber nicht energieerhaltend (erfüllt also die diskrete Massenbilanz, aber i. A. nicht die diskrete Energiebilanz).}
+%		\item \unklar{Der \enquote{\defi{central flux}} $ \Psi^c $ gegeben durch $ \Psi^c = \frac{1}{2} \left(\Psi(\rho_{h|K}) + \Psi(\rho_{h|K_F})\right)$ ist energieerhaltend, aber nicht monoton (d.h. erfüllt i.A. nicht die diskrete Postitvität). }
+%	\end{itemize}
+
+	Für die Finite-Volumen-Approximation gilt:
+
+	\begin{tabular}{c || c | c}
+		&\enquote{upwind flux} $ \Psi^* $ & \enquote{central flux} $ \Psi^c $  \\ \hline 
+		diskrete Massenbilanz & $\checkmark$ & $\checkmark$  \\ \hline
+		diskrete Energiebinalz & x  & $ \checkmark $ \\ \hline
+		diskrete Nicht-Negativität & $ \checkmark $ & x  \\
+	\end{tabular}
+\end{remark}
+
+\subsection{Discontinuous-Galerkin-Verfahren}
+Wir wollen nun noch (kurz) auf das Discontinuous-Galerkin-Verfahren eingehen. Im Gegensatz zum Finite Volumen Verfahren, wollen wir uns hierbei aber auf die wesentlichen Unterschiede und Ideen beschränken und dabei auf eine vollständige Herleitung verzichten. \newline
+Im Gegensatz zum Finite Volumen Verfahren wählen wir beim Discontinuous-Galerkin-Verfahren $\Pi_{K\in\mathcal{K}} \mathbb{P}_k $ mit $ k \geq 1 $. Es sei noch einmal, wie bereits beim Finite-Volumen-Verfahren, erwähnt, dass hierbei für die Elemente aus $Q_h$ keine Stetigkeit auf $\Omega$ gefordert wird und somit kein konformer Lösungs-/Ansatzraum vorliegt. \newline
+Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
+	\begin{align*}
+		(\partial_t \rho_h , \Phi_h)_{\Omega} &= -(\Psi(\rho_h),\nabla \Phi_h)_{\Omega}
+		- \sum_{K \in \mathcal{K}}(\Psi^*(\rho_h),\Phi_h)_{\partial K \setminus \Gammain}
+		-(\Psi(\rho_{in}),\Phi_h)_{\Gammain} \\
+		&= \sum_{K \in \mathcal{K}} [ -( \dive \Psi (\rho_h),\Phi_h)_{K}
+		+ \sum_{ F \subset \partial K \setminus \Gammain} ((\Psi(\rho_h)-\Psi ^* (\rho_h)) \cdot n_k , \Phi_h)_F ] \\		
+		&\qquad +(\Psi(\rho_h) - \Psi(\rho_{in}),\Phi_h)_{\Gammain} 
+		+ ( \Psi(\rho_h) \cdot n , \Phi )_{ \Gammain } \\
+		&\eqqcolon  (A_h \rho_h, \Phi_h )_{\Omega} + (\rho_{in} \mid qn \mid ,\Phi_h)_{\Gammain} \\
+		&\eqqcolon (A_h \rho_h, \Phi_h )_{\Omega} + (b_h,\Phi_h)_{\Gammain}
+	\end{align*}  
+\begin{remark}
+	\begin{enumerate} 
+		\item Für den DG-Operator $A_h: Q_h \rightarrow Q_h'$ gilt: 	\newline
+		\begin{align*}
+			(A_h,\rho_h,\rho_h)_{\Omega} &= - \int_{\partial 	\Omega} | \rho_h | ^2 | q \cdot n | da - \frac{1}{2} \sum_{F 	\in \mathcal{F} \backslash \partial \Omega} | \rho_k - 	\rho_{K_f} |^2 |q \cdot n| da \\
+			&\Rightarrow - \underline{A} \text{ ist positiv 	semidefinit}
+		\end{align*}
+		\item Lemma \ref{diskrete Massenbilanz} (die diskrete Massebilanz) lässt sich auf das DG-Verfahren übertragen, indem, statt punktweiser Erhaltung, Erhaltung im Mittel betrachtet wird.
+		\item Es gilt für die DG-Approximation mit Upwind-Flux: \newline
+		\begin{align*}
+			\int_{\Omega} | \rho_h (t) | ^2 \diff x &= \int_{\Omega} |\rho_0 |^2 \diff x 
+			+ \int_0^t \oint_{\Gammain} | \rho_{in} |^2 |q \cdot n | \diff a \diff \tilde{t}
+			- \int_0^t \oint_{\Gamma_{out}} |\rho_h |^2 |q \cdot n | \diff a \diff \tilde{t} \\
+			&- \sum_{F \in \mathcal{F}_h \cap \Omega^0} \int_0^t \oint_F | \rho_K - \rho_{K_f} |^2 |q \cdot n| \diff a \diff \tilde{t}
+			- \int_0^t \oint_F |\rho_{in} - \rho_h |^2 |q \cdot n| \diff a \diff \tilde{t}
+		\end{align*}
+	\end{enumerate}
+\end{remark}

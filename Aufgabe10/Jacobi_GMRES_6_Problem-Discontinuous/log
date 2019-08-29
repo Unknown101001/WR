@@ -1,0 +1,74 @@
+start program on 1 procs at Thu Aug 29 12:56:38 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Laplace
+  reading ... Mesh = UnitSquare
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 6
+  reading ... plevel = 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  default ... Overlap = none
+  reading ... Distribution = RCB
+  reading ... Discretization = linear
+  reading ... Discretization = linear
+  default ... QuadratureCell = 2
+  default ... QuadratureBoundary = 1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... Problem = Discontinuous
+  reading ... Permeability = 0.1
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = Jacobi
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerDamp = 1
+  default ... SHIFTspecial = 0
+  reading ... LinearVerbose = 1
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 6
+
+ Level:          6
+ Dimension:      2
+ Cells:          4096
+ Problem size:   4225
+ Vertices:       4225
+ Edges:          8320
+ Mesh width:     [0.015625,0.015625]
+ Assemble        Laplace
+
+ Problem:        Discontinuous Problem
+ Discretization: linear
+
+ Newton: d(0)= 0.124511
+  GMRES: d(0)= 0.124511
+  GMRES: d(100)= 0.000545664
+  GMRES: d(200)= 3.73991e-06
+  GMRES: d(300)= 2.77184e-08
+  GMRES: d(361)= 9.82846e-11 rate 0.943593 time  2.61 seconds
+ Newton: d(1)= 9.82824e-11 rate 7.89348e-10 time  4.57 seconds
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow              -1.00385
+Outflow             1.00563
+Flux Loss           0.00177584
+Flux Error          0.00852451
+end program after  5.91 seconds on 1 procs at Thu Aug 29 12:56:45 2019

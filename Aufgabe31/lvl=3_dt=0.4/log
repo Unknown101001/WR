@@ -1,0 +1,154 @@
+start program on 4 procs at Sun Jul  7 16:49:48 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 0
+  reading ... Model = HybridReaction
+  reading ... Mesh = Square500
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 3
+  reading ... plevel = 0
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  default ... Overlap = none
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+119 cells on proc 0 of 478 cells on 4 procs -- min cells: 119  max cells: 120
+  default ... Overlap = none
+in RT0DoF with  m = 1
+  reading ... Problem = Simple2D
+  default ... SetSolution = 1
+  default ... AssembleVerbose = 1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 0
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  default ... PS_checkdiagonal = 1
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... LinearSolver = GMRES
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-11
+  reading ... LinearReduction = 1e-08
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 10
+  reading ... NewtonLineSearchSteps = 3
+  reading ... NewtonEpsilon = 1e-07
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 3
+
+ Level:          3
+ Dimension:      2
+ Cells:          30592
+ Problem size:   46416
+ Vertices:       15808
+ Edges:          46416
+ Mesh width:     [0.0078125,0.0110485]
+ Assemble        Hybrid
+
+ Problem:        Simple Problem 2D
+ Discretization: RT0_P0
+
+ Newton: d(0)= 0.0883883
+  GMRES: d(1)= 2.92375e-13 rate 3.30785e-12 time  0.03 seconds
+ Newton: d(1)= 3.08312e-13 rate 3.48815e-12 time  4.19 seconds
+
+
+  reading ... Discretization = linear
+  reading ... Discretization = linear
+  default ... QuadratureCell = 2
+  default ... QuadratureBoundary = 1
+  reading ... HybridProblem = HybridReaction
+  reading ... Diffusion = 0.001
+  reading ... Convection = 1
+  reading ... Reaction = 2.5
+  default ... AssembleVerbose = 1
+  reading ... delta = 0
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = LIB_PS
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  default ... PS_checkdiagonal = 1
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-11
+  reading ... LinearReduction = 1e-08
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 10
+  reading ... NewtonLineSearchSteps = 3
+  reading ... NewtonEpsilon = 1e-07
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 3
+
+ Level:          3
+ Dimension:      2
+ Cells:          30592
+ Problem size:   15808
+ Vertices:       15808
+ Edges:          46416
+ Mesh width:     [0.0078125,0.0110485]
+ Assemble        Reaction
+
+ Problem:        Hybrid-Reaction Problem
+ Discretization: linear
+
+  default ... EulerVerbose = 1
+  default ... EulerExtrapolate = 1
+  default ... ReferenceCalculation = 0
+  default ... EulerSteps = 100000
+  default ... EulerConvergence = 1
+  default ... TimeSeries = uniform
+  default ... t0 = 0
+  reading ... T  = 1.6
+  reading ... dt = 0.4
+  reading ... dt_min = 0.0125
+Step(0), t(0): Mass(u) = 0.0269165 InFlowRate(u) = 0 OutFlowRate(u) = 0
+
+Euler step 1 from 0 to 0.4 (0.4) Sun Jul  7 16:49:58 2019
+ Newton: d(0)= 0.00305745
+  GMRES: d(1)= 3.8699e-17 rate 1.26573e-14 time  0.01 seconds
+ Newton: d(1)= 3.88377e-17 rate 1.27026e-14 time  5.01 seconds
+Step(1), t(0.4): Mass(u) = 0.0574933 InFlowRate(u) = -4.14819e-15 OutFlowRate(u) = 0.0672881
+
+Euler step 2 from 0.4 to 0.8 (0.4) Sun Jul  7 16:50:03 2019
+ Newton: d(0)= 0.0594622
+  GMRES: d(1)= 7.60765e-17 rate 1.27941e-15 time  0.01 seconds
+ Newton: d(1)= 7.6198e-17 rate 1.28145e-15 time  5.02 seconds
+Step(2), t(0.8): Mass(u) = 0.0619005 InFlowRate(u) = -3.47401e-15 OutFlowRate(u) = 0.143733
+
+Euler step 3 from 0.8 to 1.2 (0.4) Sun Jul  7 16:50:09 2019
+ Newton: d(0)= 0.00317456
+  GMRES: d(1)= 2.69409e-17 rate 8.48649e-15 time  0.01 seconds
+ Newton: d(1)= 2.73919e-17 rate 8.62857e-15 time  5.03 seconds
+Step(3), t(1.2): Mass(u) = 0.0448105 InFlowRate(u) = -1.99979e-15 OutFlowRate(u) = 0.154751
+
+Euler step 4 from 1.2 to 1.6 (0.4) Sun Jul  7 16:50:14 2019
+ Newton: d(0)= 0.00125402
+  GMRES: d(1)= 1.54916e-17 rate 1.23535e-14 time  0.01 seconds
+ Newton: d(1)= 1.56953e-17 rate 1.25159e-14 time  5.02 seconds
+Step(4), t(1.6): Mass(u) = 0.02455 InFlowRate(u) = -9.69018e-16 OutFlowRate(u) = 0.112026
+Euler: 4 steps in 23.42 seconds
+end program after 32.17 seconds on 4 procs at Sun Jul  7 16:50:20 2019

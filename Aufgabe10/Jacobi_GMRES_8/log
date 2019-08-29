@@ -1,0 +1,70 @@
+start program on 1 procs at Thu Aug 29 10:37:40 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Laplace
+  reading ... Mesh = UnitSquare
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 8
+  reading ... plevel = 0
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  reading ... Overlap = dG1
+  reading ... Distribution = RCB
+  reading ... Discretization = linear
+  reading ... Discretization = linear
+  default ... QuadratureCell = 2
+  default ... QuadratureBoundary = 1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... Problem = Simple2D
+  reading ... SetSolution = 0
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = Jacobi
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerDamp = 1
+  default ... SHIFTspecial = 0
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  default ... NewtonReduction = 1e-05
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 8
+
+ Level:          8
+ Dimension:      2
+ Cells:          65536
+ Problem size:   66049
+ Vertices:       66049
+ Edges:          131584
+ Mesh width:     [0.00390625,0.00390625]
+ Assemble        Laplace
+
+ Problem:        Simple Problem 2D
+ Discretization: linear
+
+ Newton: d(0)= 0.0624389
+  GMRES: d(800)= 0.000991248 rate 0.994835 time  5.64 seconds
+ Newton: d(1)= 0.000991248 rate 0.0158755 time  9.25 seconds
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow              -0.999224
+Outflow             0.789174
+Flux Loss           -0.21005
+Flux Error          0.000775999
+end program after 12.23 seconds on 1 procs at Thu Aug 29 10:37:53 2019
