@@ -129,7 +129,7 @@ def main_MG_CG():
 
 
 def main_Jac_CG_2():
-    lvl = "6"
+    lvl = "9"
     prec = "Jacobi"
     ls = "CG"
     delete_old()
@@ -150,7 +150,7 @@ def main_Jac_CG_2():
 
 
 def main_Jac_CG_4():
-    lvl = "4"
+    lvl = "9"
     prec = "Jacobi"
     ls = "CG"
     delete_old()
