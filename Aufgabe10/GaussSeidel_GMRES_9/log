@@ -1,11 +1,11 @@
-start program on 1 procs at Thu Aug 29 10:36:37 2019
+start program on 1 procs at Thu Aug 29 13:48:30 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
   reading ... Mesh = UnitSquare
   default ... GeoPath = ./../Praktikum/
   reading ... level = 9
-  reading ... plevel = 0
+  reading ... plevel = 2
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
   reading ... Overlap = dG1
@@ -25,7 +25,7 @@ start program on 1 procs at Thu Aug 29 10:36:37 2019
   reading ... Preconditioner = GaussSeidel
   default ... PreconditionerVerbose = 0
   default ... SHIFTspecial = 0
-  reading ... LinearVerbose = 0
+  reading ... LinearVerbose = 1
   reading ... LinearSteps = 800
   default ... LinearLineSearchSteps = 3
   reading ... LinearEpsilon = 1e-10
@@ -56,8 +56,16 @@ start program on 1 procs at Thu Aug 29 10:36:37 2019
  Discretization: linear
 
  Newton: d(0)= 0.0441726
-  GMRES: d(800)= 0.00185646 rate 0.996046 time 28.24 seconds
- Newton: d(1)= 0.00185646 rate 0.0420273 time 43.16 seconds
+  GMRES: d(0)= 0.0441726
+  GMRES: d(100)= 0.00415795
+  GMRES: d(200)= 0.00302139
+  GMRES: d(300)= 0.00264137
+  GMRES: d(400)= 0.00241815
+  GMRES: d(500)= 0.00226399
+  GMRES: d(600)= 0.00211781
+  GMRES: d(700)= 0.00198956
+  GMRES: d(800)= 0.00185646 rate 0.996046 time 28.02 seconds
+ Newton: d(1)= 0.00185646 rate 0.0420273 time 43.61 seconds
 
 
 Prescribed Inflow   -1
@@ -66,4 +74,4 @@ Inflow              -0.999563
 Outflow             0.188288
 Flux Loss           -0.811274
 Flux Error          0.00201507
-end program after 56.74 seconds on 1 procs at Thu Aug 29 10:37:34 2019
+end program after 57.40 seconds on 1 procs at Thu Aug 29 13:49:29 2019

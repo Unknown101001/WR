@@ -236,11 +236,11 @@ def main_Jac_LS():
 
 
 if __name__ == "__main__":
-    '''
-    main_GS_GMRES()
-    main_Jac_GMRES()
-    main_MG_GMRES()
-    '''
+
+    #main_GS_GMRES()
+    #main_Jac_GMRES()
+    #main_MG_GMRES()
+
     '''
     main_Jac_CG()
     main_MG_CG()
@@ -255,5 +255,7 @@ if __name__ == "__main__":
 
     main_Jac_LS()
     '''
+
     main_Jac_CG_2()
     main_Jac_CG_4()
+    
