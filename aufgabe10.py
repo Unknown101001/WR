@@ -125,7 +125,7 @@ def main_MG_CG():
         save("Aufgabe10", name)
 
 def main_Jac_CG_2():
-    lvl = "6"
+    lvl = "3"
     prec = "Jacobi"
     ls = "CG"
     delete_old()
@@ -145,7 +145,7 @@ def main_Jac_CG_2():
     save("Aufgabe10", name)
 
 def main_Jac_CG_4():
-    lvl = "6"
+    lvl = "3"
     prec = "Jacobi"
     ls = "CG"
     delete_old()
@@ -167,7 +167,7 @@ def main_Jac_CG_4():
 
 def main_Jac_CG_probs():
     for prob in ["Discontinuous","Divergent","Simple2D"]:
-        lvl = "6"
+        lvl = "3"
         prec = "Jacobi"
         ls = "CG"
         delete_old()
@@ -188,7 +188,7 @@ def main_Jac_CG_probs():
 
 
 def main_Jac_LS():
-    lvl = "6"
+    lvl = "3"
     prec = "Jacobi"
     ls = "LS"
     delete_old()
@@ -222,7 +222,6 @@ if __name__ == "__main__":
     main_SGS_CG()
     '''
 
-    main_Jac_CG()
     main_Jac_CG_2()
     main_Jac_CG_4()
 
