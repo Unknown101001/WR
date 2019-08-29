@@ -16,6 +16,7 @@
 \usepackage{enumitem}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
+\usepackage{subfigure}
 \newcommand{\R}{\mathbb{R}}
 
 \DeclareMathOperator{\dive}{div}
@@ -511,6 +512,31 @@ Die Lösung ist also bereits für einzelne Zellen nicht korrekt, weswegen auch d
 
 
 \end{enumerate}
+
+\subsection{Iterative Löser und Vorkonditionierer}
+
+Auf dem dritten Übungsblatt haben wir uns mit den von M++ verwendeten iterativen Lösern und Vorkonditionieren beschäftigt.
+Dabei ging es vor allem um den praktischen Vergleich der verschiedenen Löser und deren Anwendung auf die bereits beschriebenen Probleme.
+Zunächst betrachteten wir dabei die Anwendung des Jacobi-Vorkonditionierers 
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Iterativer Löser: CG-Verfahren, Vorkonditionierer: Jacobi}
+	\subfigure{\includegraphics[width=0.67\textwidth]{../../Aufgabe10/Jacobi-CG.png}}	 
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Iterativer Löser: GMRES-Verfahren, Vorkonditionierer: Jacobi}
+	\subfigure{\includegraphics[width=0.33\textwidth]{../../Aufgabe10/Jacobi-GMRES.png}}	 
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Weitere Iterative Löser mit verschiedenen Vorkonditionierern}
+	\subfigure{\includegraphics[width=0.99\textwidth]{../../Aufgabe10/blub.png}}	 
+\end{figure}
+
 
 
 \end{document}
