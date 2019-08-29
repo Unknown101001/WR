@@ -561,6 +561,46 @@ Anschließend haben wir die bereits beschriebenen Ergebnisse mit denen von weite
 Besonders fallen hier die Verfahren mit Multigrid-Konditionierer auf, welche beide sehr gute Konvergenzraten bei sehr wenigen Iterationsschritten vorweisen.
 Weiter sieht man, dass das symmetrische GaussSeidel-Verfahren sich noch zumindest annehmbar gut als Vorkonditionierer für das CG-Verfahren eignet, während ein GaussSeidel-Vorkonditionierer kombiniert mit dem GMRES-Verfahren ähnlich schlecht abschneidet, wie zuvor das GMRES-Verfahren mit Jacobi-Vorkonditionierer.
 Grundsätzlich sieht man, dass es  sich lohnen kann, für ein symmetrisches Problem wie Simple2D das CG-Verfahren zu nutzen.
+\newline
+In der in Aufgabe 11 gestellten Bonusaufgabe haben wir uns dann noch mit den folgenden drei Fragen beschäftigt: Wie ändert sich das Verhalten, wenn 
+\begin{enumerate}
+	\item das Programm auf mehreren Prozessoren gestartet wird:
+	\begin{figure}[H]
+		\centering
+		\captionabove{Jacobi-CG auf Lvl 9 mit 1,2 und 4 Prozessoren}
+		\subfigure[1 Prozessor]{\includegraphics[width=0.77\textwidth]{../../Aufgabe10/proc1lvl9.png}}	 
+		\subfigure[2 Prozessoren]{\includegraphics[width=0.77\textwidth]{../../Aufgabe10/proc2lvl9.png}}	 
+		\subfigure[4 Prozessoren]{\includegraphics[width=0.77\textwidth]{../../Aufgabe10/proc4lvl9.png}}	 
+	\end{figure}
+    
+    Trotz unterschiedlicher Anzahl an Prozessoren wird, wie man an obigem Vergleich leicht einsieht, stets dieselbe Anzahl an Iterationsschritten für den linearen Löser benötigt.
+    
+
+	\item das Programm für andere Probleme (Discontinuous, Divergent) verwendet wird:
+	\begin{figure}[H]
+		\centering
+		\captionabove{Jacobi-GMRES auf Lvl 6 für verschiedene Probleme}
+	\subfigure[Problem Simple 2D]{\includegraphics[width=0.77\textwidth]{../../Aufgabe10/simple.png}}	 
+	\subfigure[Problem Discontinuous]{\includegraphics[width=0.77\textwidth]{../../Aufgabe10/disco.png}}	 
+	\subfigure[Problem Divergent]{\includegraphics[width=0.77\textwidth]{../../Aufgabe10/divergent.png}}	 
+		\end{figure}
+	Man sieht, dass die Anzahl der benötigten Iterationsschritte stark vom zugrunde liegenden Problem abhängt. 
+	
+    
+	
+	\item wir anstatt eines Krylow-UVR-Verfahrens einen linearen Löser ohne Dämpfung verwenden.
+	
+	\begin{figure}[H]
+		\centering
+		\captionabove{Jacobi-CG auf Lvl 9 mit 1,2 und 4 Prozessoren}
+		\subfigure[Jacobi-CG Verfahren]{\includegraphics[width=0.77\textwidth]{../../Aufgabe10/CG3.png}}	 
+		\subfigure[Linearer Löser ohne Dämpfung]{\includegraphics[width=0.77\textwidth]{../../Aufgabe10/LS3.png}}	 
+		
+	\end{figure}
+	
+	Ein linearer Löser ohne Dämpfung ist im Gegensatz zu den vorgestellten Krylow-UVR-Verfahren relativ schlecht für die Lösung des Problems geeignet. 
+	\textcolor{red}{WWIR MÜSSEN DAS ERKLÄREN!}
+\end{enumerate}
 
 
 
