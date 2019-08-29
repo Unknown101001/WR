@@ -15,7 +15,8 @@ kernels = 4
 working_dir = "mpp/build"
 
 
-def run():
+def run(kern = None):
+
     '''
     runs M++ in working dir mpp/build with 4 kernels
     :return: output
@@ -25,6 +26,10 @@ def run():
                             cwd=working_dir).stdout.decode('utf-8')
     return stdout.split('\n')
     '''
+    if kern is not None:
+        kernels = kern
+    else:
+        kernels = 4
     output = []
     process = subprocess.Popen('mpirun -np ' + str(kernels) + ' M++', stdout=subprocess.PIPE,
                                cwd=working_dir, shell=True)  # .stdout.decode('utf-8')
