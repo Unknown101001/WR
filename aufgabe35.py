@@ -144,11 +144,11 @@ def aufgabe38():
     delete_old()
     manipulate_conf("m++conf", [("loadconf", "dgreaction.conf")])
     manipulate_conf("dgreaction.conf",
-                    [("HybridProblem", "HybridDGReaction"), ("T", "1.6"), ("dt", "0.001"), ("Reaction", "0"),
-                     ("Diffusion", "0.000001")])
+                    [("HybridProblem", "HybridReaction"), ("T", "1.6"), ("dt", "0.001"), ("Reaction", "0"),
+                     ("Diffusion", "0.000001"),("Model","HybridDGReaction")])
     output = run()
     save("Aufgabe38")
-    out = parse_mpp_output_allg(["Step", "Mass", "Outflow"])
+    out = parse_mpp_output_allg(["Step", "Mass", "Outflow"],output=output)
     time = [0.001 * a for a in out[0]]
     fig = plt.figure(0)
     plt.plot(time, out[1], label="Masse")
