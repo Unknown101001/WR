@@ -1,10 +1,10 @@
-start program on 4 procs at Thu Aug 29 12:50:06 2019
+start program on 4 procs at Thu Aug 29 12:49:08 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
   reading ... Mesh = UnitSquare
   default ... GeoPath = ./../Praktikum/
-  reading ... level = 6
+  reading ... level = 9
   reading ... plevel = 2
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
@@ -45,15 +45,15 @@ start program on 4 procs at Thu Aug 29 12:50:06 2019
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
   default ... NewtonJacobiUpdate = 1
-  reading ... level = 6
+  reading ... level = 9
 
- Level:          6
+ Level:          9
  Dimension:      2
- Cells:          4096
- Problem size:   4489
- Vertices:       4225
- Edges:          8320
- Mesh width:     [0.015625,0.015625]
+ Cells:          262144
+ Problem size:   265225
+ Vertices:       263169
+ Edges:          525312
+ Mesh width:     [0.00195312,0.00195312]
  Assemble        Laplace
 
  Problem:        Simple Problem 2D

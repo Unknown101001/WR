@@ -64,6 +64,7 @@ def main_MG_GMRES():
         name = prec + "_" + ls + "_" + lvl
         save("Aufgabe10", name)
 
+
 def main_Jac_CG():
     for lvl in ["3", "4", "5", "6", "7", "8", "9"]:
         prec = "Jacobi"
@@ -77,12 +78,13 @@ def main_Jac_CG():
                          ("Preconditioner", prec),
                          ("LinearSteps", "800"),
                          ("LinearSolver", ls),
-                         ("LinearVerbose","1")])
+                         ("LinearVerbose", "1")])
         output = run(1)
         # out = parse_mpp_output_allg([], output)
         # print(out)
         name = prec + "_" + ls + "_" + lvl
         save("Aufgabe10", name)
+
 
 def main_SGS_CG():
     for lvl in ["3", "4", "5", "6", "7", "8", "9"]:
@@ -102,6 +104,7 @@ def main_SGS_CG():
         # print(out)
         name = prec + "_" + ls + "_" + lvl
         save("Aufgabe10", name)
+
 
 def main_MG_CG():
     for lvl in ["3", "4", "5", "6", "7", "8", "9"]:
@@ -124,8 +127,9 @@ def main_MG_CG():
         name = prec + "_" + ls + "_" + lvl
         save("Aufgabe10", name)
 
+
 def main_Jac_CG_2():
-    lvl = "3"
+    lvl = "6"
     prec = "Jacobi"
     ls = "CG"
     delete_old()
@@ -137,15 +141,16 @@ def main_Jac_CG_2():
                      ("Preconditioner", prec),
                      ("LinearSteps", "800"),
                      ("LinearSolver", ls),
-                     ("LinearVerbose","1")])
+                     ("LinearVerbose", "1")])
     output = run(2)
     # out = parse_mpp_output_allg([], output)
     # print(out)
-    name = prec + "_" + ls + "_" + lvl+"_2proc"
+    name = prec + "_" + ls + "_" + lvl + "_2proc"
     save("Aufgabe10", name)
 
+
 def main_Jac_CG_4():
-    lvl = "3"
+    lvl = "4"
     prec = "Jacobi"
     ls = "CG"
     delete_old()
@@ -157,17 +162,17 @@ def main_Jac_CG_4():
                      ("Preconditioner", prec),
                      ("LinearSteps", "800"),
                      ("LinearSolver", ls),
-                     ("LinearVerbose","1")])
+                     ("LinearVerbose", "1")])
     output = run(4)
     # out = parse_mpp_output_allg([], output)
     # print(out)
-    name = prec + "_" + ls + "_" + lvl+"_4proc"
+    name = prec + "_" + ls + "_" + lvl + "_4proc"
     save("Aufgabe10", name)
 
 
 def main_Jac_CG_probs():
-    for prob in ["Discontinuous","Divergent","Simple2D"]:
-        lvl = "3"
+    for prob in ["Discontinuous", "Divergent", "Simple2D"]:
+        lvl = "4"
         prec = "Jacobi"
         ls = "CG"
         delete_old()
@@ -179,15 +184,16 @@ def main_Jac_CG_probs():
                          ("Preconditioner", prec),
                          ("LinearSteps", "800"),
                          ("LinearSolver", ls),
-                         ("LinearVerbose","1")])
+                         ("LinearVerbose", "1")])
         output = run(1)
         # out = parse_mpp_output_allg([], output)
         # print(out)
-        name = prec + "_" + ls + "_" + lvl+"_Problem-"+prob
+        name = prec + "_" + ls + "_" + lvl + "_Problem-" + prob
         save("Aufgabe10", name)
 
+
 def main_Jac_CMRES_probs():
-    for prob in ["Discontinuous","Divergent","Simple2D"]:
+    for prob in ["Discontinuous", "Divergent", "Simple2D"]:
         lvl = "6"
         prec = "Jacobi"
         ls = "GMRES"
@@ -200,11 +206,11 @@ def main_Jac_CMRES_probs():
                          ("Preconditioner", prec),
                          ("LinearSteps", "800"),
                          ("LinearSolver", ls),
-                         ("LinearVerbose","1")])
+                         ("LinearVerbose", "1")])
         output = run(1)
         # out = parse_mpp_output_allg([], output)
         # print(out)
-        name = prec + "_" + ls + "_" + lvl+"_Problem-"+prob
+        name = prec + "_" + ls + "_" + lvl + "_Problem-" + prob
         save("Aufgabe10", name)
 
 
@@ -221,14 +227,12 @@ def main_Jac_LS():
                      ("Preconditioner", prec),
                      ("LinearSteps", "800"),
                      ("LinearSolver", ls),
-                     ("LinearVerbose","1")])
+                     ("LinearVerbose", "1")])
     output = run(1)
     # out = parse_mpp_output_allg([], output)
     # print(out)
     name = prec + "_" + ls + "_" + lvl
     save("Aufgabe10", name)
-
-
 
 
 if __name__ == "__main__":
@@ -251,5 +255,5 @@ if __name__ == "__main__":
 
     main_Jac_LS()
     '''
-    main_Jac_CMRES_probs()
-
+    main_Jac_CG_2()
+    main_Jac_CG_4()
