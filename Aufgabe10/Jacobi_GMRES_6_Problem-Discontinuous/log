@@ -1,4 +1,4 @@
-start program on 1 procs at Thu Aug 29 12:35:01 2019
+start program on 1 procs at Thu Aug 29 12:56:38 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
@@ -8,7 +8,7 @@ start program on 1 procs at Thu Aug 29 12:35:01 2019
   reading ... plevel = 2
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
-  reading ... Overlap = dG1
+  default ... Overlap = none
   reading ... Distribution = RCB
   reading ... Discretization = linear
   reading ... Discretization = linear
@@ -19,7 +19,7 @@ start program on 1 procs at Thu Aug 29 12:35:01 2019
   default ... tecplot = 0
   reading ... vtkplot = 1
   reading ... Problem = Discontinuous
-  reading ... Permeability = 1
+  reading ... Permeability = 0.1
   default ... AssembleVerbose = 1
   reading ... LinearSolver = GMRES
   reading ... Preconditioner = Jacobi
@@ -37,7 +37,7 @@ start program on 1 procs at Thu Aug 29 12:35:01 2019
   reading ... NewtonSteps = 1
   reading ... NewtonLineSearchSteps = 0
   reading ... NewtonEpsilon = 1e-09
-  default ... NewtonReduction = 1e-05
+  reading ... NewtonReduction = 1e-08
   default ... NewtonMinimalReduction = 1
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
@@ -58,14 +58,17 @@ start program on 1 procs at Thu Aug 29 12:35:01 2019
 
  Newton: d(0)= 0.124511
   GMRES: d(0)= 0.124511
-  GMRES: d(64)= 5.86452e-14 rate 0.641787 time  0.03 seconds
- Newton: d(1)= 5.99361e-14 rate 4.81373e-13 time  0.28 seconds
+  GMRES: d(100)= 0.000545664
+  GMRES: d(200)= 3.73991e-06
+  GMRES: d(300)= 2.77184e-08
+  GMRES: d(361)= 9.82846e-11 rate 0.943593 time  2.61 seconds
+ Newton: d(1)= 9.82824e-11 rate 7.89348e-10 time  4.57 seconds
 
 
 Prescribed Inflow   -1
 Prescribed Outflow  0
-Inflow              -1
-Outflow             1
-Flux Loss           -4.30767e-14
-Flux Error          3.70414e-14
-end program after  0.48 seconds on 1 procs at Thu Aug 29 12:35:02 2019
+Inflow              -1.00385
+Outflow             1.00563
+Flux Loss           0.00177584
+Flux Error          0.00852451
+end program after  5.91 seconds on 1 procs at Thu Aug 29 12:56:45 2019

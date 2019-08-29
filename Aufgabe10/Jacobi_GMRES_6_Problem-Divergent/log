@@ -1,4 +1,4 @@
-start program on 1 procs at Thu Aug 29 12:35:02 2019
+start program on 1 procs at Thu Aug 29 12:56:46 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
@@ -8,7 +8,7 @@ start program on 1 procs at Thu Aug 29 12:35:02 2019
   reading ... plevel = 2
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
-  reading ... Overlap = dG1
+  default ... Overlap = none
   reading ... Distribution = RCB
   reading ... Discretization = linear
   reading ... Discretization = linear
@@ -36,7 +36,7 @@ start program on 1 procs at Thu Aug 29 12:35:02 2019
   reading ... NewtonSteps = 1
   reading ... NewtonLineSearchSteps = 0
   reading ... NewtonEpsilon = 1e-09
-  default ... NewtonReduction = 1e-05
+  reading ... NewtonReduction = 1e-08
   default ... NewtonMinimalReduction = 1
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
@@ -64,8 +64,8 @@ start program on 1 procs at Thu Aug 29 12:35:02 2019
   GMRES: d(500)= 4.51792e-06
   GMRES: d(600)= 1.0382e-06
   GMRES: d(700)= 2.21998e-07
-  GMRES: d(800)= 4.94065e-08 rate 0.981744 time  0.36 seconds
- Newton: d(1)= 4.94065e-08 rate 3.96805e-07 time  0.63 seconds
+  GMRES: d(800)= 4.94067e-08 rate 0.981744 time  4.55 seconds
+ Newton: d(1)= 4.94067e-08 rate 3.96807e-07 time  6.16 seconds
 
 
 Prescribed Inflow   -1
@@ -74,4 +74,4 @@ Inflow              -1.44605
 Outflow             1.16715
 Flux Loss           -0.278903
 Flux Error          3.07351
-end program after  0.81 seconds on 1 procs at Thu Aug 29 12:35:03 2019
+end program after  7.63 seconds on 1 procs at Thu Aug 29 12:56:54 2019
