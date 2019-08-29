@@ -1,0 +1,79 @@
+start program on 4 procs at Wed Jul 17 16:48:50 2019
+
+*****************************************
+***           MLMC test run           ***
+*****************************************
+
+Start MLMC Method for epsilon=0.5
+  Start MC method on level 3 with 30 samples
+  End after  0.35 seconds: |E(Y)|=32.2362 V(Y)=322.217
+  Start MC method on level 4 and level 3 with 10 samples
+  End after  0.49 seconds: |E(Y)|=12.0203 V(Y)=290.256
+  Start MC method on level 5 and level 4 with 10 samples
+  End after  1.64 seconds: |E(Y)|=3.30723 V(Y)=2.86815
+  Estimated exponents: alpha=1.86178 beta=6.66106 gamma=1.91386
+  Missing samples: 8061 4056 199
+  Start MC method on level 3 with 8061 samples
+  End after 1:34.00 minutes: |E(Y)|=32.3956 V(Y)=769.21
+  Start MC method on level 4 and level 3 with 4056 samples
+  End after 3:20.00 minutes: |E(Y)|=7.43802 V(Y)=98.0943
+  Start MC method on level 5 and level 4 with 199 samples
+  End after 32.69 seconds: |E(Y)|=2.28051 V(Y)=3.69603
+  Estimated exponents: alpha=1.70556 beta=4.73012 gamma=1.91386
+  Missing samples: 3778 -1822 16
+  Start MC method on level 3 with 3778 samples
+  End after 42.71 seconds: |E(Y)|=32.5123 V(Y)=750.004
+  Start MC method on level 5 and level 4 with 16 samples
+  End after  2.63 seconds: |E(Y)|=2.25365 V(Y)=3.54347
+  Estimated exponents: alpha=1.72265 beta=4.79093 gamma=1.91386
+  Missing samples: -258 -1842 -7
+  Append level 6
+  Missing samples: 300 -1736 4 23
+  Start MC method on level 3 with 300 samples
+  End after  3.37 seconds: |E(Y)|=32.497 V(Y)=746.22
+  Start MC method on level 5 and level 4 with 4 samples
+  End after  0.66 seconds: |E(Y)|=2.25708 V(Y)=3.54881
+  Start MC method on level 6 and level 5 with 23 samples
+  End after 14.29 seconds: |E(Y)|=0.776742 V(Y)=0.302888
+  Estimated exponents: alpha=1.62971 beta=4.16962 gamma=1.9349
+  Missing samples: 268 -1678 5 12
+  Start MC method on level 3 with 268 samples
+  End after  3.00 seconds: |E(Y)|=32.4895 V(Y)=743.29
+  Start MC method on level 5 and level 4 with 5 samples
+  End after  0.83 seconds: |E(Y)|=2.30741 V(Y)=3.83183
+  Start MC method on level 6 and level 5 with 12 samples
+  End after  7.47 seconds: |E(Y)|=0.687588 V(Y)=0.262482
+  Estimated exponents: alpha=1.71765 beta=4.2729 gamma=1.9349
+  Missing samples: -37 -1681 9 -2
+  Start MC method on level 5 and level 4 with 9 samples
+  End after  1.47 seconds: |E(Y)|=2.33125 V(Y)=4.00793
+  Estimated exponents: alpha=1.71765 beta=4.2729 gamma=1.9349
+  Missing samples: -2 -1674 7 -2
+  Start MC method on level 5 and level 4 with 7 samples
+  End after  1.15 seconds: |E(Y)|=2.31432 V(Y)=3.9294
+  Estimated exponents: alpha=1.71765 beta=4.2729 gamma=1.9349
+  Missing samples: -18 -1677 -3 -2
+  Append level 7
+  Missing samples: 341 -1608 4 -1 4
+  Start MC method on level 3 with 341 samples
+  End after  3.79 seconds: |E(Y)|=32.4417 V(Y)=734.991
+  Start MC method on level 5 and level 4 with 4 samples
+  End after  0.65 seconds: |E(Y)|=2.31918 V(Y)=3.89927
+  Start MC method on level 7 and level 6 with 4 samples
+  End after 10.04 seconds: |E(Y)|=0.173823 V(Y)=0.00706528
+  Estimated exponents: alpha=1.80117 beta=4.51763 gamma=1.94985
+  Missing samples: -206 -1634 -4 -2 -1
+  Append level 8
+  Missing samples: -99 -1613 -2 -1 -1 1
+  Start MC method on level 8 and level 7 with 1 samples
+  End after 11.08 seconds: |E(Y)|=0.119836 V(Y)=1e-10
+  Estimated exponents: alpha=1.56495 beta=8.8779 gamma=1.96063
+  Missing samples: -206 -1634 -4 -2 -1 0
+End after 7:15.00 minutes
+
+Value Q: 43.1801
+Cost:    2.76719e+06
+Levels:  3 4 5 6 7 8 
+Samples: 12778 4066 254 35 4 1 
+
+end program after 7:15.00 minutes on 4 procs at Wed Jul 17 16:56:05 2019

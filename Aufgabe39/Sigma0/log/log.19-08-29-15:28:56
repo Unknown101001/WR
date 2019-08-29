@@ -1,0 +1,16 @@
+start program on 4 procs at Thu Aug 29 15:28:53 2019
+
+*****************************************
+***           MLMC test run           ***
+*****************************************
+
+Start MLMC Method for epsilon=0.5
+  Start MC method on level 3 with 30 samples
+  End after  0.34 seconds: |E(Y)|=32.2362 V(Y)=322.217
+  Start MC method on level 4 and level 3 with 10 samples
+  End after  0.49 seconds: |E(Y)|=12.0203 V(Y)=290.256
+  Start MC method on level 5 and level 4 with 10 samples
+  End after  1.62 seconds: |E(Y)|=3.30723 V(Y)=2.86815
+  Estimated exponents: alpha=1.86178 beta=6.66106 gamma=1.91386
+  Missing samples: 8061 4056 199
+  Start MC method on level 3 with 8061 samples
