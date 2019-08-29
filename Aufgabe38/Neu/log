@@ -1,0 +1,66 @@
+start program on 4 procs at Thu Aug 29 14:47:30 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 0
+  reading ... Model = HybridDGReaction2
+  reading ... Mesh = Square500
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 2
+  reading ... plevel = 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  reading ... Overlap = dG1
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+1912 cells on proc 0 of 7648 cells on 4 procs -- min cells: 1912  max cells: 1912
+  reading ... Overlap = dG1
+in RT0DoF with  m = 1
+  reading ... Problem = Simple
+  reading ... SetSolution = 0
+  default ... AssembleVerbose = 1
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... LinearSolver = GMRES
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-09
+  reading ... LinearReduction = 1e-08
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 10
+  reading ... NewtonLineSearchSteps = 3
+  reading ... NewtonEpsilon = 1e-08
+  reading ... NewtonReduction = 1e-07
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 2
+
+ Level:          2
+ Dimension:      2
+ Cells:          7648
+ Problem size:   12127
+ Vertices:       4072
+ Edges:          11736
+ Mesh width:     [0.015625,0.0220971]
+ Assemble        Hybrid
+
+ Problem:        Simple Problem 2D
+ Discretization: RT0_P0
+
+ Newton: d(0)= 0.125
+  GMRES: d(1)= 5.48924e-14 rate 4.39139e-13 time  0.03 seconds
+ Newton: d(1)= 7.35042e-14 rate 5.88033e-13 time  0.49 seconds
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 0
+  reading ... deg = 2
+matrixgraph on level 2:   reading ... HybridProblem = HybridDGReaction
