@@ -1,4 +1,4 @@
-start program on 4 procs at Thu Aug 29 12:59:24 2019
+start program on 4 procs at Thu Aug 29 13:50:07 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
@@ -8,11 +8,11 @@ start program on 4 procs at Thu Aug 29 12:59:24 2019
   reading ... plevel = 2
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
-  reading ... Overlap = dG1
+  default ... Overlap = none
   reading ... Distribution = RCB
   default ... Overlap_Distribution = 0
 4 cells on proc 0 of 16 cells on 4 procs -- min cells: 4  max cells: 4
-  reading ... Overlap = dG1
+  default ... Overlap = none
   reading ... Discretization = linear
   reading ... Discretization = linear
   default ... QuadratureCell = 2
@@ -40,7 +40,7 @@ start program on 4 procs at Thu Aug 29 12:59:24 2019
   reading ... NewtonSteps = 1
   reading ... NewtonLineSearchSteps = 0
   reading ... NewtonEpsilon = 1e-09
-  default ... NewtonReduction = 1e-05
+  reading ... NewtonReduction = 1e-08
   default ... NewtonMinimalReduction = 1
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
@@ -50,7 +50,7 @@ start program on 4 procs at Thu Aug 29 12:59:24 2019
  Level:          4
  Dimension:      2
  Cells:          256
- Problem size:   361
+ Problem size:   289
  Vertices:       289
  Edges:          544
  Mesh width:     [0.0625,0.0625]
@@ -59,3 +59,31 @@ start program on 4 procs at Thu Aug 29 12:59:24 2019
  Problem:        Simple Problem 2D
  Discretization: linear
 
+ Newton: d(0)= 0.246063
+  PCG: d(0)= 0.246063
+  PCG: d(1)= 0.246063
+  PCG: d(2)= 0.246063
+  PCG: d(3)= 0.246063
+  PCG: d(4)= 0.246063
+  PCG: d(5)= 0.246063
+  PCG: d(6)= 0.246063
+  PCG: d(7)= 0.246063
+  PCG: d(8)= 0.246063
+  PCG: d(9)= 0.246063
+  PCG: d(10)= 0.246063
+  PCG: d(11)= 0.246063
+  PCG: d(12)= 0.246063
+  PCG: d(13)= 0.246063
+  PCG: d(14)= 0.246063
+  PCG: d(15)= 0.246063
+  PCG: d(16)= 2.11526e-15 rate 0.132098 time  0.01 seconds
+ Newton: d(1)= 4.64743e-15 rate 1.88872e-14 time  0.05 seconds
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow              -1
+Outflow             1
+Flux Loss           9.76996e-15
+Flux Error          3.24396e-15
+end program after  0.22 seconds on 4 procs at Thu Aug 29 13:50:08 2019
