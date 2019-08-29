@@ -221,7 +221,7 @@ if __name__ == "__main__":
     main_MG_CG()
     main_SGS_CG()
     '''
-
+    '
     main_Jac_CG_2()
     main_Jac_CG_4()
 
