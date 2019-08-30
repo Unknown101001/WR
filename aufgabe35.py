@@ -168,7 +168,17 @@ def aufgabe38():
     plt.grid(True)
     plt.savefig("Aufgabe38/plotoutflow.png")
 
-
+def a38_outflowrate():
+    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"]) #logfile="Aufgabe38/Neu/log"
+    time = [0.001 * a for a in out[0]]
+    fig = plt.figure(1)
+    plt.plot(time, out[2], label="OutFlowRate")
+    plt.grid()
+    plt.legend()
+    plt.xlabel("Zeit")
+    plt.ylabel("OutFlowRate")
+    plt.grid(True)
+    plt.savefig("Aufgabe38/plotoutflowrate.png")
 
 
 if __name__ == "__main__":
@@ -176,4 +186,4 @@ if __name__ == "__main__":
     # saveload = read_values()
     # write_to_csv(saveload)
     #testit()
-    aufgabe38()
+    a38_outflowrate()
