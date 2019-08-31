@@ -63,9 +63,15 @@ Damit die Methode konvergiert sind die folgenden Voraussetzungen zu überprüfen
 Dazu testen wir obige Bedingungen zunächst mit verschiedenen Parametern der verwendeten Covarianzfunktion $C(x,y)= \sigma^2 \exp ( - \norm{x-y}^{\alpha}_2 / \lambda^{\alpha})$
 \begin{figure}[H]
 	\centering
-	\captionabove{Discretization = linear}
-	\subfigure[1]{\includegraphics[width=0.99\textwidth]{../Aufgabe39}}	 
+	\captionabove{Konvergenztest für verschieden Parameter}
+	\subfigure[$\sigma = 1 \qquad \lambda =0.15 \qquad \alpha= 1,8$]{\includegraphics[width=0.45\textwidth]{../Aufgabe39/Sigma1/par.png}}	 
+	\subfigure[$\sigma = 3 \qquad \lambda =0.15 \qquad \alpha= 1,8$]{\includegraphics[width=0.45\textwidth]{../Aufgabe39/Sigma3/par.png}}	
+	\subfigure[$\sigma = 1 \qquad \lambda =0.15 \qquad \alpha= 0.9$]{\includegraphics[width=0.45\textwidth]{../Aufgabe39/Sigma1alpha0.9/par.png}}	
+	\subfigure[$\sigma = 1 \qquad \lambda =0.05 \qquad \alpha= 1.8$]{\includegraphics[width=0.45\textwidth]{../Aufgabe39/Sigma1lamda0.05/par.png}}	
 \end{figure}
+
+Zudem können wir Beispiele der entstandenen Permeabilitäten einzelner Samples betrachten um ein Gefühl dafür zu bekommen, wie die unterschiedlichen Parameter das stochastische Feld beeinflussen:
+
 
 
 
