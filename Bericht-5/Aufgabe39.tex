@@ -72,6 +72,79 @@ Dazu testen wir obige Bedingungen zunächst mit verschiedenen Parametern der ver
 
 Zudem können wir Beispiele der entstandenen Permeabilitäten einzelner Samples betrachten um ein Gefühl dafür zu bekommen, wie die unterschiedlichen Parameter das stochastische Feld beeinflussen:
 
+\begin{figure}[H]
+	\centering
+	\captionabove{Beispielpermeabilitäten für verschiedene $\sigma$ unter derselben Skalierung}
+	\subfigure[$\sigma = 1 \; \lambda =0.15  \; \alpha= 1.8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma1/perm2.png}}	 
+	\subfigure[$\sigma = 3  \; \lambda =0.15 \; \alpha= 1.8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma3/perm2.png}}	
+	\subfigure[$\sigma = 6  \; \lambda =0.15  \; \alpha= 1.8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma6/perm2.png}}	
+\end{figure}
+$\sigma$ geht in die Varianz der einzelnen Zufallsvariablen ein. An den Permeabilitäten erkennt man das daran, dass der Bereich $[\sigma_0,\sigma_1] $ immer größer wird und wir bei größerem Sigma (wenn wir über die gleichen Werte skalieren) deutlich mehr Bereiche auf oder jenseits des ursprünglichen Maximalniveaus finden.
+\begin{figure}[H]
+	\centering
+	\captionabove{Beispielpermeabilitäten für verschiedene $\lambda$ unter derselben Skalierung}
+	\subfigure[$\sigma = 1 \; \lambda =0.05  \; \alpha= 1,8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma1lamda0.05/perm2.png}}	 
+	\subfigure[$\sigma = 1  \; \lambda =0.15 \; \alpha= 1.8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma1/perm2.png}}	
+	\subfigure[$\sigma = 1  \; \lambda =0.27  \; \alpha= 1.8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma1lamda0.27/perm2.png}}	
+\end{figure}
+Mit $\lambda$ können wir die Korrelationslänge steuern, so erhalten wir für ein großes $\lambda$ größere zusammenhängende Bereiche während sich bei sehr kleinem $\lambda$ viele kleinere Bereiche bilden, da einzelne Punkte nur im Bereich der jetzt geringeren Korrelationslänge miteinander korrelieren.
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Beispielpermeabilitäten für verschiedene $\alpha$ unter derselben Skalierung}
+	\subfigure[$\sigma = 1 \; \lambda =0.15  \; \alpha=0.9$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma1alpha0.9/perm2.png}}	 
+	\subfigure[$\sigma = 1  \; \lambda =0.15 \; \alpha= 1.8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma1/perm2.png}}	
+	\subfigure[$\sigma = 1  \; \lambda =0.15  \; \alpha=  2.7$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma1alpha2.7/perm2.png}}	
+\end{figure}
+Mit $\alpha$ können wir die 'Art' der Korrelation ändern, besonders gut sieht man das beim Vergleich der Permeabilitäten von $\alpha = 1,8$ und $\alpha = 2.7$. Während wir für letzteres ein stark unkorreliertes Bild erhalten sind die Strukturen für $\alpha = 1.8$ innerhalb des Korrelationsbereiches (also jeweils für $| x-y|$ kleiner gleich der Korrelationslänge) schön korreliert und daher glatt. \\
+Je nach Parameterwahl erhalten wir so mal mehr mal weniger gute Konvergenzeigenschaften des Verfahrens. Dies spiegelt sich zum einen in den Konvergenzgrößen $\alpha$, $ \beta$, $\gamma$ (Vorsicht: dies ist  nicht das $\alpha$ aus der Kovarianzfunktion), zum anderen aber auch an den Konvergenzplots der Größen $\mathbb{E}[Q_{h_l}]$,  $\mathbb{E}[Q_{h_l} - Q_{h_{l-1}}]$, $\mathbb{V}[Q_{h_l}]$,  $\mathbb{V}[Q_{h_l} - Q_{h_{l-1}}]$.
+\begin{enumerate}
+	\item $\sigma = 1$, $\lambda = 0.15$, $\alpha= 1.8$ $\Rightarrow$ $\alpha = 1.69$, $\beta = 3.37$, $\gamma = 1.95$
+	\item $\sigma = 6$, $\lambda = 0.15$, $\alpha= 1.8$ $\Rightarrow$ $\alpha = 1.32$, $\beta = 2.88$, $\gamma = 1.95$
+	\item $\sigma = 1$, $\lambda = 0.05$, $\alpha= 1.8$ $\Rightarrow$ $\alpha = 1.21$, $\beta = 2.82$, $\gamma = 1.95$
+	\item $\sigma = 1$, $\lambda = 0.15$, $\alpha= 2.7$ $\Rightarrow$ $\alpha = 0.14$, $\beta = 0.39$, $\gamma = 1.95$
+\end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Zugehörige Kovergenzplots zu den oben angeführten Beispielkonfigurationen}
+	\subfigure[1.]{\includegraphics[width=0.49\textwidth]{../Aufgabe39/Sigma1/plotmc_sigma1.png}}	 
+	\subfigure[2.]{\includegraphics[width=0.49\textwidth]{../Aufgabe39/Sigma6/plot_mcsig6.png}}	
+	\subfigure[3.]{\includegraphics[width=0.49\textwidth]{../Aufgabe39/Sigma1lamda0.05/Figure_1.png}}	
+	\subfigure[4.]{\includegraphics[width=0.49\textwidth]{../Aufgabe39/Sigma1alpha2.7/Figure_1.png}}	
+\end{figure}
+
+Anschließend testeten wir dann die MLMC-Methode für einer auf Konvergenz geprüfte Konfiguration, nämlich für $\sigma = 1$, $\lambda = 0.15$ und $\gamma = 2.7$
+\begin{figure}[H]
+	\centering
+	\captionabove{MLMC Experiment für genannte Konfiguration}
+	\subfigure{\includegraphics[width=0.89\textwidth]{../Aufgabe39/MLMCExp1/exp.png}}	 
+\end{figure}
+
+Man sieht sehr schön, dass der Algorithmus immer wieder einen MC-Ansatz auf einem bestimmten Level durchführt, dabei $| \mathbb{E}[Y] |$ und $\mathbb{V[Y]}$ berechnet und die Konvergenzparameter $\alpha , \beta, \gamma$ schätzt. Anschließend wird berechnet wie viele Samples auf den verschiedenen Leveln noch berechnet werden sollen. 
+Erstaunlich ist dabei, dass wir auf dem höchsten Level tatsächlich nur ein einziges Sample berechnen müssen um das gewünschte Level zu erreichen.
+\begin{figure}[H]
+	\centering
+	\captionabove{Beispiel eines Samples mit Lösung (Streamlines) auf dem zweithöchsten Level}
+	\subfigure{\includegraphics[width=0.49\textwidth]{../Aufgabe39/MLMCExp1/vtkshot.png}}	 
+\end{figure}
+Außerdem legt das Vorgehen des Algorithmus nahe ihn sozusagen 'adaptiv' zu nutzen. Statt also die initialen Sampleanzahlen $M_l$ festzulegen, legen wir verschiedene Fehler $\epsilon$ für die verschiedenen Level fest.
+\begin{figure}[H]
+	\centering
+	\captionabove{MLMC Experiment über Epsilon}
+	\subfigure{\includegraphics[width=0.99\textwidth]{../Aufgabe39/MLMCExpOverEps/exp2.png}}	 
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\captionabove{Lösungsplot auf Level 8}
+	\subfigure{\includegraphics[width=0.49\textwidth]{../Aufgabe39/MLMCExpOverEps/res2.png}}	 
+\end{figure}
+Wir müssen also lediglich ein Sample auf Level 8 berechnen um unser vorgegebenes Epsilon zu erreichen.
+Als Lösung erhalten wir dabei den Erwartungswert des Zielfunktionals Q.
+
+ 
+
+
 
 
 
