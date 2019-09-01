@@ -42,6 +42,10 @@ wobei $Y_0(\omega) = Q_0(\omega)$ und $Y_l(\omega) = Q_l(\omega) - Q_{l-1}(\omeg
 	&\underbrace{\mathbb{E}[\hat{Q}^{MC}_{h_L}]} = \mathbb{E}[Q_{h_0}]+ \sum_{l=1}^{L} \mathbb{E}[Q_{h_l}-Q_{h_{l-1}}] = \sum_{l=0}^{L} \mathbb{E}[\hat{Y}_l]\\
 	&\text{MC-Schätzer auf höchstem Level}
 \end{align*}
+Als Fehler erhalten wir dabei:
+\begin{align*}
+	e(\hat{Q}^{MLMC}_{h,\{ M_l \}_{l=0}^{L}})^2 = \mathbb{E} \bigl[ (\hat{Q}^{MLMC}_{h,\{ M_l \}_{l=0}^{L}} - \mathbb{E}[Q] )^2\bigr] =\underset{\text{Fehler des Schätzers}}{\underbrace{\sum_{l=0}^{L} \frac{1}{M_l} \mathbb{V}[Y_l] }} + \underset{\text{FEM Fehler}}{\underbrace{(\mathbb{E}[Q_h-Q])^2}}
+\end{align*}
 Damit die Methode konvergiert sind die folgenden Voraussetzungen zu überprüfen: 
 \begin{enumerate}
 	  \item Die Konvergenzrate $\alpha$ der FEM ist gegeben durch
