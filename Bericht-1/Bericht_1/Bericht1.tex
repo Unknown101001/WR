@@ -110,9 +110,9 @@ $\newline$
 \begin{itemize} 
 \item[a)] Sei $ \dive q = 0$ in $\Omega$. Dann gilt für alle Testfunktionen $\Phi : \Omega \rightarrow \R$  
 \begin{align*}
-\int_{\Omega}{q \nabla \Phi dx} = \int_{\partial \Omega}{\Phi q \cdot \nu da}
+\int_{\Omega}{q \nabla \Phi \diff x} = \int_{\partial \Omega}{\Phi q \cdot \nu \diff a}
 \end{align*}
-\item[b)] Sei $\int_{\Omega}{q \nabla \Phi dx} = \int_{\partial \Omega}{g \Phi da}$. Dann gilt für alle Testfunktionen $\Phi : \Omega \rightarrow \R$ 
+\item[b)] Sei $\int_{\Omega}{q \nabla \Phi \diff x} = \int_{\partial \Omega}{g \Phi \diff a}$ für alle Testfunktionen $\Phi : \Omega \rightarrow \R$. Dann gilt 
 \begin{align*}
 \dive q = 0 \text{ in } \Omega  \text{ und } q \cdot \nu = g \text{ auf } \partial \Omega
 \end{align*}
@@ -144,7 +144,7 @@ Konkret kommen wir so also von
 \end{cases}
 \]
 
-zur schwachen Form unseres Problems:
+zur \defi{schwachen Form} unseres Problems:
 \begin{align*}
 \int_{\Omega}{ \kappa \nabla u \cdot \nabla \Phi dx} = \int_{ \Gamma_N }{g_n \Phi da} \text{  } \; \; \forall \Phi \text{ mit } \Phi = 0 \text{ auf } \Gamma_D
 \end{align*}
@@ -154,7 +154,7 @@ Aus der schwachen Form der Problemstellung in Ergebnis (ii) leitet sich die disk
 \begin{align*}
 &\text{Bestimme } u_h \in V_h \text{ mit }\\
 &(\star)\begin{cases}
-	\int_{\Omega} \kappa \nabla u_h \cdot \nabla \Phi_h \diff x = \int_{\Gamma_N} g_N  \Phi_h \diff a \text{ für alle } \Phi_h \in V_h \text{ mit } \Phi_h = 0 \text{ auf } \Gamma_D \\
+	\int_{\Omega} \kappa \nabla u_h \cdot \nabla \Phi_h \diff x = \int_{\Gamma_N} g_N  \Phi_h \diff a \text{ (für alle } \Phi_h \in V_h \text{ mit } \Phi_h = 0 \text{ auf } \Gamma_D) \\
 	u_h \approx u_D \text{ auf } \Gamma_D
 \end{cases}
 \end{align*}
@@ -175,23 +175,23 @@ Was $ V_h $ ist, ist noch fraglich und wird im Folgenden hergeleitet.
 	
 	Ein $ K \in \mathcal{K} $ heißt \defi{Zelle}, ein $ z \in \mathcal{V}_h $ heißt \defi{Knoten} und die Menge aller Knoten sei $\mathcal{V}_\mathcal{K} \coloneqq \bigcup_{K \in \mathcal{K}} \mathcal{V}_K$
 	
-	Weiterhin fordern wir, dass die Zerlegung $\mathcal{K}$ zulässig ist.
+	Weiterhin fordern wir, dass die Zerlegung $\mathcal{K}$ zulässig ist, d.h. der Schnitt zwei verschiedener Zellen ist leer, eine Ecke oder eine Kante.
 	
 	\item[zu $V_K$:] 
-	Die numerische Lösung $u_h$ wird durch die Werte $ u_h(z) $ an allen Knoten $z \in \mathcal{V}_\mathcal{K}$ bestimmt. $ u_h $ wird bilinear auf jedem $K \in \mathcal{K}$ interpoliert und auf $ \Omega $ zusammengesetzt.
+	Die numerische Lösung $u_h$ wird durch die Werte $ u_h(z) $ an allen Knoten $z \in \mathcal{V}_\mathcal{K}$ bestimmt. $ u_h $ wird linear auf jedem $K \in \mathcal{K}$ interpoliert und auf $ \Omega $ zusammengesetzt.
 	
 	Für die Interpolation auf einem $ K \in \mathcal{K} $ betrachten wir den Testraum, welcher von \enquote{Hütchenfunktionen} aufgespannt wird. Für alle $ \{z_{K,0},\dots, z_{K,N_K} \} = \mathcal{V}_K $ ist die Hütchenfunktionen $ \lambda_{K,i}\colon K \to \R \ $ gegeben durch
 		\[
 			\lambda_{K,i}(z_{K,j}) = \delta_{i,j}
-			\text{ dazwischen bilinear interpoliert.}
+			\text{ und dazwischen linear interpoliert.}
 		\] 
 		Um die Hütchenfunktionen $ \{\lambda_{K,i}\} $ auf $ K $ zu berechnen, verwenden wir die Hütchenfunktionen $ \{\hat{\lambda_i}\} $ auf der \defi{Referenzzelle} (Referenzdreieck oder Referenzviereck) $ \hat{K} $. Mit einer Koordinatentransformation von $ \hat{K} $ nach $ K $
 		\begin{align*}
-			\phi_K\colon \hat{K} \to \overline{K}, \phi_K(\xi) + z_{K,0} + B_K(\xi) \text{ mit } B_K(\xi) = \Jacobi\phi_K(\xi)
+			\phi_K\colon \hat{K} \to \overline{K}, \phi_K(\xi) \mapsto z_{K,0} + B_K(\xi) \text{ mit } B_K(\xi) = \Jacobi\phi_K(\xi)
 		\end{align*}
 		erhalten wir die Hütchenfunktionen auf $ K $ durch
 		\begin{align*}
-			\lambda_{K,i} = \hat{\lambda_i} \circ \phi_K^{-1}.
+			\lambda_{K,i} = \hat{\lambda}_i \circ \phi_K^{-1}.
 		\end{align*}
 		Weiter sei
 		\begin{align*}
