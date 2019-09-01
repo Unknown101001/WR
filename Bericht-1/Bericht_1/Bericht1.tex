@@ -122,7 +122,7 @@ $\newline$
 $\newline$
 Konkret suchen wir also einen Fluss q, der der Bedingung aus b) genügt, denn gilt  
 \begin{align*}
-\int_{\Omega}{q \nabla \Phi dx} = \int_{\partial \Omega}{g \Phi da} = 0 \text{ } \forall \Phi : \Omega \rightarrow \R \text{ mit } \Phi = 0 \text{ auf }\partial\Omega  
+\int_{\Omega}{q \nabla \Phi dx} = \int_{\partial \Omega}{g \Phi da} = 0 \quad \forall \Phi : \Omega \rightarrow \R \text{ mit } \Phi = 0 \text{ auf }\partial\Omega  
 \end{align*}
 dann gilt: 
 \begin{align*}
@@ -187,7 +187,7 @@ Was $ V_h $ ist, ist noch fraglich und wird im Folgenden hergeleitet.
 		\] 
 		Um die Hütchenfunktionen $ \{\lambda_{K,i}\} $ auf $ K $ zu berechnen, verwenden wir die Hütchenfunktionen $ \{\hat{\lambda_i}\} $ auf der \defi{Referenzzelle} (Referenzdreieck oder Referenzviereck) $ \hat{K} $. Mit einer Koordinatentransformation von $ \hat{K} $ nach $ K $
 		\begin{align*}
-			\phi_K\colon \hat{K} \to \overline{K}, \phi_K(\xi) \mapsto z_{K,0} + B_K(\xi) \text{ mit } B_K(\xi) = \Jacobi\phi_K(\xi)
+			\phi_K\colon \hat{K} \to \overline{K}, \phi_K(\xi) \mapsto z_{K,0} + B_K(\xi) \quad \text{mit} \quad B_K(\xi) = \Jacobi\phi_K(\xi)
 		\end{align*}
 		erhalten wir die Hütchenfunktionen auf $ K $ durch
 		\begin{align*}
@@ -480,7 +480,7 @@ Lösung zum homogenen Problem auf dem Mesh 'Square500' mit Strömungslinien auf 
 Betrachten wir zunächst die Probleme auf dem Mesh 'UnitSquare8Triangels': \newline
 Ähnlich wie in Aufgabe 4 sind die Fehlerwerte bei dem einfachen Problem sehr klein und es lässt sich dadurch eigentlich keine wirkliche Entwicklung ablesen. Genauso sieht man auch bei Discontinuous sehr schön die Halbierung der Fehlerwerte (insbesondere Flux Error). Insgesamt lässt so über 
 \begin{align*}
-h_l = h_0 \cdot 2^{-l} \text{ und } \frac{e_l}{e_{l+1}} \sim \frac{(2^{-l}h_0)^{p}}{(2^{-(l+1)}h_0)^{p}}
+h_l = h_0 \cdot 2^{-l} \text{ und } \frac{e_l}{e_{l+1}} \sim \frac{(2^{-l}h_0)^{p}}{(2^{-(l+1)}h_0)^{p}} %= \left(\frac{h_l}{h_{l+1}}\right)^p
 \end{align*}
 die Konvergenzrate p bestimmen. Dabei ist $l$ das Level, $h_l$ die Gitterweite, $e_l$ der Fehler auf Level l (bei uns der Flux Error). 
 Bei obigen Werten erhält man $ \frac{e_l}{e_{l+1}} \approx 2.043 $. \newline
