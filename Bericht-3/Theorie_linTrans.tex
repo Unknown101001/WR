@@ -1,9 +1,10 @@
 
 % !TeX root = Bericht_main.tex
 \subsection{Analytische Betrachtung der linearen Transportgleichung}
+$ \Omega \subseteq \R^2 $ (weiterhin betrachten wir nur zweidimensionale Gebiete):\\
 \textbf{Bisher} wollten wir aus gegebenen Randwerten den Fluss $ q $ berechnen.\\
-\textbf{Jetzt} ist $ \Omega \subseteq \R^2 $ (wie bisher betrachten wir nur zweidimensionale Gebiete) und der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben. Gesucht wird nun die Dichteverteilung $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
-transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ kann interpretiert werden als die Menge der Randpunkte an dem Substanz einfließen kann).
+\textbf{Jetzt} ist  der Fluss $ q: \Omega \to \R^2 $ mit $ \dive(q) = 0 $ gegeben und wir suchen nun die \defi{Dichteverteilung} $ \rho: \Omega \times [0,T] \to \R_{\geq 0} $ einer 
+transportierten Substanz. Gegeben ist dazu die \defi{Anfangsverteilung} der Substanz $ \rho_0:  \Omega \to \R_{\geq 0}$ und der \defi{Einfluss} der Substanz über die Zeit $ \rhoin: \Gammain \times [0,T] \to \R_{\geq 0} $ mit $ \Gammain \coloneqq \{ z \in \partial \Omega: q(z) \cdot \nu(x) \leq 0 \} $ ($ \Gammain $ kann interpretiert werden als die Menge der Randpunkte an dem Substanz einfließen kann, da der Fluss $ q $ dort ins Innere des Gebietes zeigt).
 
 Gegebenenfalls werden wir Argumente von Funktionen weglassen, z. B. $ \rho(t) \coloneqq \rho(t,\cdot), \rho(x) \coloneqq \rho(\cdot, x) $. Es sollte aus dem Kontext und der Variablenbenennung klar werden, was an der jeweiligen Stelle gemeint wird. Weiter bezeichnet $ \nabla \rho $ immer $ \nabla \rho(t,\cdot) $ für ein feste $ t \in [0,T] $, also der Gradient  im \enquote{Raum}. Analog wird für $ \dive(\rho q) $ verfahren.
 
@@ -106,10 +107,13 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 	\end{enumerate}
 \end{Lemma}
 
+%TODO
+\textcolor{red}{IST LINEARE-TRANSPORT-GLEICHUNG ELLIPTISCH?}
+
 \subsection{Numerische Approximation}
 Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren,  um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
 
-Unser  Ansatz-/Lösungsraum wird $Q_h = \Pi_{K \in \mathcal{K}}  \mathbb{P}_k $ sein, also der Raum der Funktionen, die auf jeder Zelle ein Polynom von Grad $ \leq k $ sind. Im Vergleich zu den Finiten-Elementen-Methoden wird nicht mehr die Stetigkeit der Lösung auf ganz $ \Omega $ gefordert. Damit gilt $ Q_h \not \subseteq \mathcal{H}^1_0(\Omega)=\mathcal{W}^{1,2}_0(\Omega) $ und $ Q_h $ ist ein nicht-konformer Ansatz-/Lösungsraum.
+Unser  Ansatz-/Lösungsraum wird $Q_h = \Pi_{K \in \mathcal{K}}  \mathbb{P}_k(K,\R) $ sein, also der Raum der Funktionen, die auf jeder Zelle ein Polynom von Grad $ \leq k $ sind. Im Vergleich zu den Finiten-Elementen-Methoden wird \textbf{nicht} mehr die Stetigkeit der Lösung auf ganz $ \Omega $ gefordert. Damit gilt $ Q_h \not \subseteq \mathcal{H}^1_0(\Omega)=\mathcal{W}^{1,2}_0(\Omega) $ und $ Q_h $ ist ein \defi{nicht-konformer} Ansatz-/Lösungsraum.
 
 \subsubsection{Diskretisierung im Raum}
 Wir betrachten $ \rho $ als Lösung von $ \swlTG $ und schreiben das zu lösende Problem um. Sei $ \mathcal{K} $ eine Triangulierung von $ \Omega $ wie bisher und $ (\cdot,\cdot)_A $ das $ L^2(A) $-Skalarprodukt. 
@@ -137,10 +141,9 @@ Dann gilt für eine klassische Lösung $ \rho $ von $ \lTG $  $ \partial_t \rho 
 	\[ F = K \cap K': \oint_{F}  \phi \Psi(\rho) \cdot n^K \diff a = - \oint_{F} \phi \Psi(\rho) \cdot n^{K'} \diff a\]
 \end{remark}
 \ \newline
-\textbf{Ziel}:Eine semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ bzw. eine Differenzialgleichung für $ \rho_h $ herzuleiten
-
+\textbf{Ziel}:Eine semidiskrete Lösung $ \rho_h: [0,T] \to Q_h $ bzw. eine Differenzialgleichung für $ \rho_h $ herzuleiten\\
 \textbf{Approximation}:
-Wir wählen den Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ u \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werden, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux), welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
+Wir wählen den Lösungs-/Ansatzraum $ Q_h = \Pi_{K\in\mathcal{K}} \mathbb{P}_k $ für $ k \in \mathbb{N}_0 $. Für $ k = 0 $ heißt $ Q_h $ \defi{Finite-Volumen-Raum}, für $ k \geq 1 $ nennt man $ Q_h $ \defi{Discontinuous-Galerkin-Raum}. Anders als bei den FE-Räumen wird für Elemente aus $ Q_h $ keine Stetigkeit auf $ \Omega $ gefordert. D.h. im Allgemeinen lässt sich $ \rho_h \in Q_h $ (Definiert auf $ \Omega_h $) nicht stetig auf $ \Omega $ fortsetzen, da für eine beliebige innere Kante $ \overline{F} = \partial K \cap \partial K' $ mit Grenzwert von $ K $ aus unterschiedlich zu dem von $ K' $ aus sein kann. Damit kann (\sun) nicht direkt auf $ Q_h $ übertragen werden, da noch zu klären ist, was $ \Psi(\rho) $ auf $ F \in \mathcal{F} $ bedeutet. Wir betrachten den \defi{numerischen Fluss} (numerical flux), welcher \enquote{in geeigneter Weiße} $ \Psi(\rho) $ auf den Kanten $ F \in \mathcal{F} $ ersetzt . Wir zählen $ \mathcal{K} $ durch mit $ \mathcal{K} = \{K_1 , \dots , K_N\} $, $ N \coloneqq \abs{\mathcal{K}} $.
 Unser numerischer Ansatz wird durch (\sun) motiviert und lautet für alle $ \phi_h \in Q_h $
 \[
 \sum_{i = 1}^{N} \left(\partial_t \rho_h, \phi_h  \right)_{K_i}  = \sum_{i=1}^{N} \bigg(- \left(\Psi(\rho_h), \nabla\phi_h \right)_{K_i} -\sum_{\substack{F \in \mathcal{F}_{K_i} \\ F \not\subseteq \Gammain}} \left(\Psi^*(\rho_h) \cdot n^K, \phi \right)_{F} - \left(\rhoin q \cdot n^K, \phi \right)_{\partial K_i \cap \Gammain} \bigg)
@@ -156,7 +159,7 @@ Als numerischen Fluss verwenden wir den \defi{upwind flux} $ \Psi^* $. Dieser is
 	\text{Auf } F \text{ gilt }\Psi^*(\rho_h) = \begin{cases}
 	\Psi(\rho_{h|K}) &\text{, für } q \cdot n^K_{|F} > 0\\
 	\Psi(\rho_{h|K'}) &\text{, für } q\cdot n^K_{|F} < 0 \text{ und } \overline{F} = \partial K \cap \partial K'\\
-	0 &\text{, für } q\cdot n^K_{|F} < 0 \text{ und } F \subseteq \Gammain.
+	0 &\text{, für } q\cdot n^K_{|F} < 0 \text{ und } F \subseteq \Gammain. 
 	\end{cases}  
 \end{gather*}
 
@@ -173,7 +176,7 @@ Als numerischen Fluss verwenden wir den \defi{upwind flux} $ \Psi^* $. Dieser is
 \end{remark}
 
 \begin{remark}
-	Wir führen einen Notation für die Nachbarzelle an einer Kante ein.
+	Wir führen einen Notation für die Nachbarzelle an einer Kante ein:
 	
 	Für $ K \in \mathcal{K} $ und eine innere Kante $ F \in \mathcal{F}_K $ sei $ K_F \in \mathcal{K}$ die Zelle, sodass gilt \[ \overline{F} = \partial K \cap \partial K_F \]
 	
