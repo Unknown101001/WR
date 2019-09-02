@@ -541,24 +541,26 @@ Man kann unter theoretischem Hintergrund zeigen, dass der Flux Error äquivalent
 Betrachten wir nun die Probleme auf dem Mesh 'Square500': Schnell fällt auf, dass unabhängig vom gewählten Problem die Fehlerwerte um ein Vielfaches größer sind. Die deutlich schlechteren Fehlerwerte spiegeln sich auch in der (approximativen) Konvergenzrate wieder: \newline
 Für das Problem Discontinuous erhalten wir $ \frac{e_l}{e_{l+1}} \approx 1.18 $ und $p \approx 0.24$ \newline
 Für das Problem Simple2D erhalten wir $ \frac{e_l}{e_{l+1}} \approx 1.19 $ und $p \approx 0.25$ \newline
-Man erkennt, dass beide Probleme auf 'Square500' sehr schlecht gelöst werden.
-Die 'Steine' sind in 'Square500.geo' als Löcher mit Neumann-0 Rändern innerhalb des Gebietes realisiert. 
-Betrachten wir die zugrunde liegende Differentialgleichung auf einer einzelnen Zelle der Triangulierung, erhalten wir:
-\begin{align*}
-	\begin{cases}
-		\dive q = 0 \\
-			q \cdot \nu = -g_N 
-	\end{cases}
-	\iff \int_K{ \dive q \; dx} - \int_{ \partial K}{q\cdot \nu \; da} = \int_{ \partial K \cap \Gamma_N} {g_N \; da } 
-\newline	
-\end{align*}
-In der konkreten Diskretisierung stellt sich aber für $q_h = \kappa \nabla u_h \ \in \mathbb{P}_0( \Omega_h ; \R^2) $ heraus, dass für Zellen an den Steinen gilt (Hier ist $g_h = 0$): 
-\begin{align*}	
-	 0 \neq \int_K{ \dive q_h \; dx} - \int_{ \partial K}{q_h \cdot \nu \; da} \stackrel{!}{=} \int_{ \partial K \cap \Gamma_N} {g_h \; da } = 0 
-\end{align*}
 
-Die Lösung ist also bereits für einzelne Zellen nicht korrekt, weswegen auch der Gesamtfehler relativ groß ausfällt. Insgesamt eignet sich unser jetziges Lösungsverfahren also nicht, um die Randwertaufgabe auf 'Square500' zu lösen.
-\textcolor{red}{DAS MÜSSEN WIR GENAUER ERKLÄREN}
+Man erkennt, dass beide Probleme auf 'Square500' sehr schlecht gelöst werden.
+
+%Die 'Steine' sind in 'Square500.geo' als Löcher mit Neumann-0 Rändern innerhalb des Gebietes realisiert. 
+%Betrachten wir die zugrunde liegende Differentialgleichung auf einer einzelnen Zelle der Triangulierung, erhalten wir:
+%\begin{align*}
+%	\begin{cases}
+%		\dive q = 0 \\
+%			q \cdot \nu = -g_N 
+%	\end{cases}
+%	\iff \int_K{ \dive q \; dx} - \int_{ \partial K}{q\cdot \nu \; da} = \int_{ \partial K \cap \Gamma_N} {g_N \; da } 
+%\newline	
+%\end{align*}
+%In der konkreten Diskretisierung stellt sich aber für $q_h = \kappa \nabla u_h \ \in \mathbb{P}_0( \Omega_h ; \R^2) $ heraus, dass für Zellen an den Steinen gilt (Hier ist $g_h = 0$): 
+%\begin{align*}	
+%	 0 \neq \int_K{ \dive q_h \; dx} - \int_{ \partial K}{q_h \cdot \nu \; da} \stackrel{!}{=} \int_{ \partial K \cap \Gamma_N} {g_h \; da } = 0 
+%\end{align*}
+%
+%Die Lösung ist also bereits für einzelne Zellen nicht korrekt, weswegen auch der Gesamtfehler relativ groß ausfällt. Insgesamt eignet sich unser jetziges Lösungsverfahren also nicht, um die Randwertaufgabe auf 'Square500' zu lösen.
+%\textcolor{red}{DAS MÜSSEN WIR GENAUER ERKLÄREN}
 
 
 
