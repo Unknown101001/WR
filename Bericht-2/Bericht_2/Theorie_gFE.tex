@@ -314,13 +314,21 @@ und es gilt: $ \forall (\underline{r}, \underline{v}) \in \underline{W}(-g_N) \t
 Dann löst $ (\underline{q}, \underline{u}) $ (L gFE) bzw. $ (q_h,u_h) $ (dgFE) (wobei $ q_h = \sum_{n=1}^N \underline{q}[n] \psi_n $ und $ u_h = \sum_{m=1}^M\underline{u}[m] \mu_m $).
 \end{Lemma}
 
-\textbf{Optimierungstheorie:} 
+\textbf{Aus Optimierungstheorie:} 
 \begin{gather*}
 	(\underline{q}, \underline{u}) \text{ Sattelpunkt von } L  \text { wie in Lemma \ref{Sattelpunkt}}\\
 	\iff \underline{q} \text{ minimiert } E:W_h(-g_N) \to \R , \underline{x} \mapsto \frac{1}{2} \underline{x}^T \underline{A} \underline{x} - \underline{b}^T \underline{x} \text{ unter der NB } \underline{B} \underline{q} = 0.
 \end{gather*}
-Außerdem erhalten wir eine A-posteriori Schranke:
-\[ \norm{q-q_h}_{\kappa^{-1}} \leq \norm{q_h + \kappa \nabla u_h}_{\kappa^{-1}} \ (\text{wobei } \norm{f}_{\kappa^{-1}} = \int \kappa^{-1} f \cdot f \diff x)  \]
+
+\begin{Satz}[Dual-Primal-Error] ~\newline
+	Wir betrachten unser Ausgangsproblem \emph{(LG)} bzw. \emph{(LG F)}. Sei $ u_h \in V_h(u_D) $ Lösung des linearen FE-Verfahren (\defi{primale Lösung}) und $ q_h \in W_h(-g_N) $ Lösung des gemischten FE-Verfahren (\defi{duale Lösung}). 
+	
+	Dann gilt die A-posteriori Schranke (wobei  $ \norm{f}_{\kappa^{-1}} = \int \kappa^{-1} f \cdot f \diff x $ ) 
+	\begin{gather*}
+	\norm{q-q_h}_{\kappa^{-1}} \leq \underbrace{\norm{q_h + \kappa \nabla u_h}_{\kappa^{-1}}}_{\defi{Dual-Primal-Error}} 
+	\end{gather*}
+\end{Satz}
+
 
 \subsection{Hybridisierung}
 

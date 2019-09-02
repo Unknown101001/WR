@@ -13,6 +13,7 @@
 \usepackage{latexsym}
 \usepackage{amsmath,amssymb,amsthm,amsfonts}
 \usepackage{mathtools}
+\usepackage{physics}
 \usepackage{enumitem}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
@@ -642,6 +643,18 @@ Wir erhalten so für die Level $3, \dots,9$ die folgenden Werte:
 
 Man sieht dabei außerdem sehr schön, dass für jedes Level stets doppelt so viele Iterationschritte benötigt werden, wie im vorherigen. Außerdem sieht man, dass die Konvergenzrate wie zu erwarten bei höherem Level schlechter wird. 
 \textcolor{red}{WIE KANN MAN RATE BESTIMMEN -LOG?}
+%Für GMRES und CG kenne wir folgende Fehlerabschätzungen:
+%\begin{align*}
+%&Ax = b \text{ mit Vorkonditionierern } B\\
+%&\text{GMRES: }&&&& \text{CG: }\\
+%&\abs{x^k-x}_2 \le \kappa_2(BA) \sqrt{1 - \frac{\alpha^2}{C^2}} \abs{x^0 - x}_2 &&&& \abs{x^k - x}_A \le 2 \left( \frac{\sqrt{\kappa_2(BA)} - 1}{\sqrt{\kappa_2(BA)} + 1} \right)^k \abs{x^0 - x}_A
+%\end{align*}
+Durch die Fehlerschranken für GMRES und CG motiviert, liegt es nahe, dass die Größen aus der Tabelle folgendermaßen zusammen hängen:
+
+\[\text{Fehler 2}= \text{Rate}^{\text{Iterationsschritt}} \cdot \text{Fehler 1}\]
+
+Somit ist eine \enquote{Rate} nahe bei 0 ein gut, eine eine \enquote{Rate} nahe bei 1 schlecht für die Eignung des verwendeten Verfahrens. 
+
 Anschließend können wir die Ergebnisse auch noch mit der Anwendung des Jacobi-Vorkonditionierers auf das GMRES-Verfahren zum gleichen Problem vergleichen:
 
 \begin{figure}[H]
