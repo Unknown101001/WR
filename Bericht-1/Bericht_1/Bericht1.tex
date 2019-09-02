@@ -572,14 +572,18 @@ Beim Problem 'Divergent' erhielten wir für die Größen 'Flux Loss' und 'Flux E
 
 Die Lösungen verhalten sich also auf den unterschiedlichen Leveln stark unterschiedlich, weswegen wir nicht wirklich von einer Konvergenz sprechen können.
 
+
 \begin{figure}[H]
 	\centering
 	\captionabove{Problem Kellogg}
 	\subfigure[Geometrie und Prozessoraufteilung auf Level 3]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/MeshLoad.png}}	 
 	\subfigure[Permeabilität auf Level 7]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/perm.png}}	
 	\subfigure[Lösung]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/fluss.png}}	
-	
 \end{figure}
+
+Wie man anhand der obigen Bilder erkennen kann besteht das Problem 'Kellogg' aus einer viergeteilten Permeabilität.
+Dabei haben die Gebiete rechts oben bzw. links unten eine erhöhte Durchlässigkeit.
+Daraus resultiert, dass die Strömungslinien hauptsächlich durch die Mitte fliesen.
 
 \begin{figure}[H]
 	\centering
@@ -587,6 +591,8 @@ Die Lösungen verhalten sich also auf den unterschiedlichen Leveln stark untersc
 	\subfigure{\includegraphics[width=0.99\textwidth]{../../Aufgabe7/kelltabelle.png}}	 
 
 \end{figure}
+
+Für das Problem 'Kellogg' erhalten wir somit $ \frac{e_l}{e_{l+1}} \approx 1.44 $ und damit die Konvergenzrate $p \approx 0.53$.
 
 %Die 'Steine' sind in 'Square500.geo' als Löcher mit Neumann-0 Rändern innerhalb des Gebietes realisiert. 
 %Betrachten wir die zugrunde liegende Differentialgleichung auf einer einzelnen Zelle der Triangulierung, erhalten wir:
