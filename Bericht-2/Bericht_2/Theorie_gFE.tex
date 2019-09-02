@@ -37,27 +37,20 @@ Dann können wir unser analytisches Problem umschreiben zu
 		\end{cases}
 \end{gather*} 
 der \defi{Laplace-Gleichung mit Fluss}. Nun schauen wir uns, wie zuvor bei Finiten Elementen, die schwache Formulierung von (LG F) an.
-
-%TODO
-\textcolor{red}{HERLEITUNG ÜBERSICHTLICHER AUFSCHREIBEN!}
-
 \begin{align*}
 	\int_\Omega \dive(q)\, \Phi \diff x = 0 &\text{ für alle Testfunktionen } \Phi: \Omega \to \R \\
-	\int_{\Omega} \kappa^{-1} (q + \kappa \nabla u) \cdot \Psi \diff x = 0 &\text{ für alle Testfunktionen } \Psi:\Omega \to \R^2 \ (\star)
+	\underbrace{\int_{\Omega} \kappa^{-1} (q + \kappa \nabla u) \cdot \Psi \diff x = 0}_{\int_{\Omega} \nabla u \cdot \Psi \diff x = - \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x}  &\text{ für alle Testfunktionen } \Psi:\Omega \to \R^2 \ (\star)
 \end{align*}
-Wir wollen nun noch die Dirichlet-Randbedingung $ 	u = u_D \text{ auf } \Gamma_D $ mit in die schwache Formulierung einfließen lassen. Dazu verwenden wir den Satz von Gauß:
+Weiter wir wollen nun noch die Dirichlet-Randbedingung $ 	u = u_D \text{ auf } \Gamma_D $ in die schwache Formulierung einfließen lassen. Dazu verwenden wir den Satz von Gauß:
 \[ \int_{\partial\Omega} (u\Psi) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(u\Psi) \diff x = \int_{\Omega} \nabla u \cdot \Psi \diff x + \int_{\Omega} u \dive(\Psi) \diff x \quad (\Psi:\Omega \to \R^2) \]
-
-Die Neumann-Randbedingung $ (\kappa\nabla u) \cdot n = g_N \text{ auf } \Gamma_N $ wird durch die Wahl des Lösungs- bwz. Ansatzraumes erfüllt.
-\bigskip
-
-Zusammen mit 
+Wählen wir nun unseren Ansatzraum so, dass  für die Funktion $ \Psi: \Omega \to \R$ gilt $ \Psi \cdot n = 0 \text{ auf } \Gamma_N $. Damit folgt
 \begin{align*}
-	&&\int_{\partial\Omega} (u\Psi) \cdot n \diff a &= \int_{\Gamma_D} (u_D\Psi) \cdot n \diff a &&(\Psi:\Omega \to \R^2 \text{ mit } \Psi \cdot n = 0 \text{ auf } \Gamma_N ) \\
-	&\text{ und }\\
-	&&(\star) \iff \int_{\Omega} \nabla u \cdot \Psi \diff x &= - \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x &&(\Psi:\Omega \to \R^2) 
+	\int_{\Gamma_D} (u_D\Psi) \cdot n \diff a \stackrel{\Psi \cdot n|_{\Gamma_N} = 0}{=} \int_{\partial\Omega} (u\Psi) \cdot n \diff a = \underbrace{\int_{\Omega} \nabla u \cdot \Psi \diff x}_{\stackrel{(\star)}{=}- \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x } + \int_{\Omega} u \dive(\Psi) \diff x.
 \end{align*}
-erhalten wir die gewünschte schwache Formulierung, im Folgenden \defi{gemischtes Finite-Elemente-Problem} genannt:
+Die Neumann-Randbedingung $ (\kappa\nabla u) \cdot n = g_N \text{ auf } \Gamma_N $ wird durch die Wahl des Lösungsraumes erfüllt.
+
+
+Wir erhalten die gewünschte schwache Formulierung, im Folgenden \defi{gemischtes Finite-Elemente-Problem} genannt:
 \begin{gather*}
 	\text{Bestimme } (q,u) \text{ mit } q\cdot n = -g_N \text{ auf } \Gamma_N \text{ und}\\
 	\text{(gFE)}\begin{cases}
