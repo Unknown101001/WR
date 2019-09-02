@@ -1,18 +1,19 @@
-start program on 4 procs at Wed Jul 10 16:12:56 2019
+start program on 4 procs at Mon Sep  2 16:51:56 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
   reading ... Mesh = Square500
   default ... GeoPath = ./../Praktikum/
   reading ... level = 1
-  reading ... plevel = 0
+  reading ... plevel = 2
+plevel set to 1
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
-  reading ... Overlap = dG1
+  default ... Overlap = none
   reading ... Distribution = RCB
   default ... Overlap_Distribution = 0
-119 cells on proc 0 of 478 cells on 4 procs -- min cells: 119  max cells: 120
-  reading ... Overlap = dG1
+478 cells on proc 0 of 1912 cells on 4 procs -- min cells: 478  max cells: 478
+  default ... Overlap = none
   reading ... Discretization = serendipity
   reading ... Discretization = serendipity
   default ... gnuplot = 0
@@ -23,11 +24,34 @@ start program on 4 procs at Wed Jul 10 16:12:56 2019
   reading ... SetSolution = 0
   default ... AssembleVerbose = 1
   reading ... LinearSolver = GMRES
-  reading ... Preconditioner = GaussSeidel
+  reading ... Preconditioner = Multigrid
   default ... PreconditionerVerbose = 0
-  default ... SHIFTspecial = 0
+  reading ... presmoothing = 5
+  reading ... postsmoothing = 5
+  default ... cycle = V
+  default ... MultigridVerbose = 0
+  reading ... SmootherDamp = 0.8
+  reading ... Smoother = SGS
+  reading ... BaseSolver = LS
+  reading ... BasePreconditioner = LIB_PS
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  default ... PS_checkdiagonal = 1
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... BaseSolverVerbose = -1
+  default ... BaseSolverSteps = 10
+  default ... BaseSolverLineSearchSteps = 3
+  default ... BaseSolverEpsilon = 1e-10
+  default ... BaseSolverReduction = 1e-05
+  default ... BaseSolverMinimalReduction = 1
+  default ... BaseSolverMinimalStepNumber = 0
+  default ... Transfer = VertexDoF
   reading ... LinearVerbose = 0
-  reading ... LinearSteps = 2000
+  reading ... LinearSteps = 800
   default ... LinearLineSearchSteps = 3
   reading ... LinearEpsilon = 1e-10
   reading ... LinearReduction = 1e-20
@@ -37,7 +61,7 @@ start program on 4 procs at Wed Jul 10 16:12:56 2019
   reading ... NewtonSteps = 1
   reading ... NewtonLineSearchSteps = 0
   reading ... NewtonEpsilon = 1e-09
-  default ... NewtonReduction = 1e-05
+  reading ... NewtonReduction = 1e-08
   default ... NewtonMinimalReduction = 1
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
@@ -47,7 +71,7 @@ start program on 4 procs at Wed Jul 10 16:12:56 2019
  Level:          1
  Dimension:      2
  Cells:          1912
- Problem size:   4418
+ Problem size:   4072
  Vertices:       1072
  Edges:          3000
  Mesh width:     [0.03125,0.0441942]
@@ -57,8 +81,8 @@ start program on 4 procs at Wed Jul 10 16:12:56 2019
  Discretization: serendipity
 
  Newton: d(0)= 0.131556
-  GMRES: d(758)= 9.84698e-11 rate 0.972659 time  0.27 seconds
- Newton: d(1)= 9.84498e-11 rate 7.48352e-10 time  0.31 seconds
+  GMRES: d(1)= 3.87707e-14 rate 2.9471e-13 time  0.01 seconds
+ Newton: d(1)= 4.72369e-14 rate 3.59065e-13 time  0.30 seconds
 
 
 Prescribed Inflow   -1
@@ -67,4 +91,4 @@ Inflow              -1.61105
 Outflow             1.6011
 Flux Loss           -0.00994833
 Flux Error          0.767125
-end program after  0.37 seconds on 4 procs at Wed Jul 10 16:12:56 2019
+end program after  0.46 seconds on 4 procs at Mon Sep  2 16:51:57 2019

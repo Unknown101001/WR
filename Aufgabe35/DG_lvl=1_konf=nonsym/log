@@ -1,28 +1,28 @@
-start program on 4 procs at Wed Jul 10 16:13:12 2019
+start program on 4 procs at Mon Sep  2 16:52:57 2019
   reading ... DebugLevel = 1
-  reading ... TimeLevel = 1
+  reading ... TimeLevel = 0
   reading ... Model = DGLaplace
   reading ... Mesh = Square500
   default ... GeoPath = ./../Praktikum/
   reading ... level = 1
-  reading ... plevel = 0
+  reading ... plevel = 2
+plevel set to 1
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
   reading ... Overlap = dG1
   reading ... Distribution = RCB
   default ... Overlap_Distribution = 0
-119 cells on proc 0 of 478 cells on 4 procs -- min cells: 119  max cells: 120
+478 cells on proc 0 of 1912 cells on 4 procs -- min cells: 478  max cells: 478
   reading ... Overlap = dG1
   default ... gnuplot = 0
   default ... dxplot = 0
   default ... tecplot = 0
   reading ... vtkplot = 1
   reading ... Problem = Simple2D
-  reading ... SetSolution = 0
+  reading ... SetSolution = 1
   reading ... deg = 1
-matrixgraph on level 0: matrixgraph on level 1:   default ... AssembleVerbose = 1
+matrixgraph on level 1:   default ... AssembleVerbose = 1
   reading ... penalty = 0
-  reading ... sign = -1
   reading ... LinearSolver = GMRES
   reading ... Preconditioner = Jacobi
   default ... PreconditionerVerbose = 0
@@ -39,11 +39,13 @@ matrixgraph on level 0: matrixgraph on level 1:   default ... AssembleVerbose = 
   reading ... NewtonSteps = 1
   reading ... NewtonLineSearchSteps = 0
   reading ... NewtonEpsilon = 1e-09
-  default ... NewtonReduction = 1e-05
+  reading ... NewtonReduction = 1e-05
   default ... NewtonMinimalReduction = 1
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
   default ... NewtonJacobiUpdate = 1
+
+Level 1
   reading ... level = 1
 
  Level:          1
@@ -58,15 +60,25 @@ matrixgraph on level 0: matrixgraph on level 1:   default ... AssembleVerbose = 
  Problem:        Simple Problem 2D
  Discretization: DGLaplaceDiscretization
 
- Newton: d(0)= 0.125
-  GMRES: d(1408)= 9.80724e-11 rate 0.98522 time  0.42 seconds
- Newton: d(1)= 9.8074e-11 rate 7.84592e-10 time  0.58 seconds
+ Newton: d(0)= 0.182217
+  GMRES: d(10000)= 0.12878 rate 0.999965 time 16.60 seconds
+ Newton: d(1)= 0.12878 rate 0.706736 time 17.25 seconds
 
 
-Prescribed Inflow   -1
+Supremum Error 0.0203538
+Energy Error   0.177118
+L2 Error   0.00220822
+
+
+Prescribed Inflow  -1
 Prescribed Outflow  0
-Inflow              -1
-Outflow             1
-Flux Loss           -3.13157e-09
-Flux Error          1.4762e-10
-end program after  0.67 seconds on 4 procs at Wed Jul 10 16:13:12 2019
+Inflow     -1.43051
+Outflow    1.41902
+Flux Loss  -0.0114971
+Flux Error 0.532418
+
+degrees of freedom         5736
+L2 Error                0.00221
+Linf Error              0.02035
+H1 Error                0.17712
+end program after 17.72 seconds on 4 procs at Mon Sep  2 16:53:15 2019

@@ -1,11 +1,12 @@
-start program on 4 procs at Wed Jul 10 16:13:10 2019
+start program on 4 procs at Mon Sep  2 16:52:48 2019
   reading ... DebugLevel = 1
-  reading ... TimeLevel = 1
+  reading ... TimeLevel = 0
   reading ... Model = DGLaplace
   reading ... Mesh = Square500
   default ... GeoPath = ./../Praktikum/
   reading ... level = 0
-  reading ... plevel = 0
+  reading ... plevel = 2
+plevel set to 0
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
   reading ... Overlap = dG1
@@ -18,11 +19,10 @@ start program on 4 procs at Wed Jul 10 16:13:10 2019
   default ... tecplot = 0
   reading ... vtkplot = 1
   reading ... Problem = Simple2D
-  reading ... SetSolution = 0
+  reading ... SetSolution = 1
   reading ... deg = 1
 matrixgraph on level 0:   default ... AssembleVerbose = 1
   reading ... penalty = 25
-  reading ... sign = 1
   reading ... LinearSolver = GMRES
   reading ... Preconditioner = Multigrid
   default ... PreconditionerVerbose = 0
@@ -33,8 +33,15 @@ matrixgraph on level 0:   default ... AssembleVerbose = 1
   reading ... SmootherDamp = 0.8
   reading ... Smoother = SGS
   reading ... BaseSolver = LS
-  reading ... BasePreconditioner = SuperLU
+  reading ... BasePreconditioner = LIB_PS
   default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  reading ... PS_checkdiagonal = 0
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
   reading ... BaseSolverVerbose = -1
   default ... BaseSolverSteps = 10
   default ... BaseSolverLineSearchSteps = 3
@@ -54,11 +61,13 @@ matrixgraph on level 0:   default ... AssembleVerbose = 1
   reading ... NewtonSteps = 1
   reading ... NewtonLineSearchSteps = 0
   reading ... NewtonEpsilon = 1e-09
-  default ... NewtonReduction = 1e-05
+  reading ... NewtonReduction = 1e-05
   default ... NewtonMinimalReduction = 1
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
   default ... NewtonJacobiUpdate = 1
+
+Level 0
   reading ... level = 0
 
  Level:          0
@@ -73,15 +82,25 @@ matrixgraph on level 0:   default ... AssembleVerbose = 1
  Problem:        Simple Problem 2D
  Discretization: DGLaplaceDiscretization
 
- Newton: d(0)= 0.176777
-  GMRES: d(18)= 8.63047e-11 rate 0.303879 time  0.03 seconds
- Newton: d(1)= 8.63077e-11 rate 4.8823e-10 time  0.06 seconds
+ Newton: d(0)= 0.257694
+  GMRES: d(1)= 1.6266e-14 rate 6.31215e-14 time  0.04 seconds
+ Newton: d(1)= 6.15247e-14 rate 2.38751e-13 time  0.38 seconds
 
 
-Prescribed Inflow   -1
+Supremum Error 0.317139
+Energy Error   0.418175
+L2 Error   0.132176
+
+
+Prescribed Inflow  -1
 Prescribed Outflow  0
-Inflow              -2.12701
-Outflow             2.12469
-Flux Loss           -0.00231758
-Flux Error          1.28749
-end program after  0.09 seconds on 4 procs at Wed Jul 10 16:13:11 2019
+Inflow     -1
+Outflow    1
+Flux Loss  3.68594e-14
+Flux Error 1.41813e-14
+
+degrees of freedom         1434
+L2 Error                0.13218
+Linf Error              0.31714
+H1 Error                0.41818
+end program after  0.49 seconds on 4 procs at Mon Sep  2 16:52:48 2019

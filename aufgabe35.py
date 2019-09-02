@@ -5,6 +5,7 @@ import csv
 
 
 def main():
+
     for lvl in ["0", "1", "2", "3"]:
         for disc in ["linear", "serendipity"]:
             delete_old()
@@ -54,6 +55,7 @@ def main():
         # out2 = parse_mpp_output_single_inform(["Problem size"])+
         name = "DG2_lvl=" + lvl
         save("Aufgabe35", name)
+
     # 3b)
     for penalty in ["0", "1", "5", "10", "25", "50", "100"]:
         delete_old()
@@ -61,7 +63,7 @@ def main():
         manipulate_conf("dglaplace.conf",
                         [("Model", "DGLaplace"), ("Problem", "Simple2D"), ("Mesh", "Square500"),
                          ("deg", "2"), ("level", "3"), ("sign", "1"), ("penalty", penalty),
-                         ("Preconditioner", "Multigrid")])
+                         ("Preconditioner", "Multigrid"),("LinearSteps", "2000")])
         output = run()
         # out = parse_mpp_output_allg(["Step","Flux Error","Flux Loss","Problem size"], output)
         # out2 = parse_mpp_output_single_inform(["Problem size"])+
@@ -182,8 +184,8 @@ def a38_outflowrate():
 
 
 if __name__ == "__main__":
-    # main()
-    # saveload = read_values()
-    # write_to_csv(saveload)
+    main()
+    saveload = read_values()
+    write_to_csv(saveload)
     #testit()
-    a38_outflowrate()
+    #a38_outflowrate()

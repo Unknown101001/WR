@@ -42,7 +42,7 @@ Im Folgenden betrachten wir das Problem nochmals für eine niedrigere Konvektion
 Anhand des Plots zum Endzeitpunkt erkennen wir, dass nun durch die niedrige Transportgeschwindigkeit das Fluid nicht ausfließt.
 Dies erkennen wir auch am Verlauf der OutFlowRate über die Zeit, da die Werteskala hier im Bereich von $10^{-14}$ ist. Dadurch ergibt sich insgesamt ein schöner exponentieller Verlauf der Masse.
 \subsubsection{Aufgabe 27.2}
-In dieser Teilaufgabe untersuchen wir das Verhalten für immer kleiner werdende Diffusion. Wünschenswert wäre es hierbei, wie wir in der Vorlesung analytisch gezeigt haben, dass wir uns immer weiter der Transportgleichung annähern. (Vergleiche dazu mit Theorieteil: Abschnitt \ref{Analyse für verschwindende Diffusion})
+In dieser Teilaufgabe untersuchen wir das Verhalten für immer kleiner werdende Diffusion. Wünschenswert wäre es hierbei, wie wir in der Vorlesung bereits analytisch gezeigt haben, dass wir uns immer weiter der Transportgleichung annähern. (Vergleiche dazu mit Theorieteil: Abschnitt \ref{Analyse für verschwindende Diffusion})
 
 \begin{figure}[H]
 	\centering
@@ -84,11 +84,11 @@ Betrachten wir nun die Verläufe mit der Reaktionsrate $5$. Für die größte Di
 \end{figure}
 
 Hieran sehen wir, dass die Lösung bereits zum Zeitpunkt $t=0.5$
-erhebliche Oszillationen hat. Zu späteren Zeitpunkten lässt sich keinerlei Bezug zu vorherigen Zeitpunkten herstellen. Dies ist der Tatsache geschuldet, dass sich unser bisheriges Verfahren, die klassische Finite Elemente Methode (FEM), nicht zum Lösen der Konvektions-Diffusions-Reaktions-Gleichung für niedrige Diffusion eignet. \textcolor{red}{VERGLEICH THEORIE????????????????}
+erhebliche Oszillationen hat. Zu späteren Zeitpunkten lässt sich keinerlei Bezug zu vorherigen Zeitpunkten herstellen. Dies ist der Tatsache geschuldet, dass sich unser bisheriges Verfahren, die klassische Finite Elemente Methode (FEM), nicht zum Lösen der Konvektions-Diffusions-Reaktions-Gleichung für niedrige Diffusion eignet, da die so entstehende Lösung sehr stark von der erwarteten Lösung abweicht (Vergleiche dazu mit Theorieteil: Abschnitt \ref{Analyse für verschwindende Diffusion}) .
 Unser Ziel in den nächsten Aufgaben (27.3 und 32) besteht nun unter anderem darin, dass wir ein Verfahren finden, welches dieses Problem löst.
 
 \subsubsection{Aufgabe 27.3}
-In dieser Teilaufgabe verwenden wir nun, anders als bei der klassischen FEM, quadratische Ansatzelemente (serendipity) auf den Dreiecken des Gitters. Hierbei untersuchen wir die Lösungsqualität des Verfahrens in Bezug auf eine geringe Diffusion (Grenzfall $\to$ 0). Dabei werden wir dieses Problem für unterschiedliche Gitterweiten betrachten.
+In dieser Teilaufgabe verwenden wir nun, anders als zuvor mit linearen Ansatzelementen, quadratische Ansatzelemente (serendipity) auf den Dreiecken des Gitters. Hierbei untersuchen wir die Lösungsqualität des Verfahrens in Bezug auf eine geringe Diffusion (Grenzfall $\to$ 0). Dabei werden wir dieses Problem für unterschiedliche Gitterweiten betrachten.
 Zuerst schauen wir uns die Massen- und Ausflussverläufe für die Reaktionsrate $5$ auf Level 2 und 3 an:
 \begin{figure}[H]
 	\centering
@@ -103,7 +103,7 @@ Zuerst schauen wir uns die Massen- und Ausflussverläufe für die Reaktionsrate 
 
 Hierbei löst unser Verfahren für beide Level die Diffusion 0.0001 gut. Bei Level 2 erhalten wir aber, im Gegensatz zum Level 3, bereits wieder Oszillationen. Dadurch können wir festhalten, dass man durch die Halbierung der Gitterweite dem Problem entgegen wirken kann. Bei der kleinsten Diffusion sind aber trotzdem bei beiden Levels große Probleme festzustellen.
 
-Im Folgenden vergleichen wir die Lösungsplots der FEM auf Level 2 mit dem serendipity Verfahren auf Level 2 und 3:
+Im Folgenden vergleichen wir die Lösungsplots der FEM mit linearen Ansatzelementen auf Level 2 mit dem serendipity Verfahren (quadratische Ansatzelemente auf Dreiecken) auf Level 2 und 3:
  
 \begin{figure}[H]
 	\centering

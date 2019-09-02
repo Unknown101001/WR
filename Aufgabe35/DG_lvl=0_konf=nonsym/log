@@ -1,11 +1,12 @@
-start program on 4 procs at Wed Jul 10 16:13:11 2019
+start program on 4 procs at Mon Sep  2 16:52:49 2019
   reading ... DebugLevel = 1
-  reading ... TimeLevel = 1
+  reading ... TimeLevel = 0
   reading ... Model = DGLaplace
   reading ... Mesh = Square500
   default ... GeoPath = ./../Praktikum/
   reading ... level = 0
-  reading ... plevel = 0
+  reading ... plevel = 2
+plevel set to 0
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
   reading ... Overlap = dG1
@@ -18,11 +19,10 @@ start program on 4 procs at Wed Jul 10 16:13:11 2019
   default ... tecplot = 0
   reading ... vtkplot = 1
   reading ... Problem = Simple2D
-  reading ... SetSolution = 0
+  reading ... SetSolution = 1
   reading ... deg = 1
 matrixgraph on level 0:   default ... AssembleVerbose = 1
   reading ... penalty = 0
-  reading ... sign = -1
   reading ... LinearSolver = GMRES
   reading ... Preconditioner = Jacobi
   default ... PreconditionerVerbose = 0
@@ -39,11 +39,13 @@ matrixgraph on level 0:   default ... AssembleVerbose = 1
   reading ... NewtonSteps = 1
   reading ... NewtonLineSearchSteps = 0
   reading ... NewtonEpsilon = 1e-09
-  default ... NewtonReduction = 1e-05
+  reading ... NewtonReduction = 1e-05
   default ... NewtonMinimalReduction = 1
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
   default ... NewtonJacobiUpdate = 1
+
+Level 0
   reading ... level = 0
 
  Level:          0
@@ -58,15 +60,25 @@ matrixgraph on level 0:   default ... AssembleVerbose = 1
  Problem:        Simple Problem 2D
  Discretization: DGLaplaceDiscretization
 
- Newton: d(0)= 0.176777
-  GMRES: d(305)= 9.90213e-11 rate 0.932538 time  0.04 seconds
- Newton: d(1)= 9.90212e-11 rate 5.60149e-10 time  0.09 seconds
+ Newton: d(0)= 0.257694
+  GMRES: d(10000)= 0.175971 rate 0.999962 time  5.20 seconds
+ Newton: d(1)= 0.175971 rate 0.682868 time  5.37 seconds
 
 
-Prescribed Inflow   -1
+Supremum Error 0.0339285
+Energy Error   0.249005
+L2 Error   0.00585575
+
+
+Prescribed Inflow  -1
 Prescribed Outflow  0
-Inflow              -1
-Outflow             1
-Flux Loss           -2.14497e-11
-Flux Error          1.55621e-10
-end program after  0.13 seconds on 4 procs at Wed Jul 10 16:13:11 2019
+Inflow     -1.51407
+Outflow    1.47455
+Flux Loss  -0.0395168
+Flux Error 0.595
+
+degrees of freedom         1434
+L2 Error                0.00586
+Linf Error              0.03393
+H1 Error                0.24900
+end program after  5.70 seconds on 4 procs at Mon Sep  2 16:52:55 2019
