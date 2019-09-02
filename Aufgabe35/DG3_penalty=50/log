@@ -1,17 +1,17 @@
-start program on 4 procs at Mon Sep  2 17:00:09 2019
+start program on 4 procs at Mon Sep  2 22:25:41 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 0
   reading ... Model = DGLaplace
   reading ... Mesh = Square500
   default ... GeoPath = ./../Praktikum/
   reading ... level = 3
-  reading ... plevel = 2
+  reading ... plevel = 3
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
   reading ... Overlap = dG1
   reading ... Distribution = RCB
   default ... Overlap_Distribution = 0
-1912 cells on proc 0 of 7648 cells on 4 procs -- min cells: 1912  max cells: 1912
+7648 cells on proc 0 of 30592 cells on 4 procs -- min cells: 7648  max cells: 7648
   reading ... Overlap = dG1
   default ... gnuplot = 0
   default ... dxplot = 0
@@ -20,7 +20,7 @@ start program on 4 procs at Mon Sep  2 17:00:09 2019
   reading ... Problem = Simple2D
   reading ... SetSolution = 1
   reading ... deg = 2
-matrixgraph on level 2: matrixgraph on level 3:   default ... AssembleVerbose = 1
+matrixgraph on level 3:   default ... AssembleVerbose = 1
   reading ... penalty = 50
   reading ... LinearSolver = GMRES
   reading ... Preconditioner = Multigrid
@@ -31,7 +31,6 @@ matrixgraph on level 2: matrixgraph on level 3:   default ... AssembleVerbose = 
   default ... MultigridVerbose = 0
   reading ... SmootherDamp = 0.8
   reading ... Smoother = SGS
-  default ... PreconditionerVerbose = 0
   reading ... BaseSolver = LS
   reading ... BasePreconditioner = LIB_PS
   default ... PreconditionerVerbose = 0
@@ -50,5 +49,57 @@ matrixgraph on level 2: matrixgraph on level 3:   default ... AssembleVerbose = 
   default ... BaseSolverMinimalReduction = 1
   default ... BaseSolverMinimalStepNumber = 0
   reading ... Transfer = MatrixTransfer
-  default ... TransferVerbose = 0
-  default ... SimpleMatrixTransfer = 1
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 2000
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  reading ... NewtonReduction = 1e-05
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+
+Level 3
+  reading ... level = 3
+
+ Level:          3
+ Dimension:      2
+ Cells:          30592
+ Problem size:   183552
+ Vertices:       15808
+ Edges:          46416
+ Mesh width:     [0.0078125,0.0110485]
+ Assemble        DGLaplace
+
+ Problem:        Simple Problem 2D
+ Discretization: DGLaplaceDiscretization
+
+ Newton: d(0)= 0.724015
+  GMRES: d(1)= 1.80896e-12 rate 2.49851e-12 time  1.36 seconds
+ Newton: d(1)= 2.63621e-12 rate 3.64111e-12 time 35.24 seconds
+
+
+Supremum Error 0.580953
+Energy Error   0.696011
+L2 Error   0.293938
+
+
+Prescribed Inflow  -1
+Prescribed Outflow  0
+Inflow     -1.5
+Outflow    1.56818
+Flux Loss  0.0681818
+Flux Error 0.5
+
+degrees of freedom       183552
+L2 Error                0.29394
+Linf Error              0.58095
+H1 Error                0.69601
+end program after 41.70 seconds on 4 procs at Mon Sep  2 22:26:23 2019

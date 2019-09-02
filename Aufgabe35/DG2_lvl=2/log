@@ -1,4 +1,4 @@
-start program on 4 procs at Mon Sep  2 16:59:50 2019
+start program on 4 procs at Mon Sep  2 22:21:10 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 0
   reading ... Model = DGLaplace
@@ -82,8 +82,8 @@ Level 2
  Discretization: DGLaplaceDiscretization
 
  Newton: d(0)= 0.727826
-  GMRES: d(1)= 4.26247e-13 rate 5.85644e-13 time  0.41 seconds
- Newton: d(1)= 6.57386e-13 rate 9.03218e-13 time  6.11 seconds
+  GMRES: d(1)= 4.26247e-13 rate 5.85644e-13 time  0.40 seconds
+ Newton: d(1)= 6.57386e-13 rate 9.03218e-13 time  6.28 seconds
 
 
 Supremum Error 0.607434
@@ -102,4 +102,4 @@ degrees of freedom        45888
 L2 Error                0.30761
 Linf Error              0.60743
 H1 Error                0.73296
-end program after  7.92 seconds on 4 procs at Mon Sep  2 16:59:59 2019
+end program after  8.08 seconds on 4 procs at Mon Sep  2 22:21:18 2019

@@ -1,4 +1,4 @@
-start program on 4 procs at Mon Sep  2 16:51:55 2019
+start program on 4 procs at Mon Sep  2 22:14:10 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
@@ -84,7 +84,7 @@ plevel set to 0
 
  Newton: d(0)= 0.246063
   GMRES: d(1)= 4.62607e-15 rate 1.88004e-14 time  0.01 seconds
- Newton: d(1)= 4.33676e-15 rate 1.76246e-14 time  0.04 seconds
+ Newton: d(1)= 4.33676e-15 rate 1.76246e-14 time  0.03 seconds
 
 
 Prescribed Inflow   -1
@@ -93,4 +93,4 @@ Inflow              -2.28269
 Outflow             2.27662
 Flux Loss           -0.00606726
 Flux Error          1.44483
-end program after  0.08 seconds on 4 procs at Mon Sep  2 16:51:55 2019
+end program after  0.08 seconds on 4 procs at Mon Sep  2 22:14:10 2019

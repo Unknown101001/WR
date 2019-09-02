@@ -1,4 +1,4 @@
-start program on 4 procs at Mon Sep  2 16:52:07 2019
+start program on 4 procs at Mon Sep  2 22:14:21 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
@@ -82,8 +82,8 @@ start program on 4 procs at Mon Sep  2 16:52:07 2019
  Discretization: serendipity
 
  Newton: d(0)= 0.065855
-  GMRES: d(82)= 7.93227e-11 rate 0.778448 time 32.86 seconds
- Newton: d(1)= 7.93168e-11 rate 1.20441e-09 time 35.82 seconds
+  GMRES: d(82)= 7.93227e-11 rate 0.778448 time 33.25 seconds
+ Newton: d(1)= 7.93168e-11 rate 1.20441e-09 time 36.32 seconds
 
 
 Prescribed Inflow   -1
@@ -92,4 +92,4 @@ Inflow              -1.26234
 Outflow             1.25912
 Flux Loss           -0.00321882
 Flux Error          0.605943
-end program after 37.71 seconds on 4 procs at Mon Sep  2 16:52:46 2019
+end program after 38.29 seconds on 4 procs at Mon Sep  2 22:14:59 2019

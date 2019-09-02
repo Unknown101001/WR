@@ -1,12 +1,11 @@
-start program on 4 procs at Mon Sep  2 16:59:47 2019
+start program on 4 procs at Mon Sep  2 22:21:06 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 0
   reading ... Model = DGLaplace
   reading ... Mesh = Square500
   default ... GeoPath = ./../Praktikum/
   reading ... level = 0
-  reading ... plevel = 2
-plevel set to 0
+  reading ... plevel = 0
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
   reading ... Overlap = dG1
@@ -84,7 +83,7 @@ Level 0
 
  Newton: d(0)= 0.750289
   GMRES: d(1)= 9.20023e-14 rate 1.22622e-13 time  0.02 seconds
- Newton: d(1)= 1.53902e-13 rate 2.05123e-13 time  0.45 seconds
+ Newton: d(1)= 1.53902e-13 rate 2.05123e-13 time  0.47 seconds
 
 
 Supremum Error 0.710433
@@ -103,4 +102,4 @@ degrees of freedom         2868
 L2 Error                0.35317
 Linf Error              0.71043
 H1 Error                0.79157
-end program after  0.56 seconds on 4 procs at Mon Sep  2 16:59:48 2019
+end program after  0.58 seconds on 4 procs at Mon Sep  2 22:21:07 2019

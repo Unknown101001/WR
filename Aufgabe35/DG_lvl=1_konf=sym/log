@@ -1,11 +1,11 @@
-start program on 4 procs at Mon Sep  2 16:52:55 2019
+start program on 4 procs at Mon Sep  2 22:15:07 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 0
   reading ... Model = DGLaplace
   reading ... Mesh = Square500
   default ... GeoPath = ./../Praktikum/
   reading ... level = 1
-  reading ... plevel = 2
+  reading ... plevel = 3
 plevel set to 1
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
@@ -83,7 +83,7 @@ Level 1
  Discretization: DGLaplaceDiscretization
 
  Newton: d(0)= 0.182217
-  GMRES: d(1)= 2.99653e-14 rate 1.64448e-13 time  0.04 seconds
+  GMRES: d(1)= 2.99653e-14 rate 1.64448e-13 time  0.02 seconds
  Newton: d(1)= 1.32481e-13 rate 7.2705e-13 time  1.01 seconds
 
 
@@ -103,4 +103,4 @@ degrees of freedom         5736
 L2 Error                0.10587
 Linf Error              0.24373
 H1 Error                0.35530
-end program after  1.43 seconds on 4 procs at Mon Sep  2 16:52:56 2019
+end program after  1.46 seconds on 4 procs at Mon Sep  2 22:15:09 2019

@@ -5,7 +5,6 @@ import csv
 
 
 def main():
-
     for lvl in ["0", "1", "2", "3"]:
         for disc in ["linear", "serendipity"]:
             delete_old()
@@ -48,7 +47,7 @@ def main():
         manipulate_conf("m++conf", [("loadconf", "dglaplace.conf")])
         manipulate_conf("dglaplace.conf",
                         [("Model", "DGLaplace"), ("Problem", "Simple2D"), ("Mesh", "Square500"),
-                         ("deg", "2"), ("level", lvl), ("sign", "1"), ("penalty", "25"),
+                         ("deg", "2"), ("level", lvl), ("plevel", lvl), ("sign", "1"), ("penalty", "25"),
                          ("Preconditioner", "Multigrid"), ("LinearSteps", "2000")])
         output = run()
         # out = parse_mpp_output_allg(["Step","Flux Error","Flux Loss","Problem size"], output)
@@ -62,8 +61,8 @@ def main():
         manipulate_conf("m++conf", [("loadconf", "dglaplace.conf")])
         manipulate_conf("dglaplace.conf",
                         [("Model", "DGLaplace"), ("Problem", "Simple2D"), ("Mesh", "Square500"),
-                         ("deg", "2"), ("level", "3"), ("sign", "1"), ("penalty", penalty),
-                         ("Preconditioner", "Multigrid"),("LinearSteps", "2000")])
+                         ("deg", "2"), ("level", "3"), ("plevel","3"), ("sign", "1"), ("penalty", penalty),
+                         ("Preconditioner", "Multigrid"), ("LinearSteps", "2000")])
         output = run()
         # out = parse_mpp_output_allg(["Step","Flux Error","Flux Loss","Problem size"], output)
         # out2 = parse_mpp_output_single_inform(["Problem size"])+
@@ -147,10 +146,10 @@ def aufgabe38():
     manipulate_conf("m++conf", [("loadconf", "dgreaction.conf")])
     manipulate_conf("dgreaction.conf",
                     [("HybridProblem", "HybridReaction"), ("T", "1.6"), ("dt", "0.001"), ("Reaction", "0"),
-                     ("Diffusion", "0.000001"),("Model","HybridDGReaction")])
+                     ("Diffusion", "0.000001"), ("Model", "HybridDGReaction")])
     output = run()
     save("Aufgabe38")
-    out = parse_mpp_output_allg(["Step", "Mass", "Outflow"],output=output)
+    out = parse_mpp_output_allg(["Step", "Mass", "Outflow"], output=output)
     time = [0.001 * a for a in out[0]]
     fig = plt.figure(0)
     plt.plot(time, out[1], label="Masse")
@@ -170,8 +169,9 @@ def aufgabe38():
     plt.grid(True)
     plt.savefig("Aufgabe38/plotoutflow.png")
 
+
 def a38_outflowrate():
-    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"]) #logfile="Aufgabe38/Neu/log"
+    out = parse_mpp_output_allg(["Step", "Mass", "OutFlowRate"])  # logfile="Aufgabe38/Neu/log"
     time = [0.001 * a for a in out[0]]
     fig = plt.figure(1)
     plt.plot(time, out[2], label="OutFlowRate")
@@ -187,5 +187,5 @@ if __name__ == "__main__":
     main()
     saveload = read_values()
     write_to_csv(saveload)
-    #testit()
-    #a38_outflowrate()
+    # testit()
+    # a38_outflowrate()
