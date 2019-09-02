@@ -1,28 +1,27 @@
-start program on 4 procs at Wed Jul 10 16:13:24 2019
+start program on 4 procs at Mon Sep  2 16:54:29 2019
   reading ... DebugLevel = 1
-  reading ... TimeLevel = 1
+  reading ... TimeLevel = 0
   reading ... Model = DGLaplace
   reading ... Mesh = Square500
   default ... GeoPath = ./../Praktikum/
   reading ... level = 3
-  reading ... plevel = 0
+  reading ... plevel = 2
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
   reading ... Overlap = dG1
   reading ... Distribution = RCB
   default ... Overlap_Distribution = 0
-119 cells on proc 0 of 478 cells on 4 procs -- min cells: 119  max cells: 120
+1912 cells on proc 0 of 7648 cells on 4 procs -- min cells: 1912  max cells: 1912
   reading ... Overlap = dG1
   default ... gnuplot = 0
   default ... dxplot = 0
   default ... tecplot = 0
   reading ... vtkplot = 1
   reading ... Problem = Simple2D
-  reading ... SetSolution = 0
+  reading ... SetSolution = 1
   reading ... deg = 1
-matrixgraph on level 0: matrixgraph on level 1: matrixgraph on level 2: matrixgraph on level 3:   default ... AssembleVerbose = 1
+matrixgraph on level 2: matrixgraph on level 3:   default ... AssembleVerbose = 1
   reading ... penalty = 0
-  reading ... sign = -1
   reading ... LinearSolver = GMRES
   reading ... Preconditioner = Jacobi
   default ... PreconditionerVerbose = 0
@@ -39,11 +38,45 @@ matrixgraph on level 0: matrixgraph on level 1: matrixgraph on level 2: matrixgr
   reading ... NewtonSteps = 1
   reading ... NewtonLineSearchSteps = 0
   reading ... NewtonEpsilon = 1e-09
-  default ... NewtonReduction = 1e-05
+  reading ... NewtonReduction = 1e-05
   default ... NewtonMinimalReduction = 1
   default ... NewtonMinimalStepNumber = 0
   default ... NewtonSuppressFirstLineSearch = 0
   default ... NewtonJacobiUpdate = 1
+
+Level 2
+  reading ... level = 3
+
+ Level:          3
+ Dimension:      2
+ Cells:          7648
+ Problem size:   22944
+ Vertices:       4072
+ Edges:          11736
+ Mesh width:     [0.015625,0.0220971]
+ Assemble        DGLaplace
+
+ Problem:        Simple Problem 2D
+ Discretization: DGLaplaceDiscretization
+
+ Newton: d(0)= 0.128847
+  GMRES: d(10000)= 0.0908349 rate 0.999965 time 58.46 seconds
+ Newton: d(1)= 0.0908349 rate 0.704982 time 1:00.63 minutes
+
+
+Supremum Error 0.0096779
+Energy Error   0.123172
+L2 Error   0.000793847
+
+
+Prescribed Inflow  -1
+Prescribed Outflow  0
+Inflow     -1.35923
+Outflow    1.36475
+Flux Loss  0.00551521
+Flux Error 0.454194
+
+Level 3
   reading ... level = 3
 
  Level:          3
@@ -58,15 +91,28 @@ matrixgraph on level 0: matrixgraph on level 1: matrixgraph on level 2: matrixgr
  Problem:        Simple Problem 2D
  Discretization: DGLaplaceDiscretization
 
- Newton: d(0)= 0.0625
-  GMRES: d(10000)= 7.77903e-07 rate 0.998871 time 34.16 seconds
- Newton: d(1)= 7.77903e-07 rate 1.24465e-05 time 36.50 seconds
+ Newton: d(0)= 0.0911086
+  GMRES: d(10000)= 0.0634017 rate 0.999964 time 3:59.00 minutes
+ Newton: d(1)= 0.0634017 rate 0.695891 time 4:08.00 minutes
 
 
-Prescribed Inflow   -1
+Supremum Error 0.00485362
+Energy Error   0.0861799
+L2 Error   0.000285997
+
+
+Prescribed Inflow  -1
 Prescribed Outflow  0
-Inflow              -0.999999
-Outflow             0.999796
-Flux Loss           -0.00020341
-Flux Error          1.00683e-06
-end program after 37.09 seconds on 4 procs at Wed Jul 10 16:14:03 2019
+Inflow     -1.31702
+Outflow    1.31174
+Flux Loss  -0.00528383
+Flux Error 0.404324
+
+degrees of freedom        22944     91776
+L2 Error                0.00079   0.00029
+                       -0.00051
+Linf Error              0.00968   0.00485
+                       -0.00482
+H1 Error                0.12317   0.08618
+                       -0.03699
+end program after 5:16.00 minutes on 4 procs at Mon Sep  2 16:59:45 2019
