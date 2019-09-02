@@ -1,4 +1,4 @@
-start program on 4 procs at Mon Sep  2 13:44:19 2019
+start program on 4 procs at Mon Sep  2 13:47:48 2019
   reading ... DebugLevel = 1
   reading ... TimeLevel = 1
   reading ... Model = Laplace
@@ -8,11 +8,11 @@ start program on 4 procs at Mon Sep  2 13:44:19 2019
   reading ... plevel = 2
   default ... CreateFaceEdges = 0
   default ... CreateFaceSlips = 0
-  reading ... Overlap = dG1
+  default ... Overlap = none
   reading ... Distribution = RCB
   default ... Overlap_Distribution = 0
 16 cells on proc 0 of 64 cells on 4 procs -- min cells: 16  max cells: 16
-  reading ... Overlap = dG1
+  default ... Overlap = none
   reading ... Discretization = linear
   reading ... Discretization = linear
   default ... QuadratureCell = 2

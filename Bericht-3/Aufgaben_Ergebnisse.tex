@@ -120,7 +120,7 @@ Wie man also auch anhand der Tabelle schön sieht erhalten wir für jede Halbier
 \end{figure}
 Im Gegensatz dazu sieht man bei Verwendung der impliziten Mittelpunktsregel, dass diese ohne CFL-Bedingung stabil ist und somit keine Divergenzen auftreten. Grund dafür ist, dass die implizite Mittelpunktsregel sogar A-stabil ist.
 Allerdings sind dafür die resultierenden Energiewerte für den Zeitpunkt T nicht mehr so schön konstant beim Vergleich verschiedener Zeitschrittweiten wie zuvor bei den (konvergenten) Werten vom expliziten RK-Verfahren.
-Während zuvor die Energiewerte zum Zeitpunkt T (im Falle der Konvergenz) stets übereinstimmten, unabhängig davon mit welcher Zeitschrittweite gerechnet wurde, erhalten wir nun schwach schwankende Ergebnisse.
+Während zuvor die Energiewerte zum Zeitpunkt T (im Falle der Konvergenz) stets übereinstimmten, unabhängig davon mit welcher Zeitschrittweite gerechnet wurde, erhalten wir nun schwach schwankende Ergebnisse. Dies liegt an der schlechteren Ordnung des verwendeten Zeitintegrators (implizite Mittelpunktsregel), vgl. Übungsblatt 9 Aufgabe 31.
 Betrachtet man zudem noch den zeitlichen Verlauf der Masse und Energie, erhält man Ansätze dafür, wie die Fehler zur exakten Lösung zu den unterschiedlichen Zeitpunkten entstehen.
 \begin{figure}[H]
 	\centering

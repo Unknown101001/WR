@@ -14,7 +14,7 @@ def write_to_csv(saveload,outputfile):
 
 def main_aufgabe7():
 
-    for prob in ["Divergent","Kellog"]:
+    for prob in ["Kellogg"]:
         outputfile = "Aufgabe7/data_"+prob+".csv"
         saveload = []
         for lvl in ["3","4","5","6","7"]:
