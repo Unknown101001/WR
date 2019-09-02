@@ -20,8 +20,8 @@
 Beim Lösen des in der Aufgabe gegebenen Sattelpunktproblems konnte verifiziert werden, dass bei der Verwendung von gemischten Finiten Elementen die Ein- und Ausflussbedingung für alle verwendeten Level erhalten werden.
 Im Gegensatz dazu stehen die Erkenntnisse, welche wir bereits im letzten Bericht zu den linearen Finiten Elementen gewonnen haben. 
 Am Deutlichsten spiegelt sich dies in der Größe 'Flux Loss' wieder, welcher bei Verwendung von gemischten Finiten Elementen unabhängig vom Level gleich 0 ist, während er unter Verwendung von linearen Finiten Elementen auf einem komplizierten Mesh nicht zu vernachlässigen ist.  \newline
-In den Plots lassen sich bei genauerem Betrachten vor allem im Bereich der Steine des Meshes 'Square500' geringe Unterschiede zwischen beiden Verfahren erkennen. Während die gemischten Finite Elemente sich etwas besser an die Steine 'anschmiegen', lassen sich vor allem die deutlich größeren 'Schatten' unter den Steinen bei den linearen Finiten Elementen erkennen.
-Beides lässt sich bei beiden Problemen verifizieren. 
+In den Plots lassen sich bei genauerem Betrachten vor allem im Bereich der Steine des Meshes 'Square500' geringe Unterschiede zwischen beiden Verfahren erkennen, so 'schmiegen' sich die gemischten Finiten Elemente etwas besser an die Steine an.
+Dies lässt sich bei beiden Problemen verifizieren. 
 
 
 \begin{figure}[H]
@@ -143,8 +143,8 @@ Bei der Permeabilität 1 wird dieser Unterschied zwischen hybrid/mixed und linea
 \begin{figure}[H]
 	\centering
 	\captionabove{Extrapolation mit gemischten FE}
-	\subfigure[für 'leftoutflow' mit Permeabilität gegen 0]{\includegraphics[width=0.49\textwidth]{../../19/PlotMixedExtr.png}}
-	\subfigure[für 'rightoutflow' mit Permeabilität gegen 0]{\includegraphics[width=0.49\textwidth]{../../19/PlotMixedExtrRight.png}}
+	\subfigure[für 'leftoutflow' mit Permeabilität gegen 0]{\includegraphics[width=0.49\textwidth]{../../19/mixlinks.png}}
+	\subfigure[für 'rightoutflow' mit Permeabilität gegen 0]{\includegraphics[width=0.49\textwidth]{../../19/mixrechts.png}}
 	
 \end{figure}
 
@@ -157,8 +157,8 @@ Es ergeben sich als Auswertung der Extrapolation mit Permeabilität gleich 0 die
 \begin{figure}[H]
 	\centering
 	\captionabove{Extrapolation mit linearen FE}
-	\subfigure[für 'leftoutflow' mit Permeabilität gegen 0]{\includegraphics[width=0.49\textwidth]{../../19/LinPlotMixedExtr.png}}
-	\subfigure[für 'rightoutflow' mit Permeabilität gegen 0]{\includegraphics[width=0.49\textwidth]{../../19/LinPlotMixedExtrRight.png}}
+	\subfigure[für 'leftoutflow' mit Permeabilität gegen 0]{\includegraphics[width=0.49\textwidth]{../../19/linlinks.png}}
+	\subfigure[für 'rightoutflow' mit Permeabilität gegen 0]{\includegraphics[width=0.49\textwidth]{../../19/linrechts.png}}
 	
 \end{figure}
 
