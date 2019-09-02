@@ -546,10 +546,10 @@ Man erkennt, dass beide Probleme auf 'Square500' sehr schlecht gelöst werden.
 
 \subsubsection{Aufgabe 7}
 
-In Aufgabe 7 betrachteten wir die beiden heterogenen Problem 'Divergent' und 'Kellog' unter ähnlichen Gesichtspunkten wie zuvor bereits 'Simple' und 'Discontinuous'.
+In Aufgabe 7 betrachteten wir die beiden heterogenen Problem 'Divergent' und 'Kellogg' unter ähnlichen Gesichtspunkten wie zuvor bereits 'Simple' und 'Discontinuous'.
 \begin{figure}[H]
 	\centering
-	\captionabove{Probleme Divergent}
+	\captionabove{Problem Divergent}
 	\subfigure[Geometrie und Prozessoraufteilung auf Level 3]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/Divergent_lvl3/geometrie.png}}	 
 	\subfigure[Permeabilität auf Level 7]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/Divergent_lvl7/perm.png}}	
 	\subfigure[Lösung]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/Divergent_lvl7/u.png}}	
@@ -561,7 +561,17 @@ In Aufgabe 7 betrachteten wir die beiden heterogenen Problem 'Divergent' und 'Ke
 	\subfigure{\includegraphics[width=0.99\textwidth]{../../Aufgabe7/divtabelle.png}}	 
 	
 \end{figure}
-Beim Problem 'Divergent' erhielten wir für die Größen 'Flux Loss' und 'Flux Error' stark schwankende Ergebnisse. Es war hier insbesondere nicht wirklich möglich eine
+Beim Problem 'Divergent' erhielten wir für die Größen 'Flux Loss' und 'Flux Error' stark schwankende Ergebnisse. Es war hier insbesondere nicht wirklich möglich eine Konvergenzrate zu bestimmen. Ein Blick in die Lösungen auf unterschiedlichem Level erklärt dies:
+\begin{figure}[H]
+	\centering
+	\captionabove{Lösungen Problem Divergent}
+	\subfigure[auf Level 3]{\includegraphics[width=0.25\textwidth]{../../Aufgabe7/Divergent_lvl3/u.png}}	 
+	\subfigure[auf Level 5]{\includegraphics[width=0.25\textwidth]{../../Aufgabe7/Divergent_lvl5/u.png}}	
+	\subfigure[auf Level 7]{\includegraphics[width=0.25\textwidth]{../../Aufgabe7/Divergent_lvl7/u.png}}	
+\end{figure}
+
+Die Lösungen verhalten sich also auf den unterschiedlichen Leveln stark unterschiedlich, weswegen wir nicht wirklich von einer Konvergenz sprechen können.
+
 \begin{figure}[H]
 	\centering
 	\captionabove{Problem Kellogg}
