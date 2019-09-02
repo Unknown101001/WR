@@ -50,8 +50,8 @@ plt.ylabel("LeftOutflow")
 plt.grid(True)
 plt.savefig("19/linlinks.png")
 
-v1 = scipy.linalg.solve(A, lin_left_outflow)
-v2 = scipy.linalg.solve(A, lin_right_outflow)
+v1 = scipy.linalg.solve(A, left_outflow)
+v2 = scipy.linalg.solve(A, right_outflow)
 
 xarray = np.linspace(0,0.5,100)
 yarray = [f(xarray[i],v2) for i in range(len(xarray))]
