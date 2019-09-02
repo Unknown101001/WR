@@ -322,29 +322,43 @@ So ergeben sich beispielsweise auf 'Square500' auf Level 0 die Zellenanzahl 478 
 
 \begin{figure}[H]
 	\centering
-	\captionabove{Permeabilität bei Simple:}
-		\includegraphics[width=\textwidth]{../Problem_SimpleMesh_UnitSquarelevel_8/perm.png}
-\end{figure} 
-
-\begin{figure}[H]
-	\centering
-	\captionabove{Permeabilität bei Discontinuous:}
-		\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_UnitSquarelevel_8/perm.png}
+	\captionabove{Permeabilitäten der Probleme Simple und Discontinuous}
+	\subfigure[Problem Simple]{\includegraphics[width=0.49\textwidth]{../Problem_Simple2DMesh_UnitSquare8Triangelslevel_7/perm2.png}}	 
+	\subfigure[Problem Discontinuous]{\includegraphics[width=0.49\textwidth]{../Problem_DiscontinousMesh_UnitSquarelevel_8/perm2.png}}	
 \end{figure}
+
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Permeabilität bei Simple:}
+%		\includegraphics[width=\textwidth]{../Problem_SimpleMesh_UnitSquarelevel_8/perm.png}
+%\end{figure} 
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Permeabilität bei Discontinuous:}
+%		\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_UnitSquarelevel_8/perm.png}
+%\end{figure}
 Anhand der beiden obigen Plots lässt sich gut die kreisförmige zehnfache Permeabilität in der Mitte des Gebietes beim Problem Discontinuous erkennen. 
 \newline
 
 \begin{figure}[H]
 	\centering
-	\captionabove{u bei Simple:}
- 		\includegraphics[width=\textwidth]{../Problem_SimpleMesh_UnitSquarelevel_8/u.png} 
+	\captionabove{u bei Simple und bei Discontinuous}
+	\subfigure[Problem Simple]{\includegraphics[width=0.49\textwidth]{../Problem_SimpleMesh_UnitSquarelevel_8/u_geschnitten.png}}	 
+	\subfigure[Problem Discontinuous]{\includegraphics[width=0.49\textwidth]{../Problem_DiscontinousMesh_UnitSquarelevel_8/u2.png}}	
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\captionabove{u bei Discontinuous:}
-	 \includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_UnitSquarelevel_8/u.png}
-\end{figure} 
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{u bei Simple:}
+% 		\includegraphics[width=\textwidth]{../Problem_SimpleMesh_UnitSquarelevel_8/u.png} 
+%\end{figure}
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{u bei Discontinuous:}
+%	 \includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_UnitSquarelevel_8/u.png}
+%\end{figure} 
 Der Einfluss der erhöhten Permeabilität bei dem Problem Discontinuous ergibt deutlich niedrigere Werte des Potenziales u in der Mitte des Gebietes. Dadurch wird das Fluid versuchen, durch dieses zu fließen (siehe Bild Aufgabe 6, 4.3).
 \begin{figure}[H]
 	\centering
@@ -386,87 +400,124 @@ Die Ergebnisse ändern sich nicht, wenn eine andere Prozessorzahl gewählt wird.
 1. Geometrien
 \newline
 
-\begin{figure}[H]
-	\centering
-	\captionabove{Geometrie des Mesh 'UnitSquare8Triangels' auf Level 3}
-		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mesh_UnitSquare8Triangles/level_3/geometrie.png} 
-\end{figure}
 
 \begin{figure}[H]
 	\centering
-	\captionabove{Geometrie des Mesh 'UnitSquare500' auf Level 0}
-		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/geometrie.png} 
+	\captionabove{Geometrien}
+	\subfigure[Mesh 'UnitSquare8Triangels' auf Level 3]{\includegraphics[width=0.49\textwidth]{../Aufgabe6/Problem_Discontinuous/Mesh_UnitSquare8Triangles/level_3/geometrie2.png}}	 
+	\subfigure[Mesh 'UnitSquare500' auf Level 0]{\includegraphics[width=0.49\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/geometrie2.png}}	
 \end{figure}
+
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Geometrie des Mesh 'UnitSquare8Triangels' auf Level 3}
+%		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mesh_UnitSquare8Triangles/level_3/geometrie.png} 
+%\end{figure}
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Geometrie des Mesh 'UnitSquare500' auf Level 0}
+%		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/geometrie.png} 
+%\end{figure}
+
 2. Aufteilung der Rechenlast
-\begin{figure}[H]
-	\centering
-	\captionabove{Aufteilung der Gebiete auf 4 Prozessoren des Mesh 'UnitSquare8Triangels' auf Level 3}
-		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mesh_UnitSquare8Triangles/level_3/process.png} 
-\end{figure}
-
 
 \begin{figure}[H]
 	\centering
-	\captionabove{Aufteilung der Gebiete auf 4 Prozessoren des Mesh 'UnitSquare500' auf Level 0}
-		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/process.png} 
-\end{figure}
-Man sieht gerade bei Abbildung 11 sehr schön, dass die Rechenlast gleichmäßig auf die 4 Prozessoren verteilt wird, indem Gebiete mit mehr 'Löchern' einzelne Zellen benachbarter Gebiete übernehmen. \newline
-
-\begin{figure}[H]
-	\centering
-	\captionabove{Permeabilität des Problem Simple auf Mesh 'UnitSquare8Triangels' auf Level 7}
-\includegraphics[width=\textwidth]{../Problem_Simple2DMesh_UnitSquare8Triangelslevel_7/perm.png} 
+	\captionabove{Aufteilung der Gebiete auf 4 Prozessoren}
+	\subfigure[Mesh 'UnitSquare8Triangels' auf Level 3]{\includegraphics[width=0.49\textwidth]{../Aufgabe6/Problem_Discontinuous/Mesh_UnitSquare8Triangles/level_3/process2.png}}	 
+	\subfigure[Mesh 'UnitSquare500' auf Level 0]{\includegraphics[width=0.49\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/process2.png}}	
 \end{figure}
 
 
-\begin{figure}[H]
-	\centering
-	\captionabove{Permeabilität des Problem Simple auf Mesh 'UnitSquare500' auf Level 0}
-		\includegraphics[width=\textwidth]{../Problem_Simple2DMesh_Square500level_4/perm.png} 
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Aufteilung der Gebiete auf 4 Prozessoren des Mesh 'UnitSquare8Triangels' auf Level 3}
+%		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mesh_UnitSquare8Triangles/level_3/process.png} 
+%\end{figure}
+%
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Aufteilung der Gebiete auf 4 Prozessoren des Mesh 'UnitSquare500' auf Level 0}
+%		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/process.png} 
+%\end{figure}
+Man sieht gerade bei Abbildung 9 b) sehr schön, dass die Rechenlast gleichmäßig auf die 4 Prozessoren verteilt wird, indem Gebiete mit mehr 'Löchern' einzelne Zellen benachbarter Gebiete übernehmen. \newline
 
 
 \begin{figure}[H]
 	\centering
-	\captionabove{Permeabilität des Problem Discontinuous auf Mesh 'UnitSquare8Triangels' auf Level 7}
-\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_UnitSquare8Triangelslevel_7/perm.png} 
+	\captionabove{Permeabilitäten der Probleme Simple und Discontinuous}
+	\subfigure[Problem Simple auf Mesh 'UnitSquare8Triangels' auf Level 7]{\includegraphics[width=0.39\textwidth]{../Problem_Simple2DMesh_UnitSquare8Triangelslevel_7/perm2.png}}	 
+	\subfigure[Problem Simple auf Mesh 'UnitSquare500' auf Level 0]{\includegraphics[width=0.39\textwidth]{../Problem_Simple2DMesh_Square500level_4/perm2.png}}	
+	\subfigure[Problem Discontinuous auf Mesh 'UnitSquare8Triangels' auf Level 7]{\includegraphics[width=0.39\textwidth]{../Problem_DiscontinousMesh_UnitSquare8Triangelslevel_7/perm2.png}}	
+	\subfigure[Problem Discontinuous auf Mesh 'UnitSquare500' auf Level 0]{\includegraphics[width=0.39\textwidth]{../Problem_DiscontinousMesh_Square500level_4/perm2.png}}	
 \end{figure}
 
 
-\begin{figure}[H]
-	\centering
-	\captionabove{Permeabilität des Problem Discontinuous auf Mesh 'UnitSquare500' auf Level 0}
-		\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_Square500level_4/perm.png} 
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Permeabilität des Problem Simple auf Mesh 'UnitSquare8Triangels' auf Level 7}
+%\includegraphics[width=\textwidth]{../Problem_Simple2DMesh_UnitSquare8Triangelslevel_7/perm.png} 
+%\end{figure}
+%
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Permeabilität des Problem Simple auf Mesh 'UnitSquare500' auf Level 0}
+%		\includegraphics[width=\textwidth]{../Problem_Simple2DMesh_Square500level_4/perm.png} 
+%\end{figure}
+%
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Permeabilität des Problem Discontinuous auf Mesh 'UnitSquare8Triangels' auf Level 7}
+%\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_UnitSquare8Triangelslevel_7/perm.png} 
+%\end{figure}
+%
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Permeabilität des Problem Discontinuous auf Mesh 'UnitSquare500' auf Level 0}
+%		\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_Square500level_4/perm.png} 
+%\end{figure}
 
 
 4. Lösungen
 \newline
-
 \begin{figure}[H]
 	\centering
-	\captionabove{Lösung zum homogenen Problem auf dem Mesh 'UnitSquare8Triangels' mit Strömungslinien auf Level 7}
-		\includegraphics[width=\textwidth]{../Problem_Simple2DMesh_UnitSquare8Triangelslevel_7/blub.png} 
+	\captionabove{Lösungen des homogenen und inhomogenen Problems mit Strömungslinien}
+	\subfigure[Problem Simple auf Mesh 'UnitSquare8Triangels' auf Level 7]{\includegraphics[width=0.49\textwidth]{../Problem_Simple2DMesh_UnitSquare8Triangelslevel_7/blub2.png}}	 
+	\subfigure[Problem Simple auf Mesh 'UnitSquare500' auf Level 0]{\includegraphics[width=0.49\textwidth]{../Problem_Simple2DMesh_Square500level_4/blub2.png}}	
+	\subfigure[Problem Discontinuous auf Mesh 'UnitSquare8Triangels' auf Level 7]{\includegraphics[width=0.49\textwidth]{../Problem_DiscontinousMesh_UnitSquare8Triangelslevel_7/blub2.png}}	
+	\subfigure[Problem Discontinuous auf Mesh 'UnitSquare500' auf Level 0]{\includegraphics[width=0.49\textwidth]{../Problem_DiscontinousMesh_Square500level_4/blub2.png}}	
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\captionabove{
-Lösung zum homogenen Problem auf dem Mesh 'Square500' mit Strömungslinien auf Level 4}
-\includegraphics[width=\textwidth]{../Problem_Simple2DMesh_Square500level_4/blub.png} 
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\captionabove{Lösung zum inhomogenen Problem auf dem Mesh 'UnitSquare8Triangels' mit Strömungslinien auf Level 7}
-		\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_UnitSquare8Triangelslevel_7/blub.png} 
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\captionabove{Lösung zum inhomogenen Problem auf dem Mesh 'Square500' mit Strömungslinien auf Level 4}
-\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_Square500level_4/blub.png} 
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Lösung zum homogenen Problem auf dem Mesh 'UnitSquare8Triangels' mit Strömungslinien auf Level 7}
+%		\includegraphics[width=\textwidth]{../Problem_Simple2DMesh_UnitSquare8Triangelslevel_7/blub.png} 
+%\end{figure}
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{
+%Lösung zum homogenen Problem auf dem Mesh 'Square500' mit Strömungslinien auf Level 4}
+%\includegraphics[width=\textwidth]{../Problem_Simple2DMesh_Square500level_4/blub.png} 
+%\end{figure}
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Lösung zum inhomogenen Problem auf dem Mesh 'UnitSquare8Triangels' mit Strömungslinien auf Level 7}
+%		\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_UnitSquare8Triangelslevel_7/blub.png} 
+%\end{figure}
+%
+%\begin{figure}[H]
+%	\centering
+%	\captionabove{Lösung zum inhomogenen Problem auf dem Mesh 'Square500' mit Strömungslinien auf Level 4}
+%\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_Square500level_4/blub.png} 
+%\end{figure}
 
 
 
