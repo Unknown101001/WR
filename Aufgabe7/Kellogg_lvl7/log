@@ -1,0 +1,104 @@
+start program on 4 procs at Mon Sep  2 13:50:48 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Laplace
+  reading ... Mesh = Square-1x1
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 7
+  reading ... plevel = 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  default ... Overlap = none
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+16 cells on proc 0 of 64 cells on 4 procs -- min cells: 16  max cells: 16
+  default ... Overlap = none
+  reading ... Discretization = linear
+  reading ... Discretization = linear
+  default ... QuadratureCell = 2
+  default ... QuadratureBoundary = 1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... Problem = Kellogg
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = Multigrid
+  default ... PreconditionerVerbose = 0
+  reading ... presmoothing = 5
+  reading ... postsmoothing = 5
+  default ... cycle = V
+  default ... MultigridVerbose = 0
+  reading ... SmootherDamp = 0.8
+  reading ... Smoother = SGS
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerVerbose = 0
+  reading ... BaseSolver = LS
+  reading ... BasePreconditioner = LIB_PS
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  default ... PS_checkdiagonal = 1
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... BaseSolverVerbose = -1
+  default ... BaseSolverSteps = 10
+  default ... BaseSolverLineSearchSteps = 3
+  default ... BaseSolverEpsilon = 1e-10
+  default ... BaseSolverReduction = 1e-05
+  default ... BaseSolverMinimalReduction = 1
+  default ... BaseSolverMinimalStepNumber = 0
+  default ... Transfer = VertexDoF
+  default ... TransferVerbose = 0
+  default ... TransferVerbose = 0
+  default ... TransferVerbose = 0
+  default ... TransferVerbose = 0
+  default ... TransferVerbose = 0
+  reading ... LinearVerbose = 0
+  reading ... LinearSteps = 800
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 7
+
+ Level:          7
+ Dimension:      2
+ Cells:          65536
+ Problem size:   66049
+ Vertices:       66049
+ Edges:          131584
+ Mesh width:     [0.0078125,0.0078125]
+ Assemble        Laplace
+
+ Problem:        Kellogg problem
+ Discretization: linear
+
+ Newton: d(0)= 144.768
+  GMRES: d(7)= 4.89136e-12 rate 0.0118997 time  4.83 seconds
+ Newton: d(1)= 4.9016e-12 rate 3.38584e-14 time 13.49 seconds
+
+
+Prescribed Inflow   -2
+Prescribed Outflow  0
+Inflow              -2.03091
+Outflow             2.03797
+Flux Loss           0.0070655
+Flux Error          0.0918279
+end program after 20.41 seconds on 4 procs at Mon Sep  2 13:51:10 2019
