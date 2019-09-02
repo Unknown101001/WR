@@ -544,6 +544,40 @@ Für das Problem Simple2D erhalten wir $ \frac{e_l}{e_{l+1}} \approx 1.19 $ und 
 
 Man erkennt, dass beide Probleme auf 'Square500' sehr schlecht gelöst werden.
 
+\subsubsection{Aufgabe 7}
+
+In Aufgabe 7 betrachteten wir die beiden heterogenen Problem 'Divergent' und 'Kellog' unter ähnlichen Gesichtspunkten wie zuvor bereits 'Simple' und 'Discontinuous'.
+\begin{figure}[H]
+	\centering
+	\captionabove{Probleme Divergent}
+	\subfigure[Geometrie und Prozessoraufteilung auf Level 3]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/Divergent_lvl3/geometrie.png}}	 
+	\subfigure[Permeabilität auf Level 7]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/Divergent_lvl7/perm.png}}	
+	\subfigure[Lösung]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/Divergent_lvl7/u.png}}	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Flux Error und Flux Loss bei Problem Divergent}
+	\subfigure{\includegraphics[width=0.99\textwidth]{../../Aufgabe7/divtabelle.png}}	 
+	
+\end{figure}
+Beim Problem 'Divergent' erhielten wir für die Größen 'Flux Loss' und 'Flux Error' stark schwankende Ergebnisse. Es war hier insbesondere nicht wirklich möglich eine
+\begin{figure}[H]
+	\centering
+	\captionabove{Problem Kellogg}
+	\subfigure[Geometrie und Prozessoraufteilung auf Level 3]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/MeshLoad.png}}	 
+	\subfigure[Permeabilität auf Level 7]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/perm.png}}	
+	\subfigure[Lösung]{\includegraphics[width=0.39\textwidth]{../../Aufgabe7/fluss.png}}	
+	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\captionabove{Flux Error und Flux Loss bei Problem Kellogg}
+	\subfigure{\includegraphics[width=0.99\textwidth]{../../Aufgabe7/kelltabelle.png}}	 
+
+\end{figure}
+
 %Die 'Steine' sind in 'Square500.geo' als Löcher mit Neumann-0 Rändern innerhalb des Gebietes realisiert. 
 %Betrachten wir die zugrunde liegende Differentialgleichung auf einer einzelnen Zelle der Triangulierung, erhalten wir:
 %\begin{align*}
