@@ -37,27 +37,20 @@ Dann können wir unser analytisches Problem umschreiben zu
 		\end{cases}
 \end{gather*} 
 der \defi{Laplace-Gleichung mit Fluss}. Nun schauen wir uns, wie zuvor bei Finiten Elementen, die schwache Formulierung von (LG F) an.
-
-%TODO
-\textcolor{red}{HERLEITUNG ÜBERSICHTLICHER AUFSCHREIBEN!}
-
 \begin{align*}
 	\int_\Omega \dive(q)\, \Phi \diff x = 0 &\text{ für alle Testfunktionen } \Phi: \Omega \to \R \\
-	\int_{\Omega} \kappa^{-1} (q + \kappa \nabla u) \cdot \Psi \diff x = 0 &\text{ für alle Testfunktionen } \Psi:\Omega \to \R^2 \ (\star)
+	\underbrace{\int_{\Omega} \kappa^{-1} (q + \kappa \nabla u) \cdot \Psi \diff x = 0}_{\int_{\Omega} \nabla u \cdot \Psi \diff x = - \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x}  &\text{ für alle Testfunktionen } \Psi:\Omega \to \R^2 \ (\star)
 \end{align*}
-Wir wollen nun noch die Dirichlet-Randbedingung $ 	u = u_D \text{ auf } \Gamma_D $ mit in die schwache Formulierung einfließen lassen. Dazu verwenden wir den Satz von Gauß:
+Weiter wir wollen nun noch die Dirichlet-Randbedingung $ 	u = u_D \text{ auf } \Gamma_D $ in die schwache Formulierung einfließen lassen. Dazu verwenden wir den Satz von Gauß:
 \[ \int_{\partial\Omega} (u\Psi) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(u\Psi) \diff x = \int_{\Omega} \nabla u \cdot \Psi \diff x + \int_{\Omega} u \dive(\Psi) \diff x \quad (\Psi:\Omega \to \R^2) \]
-
-Die Neumann-Randbedingung $ (\kappa\nabla u) \cdot n = g_N \text{ auf } \Gamma_N $ wird durch die Wahl des Lösungs- bwz. Ansatzraumes erfüllt.
-\bigskip
-
-Zusammen mit 
+Wählen wir nun unseren Ansatzraum so, dass  für die Funktion $ \Psi: \Omega \to \R$ gilt $ \Psi \cdot n = 0 \text{ auf } \Gamma_N $. Damit folgt
 \begin{align*}
-	&&\int_{\partial\Omega} (u\Psi) \cdot n \diff a &= \int_{\Gamma_D} (u_D\Psi) \cdot n \diff a &&(\Psi:\Omega \to \R^2 \text{ mit } \Psi \cdot n = 0 \text{ auf } \Gamma_N ) \\
-	&\text{ und }\\
-	&&(\star) \iff \int_{\Omega} \nabla u \cdot \Psi \diff x &= - \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x &&(\Psi:\Omega \to \R^2) 
+	\int_{\Gamma_D} (u_D\Psi) \cdot n \diff a \stackrel{\Psi \cdot n|_{\Gamma_N} = 0}{=} \int_{\partial\Omega} (u\Psi) \cdot n \diff a = \underbrace{\int_{\Omega} \nabla u \cdot \Psi \diff x}_{\stackrel{(\star)}{=}- \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x } + \int_{\Omega} u \dive(\Psi) \diff x.
 \end{align*}
-erhalten wir die gewünschte schwache Formulierung, im Folgenden \defi{gemischtes Finite-Elemente-Problem} genannt:
+Die Neumann-Randbedingung $ (\kappa\nabla u) \cdot n = g_N \text{ auf } \Gamma_N $ wird durch die Wahl des Lösungsraumes erfüllt.
+
+
+Wir erhalten die gewünschte schwache Formulierung, im Folgenden \defi{gemischtes Finite-Elemente-Problem} genannt:
 \begin{gather*}
 	\text{Bestimme } (q,u) \text{ mit } q\cdot n = -g_N \text{ auf } \Gamma_N \text{ und}\\
 	\text{(gFE)}\begin{cases}
@@ -92,7 +85,7 @@ Wir nummerieren Seiten und Zellen durch:
 \begin{define}
 	Als Testräume/FE-Räume wählen wir $ W_h, Q_h $ und $ W_h(-g_N) $
 	\begin{align*}
-		W_h &\coloneqq \spann \left\{ \psi_1, \dots , \psi_{\abs{\mathcal{F}}}  \right\} &&\text{(\defi{Seitenansatzraum}/ Raum für $ \psi $ und $ q_u!!! $ mit RWen)}\\
+		W_h &\coloneqq \spann \left\{ \psi_1, \dots , \psi_{\abs{\mathcal{F}}}  \right\} &&\text{(\defi{Seitenansatzraum}/ Raum für $ \psi $ und $ q_h $ mit RWen)}\\
 		Q_h &\coloneqq \spann \{ \mu_1, \dots , \mu_{\abs{\mathcal{K}}} \} &&\text{(\defi{Zellenansatzraum}/ Raum für $ \phi $ und $ u_h $)}
 	\end{align*}
 	\begin{align*}
@@ -111,12 +104,10 @@ Wir nummerieren Seiten und Zellen durch:
 \begin{remark}
 	
 	\[	\forall K \in \mathcal{K}:\psi_i|_K \in \mathbb{P}_1(K,\R^2) \text{ und } \mu_m|_K \in \mathbb{P}_0(K,\R) \]
-	Unter Verwendung der Notation 
-	\[\forall k,n \in  \mathbb{N} \ \forall K \in \mathcal{K}: \tilde{\mathbb{P}}_k(K,\R^n) \coloneqq \left\{  f:\Omega \to \R^n \mid f|_K \in \mathbb{P}_k(K, \R^n)  \right\}  \]
-	gilt
+	Also
 	\begin{align*}	
-	W_h &\subseteq \bigcap_{K \in \mathcal{K}} \tilde{\mathbb{P}}_1(K,\R^2) &&\text{(Menge der zellenweisen linearen Funktionen) und }\\
-	Q_h &\subseteq \bigcap_{K \in \mathcal{K}} \tilde{\mathbb{P}}_0(K,\R) &&\text{(Menge der zellenweisen konstanten Funktionen)}. 
+	W_h &\subseteq \prod_{K \in \mathcal{K}} \mathbb{P}_1(K,\R^2) &&\text{(Menge der zellenweisen linearen Funktionen) und }\\
+	Q_h &\subseteq \prod_{K \in \mathcal{K}} \mathbb{P}_0(K,\R) &&\text{(Menge der zellenweisen konstanten Funktionen)}. 
 	\end{align*}	
 \end{remark}
 
@@ -341,44 +332,47 @@ Dann löst $ (\underline{q}, \underline{u}) $ (L gFE) bzw. $ (q_h,u_h) $ (dgFE) 
 %\end{pmatrix} \] im Allgemeinen nicht symmetrisch positiv definit ist und somit das CG-Verfahren nicht zum Lösen verwendet werden kann. Durch die Hybridisierung erhalten wir ein LGS mit einer spd Matrix.
 
 Wir betrachten die Räume
-\[ W_\mathcal{K} \coloneqq \Pi_{K \in \mathcal{K}} W_k, \qquad M_h \coloneqq \Pi_{F \in \mathcal{F}} \mathbb{P}_0(F) \]
+\[ W_\mathcal{K} \coloneqq \prod_{K \in \mathcal{K}} W_K, \qquad M_h \coloneqq \prod_{F \in \mathcal{F}} \mathbb{P}_0(F) \]
 \[ M_h(u_D) \coloneqq \left\{ \mu_h \in M_h:\forall  F \in \Gamma_D \oint_F \mu_h \diff a = \oint_F u_D \diff a  \right\}\]
 
 und untersuchen folgende Problem:
 \begin{gather*}
 	\text{Bestimmme } (q_h,u_h, \lambda_h) \in W_\mathcal{K} \times Q_h \times M_h(u_D) \text{ mit}\\
 	\hFgFE\begin{dcases}
-		\int_K \kappa^{-1} q_h \psi_K \diff x - \int_K u_h \dive(\psi_K) \diff x = \oint_{\partial K} \lambda_h \psi_K \cdot n^K \diff a \\
-		\int_K \dive(q_h) \psi_K \diff x = 0\\
-		\sum_{K\in \mathcal{K}} \oint_{\partial K} q_h \cdot n \mu_h \diff a = - \oint_{\Gamma_N} g_N \mu_h \diff a
+		(1) \int_K \kappa^{-1} q_h \psi_K \diff x - \int_K u_h \dive(\psi_K) \diff x = \oint_{\partial K} \lambda_h \psi_K \cdot n^K \diff a \\
+		(2) \int_K \dive(q_h) \psi_K \diff x = 0\\
+		(3) \sum_{K\in \mathcal{K}} \oint_{\partial K} q_h \cdot n \mu_h \diff a = - \oint_{\Gamma_N} g_N \mu_h \diff a
 	\end{dcases}\\
-	\text{für alle } \psi_K \in W_K (K \in \mathcal{K}) \text{ und } \mu_h \in M_h(0)
+	\text{für alle } K \in \mathcal{K}, \psi_K \in W_K  \text{ und } \mu_h \in M_h(0)
 \end{gather*}
 
-Dieses Problem ist äquivalent zu $ \dgFE $. Mit der Wahl einer Basis von $ W_\mathcal{K} $ und $ M_h $ ergibt sich eine Formulierung als LGS mit Nebenbedingung:
+Dieses Problem ist äquivalent zu dem diskreten gemischten FE-Problem $ \dgFE $. \textcolor{red}{WARUM??} Für ein festes $ K \in \mathcal{K} $ ergibt sich mit der Wahl einer Basis von $ W_K $, $ Q_h $ und $ M_h $ eine Formulierung als LGS mit Nebenbedingung:
 \begin{gather*}
-	\text{Bestimme } \underline{q}_K, \underline{u}_K \text{ und } \underline{\lambda}_K \text{ mit}\\
+	\text{Bestimme } \ubar{q}_K, \ubar{u}_h \text{ und } \ubar{\lambda}_K \text{ mit}\\
 	\begin{cases}
 		\begin{pmatrix}
 			\underline{A}_K & \underline{B}_K \\
 			\underline{B}_K^T & 0
 		\end{pmatrix}
 		\begin{pmatrix}
-			\underline{q}_K\\
-			\underline{u}_K
+			\ubar{q}_K\\
+			\ubar{u}_K
 		\end{pmatrix}
 		= \begin{pmatrix}
-			\underline{c} \, \underline{\lambda}_K \\
+			\underline{c} \, \ubar{\lambda}_K \\
 			0
 		\end{pmatrix}\\
-		\qquad \quad \sum_{K \in \mathcal{K}} \underline{R}_K^T \underline{q}_K = \underline{b}_K		
+		\qquad \quad \sum_{K \in \mathcal{K}} \underline{R}_K^T \ubar{q}_K = \ubar{b}_K		
 	\end{cases}
 \end{gather*}  
+Wie üblich sind $ \ubar{q}_K, \underline{q}_K, \ubar{u}_h \text{ und } \ubar{\lambda}_K $ Koordinatenvektoren von 
 
 Mit dem Schurkomplement können wir auch noch die Nebenbedingung im LGS unterbringen und erhalten ein globales System:
-\[
-	\underline{S} \, \underline{\lambda} = \underline{b}
-\]
+\begin{gather*}
+	\underline{S} \, \underline{\lambda} = \underline{b}\\
+	\text{wobei } \underline{\lambda} = \sum_{K \in \mathcal{K}} R_K \lambda_K
+\end{gather*}
+	
 
 
 
