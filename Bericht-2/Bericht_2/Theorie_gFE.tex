@@ -37,6 +37,10 @@ Dann können wir unser analytisches Problem umschreiben zu
 		\end{cases}
 \end{gather*} 
 der \defi{Laplace-Gleichung mit Fluss}. Nun schauen wir uns, wie zuvor bei Finiten Elementen, die schwache Formulierung von (LG F) an.
+
+%TODO
+\textcolor{red}{HERLEITUNG ÜBERSICHTLICHER AUFSCHREIBEN!}
+
 \begin{align*}
 	\int_\Omega \dive(q)\, \Phi \diff x = 0 &\text{ für alle Testfunktionen } \Phi: \Omega \to \R \\
 	\int_{\Omega} \kappa^{-1} (q + \kappa \nabla u) \cdot \Psi \diff x = 0 &\text{ für alle Testfunktionen } \Psi:\Omega \to \R^2 \ (\star)
@@ -319,6 +323,9 @@ Außerdem erhalten wir eine A-posteriori Schranke:
 \[ \norm{q-q_h}_{\kappa^{-1}} \leq \norm{q_h + \kappa \nabla u_h}_{\kappa^{-1}} \ (\text{wobei } \norm{f}_{\kappa^{-1}} = \int \kappa^{-1} f \cdot f \diff x)  \]
 
 \subsection{Hybridisierung}
+
+%TODO
+\textcolor{red}{AUSFÜHRLICHER!!}
 
 %Beim Lösen von (uL gFE) gibt es das Problem, dass die Matrix \[ \begin{pmatrix}
 %\underline{A} &\underline{B}^T\\
