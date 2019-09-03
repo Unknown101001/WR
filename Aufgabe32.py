@@ -6,7 +6,7 @@ from mppstart import *
 
 
 def main_32():
-    diffls = [0.00001,0.000001]
+    diffls = [0.000001]
     for diff in diffls:
         delete_old()
         manipulate_conf("m++conf", [("loadconf", "hybridreaction.conf")])
