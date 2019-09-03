@@ -5,6 +5,7 @@ import csv
 
 
 def main():
+    '''
     for lvl in ["0", "1", "2", "3"]:
         for disc in ["linear", "serendipity"]:
             delete_old()
@@ -41,6 +42,7 @@ def main():
             save("Aufgabe35", name)
 
     # 3a)
+    '''
 
     for lvl in ["0", "1", "2", "3"]:
         delete_old()
@@ -48,12 +50,12 @@ def main():
         manipulate_conf("dglaplace.conf",
                         [("Model", "DGLaplace"), ("Problem", "Simple2D"), ("Mesh", "Square500"),
                          ("deg", "2"), ("level", lvl), ("plevel", lvl), ("sign", "1"), ("penalty", "25"),
-                         ("Preconditioner", "Multigrid"), ("LinearSteps", "2000")])
+                         ("Preconditioner", "Jacobi"), ("LinearSteps", "10000")])
         output = run()
         # out = parse_mpp_output_allg(["Step","Flux Error","Flux Loss","Problem size"], output)
         # out2 = parse_mpp_output_single_inform(["Problem size"])+
         name = "DG2_lvl=" + lvl
-        save("Aufgabe35", name)
+        save("Aufgabe35_2", name)
 
     # 3b)
     for penalty in ["0", "1", "5", "10", "25", "50", "100"]:
@@ -62,16 +64,17 @@ def main():
         manipulate_conf("dglaplace.conf",
                         [("Model", "DGLaplace"), ("Problem", "Simple2D"), ("Mesh", "Square500"),
                          ("deg", "2"), ("level", "3"), ("plevel","3"), ("sign", "1"), ("penalty", penalty),
-                         ("Preconditioner", "Multigrid"), ("LinearSteps", "2000")])
+                         ("Preconditioner", "Jacobi"), ("LinearSteps", "10000")])
         output = run()
         # out = parse_mpp_output_allg(["Step","Flux Error","Flux Loss","Problem size"], output)
         # out2 = parse_mpp_output_single_inform(["Problem size"])+
         name = "DG3_penalty=" + penalty
-        save("Aufgabe35", name)
+        save("Aufgabe35_2", name)
 
 
 def read_values():
     saveload = []
+    '''
     for lvl in ["0", "1", "2", "3"]:
         for disc in ["linear", "serendipity"]:
             name = "FEM_lvl=" + lvl + "_disc=" + disc
@@ -85,16 +88,17 @@ def read_values():
     for lvl in ["0", "1", "2", "3"]:
         for konf in ["sym", "nonsym"]:
             name = "DG_lvl=" + lvl + "_konf=" + konf
-            logfile = "Aufgabe35/" + name + "/log"
+            logfile = "Aufgabe/" + name + "/log"
             out = parse_mpp_output_single_inform(["Problem size", "Inflow", "Outflow", "Flux Error", "Flux Loss"],
                                                  logfile=logfile)
             time, einheit = get_time(logfile=logfile)
             liste = [name, out[0][0], out[1][0], out[2][0], out[3][0], out[4][0], time, einheit]
             # print(liste)
             saveload.append(liste)
+    '''
     for lvl in ["0", "1", "2", "3"]:
         name = "DG2_lvl=" + lvl
-        logfile = "Aufgabe35/" + name + "/log"
+        logfile = "Aufgabe35_2/" + name + "/log"
         out = parse_mpp_output_single_inform(["Problem size", "Inflow", "Outflow", "Flux Error", "Flux Loss"],
                                              logfile=logfile)
         time, einheit = get_time(logfile=logfile)
@@ -103,7 +107,7 @@ def read_values():
         saveload.append(liste)
     for penalty in ["0", "1", "5", "10", "25", "50", "100"]:
         name = "DG3_penalty=" + penalty
-        logfile = "Aufgabe35/" + name + "/log"
+        logfile = "Aufgabe35_2/" + name + "/log"
         out = parse_mpp_output_single_inform(["Problem size", "Inflow", "Outflow", "Flux Error", "Flux Loss"],
                                              logfile=logfile)
         time, einheit = get_time(logfile=logfile)
@@ -115,7 +119,7 @@ def read_values():
 
 
 def write_to_csv(saveload):
-    outputfile = "Aufgabe35/data.csv"
+    outputfile = "Aufgabe35_2/data.csv"
     with open(outputfile, 'w', newline='', encoding='utf-8')as csvfile:
         writer = csv.writer(csvfile, delimiter=';')
         writer.writerow([a[0] for a in saveload])  # names
