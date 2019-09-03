@@ -4,7 +4,7 @@ from mppstart import *
 
 
 def main_Jac_GMRES():
-    for lvl in ["3", "4", "5", "6", "7", "8", "9"]:
+    for lvl in ["7"]:
         prec = "Jacobi"
         ls = "GMRES"
         delete_old()
@@ -14,13 +14,14 @@ def main_Jac_GMRES():
                          ("Mesh", "UnitSquare"),
                          ("level", lvl),
                          ("Preconditioner", prec),
-                         ("LinearSteps", "800"),
-                         ("LinearSolver", ls)])
-        output = run(1)
+                         ("LinearSteps", "10000"),
+                         ("LinearSolver", ls),
+                         ("LinearVerbose","1")])
+        output = run()
         # out = parse_mpp_output_allg([], output)
         # print(out)
         name = prec + "_" + ls + "_" + lvl
-        save("Aufgabe10", name)
+        save("Aufgabe10_2", name)
 
 
 def main_GS_GMRES():
@@ -36,7 +37,7 @@ def main_GS_GMRES():
                          ("Preconditioner", prec),
                          ("LinearSteps", "800"),
                          ("LinearSolver", ls)])
-        output = run(1)
+        output = run()
         # out = parse_mpp_output_allg([], output)
         # print(out)
         name = prec + "_" + ls + "_" + lvl
@@ -194,7 +195,7 @@ def main_Jac_CG_probs():
 
 def main_Jac_CMRES_probs():
     for prob in ["Discontinuous", "Divergent", "Simple2D"]:
-        lvl = "6"
+        lvl = "7"
         prec = "Jacobi"
         ls = "GMRES"
         delete_old()
@@ -256,6 +257,5 @@ if __name__ == "__main__":
     main_Jac_LS()
     '''
 
-    main_Jac_CG_2()
-    main_Jac_CG_4()
+    main_Jac_GMRES()
     

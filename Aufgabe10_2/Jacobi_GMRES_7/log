@@ -1,0 +1,171 @@
+start program on 4 procs at Tue Sep  3 15:46:09 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Laplace
+  reading ... Mesh = UnitSquare
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 7
+  reading ... plevel = 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  default ... Overlap = none
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+4 cells on proc 0 of 16 cells on 4 procs -- min cells: 4  max cells: 4
+  default ... Overlap = none
+  reading ... Discretization = serendipity
+  reading ... Discretization = serendipity
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... Problem = Simple2D
+  reading ... SetSolution = 0
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = Jacobi
+  default ... PreconditionerVerbose = 0
+  default ... PreconditionerDamp = 1
+  default ... SHIFTspecial = 0
+  reading ... LinearVerbose = 1
+  reading ... LinearSteps = 10000
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 7
+
+ Level:          7
+ Dimension:      2
+ Cells:          16384
+ Problem size:   49665
+ Vertices:       16641
+ Edges:          33024
+ Mesh width:     [0.0078125,0.0078125]
+ Assemble        Laplace
+
+ Problem:        Simple Problem 2D
+ Discretization: serendipity
+
+ Newton: d(0)= 0.065855
+  GMRES: d(0)= 0.065855
+  GMRES: d(100)= 0.00902662
+  GMRES: d(200)= 0.00649741
+  GMRES: d(300)= 0.00569747
+  GMRES: d(400)= 0.00521516
+  GMRES: d(500)= 0.00485666
+  GMRES: d(600)= 0.00451618
+  GMRES: d(700)= 0.00421978
+  GMRES: d(800)= 0.00392297
+  GMRES: d(900)= 0.00366078
+  GMRES: d(1000)= 0.00338685
+  GMRES: d(1100)= 0.00314403
+  GMRES: d(1200)= 0.00288973
+  GMRES: d(1300)= 0.00266624
+  GMRES: d(1400)= 0.00245389
+  GMRES: d(1500)= 0.00226559
+  GMRES: d(1600)= 0.00207266
+  GMRES: d(1700)= 0.00190327
+  GMRES: d(1800)= 0.00170758
+  GMRES: d(1900)= 0.00153834
+  GMRES: d(2000)= 0.00136385
+  GMRES: d(2100)= 0.0012168
+  GMRES: d(2200)= 0.00106549
+  GMRES: d(2300)= 0.000936811
+  GMRES: d(2400)= 0.000834659
+  GMRES: d(2500)= 0.000746019
+  GMRES: d(2600)= 0.000662562
+  GMRES: d(2700)= 0.000590734
+  GMRES: d(2800)= 0.000519614
+  GMRES: d(2900)= 0.000458586
+  GMRES: d(3000)= 0.000401477
+  GMRES: d(3100)= 0.000352351
+  GMRES: d(3200)= 0.000309395
+  GMRES: d(3300)= 0.000272341
+  GMRES: d(3400)= 0.000235394
+  GMRES: d(3500)= 0.000203942
+  GMRES: d(3600)= 0.000171009
+  GMRES: d(3700)= 0.000143925
+  GMRES: d(3800)= 0.000119516
+  GMRES: d(3900)= 9.96147e-05
+  GMRES: d(4000)= 8.39655e-05
+  GMRES: d(4100)= 7.0977e-05
+  GMRES: d(4200)= 5.94631e-05
+  GMRES: d(4300)= 4.99035e-05
+  GMRES: d(4400)= 4.05112e-05
+  GMRES: d(4500)= 3.29972e-05
+  GMRES: d(4600)= 2.52138e-05
+  GMRES: d(4700)= 1.9337e-05
+  GMRES: d(4800)= 1.59495e-05
+  GMRES: d(4900)= 1.31689e-05
+  GMRES: d(5000)= 1.06776e-05
+  GMRES: d(5100)= 8.67123e-06
+  GMRES: d(5200)= 6.97981e-06
+  GMRES: d(5300)= 5.63536e-06
+  GMRES: d(5400)= 4.48997e-06
+  GMRES: d(5500)= 3.58621e-06
+  GMRES: d(5600)= 2.74605e-06
+  GMRES: d(5700)= 2.10893e-06
+  GMRES: d(5800)= 1.55785e-06
+  GMRES: d(5900)= 1.15037e-06
+  GMRES: d(6000)= 8.69423e-07
+  GMRES: d(6100)= 6.57933e-07
+  GMRES: d(6200)= 4.90361e-07
+  GMRES: d(6300)= 3.65979e-07
+  GMRES: d(6400)= 2.61633e-07
+  GMRES: d(6500)= 1.87365e-07
+  GMRES: d(6600)= 1.27246e-07
+  GMRES: d(6700)= 8.66701e-08
+  GMRES: d(6800)= 5.43304e-08
+  GMRES: d(6900)= 3.41541e-08
+  GMRES: d(7000)= 2.18332e-08
+  GMRES: d(7100)= 1.40219e-08
+  GMRES: d(7200)= 1.24007e-08
+  GMRES: d(7300)= 1.09791e-08
+  GMRES: d(7400)= 9.87313e-09
+  GMRES: d(7500)= 8.88688e-09
+  GMRES: d(7600)= 7.9976e-09
+  GMRES: d(7700)= 7.21038e-09
+  GMRES: d(7800)= 6.51286e-09
+  GMRES: d(7900)= 5.89553e-09
+  GMRES: d(8000)= 5.26919e-09
+  GMRES: d(8100)= 4.71447e-09
+  GMRES: d(8200)= 4.21859e-09
+  GMRES: d(8300)= 3.77669e-09
+  GMRES: d(8400)= 3.35816e-09
+  GMRES: d(8500)= 2.98619e-09
+  GMRES: d(8600)= 2.62053e-09
+  GMRES: d(8700)= 2.30012e-09
+  GMRES: d(8800)= 2.00203e-09
+  GMRES: d(8900)= 1.7476e-09
+  GMRES: d(9000)= 1.50895e-09
+  GMRES: d(9100)= 1.30511e-09
+  GMRES: d(9200)= 1.11786e-09
+  GMRES: d(9300)= 9.58412e-10
+  GMRES: d(9400)= 8.13565e-10
+  GMRES: d(9500)= 6.91479e-10
+  GMRES: d(9600)= 5.81009e-10
+  GMRES: d(9700)= 4.8848e-10
+  GMRES: d(9800)= 4.06234e-10
+  GMRES: d(9900)= 3.38144e-10
+  GMRES: d(10000)= 2.78864e-10 rate 0.998074 time 2:49.00 minutes
+ Newton: d(1)= 2.78873e-10 rate 4.23464e-09 time 2:50.00 minutes
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow              -1
+Outflow             1
+Flux Loss           -5.04938e-08
+Flux Error          2.8481e-10
+end program after 2:51.00 minutes on 4 procs at Tue Sep  3 15:49:00 2019
