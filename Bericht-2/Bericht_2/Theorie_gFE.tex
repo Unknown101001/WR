@@ -25,7 +25,7 @@ Betrachten wir noch einmal unser eigentliches analytisches Problem (LG: Laplace-
 	\end{cases}
 \end{gather*}
 ($ \kappa $ ist sym. pos. def.) und setzen den \defi{Fluss} zu 
-\[ q :\equiv - \kappa \nabla u. \]
+\[ q \coloneqq - \kappa \nabla u. \]
 Dann können wir unser analytisches Problem umschreiben zu 
 \begin{gather*}
 	\text{Bestimme } u:\overline{\Omega} \to \R \text{ und } q: u:\overline{\Omega} \to \R \text{ mit } \\
@@ -233,7 +233,7 @@ Weiter setzen wir noch
 Weiter bekommen wir unsere Seitenbasis auf $ K $ durch 
 \[ \psi_i^K = J_K^{-1}B_K \hat{\psi}_i \circ \varphi_K \ (i\in \{1,2,3\}) \]
 \begin{remark}
-	Es gilt: $ \hat{\psi}_i \cdot \hat{n} = 0 \iff \psi_i^K \cdot n = 0 $
+	\textcolor{red}{Es gilt: $ \hat{\psi}_i \cdot \hat{n} = 0 \iff \psi_i^K \cdot n^K = 0 $}
 \end{remark}
 Um  an unsere Seitenbasis auf $ \Omega \ \{\psi_j\}_{j = 1}^{\abs{\mathcal{F}}}$ zu kommen, benötigen wir noch die Übersetzung der globalen Seitennummerierung in einer Zelle $ K $ zur globalen Seitennummerierung
 \[ l:\mathcal{K}\times \{1,2,3\} \to \{1, \dots , \abs{\mathcal{F}} \}, (K,i) \mapsto l(K,i). \]
@@ -332,10 +332,17 @@ Dann löst $ (\underline{q}, \underline{u}) $ (L gFE) bzw. $ (q_h,u_h) $ (dgFE) 
 %\end{pmatrix} \] im Allgemeinen nicht symmetrisch positiv definit ist und somit das CG-Verfahren nicht zum Lösen verwendet werden kann. Durch die Hybridisierung erhalten wir ein LGS mit einer spd Matrix.
 
 Wir betrachten die Räume
+	\[W_K \coloneqq \left\{ \psi_K:K \to \R^2: \psi_K = J_K^{-1}  B_K \hat{\psi} \circ \varphi_K^{-1}, \hat{\psi} \in \hat{W} \right\} \]
 \[ W_\mathcal{K} \coloneqq \prod_{K \in \mathcal{K}} W_K, \qquad M_h \coloneqq \prod_{F \in \mathcal{F}} \mathbb{P}_0(F) \]
 \[ M_h(u_D) \coloneqq \left\{ \mu_h \in M_h:\forall  F \in \Gamma_D \oint_F \mu_h \diff a = \oint_F u_D \diff a  \right\}\]
 
-und untersuchen folgende Problem:
+\begin{remark}~
+	
+	$ \psi_h \in W_h \iff \big[ \psi_h \in W_{\mathcal{K}} \text{ und }  (\psi_{K_1} - \psi_{K_2}) \cdot n^F = 0 \ (F= \partial K_1 \cap \partial K_2 \in \mathcal{F}^{\circ})\big] $
+\end{remark}
+
+
+Und untersuchen folgende Problem:
 \begin{gather*}
 	\text{Bestimmme } (q_h,u_h, \lambda_h) \in W_\mathcal{K} \times Q_h \times M_h(u_D) \text{ mit}\\
 	\hFgFE\begin{dcases}
@@ -346,11 +353,37 @@ und untersuchen folgende Problem:
 	\text{für alle } K \in \mathcal{K}, \psi_K \in W_K  \text{ und } \mu_h \in M_h(0)
 \end{gather*}
 
-Dieses Problem ist äquivalent zu dem diskreten gemischten FE-Problem $ \dgFE $. \textcolor{red}{WARUM??} Für ein festes $ K \in \mathcal{K} $ ergibt sich mit der Wahl einer Basis von $ W_K $, $ Q_h $ und $ M_h $ eine Formulierung als LGS mit Nebenbedingung:
+Dieses Problem ist äquivalent zu dem diskreten gemischten FE-Problem $ \dgFE $: (vgl. Vorlesung)
+\begin{gather*}
+\text{Bestimme } (q_h,u_h) \in W_h(-g_N) \times Q_h \text{ mit}\\
+\dgFE\begin{cases}
+\int_{\Omega} \kappa ^{-1} q_h \cdot \psi_h \diff x \mkern-15mu &- \int_{\Omega} u_h \dive(\psi_h) \diff x = - \int_{\Gamma_D} u_D \psi_h \cdot n \diff a\\
+&- \int_{\Omega} \dive(q_h) \phi_h \diff x = 0
+\end{cases} \\
+\text{für alle } (\psi_h, \phi_h) \in W_h(0) \times Q_h
+\end{gather*}
+
+Für ein festes $ K \in \mathcal{K} $ ergibt sich mit der Wahl einer Basis von $ W_K $, $ Q_h $ und $ M_h $ 
+%\begin{align*}
+%	&W_K = \spann\{\psi_F \mid F \in \mathcal{F}_K \}  &&(\psi_F \cdot n^F)_{|F'} = \begin{cases}
+%		1 &F = F'\\
+%		0 &\text{sonst}
+%	\end{cases}\\
+%	&Q_h = \spann\{\eta_K \mid K \in \mathcal{K}  \}  &&{\eta_K}_{|K'} = \begin{cases}
+%	1 &, K = K'\\
+%	0 &,\text{sonst}
+%	\end{cases}\\
+%	&M_h = \spann \{ \nu_F \mid F \in \mathcal{F}_K \}  &&{\nu_F}_{|F'} = \begin{cases}
+%		1 &, F = F'\\
+%		0 &, \text{sonst}
+%	\end{cases}  
+%\end{align*}
+ 
+eine Formulierung als LGS mit Nebenbedingung:
 \begin{gather*}
 	\text{Bestimme } \ubar{q}_K, \ubar{u}_h \text{ und } \ubar{\lambda}_K \text{ mit}\\
-	\begin{cases}
-		\begin{pmatrix}
+	\begin{dcases}
+		(1) \begin{pmatrix}
 			\underline{A}_K & \underline{B}_K \\
 			\underline{B}_K^T & 0
 		\end{pmatrix}
@@ -358,21 +391,22 @@ Dieses Problem ist äquivalent zu dem diskreten gemischten FE-Problem $ \dgFE $.
 			\ubar{q}_K\\
 			\ubar{u}_K
 		\end{pmatrix}
-		= \begin{pmatrix}
+		\mkern-16mu&= \begin{pmatrix}
 			\underline{c} \, \ubar{\lambda}_K \\
 			0
 		\end{pmatrix}\\
-		\qquad \quad \sum_{K \in \mathcal{K}} \underline{R}_K^T \ubar{q}_K = \ubar{b}_K		
-	\end{cases}
+		(2) \sum_{K \in \mathcal{K}}  \ubar{\mu}_K^T \ubar{C}_K \ubar{q}_K \mkern-16mu&= \sum_{K \in \mathcal{K}: \mathcal{F}_K\cap \Gamma_N \ne \emptyset} \ubar{\mu}_K^T \ubar{b}_K		
+	\end{dcases}\\
+	\text{für alle } \ubar{\mu} \text{ mit } \ubar{\mu}[F] = 0 \text{ für } F \in \Gamma_D \cap \mathcal{F}
 \end{gather*}  
-Wie üblich sind $ \ubar{q}_K, \underline{q}_K, \ubar{u}_h \text{ und } \ubar{\lambda}_K $ Koordinatenvektoren von 
-
-Mit dem Schurkomplement können wir auch noch die Nebenbedingung im LGS unterbringen und erhalten ein globales System:
+Wie üblich sind $ \ubar{q}_K, \ubar{u}_h \text{ und } \ubar{\lambda}_K $ Koordinatenvektoren von $ q_h, u_h \text{ und } \lambda_h $\\
+\textcolor{red}{WIE KOMMT MAN AUF DAS GLOBALE SYSTEM??}
+Sobald wir $ \ubar{\lambda}_k $ bestimmen können, können wir auch das obere LGS lösen. Um $ \ubar{\lambda}_k $ zu erhalten lösen wir das globales System:
 \begin{gather*}
-	\underline{S} \, \underline{\lambda} = \underline{b}\\
-	\text{wobei } \underline{\lambda} = \sum_{K \in \mathcal{K}} R_K \lambda_K
+	\underline{S} \, \underline{\lambda} = \underline{b}
 \end{gather*}
-	
+und bekommen somit $ \ubar{\lambda}_k $ über die Restriktionen
+\[ \ubar{\lambda} = \sum_{K \in \mathcal{K}} \ubar{R}_K \ubar{\lambda}_K .\]
 
 
 
