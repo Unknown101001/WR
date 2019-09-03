@@ -1,0 +1,8 @@
+FEM_lvl=0_disc=linear;FEM_lvl=0_disc=serendipity;FEM_lvl=1_disc=linear;FEM_lvl=1_disc=serendipity;FEM_lvl=2_disc=linear;FEM_lvl=2_disc=serendipity;FEM_lvl=3_disc=linear;FEM_lvl=3_disc=serendipity
+289;1072;1072;4072;4072;15808;15808;62224
+-2.28269;-1.84244;-2.04055;-1.61105;-1.81027;-1.40436;-1.57828;-1.26234
+2.27662;1.82113;2.02767;1.6011;1.79743;1.39884;1.56827;1.25912
+1.44483;0.923449;1.20341;0.767125;0.983003;0.681347;0.832278;0.605943
+-0.00606726;-0.021308;-0.0128817;-0.00994833;-0.0128437;-0.00551915;-0.0100086;-0.00321882
+0.33;0.33;0.55;0.80;1.49;2.13;5.46;30.85
+seconds;seconds;seconds;seconds;seconds;seconds;seconds;seconds
