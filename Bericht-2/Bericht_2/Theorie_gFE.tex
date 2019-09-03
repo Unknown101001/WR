@@ -323,9 +323,6 @@ Dann löst $ (\underline{q}, \underline{u}) $ (L gFE) bzw. $ (q_h,u_h) $ (dgFE) 
 
 \subsection{Hybridisierung}
 
-%TODO
-\textcolor{red}{AUSFÜHRLICHER!!}
-
 %Beim Lösen von (uL gFE) gibt es das Problem, dass die Matrix \[ \begin{pmatrix}
 %\underline{A} &\underline{B}^T\\
 %\underline{B} &0
@@ -379,34 +376,75 @@ Für ein festes $ K \in \mathcal{K} $ ergibt sich mit der Wahl einer Basis von $
 %	\end{cases}  
 %\end{align*}
  
-eine Formulierung als LGS mit Nebenbedingung:
+eine Formulierung als LGS mit Nebenbedingung, wobei $ \ubar{q}_K \coloneqq \ubar{R}_K \ubar{q}, \ \ubar{u}_K \coloneqq \ubar{R}_K \ubar{u} $
 \begin{gather*}
-	\text{Bestimme } \ubar{q}_K, \ubar{u}_h \text{ und } \ubar{\lambda}_K \text{ mit}\\
+	\text{Bestimme } \ubar{q}, \ubar{u} \text{ und } \ubar{\lambda} \text{ mit}\\
 	\begin{dcases}
 		(1) \begin{pmatrix}
-			\underline{A}_K & \underline{B}_K \\
-			\underline{B}_K^T & 0
+			\ubar{A}_K & \ubar{B}_K \\
+			\ubar{B}_K^T & 0
 		\end{pmatrix}
 		\begin{pmatrix}
 			\ubar{q}_K\\
 			\ubar{u}_K
 		\end{pmatrix}
 		\mkern-16mu&= \begin{pmatrix}
-			\underline{c} \, \ubar{\lambda}_K \\
+			- \ubar{C}_K \, \ubar{R}_K \ubar{\lambda} \\
 			0
 		\end{pmatrix}\\
-		(2) \sum_{K \in \mathcal{K}}  \ubar{\mu}_K^T \ubar{C}_K \ubar{q}_K \mkern-16mu&= \sum_{K \in \mathcal{K}: \mathcal{F}_K\cap \Gamma_N \ne \emptyset} \ubar{\mu}_K^T \ubar{b}_K		
+		(2) \sum_{K \in \mathcal{K}}  (\ubar{R}_K \ubar{\mu})^T \ubar{C}_K \ubar{q}_K \mkern-16mu&= \ubar{\mu}^T \ubar{b}		
 	\end{dcases}\\
 	\text{für alle } \ubar{\mu} \text{ mit } \ubar{\mu}[F] = 0 \text{ für } F \in \Gamma_D \cap \mathcal{F}
-\end{gather*}  
-Wie üblich sind $ \ubar{q}_K, \ubar{u}_h \text{ und } \ubar{\lambda}_K $ Koordinatenvektoren von $ q_h, u_h \text{ und } \lambda_h $\\
-\textcolor{red}{WIE KOMMT MAN AUF DAS GLOBALE SYSTEM??}
-Sobald wir $ \ubar{\lambda}_k $ bestimmen können, können wir auch das obere LGS lösen. Um $ \ubar{\lambda}_k $ zu erhalten lösen wir das globales System:
-\begin{gather*}
-	\underline{S} \, \underline{\lambda} = \underline{b}
 \end{gather*}
-und bekommen somit $ \ubar{\lambda}_k $ über die Restriktionen
-\[ \ubar{\lambda} = \sum_{K \in \mathcal{K}} \ubar{R}_K \ubar{\lambda}_K .\]
+
+\begin{gather*}
+	\left(
+		\begin{array}{c}
+		1\\ 1 \\ \vdots \\ 1 \\ 1\\ \ubar{\mu}
+		\end{array}
+	\right)^T
+	\underbrace{\left(
+	\begin{array}{ccccc|c}
+	\ubar{A}_{K_1} & \ubar{B}_{K_1}&&&& \ubar{C}_{K_1} \ubar{R}_{K_1}\\
+	\ubar{B}_{K_1} & 0 &&&& 0\\
+	&& \ubar{A}_{K_2} & \ubar{B}_{K_2} && \ubar{C}_{K_2} \ubar{R}_{K_2}\\
+	 &  & \ubar{B}_{K_2} & 0 && 0\\
+	 &  &  &  &\ddots &\\
+	\hline
+	\ubar{R}_{K_1}^T \ubar{C}_{K_1}^T& 0 & \ubar{R}_{K_2}^T \ubar{C}_{K_2}^T& 0& &0 \\
+	\end{array}
+	\right)}_{\eqqcolon \left( \begin{array}{c|c}
+	\ubar{D} & \ubar{E}\\
+	\hline
+	\ubar{E}^T & 0
+	\end{array} \right)}
+	\underbrace{\left(
+	\begin{array}{c}
+		\ubar{q}_{K_1}\\ \ubar{u}_{K_1} \\ \ubar{q}_{K_2}\\ \ubar{u}_{K_2} \\ \vdots \\ \ubar{\lambda}
+	\end{array}
+	\right)}_{\eqqcolon \left( \begin{array}{c}
+		\left(
+		\begin{array}{c}
+			\ubar{q}_{K_i}\\ \ubar{u}_{K_i}
+		\end{array}
+		\right)_{K_i \in \mathcal{K}} \\ \ubar{\lambda} 
+	\end{array}\right)} = 
+	\left(
+	\begin{array}{c}
+	0\\ 0 \\ \vdots \\ 0 \\ 0\\ \ubar{\mu}^T \ubar{b}
+	\end{array}
+	\right)
+\end{gather*}
+Mit dem Schurkomplement $ \ubar{S} \coloneqq \ubar{E}^T \ubar{D}^{-1} \ubar{E} $ folgt
+\[ \ubar{\mu}^T \ubar{S} \, \ubar{\lambda} = \ubar{\mu}^T \ubar{b} 	\text{ für alle } \ubar{\mu} \text{ mit } \ubar{\mu}[F] = 0 \text{ für } F \in \Gamma_D \cap \mathcal{F} \]
+
+Sobald wir $ \ubar{\lambda}_k \coloneqq \ubar{R}_K \ubar{\lambda}$ bestimmt haben, können wir auch das obere LGS (1) lösen um $ \ubar{q}_K $ und $ \ubar{u}_K $ zu erhalten.
+% Um $ \ubar{\lambda}_k $ zu erhalten lösen wir das globales System:
+%\begin{gather*}
+%	\underline{S} \, \underline{\lambda} = \underline{b}
+%\end{gather*}
+%und bekommen somit $ \ubar{\lambda}_k $ über die Restriktionen
+%\[ \ubar{\lambda} = \sum_{K \in \mathcal{K}} \ubar{R}_K \ubar{\lambda}_K .\]
 
 
 
