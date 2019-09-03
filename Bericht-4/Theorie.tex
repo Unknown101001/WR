@@ -115,7 +115,7 @@ Zunächst die semi-diskrete \defi{Galerkin-Approximation} (für festes $ t \in [
 	\sdKDR\begin{cases}
 		(M_h \, \partial_t c_h + A_h \, c_h, \phi_h)_\Omega = (R_h(c_h), \phi_h)_\Omega
 	\end{cases}\\
-	\text{ für alle Testfunktionen} \phi_h \in V_h(0) 
+	\text{ für alle Testfunktionen } \phi_h \in V_h(0) 
 \end{gather*}
 
 beziehungsweise in Matrizenschreibweise 
@@ -135,24 +135,25 @@ Nun diskretisieren wir mit dem impl. Euler-Verfahren auch in der Zeit und erhalt
 		&\text{und } J_h^n \coloneqq D F_h^n
 	\end{align*} 
 \end{define}
+Mithilfe des Newton-Verfahrens kann dann eine Nullstelle von $F_h^n$ berechnet werden.
 
-\begin{Satz}(Lösbarkeit von $ \vdKDR $ und Konvergenz des Verfahrens)\\
-	Sei $ \kappa_c $ uniform positiv definit, \unklar{$ r = \frac{1}{\Delta t} - R' $ }monoton fallend in der dritten Komponente (also $ \partial_3 r \le 0 $), weiter gelte $ q \cdot n \ge 0 \text{ auf } \GammaN $ und $ \alpha_R + \frac{1}{2} q \cdot n \ge 0 \text{ auf } \GammaR $.
-	
-	Dann hat $ \vdKDR $ eine eindeutige Lösung und die Jacobi-Matrix $ J_h^n $ ist positiv definit.
-	
-\end{Satz}
+%\begin{Satz}(Lösbarkeit von $ \vdKDR $ und Konvergenz des Verfahrens)\\
+%	Sei $ \kappa_c $ uniform positiv definit, \unklar{$ r = \frac{1}{\Delta t} - R' $ }monoton fallend in der dritten Komponente (also $ \partial_3 r \le 0 $), weiter gelte $ q \cdot n \ge 0 \text{ auf } \GammaN $ und $ \alpha_R + \frac{1}{2} q \cdot n \ge 0 \text{ auf } \GammaR $.
+%	
+%	Dann hat $ \vdKDR $ eine eindeutige Lösung und die Jacobi-Matrix $ J_h^n $ ist positiv definit.
+%	
+%\end{Satz}
 
-\begin{remark}\
-	\begin{enumerate}
-		\item Die ODE $\underline{M} \, \underline{\dot{c}} + \underline{A} \, \underline{c} = \underline{R}(\underline{c})$ ist dissipativ, daher sind B-stabile Runge-Kutter-Verfahren geeignet
-		\item Für $ \partial_3 r > 0 $ und $ R' $ beschränkt, konvergiert das \unklar{Newton}-Verfahren mit $ \frac{1}{\Delta t} - \partial_3 r >0$ $ \implies$ Zeitschrittbeschränkung
-	\end{enumerate}
-\end{remark}
+%\begin{remark}\
+%	\begin{enumerate}
+%		\item Die ODE $\underline{M} \, \underline{\dot{c}} + \underline{A} \, \underline{c} = \underline{R}(\underline{c})$ ist dissipativ, daher sind B-stabile Runge-Kutter-Verfahren geeignet
+%		\item Für $ \partial_3 r > 0 $ und $ R' $ beschränkt, konvergiert das \unklar{Newton}-Verfahren mit $ \frac{1}{\Delta t} - \partial_3 r >0$ $ \implies$ Zeitschrittbeschränkung
+%	\end{enumerate}
+%\end{remark}
 
 \subsection{Analyse für verschwindende Diffusion: $ \kappa_c \to 0 $}
 \label{Analyse für verschwindende Diffusion}
-Wir betrachten die verschwindende Diffusion ($ \kappa_c \ to 0 $) nur im Spezialfall
+Wir betrachten die verschwindende Diffusion ($ \kappa_c \to 0 $) nur im Spezialfall
 \begin{itemize}
 	\item  $ \exists \kappa_0 > 0 (const.): \kappa_c = \kappa_0 \, I_n $ (stationärer Diffusion)
 	\item $ \GammaR = \Gammaout $
@@ -171,44 +172,44 @@ und erhalten somit das Problem
 	\end{cases}
 \end{gather*}
 
-\begin{examples}(in 1D)
-	\label{1D-Bsp}
+%\begin{examples}(in 1D)
+%	\label{1D-Bsp}
+%
+%	Mit $ \Omega = (0,1), q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$. Außerdem sei $ \kappa_0 $ sehr klein ($ \kappa_0 << 1 $).
+%	
+%	Es gilt für $ \sDKDR $
+%	\begin{gather*}
+%	\text{Bestimme }  c:[0,T] \times (0,1) \to \R \text{, sodass gilt}\\
+%	\begin{cases}
+%		-\kappa_0 \, c'' + c' = 0 \\
+%		c(0) = 1  \\
+%		\kappa_0 c'(1) + c(1) = 0
+%	\end{cases}
+%	\end{gather*}
+%	
+%	und für die lineare Transportgleichung $ \lTG $
+%	\begin{gather}
+%		\text{Bestimme } \rho:[0,T] \times (0,1) \to \R \text{, sodass gilt}\\
+%		\begin{cases}
+%			\rho' = 0\\
+%			\rho(0) = 1
+%		\end{cases}
+%	\end{gather}
+%	
+%	Wir erhalten die Lösungen
+%	\begin{align*}
+%		&c(x) = a_1 + a_2 \exp(\frac{x}{\kappa_0}) \text{ mit } a_1 = \frac{2}{2 - \exp(- \frac{1}{\kappa_0})} \text{ und } a_2 = \frac{1}{1 - 2 \exp(\frac{1}{\kappa_0})}\\
+%		&\rho(x) = 1
+%	\end{align*}
+%\end{examples}
 
-	Mit $ \Omega = (0,1), q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$. Außerdem sei $ \kappa_0 $ sehr klein ($ \kappa_0 << 1 $).
-	
-	Es gilt für $ \sDKDR $
-	\begin{gather*}
-	\text{Bestimme }  c:[0,T] \times (0,1) \to \R \text{, sodass gilt}\\
-	\begin{cases}
-		-\kappa_0 \, c'' + c' = 0 \\
-		c(0) = 1  \\
-		\kappa_0 c'(1) + c(1) = 0
-	\end{cases}
-	\end{gather*}
-	
-	und für die lineare Transportgleichung $ \lTG $
-	\begin{gather}
-		\text{Bestimme } \rho:[0,T] \times (0,1) \to \R \text{, sodass gilt}\\
-		\begin{cases}
-			\rho' = 0\\
-			\rho(0) = 1
-		\end{cases}
-	\end{gather}
-	
-	Wir erhalten die Lösungen
-	\begin{align*}
-		&c(x) = a_1 + a_2 \exp(\frac{x}{\kappa_0}) \text{ mit } a_1 = \frac{2}{2 - \exp(- \frac{1}{\kappa_0})} \text{ und } a_2 = \frac{1}{1 - 2 \exp(\frac{1}{\kappa_0})}\\
-		&\rho(x) = 1
-	\end{align*}
-\end{examples}
-
-\begin{Lemma}(A-Priori-Schranke)
-	
-	Es gilt
-	\begin{align*}
-		\int_\Omega \abs{c(T)}^2 \diff x \leq \int_\Omega \abs{c_0}^2 + \int_{0}^{T} \left( \int_{\GammaD} c_D^2 \abs{q \cdot n} \diff a + 2 \int_{\GammaD} \kappa_0 \nabla c \cdot n \, c_D \diff a\right) \diff t
-	\end{align*}
-\end{Lemma}
+%\begin{Lemma}(A-Priori-Schranke)
+%	
+%	Es gilt
+%	\begin{align*}
+%		\int_\Omega \abs{c(T)}^2 \diff x \leq \int_\Omega \abs{c_0}^2 + \int_{0}^{T} \left( \int_{\GammaD} c_D^2 \abs{q \cdot n} \diff a + 2 \int_{\GammaD} \kappa_0 \nabla c \cdot n \, c_D \diff a\right) \diff t
+%	\end{align*}
+%\end{Lemma}
 
 \begin{Lemma}(Konvergenz für $ \kappa_0 \to 0 $)
 	
@@ -226,11 +227,11 @@ und erhalten somit das Problem
 \end{Korollar}
 
 \subsection{Streamline-Upwind-Petrov-Galerkin}
-In diesem Abschnitt wollen wir eine Lösungsmethode für sehr kleine Diffusion finden. Wir betrachten weiterhin nur stationäre Diffusion (d.h. $ \exists \kappa_0 > 0: \kappa_c \equiv \kappa_0 I_n $) und Linearisieren die Reaktion (d.h. $ R(c) \approx r c \text{ mit } \unklar{r =  \frac{1}{\Delta t} - R'}$)
+In diesem Abschnitt wollen wir eine Lösungsmethode für sehr kleine Diffusion finden. Wir betrachten weiterhin nur stationäre Diffusion (d.h. $ \exists \kappa_0 > 0: \kappa_c \equiv \kappa_0 I_n $) und linearisieren die Reaktion (d.h. $ R(c) \approx r c$).
 
 Im vorherigen Abschnitt \ref{Analyse für verschwindende Diffusion} haben wir bereits gesehen, dass unter gewissen Voraussetzungen die Lösung von $ \sDKDR $ gegen die Lösung der linearen Transportgleichung $ \lTG $ konvergiert (für $ \kappa_0 \to 0 $). Daher liegt es nahe für kleine $ \kappa_0  $ ähnliche Ideen zu verwenden (auch wenn durch $ \kappa_0 \neq 0 $ die Ideen nicht direkt übertragen werden können).
 
-Wir haben bei der \enquote{Finite-Volumen} bzw. \enquote{dG}-Methode gesehen, das die Wahl von unstetigen (somit inbs. nicht-konformen) Approximationsräumen durchaus sinnvoll sein kann. Jedoch werden wir im folgenden nur die Testfunktionen unstetig und den Lösungsraum konform wählen.
+Wir haben bei der \enquote{Finite-Volumen} bzw. \enquote{dG}-Methode bisher stets übereinstimmende Test- und Lösungsräume verwendet. Nun werden wir einen vom Lösungsraum verschiedenen Testraum wählen.
 
 Wir betrachten nun folgendes Problem:
 \begin{gather*}
@@ -244,60 +245,69 @@ Wir betrachten nun folgendes Problem:
 \end{gather*}
 Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 
-\begin{examples}(In der Situation von Beispiel \ref{1D-Bsp})
-	
-	Wir betrachten wieder $ \Omega = (0,1) $ mit der äquidistanten \enquote{Triangulierung}
-	 \[ \mathcal{K} \coloneqq \left\{K_j\mid j \in \{1, \dots ,N\}\right\} \text{ wobei } K_j \coloneqq (x_{j-1}, x_j), x_j \coloneqq j \cdot h \text{ und } h \coloneqq \frac{1}{N}.\]
-	 
-	 \begin{itemize}
-	 	\item \underline{Finite Elemente,$ \kappa_0 << h $ und \enquote{central flux}:}
-	 	
-	 	Weiter arbeiten wir mit der Eckenbasis/\enquote{Hütchenfunktionen}:
-	 	\[ \lambda_j(x) \coloneqq \max\left\{ 0, 1 - \frac{\abs{x-x_j}}{h} \right\} \quad (j \in [N])\]
-	 	und 
-	 	\begin{align*}
-		 	A[j,k] \coloneqq& \int_{0}^{1} (\kappa_0 \lambda_k' \lambda_j' + \lambda_k \lambda_j) \diff x\\
-		 	=& \begin{dcases}
-			 	\frac{\kappa_0}{h^2}2h &\text{, für } k = j\\
-			 	-\frac{\kappa_0}{h^2} h \pm \frac{1}{2h} h &\text{, für } k = j \pm 1 \\
-			 	0 &\text{, sonst}
-		 	\end{dcases} \quad (j,k\in[N])
-	 	\end{align*}
-	 	
-	 	Somit ergibt sich
-	 	\[\kappa_0 << 1 \implies A \approx \frac{1}{2} \begin{pmatrix}
-	 	0& 1& & \\
-	 	-1& \ddots&\ddots & \\
-	 	& \ddots& \ddots& 1\\
-	 	& & -1& 0\\
-	 	\end{pmatrix} \]
-	 	
-	 	\item \underline{Finite Volumen. $ \kappa_0 = 0 $ und \enquote{upwind flux}:}
-	 	
-	 	Es kommt raus:
-	 	\[A_0 =  \begin{pmatrix}
-	 	1& & & \\
-	 	-1& \ddots& & \\
-	 	& \ddots& \ddots& \\
-	 	& & -1& 1\\
-	 	\end{pmatrix}  \]
-	 \end{itemize}
-\end{examples}
+%\begin{examples}(1-D Beispiel)~
+%	
+%	Wir betrachten $ \Omega = (0,1) $ mit äquidistanter Triangulierung$, q \equiv 1, \kappa_0 > 0, \GammaD = \{0\} \text{ und } \GammaR = \{1\}$. Außerdem sei $ \kappa_0 $ sehr klein ($ \kappa_0 << 1 $).
+%		\begin{gather*}
+%		\text{Bestimme }  c:[0,T] \times (0,1) \to \R \text{, sodass gilt}\\
+%		\begin{cases}
+%			-\kappa_0 \, c'' + c' = 0 \\
+%			c(0) = 1  \\
+%			\kappa_0 c'(1) + c(1) = 0
+%		\end{cases}
+%		\end{gather*}
+%	
+%	 \[ \mathcal{K} \coloneqq \left\{K_j\mid j \in \{1, \dots ,N\}\right\} \text{ wobei } K_j \coloneqq (x_{j-1}, x_j), x_j \coloneqq j \cdot h \text{ und } h \coloneqq \frac{1}{N}.\]
+%	 
+%	 \begin{itemize}
+%	 	\item \underline{Finite Elemente,$ \kappa_0 << h $ und \enquote{central flux}:}
+%	 	
+%	 	Weiter arbeiten wir mit der Eckenbasis/\enquote{Hütchenfunktionen}:
+%	 	\[ \lambda_j(x) \coloneqq \max\left\{ 0, 1 - \frac{\abs{x-x_j}}{h} \right\} \quad (j \in [N])\]
+%	 	und 
+%	 	\begin{align*}
+%		 	A[j,k] \coloneqq& \int_{0}^{1} (\kappa_0 \lambda_k' \lambda_j' + \lambda_k \lambda_j) \diff x\\
+%		 	=& \begin{dcases}
+%			 	\frac{\kappa_0}{h^2}2h &\text{, für } k = j\\
+%			 	-\frac{\kappa_0}{h^2} h \pm \frac{1}{2h} h &\text{, für } k = j \pm 1 \\
+%			 	0 &\text{, sonst}
+%		 	\end{dcases} \quad (j,k\in[N])
+%	 	\end{align*}
+%	 	
+%	 	Somit ergibt sich
+%	 	\[\kappa_0 << 1 \implies A \approx \frac{1}{2} \begin{pmatrix}
+%	 	0& 1& & \\
+%	 	-1& \ddots&\ddots & \\
+%	 	& \ddots& \ddots& 1\\
+%	 	& & -1& 0\\
+%	 	\end{pmatrix} \]
+%	 	
+%	 	\item \underline{Finite Volumen. $ \kappa_0 = 0 $ und \enquote{upwind flux}:}
+%	 	
+%	 	Es kommt raus:
+%	 	\[A_0 =  \begin{pmatrix}
+%	 	1& & & \\
+%	 	-1& \ddots& & \\
+%	 	& \ddots& \ddots& \\
+%	 	& & -1& 1\\
+%	 	\end{pmatrix}  \]
+%	 \end{itemize}
+%\end{examples}
 
-\underline{\textbf{Beobachtung:}}
-\begin{enumerate}
-	\item Die Lösung mit \enquote{central flux} kann stark oszillieren.
-	\item Die Lösung mit \enquote{uqwind} ist monoton, die Matrix $ A_0 $ ist eine M-Matrix, also $ A_0^{-1}[j,k]~\geq~0 $ für alle $ j,k $.
-	\item Die Differenz
-	\[ A_0 - A \approx \frac{1}{2}
-	\begin{pmatrix} 
-	2 & -1 & & 0\\
-	-1& \ddots &\ddots & \\
-	  & \ddots& \ddots & -1\\	
-	0 & & -1 & 2\\		
-	\end{pmatrix} \] 
-	entspricht einer Diffusionsmatrix $ \approx> $ \enquote{upwind} = \enquote{central flux} + \enquote{diffusion}
-\end{enumerate}
+%\underline{\textbf{Beobachtung:}}
+%\begin{enumerate}
+%	\item Die Lösung mit \enquote{central flux} kann stark oszillieren.
+%	\item Die Lösung mit \enquote{upwind} ist monoton, die Matrix $ A_0 $ ist eine M-Matrix, also $ A_0^{-1}[j,k]~\geq~0 $ für alle $ j,k $.
+%	\item Die Differenz
+%	\[ A_0 - A \approx \frac{1}{2}
+%	\begin{pmatrix} 
+%	2 & -1 & & 0\\
+%	-1& \ddots &\ddots & \\
+%	  & \ddots& \ddots & -1\\	
+%	0 & & -1 & 2\\		
+%	\end{pmatrix} \] 
+%	entspricht einer Diffusionsmatrix $ \approx> $ \enquote{upwind} = \enquote{central flux} + \enquote{diffusion}
+%\end{enumerate}
 
 \subsubsection{Variationsformulierung}
 \begin{gather*}
@@ -315,19 +325,22 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 \underline{\textbf{Wahl der Lösungs- /Testräume:}}
 \begin{itemize}
 	\item \defi{Galerkin}: Lösungs- und Testraum gleich\\ $ c_h, \phi_h \in V_h$
-	\item \defi{Petrov-Galerkin}: Lösungsraum und Testraum unterschiedlich\\ Lösungsfunktion $ c_h \in V_h $ und Testfunktion $ \phi_h + \delta_K q \cdot \nabla \phi_h $ auf $ K \in \mathcal{K} $ und mit $ \delta_K > 0 $.
+	\item \defi{Petrov-Galerkin}: Lösungsraum und Testraum unterschiedlich\\ Lösungsfunktion $ c_h \in V_h $ und Testfunktion $\tilde{\phi_h}|_K  = \phi_h + \delta_K q \cdot \nabla \phi_h $ auf $ K \in \mathcal{K} $ und mit $ \delta_K > 0 $. Weiter ist $\tilde{\phi_h} \coloneqq \sum\limits_{K \in \mathcal{K}} \tilde{\phi_h}|_K \cdot \mathbbm{1}_K$.
 \end{itemize}
 
-\begin{define}(Approximierte (Bi-)Linearform)
+\begin{define}(Approximierte Operatoren)
 	\begin{align*}
-		\mathcal{A}_h(c_h, \phi_h) &\coloneqq \mathcal{A}(c_h, \phi_h) + \sum_{K \in \mathcal{K}} \delta_K + \left(-\dive(\kappa_0 \nabla c_h) + q \nabla c_h + r c_h, q \cdot \nabla \phi_h\right)_K \\
-		b_h(\phi_h) &\coloneqq b(\phi_h) + \sum_{K \in \mathcal{K}} \delta_K \left( f, q\cdot \nabla \phi_h \right)_K
+		\mathcal{A}_h(c_h, \phi_h) &\coloneqq 
+		%\mathcal{A}(c_h, \phi_h) + \sum_{K \in \mathcal{K}} \delta_K  \left(-\dive(\kappa_0 \nabla c_h) + q \nabla c_h + r c_h, q \cdot \nabla \phi_h\right)_K = 
+		\mathcal{A}(c_h,\tilde{\phi_h}) \\
+		b_h(\phi_h) &\coloneqq  b(\tilde{\phi_h})
+		%b(\phi_h) + \sum_{K \in \mathcal{K}} \delta_K \left( f, q\cdot \nabla \phi_h \right)_K
 	\end{align*}
 \end{define}
 
-\begin{define}(\defi{P\'{e}clet-Zahl})
-	\[ \Pe_K \coloneqq \frac{h \, \norm{q}_{\infty, K}}{\norm{\kappa}_{\infty, K}} \]
-\end{define}
+%\begin{define}(\defi{P\'{e}clet-Zahl})
+%	\[ \Pe_K \coloneqq \frac{h \, \norm{q}_{\infty, K}}{\norm{\kappa}_{\infty, K}} \]
+%\end{define}
 
 \begin{define}(\defi{Streamline-Diffusion-Norm})
 	 \[ \norm{\phi_h}_{\SD} \coloneqq \left( \frac{\kappa_0}{2} \norm{\nabla \phi_h}_\Omega^2 + \frac{\unklar{r_0}}{2} \norm{\phi_h}_\Omega^2+ \sum_{K \in \mathcal{K}} \frac{\delta_K}{2} \norm{q \cdot \nabla \phi}_K^2  \right)^{1/2}  \]
@@ -344,14 +357,19 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 \begin{remark}\
 	\begin{enumerate}[label=\Alph*)]
 		\item $ \CinV $ hängt \textbf{nur} vom Gitter ab und ist bei uniformer Verfeinerung beschränkt.
-		\item Für $ \Pe_K < 1 $ ist $ \delta_K \in \mathcal{O}(h_K) $.
+%		\item Für $ \Pe_K < 1 $ ist $ \delta_K \in \mathcal{O}(h_K) $.
 		\item \textbf{Anwendung}: Wenn $ c_D $ nach $ \overline{\Omega} $ fortsetzbar ist, so ist
-		\begin{gather*}
-			\begin{rcases}
-				\mathcal{A}_h(\underbrace{c_h-c_D}_{\in V_h(0)}, c_h - c_D ) \geq \norm{c_h - c_D}_{\SD}^2 \\
-				\abs{b_h(c_h-c_D)} \leq C(f,g_R, g_N) \norm{c_h - c_D}_{\SD}
-			\end{rcases} \implies \norm{c_h}_{\SD} \leq \norm{c_D}_{\SD} + C(f,g_R,g_N)\\
-			\implies A \coloneqq \left( \mathcal{A}_h(\lambda_j, \lambda_k) \right)_{j,k} \in \R{N \times N} \text{ ist positiv definit} \approx> \text{ Stabilität für } \kappa_0 \to 0.
-		\end{gather*}
+		\begin{align*}
+				&\mathcal{A}_h(\underbrace{c_h-c_D}_{\in V_h(0)}, c_h - c_D ) \geq \norm{c_h - c_D}_{\SD}^2 \\
+				&\abs{b_h(c_h-c_D)} \leq C(f,g_R, g_N) \norm{c_h - c_D}_{\SD}.
+	   \end{align*}
+	   Damit folgt
+	   \begin{align*}
+	        &\|c_h\|_{SD} - \|c_D\|_{SD} \le \left| \|c_h\|_{SD}- \| c_D\|_{SD} \right| \le \|c_h-c_D\|_{SD} \le C(f,g_R,g_N)\\ &\implies
+	        \norm{c_h}_{\SD} \leq \norm{c_D}_{\SD} + C(f,g_R,g_N)
+		\end{align*}
+		\begin{align*}
+				\approx> \text{ Stabilität für } \kappa_0 \to 0.
+		\end{align*}
 	\end{enumerate}
 \end{remark}
