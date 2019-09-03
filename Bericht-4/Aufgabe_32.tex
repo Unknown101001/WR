@@ -12,12 +12,11 @@ Diffusion $\to 0$. Zunächst sei dabei die Reaktionsrate $r=5$. Dabei werden wir
     \subfigure[Serendipity lv3] {\includegraphics[width=0.32\textwidth]{../Aufgabe27/c/serendipity_lvl=3_reaction=5_diffusion=1e-05/animation40.png}}
     \subfigure[SDV Delta 0.025]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=0.025_diffusion=1e-05/animation40.png}}
     \subfigure[SDV Delta 0.1]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=0.1_diffusion=1e-05/animation40.png}}  
-    \subfigure[SDV Delta 5]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=5_diffusion=1e-05/animation40.png}}
+    \subfigure[SDV Delta 1]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=1_diffusion=1e-05/animation40.png}}
 \end{figure}
 
 Wie wir anhand der Bilder zum Zeitpunkt $t=1$ erkennen können, eignen sich unsere bisherigen Verfahren (FEM und Serendipity) nicht für die sehr geringe Diffusion 0.00001. Im Gegensatz dazu steht das Streamline Diffusion Verfahren. Dabei erzeugen wir mithilfe von $\delta_K$ eine 'künstliche' Diffusion. Schon bei einem $\delta_K$ in der Größenordnung unserer Gitterweite ($\approx 0.025$)
-erhalten wir eine deutlich bessere Lösung, als zuvor noch mit den bisherigen Verfahren. Bei einem sehr großen Delta 
-($\approx 5$) sieht unsere Lösung glatt aus. Dies ist der Tatsache geschuldet, dass wir durch das große Delta auch eine große 'künstliche' Diffusion erzeugt haben. Noch deutlicher sieht man das bei noch geringeren Diffusionen:
+erhalten wir eine deutlich bessere Lösung, als zuvor noch mit den bisherigen Verfahren. Bei Delta $=1$ sieht unsere Lösung glatt aus. Dies ist der Tatsache geschuldet, dass wir durch das große Delta auch eine große 'künstliche' Diffusion erzeugt haben. Noch deutlicher sieht man das bei noch geringeren Diffusionen:
 
 \begin{figure}[H]
 	\centering
@@ -27,7 +26,7 @@ erhalten wir eine deutlich bessere Lösung, als zuvor noch mit den bisherigen Ve
 	\subfigure[Serendipity lv3] {\includegraphics[width=0.32\textwidth]{../Aufgabe27/c/serendipity_lvl=3_reaction=5_diffusion=1e-06/animation40.png}}
 	\subfigure[SDV Delta 0.025]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=0.025_diffusion=1e-06/animation40.png}}
 	\subfigure[SDV Delta 0.1]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=0.1_diffusion=1e-06/animation40.png}}  
-	\subfigure[SDV Delta 5]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=5_diffusion=1e-06/animation40.png}}
+	\subfigure[SDV Delta 1]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=1_diffusion=1e-06/animation40.png}}
 \end{figure}
 
 Insgesamt haben wir damit durch die unstetige Wahl der Testfunktionen im SDV bereits ein brauchbares Verfahren für das Problem Diffusion $\to 0$ gefunden, bei dem die bisherigen Verfahren  starke Oszillationen aufwiesen. 
@@ -42,7 +41,7 @@ Wir können nun noch für die Reaktionsrate $r=0$ unsere Lösungen der Konvektio
 	\subfigure[KDR Lösung mit Serendipity lv2]{\includegraphics[width=0.32\textwidth]{../Aufgabe27/serendipity_lvl=2_reaction=0_diffusion=1e-06/animation28.png}} \\
 	\subfigure[SDV Delta 0.025]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=0.025_diffusion=1e-06Reaktion=0/animation28.png}}
 	\subfigure[SDV Delta 0.1]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=0.1_diffusion=1e-06Reaktion=0/animation28.png}}  
-	\subfigure[SDV Delta 5]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=5_diffusion=1e-06Reaktion=0/animation28.png}}
+	\subfigure[SDV Delta 1]{\includegraphics[width=0.32\textwidth]{../Aufgabe32/delta=1_diffusion=1e-06Reaktion=0/animation28.png}}
 \end{figure}
 
 Man sieht allerdings, dass wir bei all unseren bisherigen Verfahren ein ähnliches Problem haben, wie beim Lösen des Transportproblems mit FVM: Die Lösung 'verwischt' relativ schnell. Beim Transportproblem hatten wir gesehen, dass wir diesem Problem durch den Einsatz des DGV beikommen können (siehe (a)).
