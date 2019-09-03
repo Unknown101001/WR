@@ -107,8 +107,7 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 	\end{enumerate}
 \end{Lemma}
 
-%TODO
-\textcolor{red}{IST LINEARE-TRANSPORT-GLEICHUNG ELLIPTISCH?}
+
 
 \subsection{Numerische Approximation}
 Ziel ist es nun eine \enquote{gute} Approximation für die schwache Lösung $ \rho $ von $ \swlTG $ zu finden. Dabei werden wir $ \rho $ zunächst im Raum diskretisieren,  um die semi-diskrete Lösung $ \rho_h $ zu erhalten. Anschließend diskretierien wir in der Zeit.
@@ -332,15 +331,14 @@ Wir wollen nun noch (kurz) auf das Discontinuous-Galerkin-Verfahren eingehen. Im
 Im Gegensatz zum Finite Volumen Verfahren wählen wir beim Discontinuous-Galerkin-Verfahren $\Pi_{K\in\mathcal{K}} \mathbb{P}_k $ mit $ k \geq 1 $. Es sei noch einmal, wie bereits beim Finite-Volumen-Verfahren, erwähnt, dass hierbei für die Elemente aus $Q_h$ keine Stetigkeit auf $\Omega$ gefordert wird und somit kein konformer Lösungs-/Ansatzraum vorliegt. \newline
 Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
 	\begin{align*}
-		(\partial_t \rho_h , \Phi_h)_{\Omega} &= -(\Psi(\rho_h),\nabla \Phi_h)_{\Omega}
+		(\partial_t \rho_h , \Phi_h)_{\Omega} &= (\Psi(\rho_h),\nabla \Phi_h)_{\Omega}
 		- \sum_{K \in \mathcal{K}}(\Psi^*(\rho_h),\Phi_h)_{\partial K \setminus \Gammain}
-		-(\Psi(\rho_{in}),\Phi_h)_{\Gammain} \\
-		&= \sum_{K \in \mathcal{K}} [ -( \dive \Psi (\rho_h),\Phi_h)_{K}
-		+ \sum_{ F \subset \partial K \setminus \Gammain} ((\Psi(\rho_h)-\Psi ^* (\rho_h)) \cdot n_k , \Phi_h)_F ] \\		
-		&\qquad +(\Psi(\rho_h) - \Psi(\rho_{in}),\Phi_h)_{\Gammain} 
-		+ ( \Psi(\rho_h) \cdot n , \Phi )_{ \Gammain } \\
-		&\eqqcolon  (A_h \rho_h, \Phi_h )_{\Omega} + (\rho_{in} \mid qn \mid ,\Phi_h)_{\Gammain} \\
-		&\eqqcolon (A_h \rho_h, \Phi_h )_{\Omega} + (b_h,\Phi_h)_{\Gammain}
+		-(\Psi(\rho_{in}) \cdot n ,\Phi_h)_{\Gammain} \\
+		&= \underbrace{\sum_{K \in \mathcal{K}} \left[ -( \dive \Psi (\rho_h),\Phi_h)_{K}
+		+ \sum_{ F \subset \partial K \setminus \Gammain} ((\Psi(\rho_h)-\Psi ^* (\rho_h)) \cdot n_k , \Phi_h)_F \right]}_{\eqqcolon  (A_h \rho_h, \Phi_h )_{\Omega}} \\		
+		&\qquad \underbrace{ +( (\Psi(\rho_h) - \Psi(\rho_{in})) \cdot n,\Phi_h)_{\Gammain}}_{\eqqcolon(b_h,\Phi_h)_{\Gammain}}
+		 \\
+		&= (A_h \rho_h, \Phi_h )_{\Omega} + (b_h,\Phi_h)_{\Gammain}
 	\end{align*}  
 \begin{remark}
 	\begin{enumerate} 
