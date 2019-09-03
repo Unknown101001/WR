@@ -15,7 +15,7 @@ Aus der Physik erhalten wir wieder Bilanz- und Konstitutionsgleichungen:\\
 \underline{\textbf{Bilanzgleichung:}}
 \begin{gather*}
 \forall \ (t_0,t_1)\times K \subseteq [0,T] \times \Omega: \\
-\underbrace{\int_K \left( c(t_1,x) - c(t_0,x) \right) \diff x}_{\text{Konzentrationsänderung auf } K\text{ in } (t_0,t_1)} + \underbrace{\int_{t_0}^{t_1} \oint_{\partial K} \Psi(c) \cdot \nu \diff a \diff t }_{\text{Konzentrationsänderung auf dem Rand } \partial K \text{ in } (t_0,t_1) } \\
+\underbrace{\int_K \left( c(t_1,x) - c(t_0,x) \right) \diff x}_{\text{Konzentrationsänderung auf } K\text{ in } (t_0,t_1)} + \underbrace{\int_{t_0}^{t_1} \int_{\partial K} \Psi(c) \cdot \nu \diff a \diff t }_{\text{Konzentrationsänderung auf dem Rand } \partial K \text{ in } (t_0,t_1) } \\
 = \underbrace{\int_{t_0}^{t_1} \int_K r(t,x,c(t,x)) \diff x \diff t}_{\text{Reaktion (Produktion und Abbau) auf } K \text{ in } (t_0,t_1) }
 \end{gather*}
 \underline{\textbf{Konstitutionsgl.:}}
@@ -67,7 +67,7 @@ Wie sonst geben wir uns auch Anfangs- und Randwerte in Form von $ c_0, c_D, g_N,
 	
 	Dann gilt $ \forall t \in (0,T) $
 	\begin{gather*}
-		\int_\Omega \left( \partial_t c \, \phi + \kappa_c \nabla c \cdot \nabla \phi + \nabla c \cdot q \phi \right) \diff x + \oint_{\GammaR} \alpha_R \, c \, \phi \diff a\\ = \int_\Omega r(c) \phi \diff x + \oint_{\GammaN} g_N \phi \diff a + \oint_{\GammaR} g_R \phi \diff a
+		\int_\Omega \left( \partial_t c \, \phi + \kappa_c \nabla c \cdot \nabla \phi + \nabla c \cdot q \phi \right) \diff x + \int_{\GammaR} \alpha_R \, c \, \phi \diff a\\ = \int_\Omega r(c) \phi \diff x + \int_{\GammaN} g_N \phi \diff a + \int_{\GammaR} g_R \phi \diff a
 	\end{gather*}
 	für alle Testfunktionen $ \phi $  mit $ \phi_{|\GammaD} = 0 $.
 \end{Lemma}
@@ -76,11 +76,11 @@ Wir schreiben das Problem $ \KDR $, genauer die schwache Formulierung von $ \KDR
 \begin{define}(Operatoren für KDR)
 	\begin{itemize}
 		\item Definiere A durch
-		\[ (A\, c , \phi)_\Omega = \int_\Omega (\kappa_c \nabla c \cdot \nabla \phi + \nabla c \cdot q \, \phi ) \diff x + \oint_{\GammaR} \alpha_R \, c \, \phi \diff a  \]
+		\[ (A\, c , \phi)_\Omega = \int_\Omega (\kappa_c \nabla c \cdot \nabla \phi + \nabla c \cdot q \, \phi ) \diff x + \int_{\GammaR} \alpha_R \, c \, \phi \diff a  \]
 		\item Definiere M durch
 		\[ (M \, c, \phi)_\Omega = \int_\Omega c \, \phi \diff x \]
 		\item Definiere R durch
-		\[ (R\, c, \phi)_\Omega = \int_\Omega r(c) \, \phi \diff x + \oint_{\GammaN} g_N \, \phi \diff a + \oint_{\GammaR} g_R \, \phi \diff a \]
+		\[ (R\, c, \phi)_\Omega = \int_\Omega r(c) \, \phi \diff x + \int_{\GammaN} g_N \, \phi \diff a + \int_{\GammaR} g_R \, \phi \diff a \]
 	\end{itemize}
 	für alle Testfunktionen $ \phi $ mit $ \phi_{|\GammaD} = 0 $.
 \end{define}
@@ -206,7 +206,7 @@ und erhalten somit das Problem
 	
 	Es gilt
 	\begin{align*}
-		\int_\Omega \abs{c(T)}^2 \diff x \leq \int_\Omega \abs{c_0}^2 + \int_{0}^{T} \left( \oint_{\GammaD} c_D^2 \abs{q \cdot n} \diff a + 2 \oint_{\GammaD} \kappa_0 \nabla c \cdot n \, c_D \diff a\right) \diff t
+		\int_\Omega \abs{c(T)}^2 \diff x \leq \int_\Omega \abs{c_0}^2 + \int_{0}^{T} \left( \int_{\GammaD} c_D^2 \abs{q \cdot n} \diff a + 2 \int_{\GammaD} \kappa_0 \nabla c \cdot n \, c_D \diff a\right) \diff t
 	\end{align*}
 \end{Lemma}
 
@@ -308,8 +308,8 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 	\end{cases}
 \end{gather*}
 \begin{align*}
-	\text{wobei } &\mathcal{A}(c,\phi) = \int_\Omega (\kappa_0 \nabla c \cdot \nabla \phi + q \cdot \nabla c \phi + r \, c \, \phi) \diff x + \oint_{\GammaR} \alpha_R \phi \diff a\\
-	\text{und } &b(\phi) = \oint_{\GammaN} g_N \phi \diff a + \oint_{\GammaR} g_R \phi \diff a + \int_\Omega f \phi \diff x.
+	\text{wobei } &\mathcal{A}(c,\phi) = \int_\Omega (\kappa_0 \nabla c \cdot \nabla \phi + q \cdot \nabla c \phi + r \, c \, \phi) \diff x + \int_{\GammaR} \alpha_R \phi \diff a\\
+	\text{und } &b(\phi) = \int_{\GammaN} g_N \phi \diff a + \int_{\GammaR} g_R \phi \diff a + \int_\Omega f \phi \diff x.
 \end{align*}
 
 \underline{\textbf{Wahl der Lösungs- /Testräume:}}

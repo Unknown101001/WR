@@ -334,7 +334,7 @@ Dann löst $ (\underline{q}, \underline{u}) $ (L gFE) bzw. $ (q_h,u_h) $ (dgFE) 
 Wir betrachten die Räume
 	\[W_K \coloneqq \left\{ \psi_K:K \to \R^2: \psi_K = J_K^{-1}  B_K \hat{\psi} \circ \varphi_K^{-1}, \hat{\psi} \in \hat{W} \right\} \]
 \[ W_\mathcal{K} \coloneqq \prod_{K \in \mathcal{K}} W_K, \qquad M_h \coloneqq \prod_{F \in \mathcal{F}} \mathbb{P}_0(F) \]
-\[ M_h(u_D) \coloneqq \left\{ \mu_h \in M_h:\forall  F \in \Gamma_D \oint_F \mu_h \diff a = \oint_F u_D \diff a  \right\}\]
+\[ M_h(u_D) \coloneqq \left\{ \mu_h \in M_h:\forall  F \in \Gamma_D \int_F \mu_h \diff a = \int_F u_D \diff a  \right\}\]
 
 \begin{remark}~
 	
@@ -346,9 +346,9 @@ Und untersuchen folgende Problem:
 \begin{gather*}
 	\text{Bestimmme } (q_h,u_h, \lambda_h) \in W_\mathcal{K} \times Q_h \times M_h(u_D) \text{ mit}\\
 	\hFgFE\begin{dcases}
-		(1) \int_K \kappa^{-1} q_h \psi_K \diff x - \int_K u_h \dive(\psi_K) \diff x = \oint_{\partial K} \lambda_h \psi_K \cdot n^K \diff a \\
+		(1) \int_K \kappa^{-1} q_h \psi_K \diff x - \int_K u_h \dive(\psi_K) \diff x = \int_{\partial K} \lambda_h \psi_K \cdot n^K \diff a \\
 		(2) \int_K \dive(q_h) \psi_K \diff x = 0\\
-		(3) \sum_{K\in \mathcal{K}} \oint_{\partial K} q_h \cdot n \mu_h \diff a = - \oint_{\Gamma_N} g_N \mu_h \diff a
+		(3) \sum_{K\in \mathcal{K}} \int_{\partial K} q_h \cdot n \mu_h \diff a = - \int_{\Gamma_N} g_N \mu_h \diff a
 	\end{dcases}\\
 	\text{für alle } K \in \mathcal{K}, \psi_K \in W_K  \text{ und } \mu_h \in M_h(0)
 \end{gather*}
