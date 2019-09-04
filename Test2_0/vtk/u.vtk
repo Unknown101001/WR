@@ -1,0 +1,20 @@
+# vtk DataFile Version 2.0
+Unstructured Grid by M++
+ASCII
+DATASET UNSTRUCTURED_GRID
+POINTS 4 float
+  1.000000   0.000000 0
+  0.000000   0.000000 0
+  0.000000   1.000000 0
+  1.000000   1.000000 0
+CELLS 1 5
+4 1 0 2 3
+CELL_TYPES 1
+8
+POINT_DATA 4
+SCALARS scalar_value float 1
+LOOKUP_TABLE default
+0
+0
+-1
+-1

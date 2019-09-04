@@ -75,17 +75,17 @@
 
 \begin{enumerate}[label=(\roman*)]
 \item  $ \Omega \subseteq \R^3 $  beschreibe eine poröse Bodenschicht. Von oben sickert Regenwasser langsam ins Grundwasser. Das Ziel ist nun, die transportierte Wassermenge und deren Verteilung zu bestimmen.
-\newline Durch das Darcy-Gesetz $ q= -\kappa(\nabla p - G)$ wird der Fluss eines Fluids beschrieben, bei dem 
+\newline Durch das Darcy-Gesetz $ q= -\kappa(\nabla p + G)$ wird der Fluss eines Fluids beschrieben, bei dem 
 \begin{align*}& p:\Omega \rightarrow \R &&\text{den hydrostatische Druck,}\\
 &  \kappa : \Omega \rightarrow (\R_{sym})^{3\times3}  &&\text{den Permeabilitätstensor}\\
 & G = (0,0,\rho_0 g_0)^T &&\text{die Gravitation}
-\end{align*} beschreiben. Durch $u(x):=-p(x)+\rho_0 g_0 x_3$ vereinfacht sich das Darcy-Gesetz zu $q=\kappa\nabla u$.
+\end{align*} beschreiben. Durch $u(x):=p(x)+\rho_0 g_0 x_3$ vereinfacht sich das Darcy-Gesetz zu $q=-\kappa\nabla u$.
 \newline Sei $\partial \Omega = \Gamma_N \cup \Gamma_D$. Durch die Vorgabe von Funktionen auf dem Rand von $\Omega$ mit
 \begin{align*}&u_D: \Gamma_D \rightarrow \R &&\text{(Dirichlet-Werte)}\\
 & g_N: \Gamma_N \rightarrow \R &&\text{(Neumann-Werte)}
 \end{align*} ergibt sich schließlich die Randwertaufgabe: Bestimme $u:\bar{\Omega} \rightarrow \R$ mit
 \[(1)\begin{cases}
-\dive \kappa \nabla u = 0 &\text{in $\Omega$}\\
+\dive (- \kappa \nabla u) = 0 &\text{in $\Omega$}\\
 u = u_D  &\text{auf $\Gamma_D$}\\
 \kappa \nabla u \cdot \nu = g_N &\text{auf $\Gamma_N$}
 \end{cases}
@@ -134,12 +134,12 @@ Insbesondere ist dann:
 \int_{\partial \Omega}{\Phi q \nu da} = \int_{\partial \Omega}{\Phi g da} \Rightarrow q \cdot \nu = g \text{ auf } \partial \Omega
 \end{align*} 
 \newline
-Konkret kommen wir so also von 
+Konkret kommen wir mit $q = - \kappa  \nabla u$ so also von 
 
 
 \[
 \begin{cases}
-\dive q = 0 \text{ , }  q = - \kappa  \nabla u  \text{ in }  \Omega \text{ }\\
+\dive q = 0 \text{ , }    \text{ in }  \Omega \text{ }\\
 -q \cdot \nu = g_N  \text{ auf } \Gamma_N \\
  u = u_D \text{ auf } \Gamma_D
 \end{cases}
@@ -147,7 +147,7 @@ Konkret kommen wir so also von
 
 zur \defi{schwachen Form} unseres Problems:
 \begin{align*}
-\int_{\Omega}{ \kappa \nabla u \cdot \nabla \Phi dx} = \int_{ \Gamma_N }{g_n \Phi da} \text{  } \; \; \forall \Phi \text{ mit } \Phi = 0 \text{ auf } \Gamma_D
+\int_{\Omega}{ \kappa \nabla u \cdot \nabla \Phi dx} = \int_{ \Gamma_N }{g_N \Phi da} \text{  } \; \; \forall \Phi \text{ mit } \Phi = 0 \text{ auf } \Gamma_D
 \end{align*}
 
 \item
@@ -223,7 +223,7 @@ Somit kann die diskrete Problemstellung $ (\star) $ nun  formuliert werden:
 Als nächsten Schritt wollen wir unser diskretes Problem in ein lineares Gleichungssystem umformulieren. 
 	Mit der Basis $ \{\lambda_1, \dots , \lambda_N\} $ (\defi{Knotenbasis}/\emph{globale Hütchenfunktionen})von $V_h$ mit
 	\begin{align*}
-		&\forall z_k \in \mathcal{V}_\mathcal{K} \ \lambda_i(z_k) = 
+		&\forall z_k \in \mathcal{V}_\mathcal{K} \ \lambda_n(z_k) = 
 		\begin{cases}
 			1, &n=k\\
 			0, &n\neq k
@@ -238,7 +238,7 @@ Als nächsten Schritt wollen wir unser diskretes Problem in ein lineares Gleichu
 		&\text{Bestimme } \underline{u} \in \R^N \text{ mit }\\
 		&\begin{cases}
 			\sum_{n = 1}^N \underline{u}_n \lambda_n = u_h  \\
-			\sum_{n=1}^{N} \underline{u}_n \sum_{k \in \mathcal{K}} \int_{K} \kappa \nabla \lambda_n \cdot \nabla \lambda_k \diff x = \int_{\Gamma_N} g_N \lambda_k \diff a (k \in \mathcal{I}\setminus\mathcal{I}_D).
+			\sum_{n=1}^{N} \underline{u}_n \sum_{K \in \mathcal{K}} \int_{K} \kappa \nabla \lambda_n \cdot \nabla \lambda_k \diff x = \int_{\Gamma_N} g_N \lambda_k \diff a \quad \text{für alle }k \in \mathcal{I}\setminus\mathcal{I}_D.
 		\end{cases}
 	\end{align*}
 	Die erste Forderung an $ \underline{u} $ bedeutet, dass $\underline{u} $ der Koordinatenvektor von $ u_h~\in~V_h(u_D) $ in der Knotenbasis  $ \{ \lambda_i \}_{i = 1}^N $ ist.
@@ -311,7 +311,7 @@ Wiederum stehen die restlichen Einträge für die zugehörigen Punkte. \newline
 \begin{figure}[H]
 	\centering
 	\captionabove{Gitterverfeinerung am Beispiel von 'UnitSquare'}
-	\includegraphics[width=\textwidth]{../Gitterverfeinerung.png} 
+	\includegraphics[width=\textwidth]{../Gitterverfeinerung2.png} 
 \end{figure}
 Anhand der obigen Tabelle fällt es leicht, die Gitterverfeinerung nachzuvollziehen.
 Auf Level 0 erhalten wir genau das Gitter, welches im Geofile definiert ist, also im Falle 'UnitSquare' genau eine Zelle mit 4 Ecken und 4 Kanten.
