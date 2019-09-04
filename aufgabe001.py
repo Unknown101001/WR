@@ -21,15 +21,16 @@ from mppstart import *
 
 def main():
     outp = []
-    for lvl in ["0","1","2","3"]:
+    for lvl in ["8"]:
         delete_old()
         manipulate_conf("m++conf", [("loadconf","laplace.conf")])
         manipulate_conf("laplace.conf",
-                        [("level",lvl), ("Mesh","UnitSquare"),("Discretization","linear")])
+                        [("level",lvl),("plevel","7"),("Preconditioner","GaussSeidel"),
+                         ("Mesh","UnitSquare"),("Discretization","linear"),("Problem", "Discontinuous"),("LinearSteps","1000")])
         output = run()
         out = parse_mpp_output_single_inform("Problem size",output)
         outp.append(out)
-        name = "Test2_"+lvl
+        name = "Test3_"+lvl
         save(None, name)
     print(outp)
 

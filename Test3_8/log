@@ -1,0 +1,82 @@
+start program on 4 procs at Wed Sep  4 11:28:12 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Laplace
+  reading ... Mesh = UnitSquare
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 8
+  reading ... plevel = 7
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  default ... Overlap = none
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+4096 cells on proc 0 of 16384 cells on 4 procs -- min cells: 4096  max cells: 4096
+  default ... Overlap = none
+  reading ... Discretization = linear
+  reading ... Discretization = linear
+  default ... QuadratureCell = 2
+  default ... QuadratureBoundary = 1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... Problem = Discontinuous
+  reading ... Permeability = 0.1
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = GaussSeidel
+  default ... PreconditionerVerbose = 0
+  default ... SHIFTspecial = 0
+  reading ... LinearVerbose = 1
+  reading ... LinearSteps = 1000
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 8
+
+ Level:          8
+ Dimension:      2
+ Cells:          65536
+ Problem size:   66049
+ Vertices:       66049
+ Edges:          131584
+ Mesh width:     [0.00390625,0.00390625]
+ Assemble        Laplace
+
+ Problem:        Discontinuous Problem
+ Discretization: linear
+
+ Newton: d(0)= 0.0624389
+  GMRES: d(0)= 0.0624389
+  GMRES: d(100)= 0.00617215
+  GMRES: d(200)= 0.0046701
+  GMRES: d(300)= 0.00356674
+  GMRES: d(400)= 0.00276265
+  GMRES: d(500)= 0.00211738
+  GMRES: d(600)= 0.00167799
+  GMRES: d(700)= 0.00129827
+  GMRES: d(800)= 0.00102905
+  GMRES: d(900)= 0.000794609
+  GMRES: d(1000)= 0.000627102 rate 0.99541 time 18.77 seconds
+ Newton: d(1)= 0.000627102 rate 0.0100435 time 23.36 seconds
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow              -1.00044
+Outflow             0.880453
+Flux Loss           -0.119984
+Flux Error          0.00205836
+end program after 27.80 seconds on 4 procs at Wed Sep  4 11:28:41 2019

@@ -18,6 +18,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage{subfigure}
+\usepackage{mdwlist}
 \newcommand{\R}{\mathbb{R}}
 
 \DeclareMathOperator{\dive}{div}
@@ -395,7 +396,12 @@ NewtonLineSearchSteps = 3 und
 DebugLevel = 1.
 \newline 
 Die Ergebnisse ändern sich nicht, wenn eine andere Prozessorzahl gewählt wird. Die Rechnung an sich bleibt die Gleiche, bloß die Ausführungsreihenfolge bzw. die Parallelisierung ändern sich je nach Anzahl der benutzten Prozesse. 
-
+\end{enumerate}
+\begin{remark}~\\
+	 	Es hat sich herausgestellt, dass die Einstellung 'dG1' hier falsch war.
+\end{remark}
+\begin{enumerate}[label=(\roman*)]
+\setcounter{enumi}{5}
 \item Aufgabe 6
 \newline
 1. Geometrien
@@ -426,8 +432,8 @@ Die Ergebnisse ändern sich nicht, wenn eine andere Prozessorzahl gewählt wird.
 \begin{figure}[H]
 	\centering
 	\captionabove{Aufteilung der Gebiete auf 4 Prozessoren}
-	\subfigure[Mesh 'UnitSquare8Triangels' auf Level 3]{\includegraphics[width=0.49\textwidth]{../Aufgabe6/Problem_Discontinuous/Mesh_UnitSquare8Triangles/level_3/process2.png}}	 
-	\subfigure[Mesh 'UnitSquare500' auf Level 0]{\includegraphics[width=0.49\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/process2.png}}	
+	\subfigure[Mesh 'UnitSquare8Triangels' auf Level 3]{\includegraphics[width=0.39\textwidth]{../Aufgabe6/Problem_Discontinuous/Mesh_UnitSquare8Triangles/level_3/process2.png}}	 
+	\subfigure[Mesh 'UnitSquare500' auf Level 0]{\includegraphics[width=0.39\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/process2.png}}	
 \end{figure}
 
 
@@ -443,7 +449,7 @@ Die Ergebnisse ändern sich nicht, wenn eine andere Prozessorzahl gewählt wird.
 %	\captionabove{Aufteilung der Gebiete auf 4 Prozessoren des Mesh 'UnitSquare500' auf Level 0}
 %		\includegraphics[width=\textwidth]{../Aufgabe6/Problem_Discontinuous/Mash_Square500/level_0/process.png} 
 %\end{figure}
-Man sieht gerade bei Abbildung 9 b) sehr schön, dass die Rechenlast gleichmäßig auf die 4 Prozessoren verteilt wird, indem Gebiete mit mehr 'Löchern' einzelne Zellen benachbarter Gebiete übernehmen. \newline
+Man sieht gerade bei Abbildung 9 b) sehr schön, dass die Rechenlast gleichmäßig auf die 4 Prozessoren verteilt wird, indem Gebiete mit mehr 'Löchern' einzelne Zellen benachbarter Gebiete übernehmen. 
 
 
 \begin{figure}[H]
@@ -483,7 +489,7 @@ Man sieht gerade bei Abbildung 9 b) sehr schön, dass die Rechenlast gleichmäß
 %		\includegraphics[width=\textwidth]{../Problem_DiscontinousMesh_Square500level_4/perm.png} 
 %\end{figure}
 
-
+\newpage
 4. Lösungen
 \newline
 \begin{figure}[H]
