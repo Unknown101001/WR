@@ -5,7 +5,7 @@
 \textbf{Ziel:} Wir wollen das Problem nun in einer Weise diskretisieren, sodass die Flussbilanz automatisch erfüllt ist (somit Flux Loss = 0).
 
 Die Flussbilanz ist für die numerische Lösung erfüllt, wenn gilt:
-\[ \int_{\Gamma_\text{in}} q_h \cdot n \diff a = \int_{\Gamma_\text{out}} q_h \cdot n \diff a \]
+\[ \int_{\Gamma_\text{in}} q_h \cdot n \diff a = - \int_{\Gamma_\text{out}} q_h \cdot n \diff a \]
 Bezeichnungen:
 \begin{itemize}
 	\item $ \Gamma_\text{in} $ und $ \Gamma_\text{out} $ analog definiert zu Lemma (1.1) im Skript
@@ -19,16 +19,18 @@ Betrachten wir noch einmal unser eigentliches analytisches Problem (LG: Laplace-
 \begin{gather*}
  \text{Bestimme } u:\overline{\Omega} \to \R \text{ mit }\\	
 	\text{(LG)}\begin{cases}
-	\dive \kappa \nabla u &= 0 \text{ in } \Omega\\
+	\dive(- \kappa \nabla u )&= 0 \text{ in } \Omega\\
 	u &= u_D \text{ auf } \Gamma_D \\
 	(\kappa\nabla u) \cdot n &= g_N \text{ auf } \Gamma_N \\
 	\end{cases}
 \end{gather*}
-($ \kappa $ ist sym. pos. def.) und setzen den \defi{Fluss} zu 
-\[ q \coloneqq - \kappa \nabla u. \]
+
+und $ \kappa $ ist sym. pos. def. .
+%und setzen den \defi{Fluss} zu 
+%\[ q \coloneqq - \kappa \nabla u. \]
 Dann können wir unser analytisches Problem umschreiben zu 
 \begin{gather*}
-	\text{Bestimme } u:\overline{\Omega} \to \R \text{ und } q: u:\overline{\Omega} \to \R \text{ mit } \\
+	\text{Bestimme } u:\overline{\Omega} \to \R \text{ und } q: \overline{\Omega} \to \R^2 \text{ mit } \\
 		\text{(LG F)}\begin{cases}
 		\dive q &= 0 \text{ in } \Omega\\
 		- \kappa \nabla u &= q \text{ in } \Omega\\
@@ -45,7 +47,7 @@ Weiter wir wollen nun noch die Dirichlet-Randbedingung $ 	u = u_D \text{ auf } \
 \[ \int_{\partial\Omega} (u\Psi) \cdot n \diff a \stackrel{\text{Gauß}}{=} \int_{\Omega} \dive(u\Psi) \diff x = \int_{\Omega} \nabla u \cdot \Psi \diff x + \int_{\Omega} u \dive(\Psi) \diff x \quad (\Psi:\Omega \to \R^2) \]
 Wählen wir nun unseren Ansatzraum so, dass  für die Funktion $ \Psi: \Omega \to \R$ gilt $ \Psi \cdot n = 0 \text{ auf } \Gamma_N $. Damit folgt
 \begin{align*}
-	\int_{\Gamma_D} (u_D\Psi) \cdot n \diff a \stackrel{\Psi \cdot n|_{\Gamma_N} = 0}{=} \int_{\partial\Omega} (u\Psi) \cdot n \diff a = \underbrace{\int_{\Omega} \nabla u \cdot \Psi \diff x}_{\stackrel{(\star)}{=}- \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x } + \int_{\Omega} u \dive(\Psi) \diff x.
+	\int_{\Gamma_D} (u_D\Psi) \cdot n \diff a \overset{\Psi \cdot n|_{\Gamma_N} = 0}{\underset{u |_{\Gamma_D} = u_D} {=}} \int_{\partial\Omega} (u\Psi) \cdot n \diff a = \underbrace{\int_{\Omega} \nabla u \cdot \Psi \diff x}_{\stackrel{(\star)}{=}- \int_{\Omega} (\kappa^{-1} q) \cdot \Psi \diff x } + \int_{\Omega} u \dive(\Psi) \diff x.
 \end{align*}
 Die Neumann-Randbedingung $ (\kappa\nabla u) \cdot n = g_N \text{ auf } \Gamma_N $ wird durch die Wahl des Lösungsraumes erfüllt.
 
@@ -89,11 +91,11 @@ Wir nummerieren Seiten und Zellen durch:
 		Q_h &\coloneqq \spann \{ \mu_1, \dots , \mu_{\abs{\mathcal{K}}} \} &&\text{(\defi{Zellenansatzraum}/ Raum für $ \phi $ und $ u_h $)}
 	\end{align*}
 	\begin{align*}
-		W_h(g) &\coloneqq \left\{ \psi_h \in W_h: \int_F \psi_h \cdot \diff a = \int_F g \diff a \quad (F \subseteq \Gamma_N) \right\}.
+		W_h(g) &\coloneqq \left\{ \psi_h \in W_h: \int_F \psi_h \cdot n \diff a = \int_F g \diff a \quad (F \subseteq \Gamma_N) \right\}.
 	\end{align*}
 	$ \{ \psi_i \}_{i=1}^{\abs{\mathcal{F}}} $ heißt \defi{Seitenbasis} und ist gegeben durch 
 	\begin{align*}
-		\forall i \in \{1, \dots , \abs{\mathcal{F}} \} : \int_{F_j} \psi_i \cdot n \diff a = \delta_{i,j} \text{ und }  \psi_i|_K \in \mathbb{P}_1(K,\R^2) \ (K \in \mathcal{K}) 
+		\forall i,j \in \{1, \dots , \abs{\mathcal{F}} \} : \int_{F_j} \psi_i \cdot n^K \diff a = \pm \delta_{i,j} \text{ und }  \psi_i|_K \in \mathbb{P}_1(K,\R^2) \cap C(\overline{\Omega}) \ (K \in \mathcal{K}) 
 	\end{align*}
 	und  $ \{ \mu_i \}_{m=1}^{\abs{\mathcal{K}}} $ heißt \defi{Zellenbasis} und ist gegeben durch
 	\begin{align*}
@@ -265,7 +267,7 @@ Seien wie oben Seiten, Seitenbasis, Zellen und Zellenbasis global nummeriert
 	\end{align*}
 	und (für die Randbedingungen)
 	\begin{gather*}
-		\underline{W}(g) \coloneqq \left\{ \underline{q} \in \R^N : \underline{q}[k] = \int_{F_k} g  \diff a \ (\text{für } k \text{ mit} F_k \subseteq \Gamma_N) \right\} 
+		\underline{W}(g) \coloneqq \left\{ \underline{q} \in \R^N : \underline{q}[k] = \int_{F_k} g  \diff a \ (\text{für } k \text{ mit } F_k \subseteq \Gamma_N) \right\} 
 	\end{gather*}
 \end{define}
 
@@ -331,7 +333,7 @@ Dann löst $ (\underline{q}, \underline{u}) $ (L gFE) bzw. $ (q_h,u_h) $ (dgFE) 
 Wir betrachten die Räume
 	\[W_K \coloneqq \left\{ \psi_K:K \to \R^2: \psi_K = J_K^{-1}  B_K \hat{\psi} \circ \varphi_K^{-1}, \hat{\psi} \in \hat{W} \right\} \]
 \[ W_\mathcal{K} \coloneqq \prod_{K \in \mathcal{K}} W_K, \qquad M_h \coloneqq \prod_{F \in \mathcal{F}} \mathbb{P}_0(F) \]
-\[ M_h(u_D) \coloneqq \left\{ \mu_h \in M_h:\forall  F \in \Gamma_D \int_F \mu_h \diff a = \int_F u_D \diff a  \right\}\]
+\[ M_h(u_D) \coloneqq \left\{ \mu_h \in M_h:\forall  F \subset \Gamma_D \int_F \mu_h \diff a = \int_F u_D \diff a  \right\}\]
 
 \begin{remark}~
 	
