@@ -51,9 +51,9 @@ Außerdem erwähnenswert ist, dass es möglich ist bei bestimmten Werten für $r
 Nachfolgender Auschnitt zeigt einen Schritt für $r_0 = 40$ , $r_1=19.9$ , $dt = 0.05$ , $dt_{min}=0.0125$:
 \begin{figure}[H]
 	\centering
-	\captionabove{Newton-Iteration für den ersten Eulerschritt}
+	\captionabove{Eulerschritt mit Newton-Iteration}
 \subfigure{\includegraphics[width=0.8\textwidth]{../Aufgabe30/algo.png}}	
 	\subfigure{\includegraphics[width=0.80\textwidth]{../Aufgabe30/algorithmus.png}}
 \end{figure}
-Vor allem erkennt man sehr schön zum einen die lineare Suche, welche aufgerufen wird, wenn der Wert der Newton-Iteration zu schlecht ist, zum anderen erkennt man auch den Schritt 8) sehr schön: 
-Falls nämlich keine Konvergenz vorliegt, wird im Verfahren der Eulerschritt mit der halben Zeitschrittweite erneut durchgeführt. Dies geschieht entweder solange, bis $dt_{min}$ erreicht wurde, oder (wie in obigem Fall) ein zufriedenstellendes Ergebnis vorliegt.
+Vor allem erkennt man sehr schön zum einen die lineare Suche, welche aufgerufen wird, wenn der Wert der Newton-Iteration zu schlecht ist, zum anderen erkennt man auch den Schritt 3) sehr schön: 
+Falls nämlich keine Konvergenz (zu viele Newtonschritte) vorliegt, wird im Verfahren der Eulerschritt mit der halben Zeitschrittweite erneut durchgeführt. Dies geschieht entweder solange, bis $dt_{min}$ erreicht wurde, oder (wie in obigem Fall) ein zufriedenstellendes Ergebnis vorliegt.
