@@ -35,7 +35,7 @@ Wie sonst geben wir uns auch Anfangs- und Randwerte in Form von $ c_0, c_D, g_N,
 		\qquad \text{Neumann: } &-\kappa_c \nabla c(t,x) \cdot \nu = g_N(t,x) \text{ auf } (0,T) \times \GammaN \\
 		\qquad \text{Robin: } &-\kappa_c \nabla c(t,x) \cdot \nu + \alpha_R c(t,x) = g_R(t,x) \text{ auf } (0,T) \times \GammaR
 	\end{cases}\\
-	\text{wobei } \Omega = \GammaD \cupdot \GammaN \cupdot \GammaR
+	\text{wobei } \partial \Omega = \GammaD \cupdot \GammaN \cupdot \GammaR
 \end{gather*}
 
 \begin{remark}
@@ -61,8 +61,7 @@ Wie sonst geben wir uns auch Anfangs- und Randwerte in Form von $ c_0, c_D, g_N,
 	\end{align*}
 \end{remark}
 
-\begin{Lemma} \label{schwache Formulierung zu KDR}
-	(Schwache Formulierung zu $ \KDR $)\\
+\begin{Lemma}[Schwache Formulierung zu $ \KDR $] \label{schwache Formulierung zu KDR} $\newline$
 	Sei c eine Lösung vom Problem $ \KDR $ (d.h. $ c(0,\cdot) \equiv c_0 \text{ in } \Omega $ und $ c_{|\GammaD} \equiv c_D \text{ in } (0,T)~\times~\GammaD $).
 	
 	Dann gilt $ \forall t \in (0,T) $
