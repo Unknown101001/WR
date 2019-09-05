@@ -91,9 +91,10 @@ Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,
 		\begin{cases}
 		\displaystyle
 		\int_{\Omega} \rho_0 \phi(0) \diff x = \mkern-16mu &- \displaystyle \int_{0}^{T} \int_{\Omega} \rho (\partial_t \phi + q \nabla \phi ) \diff x \diff t \\
-		&+\displaystyle\int_{0}^{T}  \int_{\Gammain} \rhoin q \cdot \nu \phi \diff a  \diff t
+		&+\displaystyle\int_{0}^{T}  \int_{\Gammain} \rhoin q \cdot \nu \phi \diff a  \diff t \\
+		&+\displaystyle\int_{0}^{T}  \int_{\Gammaout} \rho q \cdot \nu \phi \diff a  \diff t
 		\end{cases}	\\
-		\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega \text{ und } \phi = 0 \text{ auf } \Gammaout \times (0,T).
+		\text{ für alle } \phi: \Omega \times (0,T) \to \R \text{ mit } \phi(\cdot,T) = 0 \text{ auf } \Omega.
 		\end{gather*}
 		heißt \defi{schwache Lösung}.
 	\end{itemize}
