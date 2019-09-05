@@ -238,8 +238,8 @@ Wir betrachten nun folgendes Problem:
 	\begin{cases}
 		- \dive(\kappa_0 \nabla c) + q \cdot \nabla c + r \, c = f &\text{, in } \Omega\\
 		c = c_D &\text{, auf } \GammaD (\text{wir fordern } \Gammain \subseteq \GammaD)\\
-		\kappa_0 \nabla c \cdot n = g_N &\text{, auf } \GammaN\\
-		\kappa_0 \nabla c \cdot n  + \underbrace{\alpha_R}_{= q \cdot n} c = g_R &\text{, auf } \GammaR
+		-\kappa_0 \nabla c \cdot n = g_N &\text{, auf } \GammaN\\
+		-\kappa_0 \nabla c \cdot n  + \underbrace{\alpha_R}_{= q \cdot n} c = g_R &\text{, auf } \GammaR
 	\end{cases}
 \end{gather*}
 Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
@@ -317,7 +317,7 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 	\end{cases}
 \end{gather*}
 \begin{align*}
-	\text{wobei } &\mathcal{A}(c,\phi) = \int_\Omega (\kappa_0 \nabla c \cdot \nabla \phi + q \cdot \nabla c \phi + r \, c \, \phi) \diff x + \int_{\GammaR} \alpha_R \phi \diff a\\
+	\text{wobei } &\mathcal{A}(c,\phi) = \int_\Omega (\kappa_0 \nabla c \cdot \nabla \phi + q \cdot \nabla c \phi + r \, c \, \phi) \diff x + \int_{\GammaR} \alpha_R \, c \,\phi \diff a\\
 	\text{und } &b(\phi) = \int_{\GammaN} g_N \phi \diff a + \int_{\GammaR} g_R \phi \diff a + \int_\Omega f \phi \diff x.
 \end{align*}
 
@@ -342,7 +342,7 @@ Insbesondere betrachten wir $ \kappa_0 << 1 $ und $ \norm{q}_\infty \approx 1 $
 %\end{define}
 
 \begin{define}(\defi{Streamline-Diffusion-Norm})
-	 \[ \norm{\phi_h}_{\SD} \coloneqq \left( \frac{\kappa_0}{2} \norm{\nabla \phi_h}_\Omega^2 + \frac{\unklar{r_0}}{2} \norm{\phi_h}_\Omega^2+ \sum_{K \in \mathcal{K}} \frac{\delta_K}{2} \norm{q \cdot \nabla \phi}_K^2  \right)^{1/2}  \]
+	 \[ \norm{\phi_h}_{\SD} \coloneqq \left( \frac{\kappa_0}{2} \norm{\nabla \phi_h}_\Omega^2 + \frac{r}{2} \norm{\phi_h}_\Omega^2+ \sum_{K \in \mathcal{K}} \frac{\delta_K}{2} \norm{q \cdot \nabla \phi}_K^2  \right)^{1/2}  \]
 \end{define}
 
 \begin{Lemma}(Koerzivität von $ \mathcal{A}_h $)
