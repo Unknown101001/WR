@@ -10,12 +10,12 @@ Wir betrachten also das folgende Randwertproblem:
 	\begin{cases}
 	- \dive( \kappa(\omega,x)\nabla u(\omega,x))=0 &\text{, für } x \in D \\
 	q(\omega , x) = - \kappa(\omega ,x) \nabla u &\text{, für }  x \in D\\
-	q(\omega,x) \cdot n = g_N &\text{, für } x \in \GammaN\\
+	-q(\omega,x) \cdot n = g_N &\text{, für } x \in \GammaN\\
 	u(\omega,x) = u_D(\omega,x) &\text{, für } x \in \GammaD. 
 	\end{cases}
 \end{gather*}
 Dabei stellen wir uns die Aufgabe den 'Erwartungswert' eines gegebenen Zielfunktionals $Q$, z.B. $Q(q) = \int_{\Gamma} q \cdot n \diff x $ (den Ausfluss) zu bestimmen.
-Für die Verteilung von $\kappa (\omega,x )$ kommen zunächst viele verschiedene Verteilungen in Frage, doch nicht bei allen konvergiert ein Monte-Carlo-Verfahren (näheres dazu gleich), weswegen wir als (funktionierenden) Ansatz $\kappa (\omega,x )$  als log-normal-verteiltes stochastisches Feld mit Covarianzfunktion $C(x,y)= \sigma^2 \exp ( - \norm{x-y}^{\alpha}_2 / \lambda^{\alpha})$ wählen. \\
+Für die Verteilung von $\kappa (\omega,x )$ kommen zunächst viele verschiedene Verteilungen in Frage, doch nicht bei allen konvergiert ein Monte-Carlo-Verfahren (näheres dazu gleich), weswegen wir als (funktionierenden) Ansatz $\kappa (\omega,x )$  als log-normal-verteiltes stochastisches Feld mit Kovarianzfunktion $C(x,y)= \sigma^2 \exp ( - \norm{x-y}^{\alpha}_2 / \lambda^{\alpha})$ wählen. \\
 Als Zielfunktional wählen wir das $L^2$-Funktional der Lösung $u(\omega,\cdot)$ des oben beschriebenen Randwertproblems, welches wir ab jetzt mit $Q$ bezeichnen wollen.
 Da wir die konkreten Daten von $\kappa$ nicht kennen, sind wir an einem Schätzer für $\mathbb{E}[Q]$ interessiert.
 Beachte hierbei, dass wir auch $u$ (die klassische Lösung des obigen Problems) nicht kennen, aber wir können $u$ durch mit der FEM approximieren. \\
