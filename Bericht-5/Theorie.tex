@@ -8,7 +8,7 @@ Wir betrachten erneut das Potentialströmungsproblem
 	\PS \begin{cases}
 		\dive(q) = 0 &\text{, in }\Omega\\
 		q = - \kappa \nabla u &\text{, in } \Omega\\
-		q \cdot n = g_N &\text{, auf }\GammaN\\
+		q \cdot n = g_N &\text{, auf }\GammaN  \textcolor{red}{   VZ???} \\
 		u = u_D &\text{, auf } \GammaD. 
 	\end{cases}
 \end{gather*}
@@ -45,7 +45,7 @@ Weiter wollen wir wieder Testfunktionen $ \phi_h \in Q_h \coloneqq \Pi_{K \in \m
 
 Es gilt
 \begin{align*}
-	&\oint_{\partial K} \kappa \phi_h \nabla u \cdot n \diff x = \int_K \dive(\underbrace{\kappa \nabla u}_{= -q} \phi_h) \diff x = \int_K \underbrace{\dive(-q)}_{=0} \phi_h + (-q) \nabla \phi_h \diff x = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x\\
+	&\int_{\partial K} \kappa \phi_h \nabla u \cdot n \diff a = \int_K \dive(\underbrace{\kappa \nabla u}_{= -q} \phi_h) \diff x = \int_K \underbrace{\dive(-q)}_{=0} \phi_h + (-q) \nabla \phi_h \diff x = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x\\
 	\implies &\int_{\GammaN} g_N \phi_h \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \int_{\partial K \setminus \GammaN} \kappa \nabla u \phi_h \cdot n \diff a\\
 	%\implies &\int_{\GammaN} g_N \phi_h \diff a = \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x + \int_{\partial K \setminus \GammaN} q \phi_h \cdot n \diff a\\
 	\implies &\underbrace{\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \FIn} \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a - \sum_{F \in \FD} \int_{F} \kappa \nabla u \phi_h \cdot n \diff a}_{\coloneqq a^{(1)}_h(u,\phi_h)}\\
@@ -107,12 +107,13 @@ Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial
 		&+\sum_{F \in \FIn} \gamma_F \underbrace{\int_F [u_h]_F \cdot [\phi_h]_F \diff a}_{(\ref{innen1})} + \sum_{F \in \FD} \gamma_F \underbrace{\int_F [u_h]_F \cdot [\phi_h]_F \diff a}_{(\ref{D-RW1})}\\
 		=& \sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x + \sum_{F \in \F\setminus\FN}  \gamma_F \int_F [u_h]_F \cdot [\phi_h]_F \diff a\\
 		&- \sum_{F \in \F\setminus\FN} \int_F \left(  \{\kappa \nabla u \}_F [\phi_h]_F + [u_h]_F \{\kappa \nabla \phi_h \}_F  \right) \diff a\\
-		\bsip(\phi_h) \coloneqq & \underbrace{\int_{\GammaN} g_N \phi_h \diff a}_{=b_h^{(1)}(\phi_h)} \underbrace{\textcolor{red}{-} \int_{\GammaD} u_D \kappa \nabla \phi_h \cdot n \diff a}_{(\ref{D-RW2})} + \underbrace{\sum_{F \in \FD} \gamma_F \int_F u_D \phi_h \diff a}_{(\ref{D-RW1})}
+		\bsip(\phi_h) \coloneqq & \underbrace{\int_{\GammaN} g_N \phi_h \diff a}_{=b_h^{(1)}(\phi_h)} \underbrace{ - \int_{\GammaD} u_D \kappa \nabla \phi_h \cdot n \diff a}_{(\ref{D-RW2})} + \underbrace{\sum_{F \in \FD} \gamma_F \int_F u_D \phi_h \diff a}_{(\ref{D-RW1})} \\
+		\norm{\cdot}_{DG} \coloneqq  &\frac{1}{2} (\sum_{K \in \mathcal{K}} \int_{K} \kappa\nabla \phi_h \cdot \nabla \phi_h \diff x +  \sum_{F \in \F\setminus\FN }\gamma_F \norm{[ \phi_h ]_F}^2)
 	\end{align*}
 \end{define}
-\begin{remark}\textcolor{red}{Bei Korrektur}\\
-	Das \enquote{$-$}-Zeichen vor dem zweiten Integral bei $ b_h $ sollte dort stehen, allerdings ist es nicht auf den Folien nicht so.
-\end{remark}
+%\begin{remark}\textcolor{red}{Bei Korrektur}\\
+%	Das \enquote{$-$}-Zeichen vor dem zweiten Integral bei $ b_h $ sollte dort stehen, allerdings ist es nicht auf den Folien nicht so.
+%\end{remark}
 
 \paragraph{Eigenschaften:}
 \begin{itemize}
