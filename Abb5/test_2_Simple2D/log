@@ -1,0 +1,97 @@
+start program on 4 procs at Sat Sep  7 12:53:07 2019
+  reading ... DebugLevel = 1
+  reading ... TimeLevel = 1
+  reading ... Model = Laplace
+  reading ... Mesh = UnitSquare
+  default ... GeoPath = ./../Praktikum/
+  reading ... level = 2
+  reading ... plevel = 7
+plevel set to 2
+  default ... CreateFaceEdges = 0
+  default ... CreateFaceSlips = 0
+  default ... Overlap = none
+  reading ... Distribution = RCB
+  default ... Overlap_Distribution = 0
+4 cells on proc 0 of 16 cells on 4 procs -- min cells: 4  max cells: 4
+  default ... Overlap = none
+  reading ... Discretization = linear
+  reading ... Discretization = linear
+  default ... QuadratureCell = 2
+  default ... QuadratureBoundary = 1
+  default ... gnuplot = 0
+  default ... dxplot = 0
+  default ... tecplot = 0
+  reading ... vtkplot = 1
+  reading ... Problem = Discontinuous
+  reading ... Permeability = 0.1
+  default ... AssembleVerbose = 1
+  reading ... LinearSolver = GMRES
+  reading ... Preconditioner = Multigrid
+  default ... PreconditionerVerbose = 0
+  reading ... presmoothing = 5
+  reading ... postsmoothing = 5
+  default ... cycle = V
+  default ... MultigridVerbose = 0
+  reading ... SmootherDamp = 0.8
+  reading ... Smoother = SGS
+  reading ... BaseSolver = LS
+  reading ... BasePreconditioner = LIB_PS
+  default ... PreconditionerVerbose = 0
+  default ... PSMsize = 0
+  default ... PS_maxP = 0
+  default ... PS_checkdiagonal = 1
+  default ... PS_one_calc = 2.5e-10
+  default ... PS_send_one_double = 4e-08
+  default ... PS_latency = 2e-06
+  default ... PS_cellbased = 0
+  reading ... BaseSolverVerbose = -1
+  default ... BaseSolverSteps = 10
+  default ... BaseSolverLineSearchSteps = 3
+  default ... BaseSolverEpsilon = 1e-10
+  default ... BaseSolverReduction = 1e-05
+  default ... BaseSolverMinimalReduction = 1
+  default ... BaseSolverMinimalStepNumber = 0
+  default ... Transfer = VertexDoF
+  reading ... LinearVerbose = 1
+  reading ... LinearSteps = 1000
+  default ... LinearLineSearchSteps = 3
+  reading ... LinearEpsilon = 1e-10
+  reading ... LinearReduction = 1e-20
+  default ... LinearMinimalReduction = 1
+  default ... LinearMinimalStepNumber = 0
+  reading ... NewtonVerbose = 1
+  reading ... NewtonSteps = 1
+  reading ... NewtonLineSearchSteps = 0
+  reading ... NewtonEpsilon = 1e-09
+  reading ... NewtonReduction = 1e-08
+  default ... NewtonMinimalReduction = 1
+  default ... NewtonMinimalStepNumber = 0
+  default ... NewtonSuppressFirstLineSearch = 0
+  default ... NewtonJacobiUpdate = 1
+  reading ... level = 2
+
+ Level:          2
+ Dimension:      2
+ Cells:          16
+ Problem size:   25
+ Vertices:       25
+ Edges:          40
+ Mesh width:     [0.25,0.25]
+ Assemble        Laplace
+
+ Problem:        Discontinuous Problem
+ Discretization: linear
+
+ Newton: d(0)= 0.467707
+  GMRES: d(0)= 0.467707
+  GMRES: d(1)= 6.85126e-16 rate 1.46486e-15 time  0.01 seconds
+ Newton: d(1)= 1.09049e-15 rate 2.33157e-15 time  0.01 seconds
+
+
+Prescribed Inflow   -1
+Prescribed Outflow  0
+Inflow              -1.0165
+Outflow             1.02528
+Flux Loss           0.00877913
+Flux Error          0.0443413
+end program after  0.02 seconds on 4 procs at Sat Sep  7 12:53:07 2019
