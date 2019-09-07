@@ -351,7 +351,7 @@ Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
 	\begin{enumerate} 
 		\item Für den DG-Operator $A_h: Q_h \rightarrow Q_h'$ gilt: 	\newline
 		\begin{align*}
-			(A_h,\rho_h,\rho_h)_{\Omega} &= - \int_{\partial 	\Omega} | \rho_h | ^2 | q \cdot n | da - \frac{1}{2} \sum_{F 	\in \mathcal{F} \backslash \partial \Omega} | \rho_k - 	\rho_{K_f} |^2 |q \cdot n| da \\
+			(A_h\rho_h,\rho_h)_{\Omega} &= - \int_{\partial 	\Omega} | \rho_h | ^2 | q \cdot n | da - \frac{1}{2} \sum_{F 	\in \mathcal{F} \backslash \partial \Omega} | \rho_k - 	\rho_{K_f} |^2 |q \cdot n| da \\
 			&\Rightarrow - \underline{A} \text{ ist positiv 	semidefinit}
 		\end{align*}
 		\item Lemma \ref{diskrete Massenbilanz} (die diskrete Massebilanz) lässt sich auf das DG-Verfahren übertragen, indem, statt punktweiser Erhaltung, Erhaltung im Mittel betrachtet wird.

@@ -63,16 +63,16 @@ Wir haben somit eine erste schwache Formulierung gefunden:
 \end{gather*}
 
 \begin{notation}
-	Um die Notation übersichtlicher zu machen erweitern wir die Definition von $ \{\cdot\}_F $ und $ [\cdot]_F $. Sei $ g \in Q_h $ und $ F \in \mathcal{F}_h \setminus \GammaN $
+	Um die Notation übersichtlicher zu machen erweitern wir die Definition von $ \{\cdot\}_F $ und $ [\cdot]_F $. Sei $ h \in Q_h $ und $ F \in \mathcal{F}_h \setminus \GammaN $
 	\begin{align*}
-		&\{ g \}_F \coloneqq
+		&\{ h \}_F \coloneqq
 		 \begin{cases}
-					\frac{1}{2} (g_K + g_{K_F} ) &\text{für } F \subseteq \Omega\\
+					\frac{1}{2} (h_K + h_{K_F} ) &\text{für } F \subseteq \Omega\\
 					g &\text{für } F \subseteq \GammaD
 		\end{cases}
-	  &[g]_F \coloneqq \begin{cases}
-			g_K n^K + g_{K_F} n^{K_F} &\text{für } F \subseteq \Omega\\
-			g  n &\text{für } F \subseteq \GammaD
+	  &[h]_F \coloneqq \begin{cases}
+			h_K n^K + h_{K_F} n^{K_F} &\text{für } F \subseteq \Omega\\
+			h \, n &\text{für } F \subseteq \GammaD
 		\end{cases}
 	\end{align*}
 	
@@ -93,7 +93,7 @@ Falls $ u_h = u_D $ auf $ \GammaD $, so gilt für $ F \subseteq \GammaD  $:
 	\label{D-RW2}& 0  = \int_F (u_h - u_D) \kappa \nabla \phi_h \cdot n \diff a  &&\iff \int_F [u_h]_F \cdot \{\kappa \nabla\phi_h\}_F \diff a = \int_F u_D \kappa \nabla \phi_h \cdot n \diff a 
 \end{align} 
 Wir wählen diese Formulierung, um die Forderung $ u_h = u_D $ auf $ \GammaD $ zu erfüllen. 
-Außerdem können wir nun durch die Hinzunahme von weiteren Termen, welche für eine stetige Lösung $ u $ von $ \PS $ = 0 sind (also sogenannte Strafterme für unstetige Lösungen), eine symmetrische koerzive Bilinearform erhalten.\\
+Außerdem können wir nun durch die Hinzunahme von weiteren Termen, welche für eine stetige Lösung $ u $ von $ \PS $ gleich 0 sind (sozusagen Strafterme für unstetige Lösungen), eine symmetrische koerzive Bilinearform erhalten.\\
 Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial K_F $ mit $ u_K = u_{K_F} $ gilt $ [u_h]_F = 0 $ und somit
 \begin{align}
 	\label{innen1} &\int_F [u_h]_F \cdot [\phi_h]_F \diff a = 0\\
@@ -102,14 +102,19 @@ Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial
 
 \begin{define}
 	\begin{align*}
-		\asip(u_h, \phi_h) \coloneqq &\underbrace{\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x - \sum_{F \in \F\setminus\FN } \int_{F} \{\kappa \nabla u \}_F [\phi_h]_F \diff a}_{= a_h^{(1)}(u_h, \phi_h)}\\
-		&- \sum_{F \in \FIn} \underbrace{\int_F [u_h]_F \cdot \{ \kappa \nabla \phi_h \}_F \diff a}_{(\ref{innen2})} - \sum_{F \in \FD} \underbrace{\int_F [u_h]_F \cdot \{ \kappa \nabla \phi_h \}_F \diff a}_{(\ref{D-RW2})}\\
-		&+\sum_{F \in \FIn} \gamma_F \underbrace{\int_F [u_h]_F \cdot [\phi_h]_F \diff a}_{(\ref{innen1})} + \sum_{F \in \FD} \gamma_F \underbrace{\int_F [u_h]_F \cdot [\phi_h]_F \diff a}_{(\ref{D-RW1})}\\
-		=& \sum_{K \in \mathcal{K}} \int_K \kappa \nabla u \cdot \nabla \phi_h \diff x + \sum_{F \in \F\setminus\FN}  \gamma_F \int_F [u_h]_F \cdot [\phi_h]_F \diff a\\
-		&- \sum_{F \in \F\setminus\FN} \int_F \left(  \{\kappa \nabla u \}_F [\phi_h]_F + [u_h]_F \{\kappa \nabla \phi_h \}_F  \right) \diff a\\
-		\bsip(\phi_h) \coloneqq & \underbrace{\int_{\GammaN} g_N \phi_h \diff a}_{=b_h^{(1)}(\phi_h)} \underbrace{ - \int_{\GammaD} u_D \kappa \nabla \phi_h \cdot n \diff a}_{(\ref{D-RW2})} + \underbrace{\sum_{F \in \FD} \gamma_F \int_F u_D \phi_h \diff a}_{(\ref{D-RW1})} \\
-		\norm{\cdot}_{DG} \coloneqq  &\frac{1}{2} (\sum_{K \in \mathcal{K}} \int_{K} \kappa\nabla \phi_h \cdot \nabla \phi_h \diff x +  \sum_{F \in \F\setminus\FN }\gamma_F \norm{[ \phi_h ]_F}^2)
+		&\bullet &\asip(u_h, \phi_h) \coloneqq &\underbrace{\sum_{K \in \mathcal{K}} \int_K \kappa \nabla u_h \cdot \nabla \phi_h \diff x - \sum_{F \in \F\setminus\FN } \int_{F} \{\kappa \nabla u_h \}_F [\phi_h]_F \diff a}_{= a_h^{(1)}(u_h, \phi_h)}\\
+		&&&- \sum_{F \in \FIn} \sigma \underbrace{ \int_F [u_h]_F \cdot \{ \kappa \nabla \phi_h \}_F \diff a}_{(\ref{innen2})} - \sum_{F \in \FD} \sigma \underbrace{ \int_F [u_h]_F \cdot \{ \kappa \nabla \phi_h \}_F \diff a}_{(\ref{D-RW2})}\\
+		&&&+\sum_{F \in \FIn} \gamma_F \underbrace{\int_F [u_h]_F \cdot [\phi_h]_F \diff a}_{(\ref{innen1})} + \sum_{F \in \FD} \gamma_F \underbrace{\int_F [u_h]_F \cdot [\phi_h]_F \diff a}_{(\ref{D-RW1})}\\
+		&&=& \sum_{K \in \mathcal{K}} \int_K \kappa \nabla u_h \cdot \nabla \phi_h \diff x + \sum_{F \in \F\setminus\FN}  \gamma_F \int_F [u_h]_F \cdot [\phi_h]_F \diff a\\
+		&&&- \sum_{F \in \F\setminus\FN} \int_F \left(  \{\kappa \nabla u_h \}_F [\phi_h]_F + \sigma [u_h]_F \{\kappa \nabla \phi_h \}_F  \right) \diff a\\
+		&\bullet  &\bsip(\phi_h) \coloneqq & \underbrace{\int_{\GammaN} g_N \phi_h \diff a}_{=b_h^{(1)}(\phi_h)} \underbrace{ - \sigma \int_{\GammaD} u_D \kappa \nabla \phi_h \cdot n \diff a}_{(\ref{D-RW2})} + \underbrace{\sum_{F \in \FD} \gamma_F \int_F u_D \phi_h \diff a}_{(\ref{D-RW1})} \\
+		&\bullet  &\norm{\phi_h}_{DG} \coloneqq  &\frac{1}{2} \left( \sum_{K \in \mathcal{K}} \int_{K} \kappa\nabla \phi_h \cdot \nabla \phi_h \diff x +  \sum_{F \in \F\setminus\FN }\gamma_F \int_F [ \phi_h ]_F^2 \diff a \right)
 	\end{align*}
+	wobei $ \sigma \in \{\pm 1\} $ und $ \gamma_F \ge 0 \ (F\in\F\setminus\FN)$.
+	
+	\textcolor{red}{Diese Vorfaktoren werden in den Aufgaben verwendet: $ \sigma = 1 $ für \enquote{symmetric} bzw. $ \sigma = -1 $ für \enquote{non-symmetric} und $ \gamma_F $ als \enquote{penatly}}.
+	
+	\textcolor{red}{Für $ \GammaD \ne \emptyset $ ist $ \norm{\cdot}_{DG} $ eine Norm auf $ Q_h(0) $.}
 \end{define}
 %\begin{remark}\textcolor{red}{Bei Korrektur}\\
 %	Das \enquote{$-$}-Zeichen vor dem zweiten Integral bei $ b_h $ sollte dort stehen, allerdings ist es nicht auf den Folien nicht so.
@@ -117,8 +122,8 @@ Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial
 
 \paragraph{Eigenschaften:}
 \begin{itemize}
-	\item $ \asip(\cdot,\cdot) $ ist eine symmetrischen Bilinearform und unter gewissen Voraussetzungen an $ \gamma_F $ ist $ \asip(\cdot,\cdot) $ koerzive bezüglich der Norm $ \norm{\cdot}_{\text{DG}} $ (siehe VL. Lemma (7.2))
-	\item $ \bsip_h $ ist ein beschränktes lineares Funktional bezüglich $ \norm{\cdot}_{\text{DG}} $ 
+	\item Für $ \sigma = 1 $ ist $ \asip(\cdot,\cdot) $ eine \emph{symmetrischen} Bilinearform und unter gewissen Voraussetzungen an $ \gamma_F $ ist $ \asip(\cdot,\cdot) $ \emph{koerzive} bezüglich der Norm $ \norm{\cdot}_{\text{DG}} $ (siehe VL. Lemma (7.2))
+	\item $ \bsip $ ist ein beschränktes lineares Funktional bezüglich $ \norm{\cdot}_{\text{DG}} $ 
 \end{itemize}
 
 \paragraph{Konsistenz:}~\\
