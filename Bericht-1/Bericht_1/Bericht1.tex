@@ -365,41 +365,43 @@ Der Einfluss der erhöhten Permeabilität bei dem Problem Discontinuous ergibt d
 \begin{figure}[H]
 	\centering
 	\captionabove{}
-	\includegraphics[width=\textwidth]{../A4Tabelle.png}
+%	\includegraphics[width=\textwidth]{../A4Tabelle.png}
+	\includegraphics[width=\textwidth]{../../Abb5/data.png}
 \end{figure}
 Anhand der Tabelle wird deutlich, dass das Problem Simple auf allen Levels gut gelöst wird, da der Flux Error immer sehr niedrig ist. Der Fehler (Flux Error) fällt hierbei trotz höheren Levels teilweise gering höher aus, da aufgrund der größeren Komplexität vermehrt Rechenfehler im Bereich der Maschinengenauigkeit auftreten und sich aufsummieren. 
 \newline Beim Problem Discontinuous halbiert sich der Fehler hingegen jeweils pro Level (von Level 2-7)
- annähernd. Die Werte bei Level 8 sind hingegen sehr verwunderlich. Zu Erwarten war hier auch eine Halbierung des Fehlers. \newline
-Einstellungen hier waren$:$
-\newline
- Model $=$ Laplace, Mesh $=$ UnitSquare, Overlap $=$ dG1,
-  disc dG vector $=$
-dGvector transport P1, Discretization $=$ linear,
-  Distribution $=$ RCB, level $=$ 8, plevel $=$ 7, SetSolution $=$ 0, penalty $=$ 100000, brickearth $=$ 1, LinearSolver $=$ GMRES, Preconditioner $=$ GaussSeidel
-Transfer = MatrixTransfer, 
-presmoothing = 5, 
-postsmoothing = 5, 
-SmootherDamp = 0.8, 
-Smoother = SGS, 
-BasePreconditioner = LIB PS, 
-BaseSolver = LS, 
-TimeLevel = 0, 
-vtkplot = 1, 
-LinearReduction = 1e-20, 
-LinearEpsilon = 1e-10, 
-LinearSteps = 1000, 
-LinearVerbose = 0, 
-BaseSolverVerbose = -1, 
-NewtonVerbose = 1, 
-NewtonSteps = 100, 
-NewtonLineSearchSteps = 3 und 
-DebugLevel = 1.
-\newline 
+ annähernd.
+%  Die Werte bei Level 8 sind hingegen sehr verwunderlich. Zu Erwarten war hier auch eine Halbierung des Fehlers. \newline
+%Einstellungen hier waren$:$
+%\newline
+% Model $=$ Laplace, Mesh $=$ UnitSquare, Overlap $=$ dG1,
+%  disc dG vector $=$
+%dGvector transport P1, Discretization $=$ linear,
+%  Distribution $=$ RCB, level $=$ 8, plevel $=$ 7, SetSolution $=$ 0, penalty $=$ 100000, brickearth $=$ 1, LinearSolver $=$ GMRES, Preconditioner $=$ GaussSeidel
+%Transfer = MatrixTransfer, 
+%presmoothing = 5, 
+%postsmoothing = 5, 
+%SmootherDamp = 0.8, 
+%Smoother = SGS, 
+%BasePreconditioner = LIB PS, 
+%BaseSolver = LS, 
+%TimeLevel = 0, 
+%vtkplot = 1, 
+%LinearReduction = 1e-20, 
+%LinearEpsilon = 1e-10, 
+%LinearSteps = 1000, 
+%LinearVerbose = 0, 
+%BaseSolverVerbose = -1, 
+%NewtonVerbose = 1, 
+%NewtonSteps = 100, 
+%NewtonLineSearchSteps = 3 und 
+%DebugLevel = 1.
+%\newline 
 Die Ergebnisse ändern sich nicht, wenn eine andere Prozessorzahl gewählt wird. Die Rechnung an sich bleibt die Gleiche, bloß die Ausführungsreihenfolge bzw. die Parallelisierung ändern sich je nach Anzahl der benutzten Prozesse. 
 \end{enumerate}
-\begin{remark}~\\
-	 	Es hat sich herausgestellt, dass die Einstellung 'dG1' hier falsch war.
-\end{remark}
+%\begin{remark}~\\
+%	 	Es hat sich herausgestellt, dass die Einstellung 'dG1' hier falsch war.
+%\end{remark}
 \begin{enumerate}[label=(\roman*)]
 \setcounter{enumi}{5}
 \item Aufgabe 6
