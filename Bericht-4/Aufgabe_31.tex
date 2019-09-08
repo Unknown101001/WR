@@ -34,7 +34,7 @@ Um zusätzlich zum Fehler der Zeitdiskretisierung auch den Fehler der Ortsdiskre
  	\subfigure[mit $dt = 0.00625$]{\includegraphics[width=0.32\textwidth]{../Aufgabe31/Maxdiff/3vergleich_dt=000625_plot.png}}
  \end{figure}
 
-Ziel ist es nun, die Fehler der Zeit- bzw. Orstdiskretisierung für für ein bestimmtes Level mit einer bestimmten Schrittweite zu schätzen. 
+Ziel ist es nun, die Fehler der Zeit- bzw. Ortsdiskretisierung für ein bestimmtes Level mit einer bestimmten Schrittweite zu schätzen. 
 Dazu vergleichen wir für den Ortsfehler die Masse der aktuellen Zeitschrittweite und des aktuellen Levels mit der Masse der aktuellen Zeitschrittweite und des nächstfeineren Levels.
 Für den Fehler der Zeitdiskretisierung vergleichen wir die Masse der aktuellen Zeitschrittweite und des aktuellen Levels mit der Masse des aktuellen Levels und der nächstfeineren Zeitschrittweite.
 Als erste Annäherung an eine Metrik betrachten wir jeweils den maximalen Unterschied der einzelnen Massewerte zu den verschiedenen Zeitschritten $t$.
@@ -52,8 +52,7 @@ Wir erhalten so folgende Werte als Heatmap:
 	\captionabove{Annäherungen an Fehler der Zeit- und Ortsdiskretisierung}
 	\includegraphics[width=0.85\textwidth]{../Aufgabe31/Maxdiff/Heatmapblub.png}
 \end{figure}
-Dabei sind die Werte in 'Unterschied zwischen den Zeitschrittschritten' gerade der oben erklärte Wert $r_{Zeit}$ und die Werte in  'Unterschiede zwischen den Leveln' gerade der Wert $r_{Ort}$
-
+Dabei sind die Werte in 'Unterschied zwischen den Zeitschrittschritten' gerade der oben erklärte Wert $r_{Zeit}$ und die Werte in  'Unterschiede zwischen den Leveln' gerade der Wert $r_{Ort}$.
 Damit können wir folgende sinnvolle Werte für die Zeitschrittweite herauslesen:
 \begin{figure}[H]
 	\centering
