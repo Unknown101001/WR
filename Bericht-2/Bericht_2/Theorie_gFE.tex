@@ -212,31 +212,31 @@ Weiter setzen wir noch
 \begin{Lemma}
 	Es gilt: $\tilde{n}^K = \frac{1}{\abs{B_K^{-T} \hat{n}}} B_K^{-T} \hat{n} $ ist Normale zu $ \partial K $.
 \end{Lemma}
-\begin{remark}
-	\unklar{
-	Damit $ \tilde{n}^K $ zu einer äußeren Normalen von $ K $ wird, betrachten wir für $ \hat{F} = \conv \{\hat{z}_j, \hat{z}_k\} $ als Seite von $ \hat{K} $ und $ F = \varphi_K(\hat{F}) = \conv \{ z_j , z_k \}$ als Seite von $ K = \varphi_K(\hat{K}) $:
-	\begin{gather*}
-		u_F \coloneqq\frac{1}{\abs{z_j-z_k}} 
-		\begin{pmatrix}
-			z_j[2] - z_k[2] \\
-			z_k[1] - z_j[1]
-		\end{pmatrix} \quad
-		u_{\hat{F}} \coloneqq \frac{1}{\abs{\hat{z}_j-\hat{z}_k}} 
-		\begin{pmatrix}
-			\hat{z}_j[2] - \hat{z}_k[2] \\
-			\hat{z}_k[1] - \hat{z}_j[1]
-		\end{pmatrix} \\
-		s_{K,F} \coloneqq \sign(u_F \cdot B_F^{-T} u_{\hat{F}}).
-	\end{gather*} 
-	Wir erhalten die äußere Normale durch 
-	\[ n^K = s_{K,F} \; \tilde{n}^K \]
-	}
-\end{remark} 
+%\begin{remark}
+%	\unklar{
+%	Damit $ \tilde{n}^K $ zu einer äußeren Normalen von $ K $ wird, betrachten wir für $ \hat{F} = \conv \{\hat{z}_j, \hat{z}_k\} $ als Seite von $ \hat{K} $ und $ F = \varphi_K(\hat{F}) = \conv \{ z_j , z_k \}$ als Seite von $ K = \varphi_K(\hat{K}) $:
+%	\begin{gather*}
+%		u_F \coloneqq\frac{1}{\abs{z_j-z_k}} 
+%		\begin{pmatrix}
+%			z_j[2] - z_k[2] \\
+%			z_k[1] - z_j[1]
+%		\end{pmatrix} \quad
+%		u_{\hat{F}} \coloneqq \frac{1}{\abs{\hat{z}_j-\hat{z}_k}} 
+%		\begin{pmatrix}
+%			\hat{z}_j[2] - \hat{z}_k[2] \\
+%			\hat{z}_k[1] - \hat{z}_j[1]
+%		\end{pmatrix} \\
+%		s_{K,F} \coloneqq \sign(u_F \cdot B_F^{-T} u_{\hat{F}}).
+%	\end{gather*} 
+%	Wir erhalten die äußere Normale durch 
+%	\[ n^K = s_{K,F} \; \tilde{n}^K \]
+%	}
+%\end{remark} 
 Weiter bekommen wir unsere Seitenbasis auf $ K $ durch 
 \[ \psi_i^K = J_K^{-1}B_K \hat{\psi}_i \circ \varphi_K \ (i\in \{1,2,3\}) \]
-\begin{remark}
-	\textcolor{red}{Es gilt: $ \hat{\psi}_i \cdot \hat{n} = 0 \iff \psi_i^K \cdot n^K = 0 $}
-\end{remark}
+%\begin{remark}
+%	\textcolor{red}{Es gilt: $ \hat{\psi}_i \cdot \hat{n} = 0 \iff \psi_i^K \cdot n^K = 0 $}
+%\end{remark}
 Um  an unsere Seitenbasis auf $ \Omega \ \{\psi_j\}_{j = 1}^{\abs{\mathcal{F}}}$ zu kommen, benötigen wir noch die Übersetzung der globalen Seitennummerierung in einer Zelle $ K $ zur globalen Seitennummerierung
 \[ l:\mathcal{K}\times \{1,2,3\} \to \{1, \dots , \abs{\mathcal{F}} \}, (K,i) \mapsto l(K,i). \]
 Wir setzen $ \psi_j (j \in \{1,\dots , \abs{\mathcal{F}}\})$ durch
@@ -345,7 +345,7 @@ Und untersuchen folgende Problem:
 \begin{gather*}
 	\text{Bestimmme } (q_h,u_h, \lambda_h) \in W_\mathcal{K} \times Q_h \times M_h(u_D) \text{ mit}\\
 	\hFgFE\begin{dcases}
-		(1) \int_K \kappa^{-1} q_h \psi_K \diff x - \int_K u_h \dive(\psi_K) \diff x = \int_{\partial K} \lambda_h \psi_K \cdot n^K \diff a \\
+		(1) \int_K \kappa^{-1} q_h \psi_K \diff x - \int_K u_h \dive(\psi_K) \diff x = - \int_{\partial K} \lambda_h \psi_K \cdot n^K \diff a \\
 		(2) \int_K \dive(q_h) \psi_K \diff x = 0\\
 		(3) \sum_{K\in \mathcal{K}} \int_{\partial K} q_h \cdot n \mu_h \diff a = - \int_{\Gamma_N} g_N \mu_h \diff a
 	\end{dcases}\\
