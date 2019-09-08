@@ -26,14 +26,14 @@ Es folgt, die als \defi{Konvektions-Reaktions-Diffusions-Gleichung} bezeichnete 
 \[ \partial_t c + \dive(c q - \kappa_c \nabla c) = r(c) \text{ in } (0,T) \times \Omega \]
 Wie sonst geben wir uns auch Anfangs- und Randwerte in Form von $ c_0, c_D, g_N, g_R $vor und erhalten das Problem
 \begin{gather*}
-	\text{Bestimmme } c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
+	\text{Bestimme } c:[0,T] \times \Omega \to \R \text{, sodass gilt}\\
 	\KDR \begin{cases}
 		\text{\textbf{KDR-Gleichung: }}&\partial_t c + \dive(c q - \kappa_c \nabla c) = r(c) \text{ in } (0,T) \times \Omega\\
 		\text{\textbf{Anfangswert: }} &c(0,x) = c_0(x) \text{ in } \Omega\\
 		\text{\textbf{Randwert:}}\\
-		\qquad \text{Dirichlet: } &c(t,x) = c_D(t,x) \text{ auf } (0,T) \times \GammaD \\
-		\qquad \text{Neumann: } &-\kappa_c \nabla c(t,x) \cdot \nu = g_N(t,x) \text{ auf } (0,T) \times \GammaN \\
-		\qquad \text{Robin: } &-\kappa_c \nabla c(t,x) \cdot \nu + \alpha_R c(t,x) = g_R(t,x) \text{ auf } (0,T) \times \GammaR
+		\qquad \text{Dirichlet: } &c(t,x) = c_D(t,x) \text{ auf } [0,T] \times \GammaD \\
+		\qquad \text{Neumann: } &-\kappa_c \nabla c(t,x) \cdot \nu = g_N(t,x) \text{ auf } [0,T] \times \GammaN \\
+		\qquad \text{Robin: } &-\kappa_c \nabla c(t,x) \cdot \nu + \alpha_R c(t,x) = g_R(t,x) \text{ auf } [0,T] \times \GammaR
 	\end{cases}\\
 	\text{wobei } \partial \Omega = \GammaD \cupdot \GammaN \cupdot \GammaR
 \end{gather*}
