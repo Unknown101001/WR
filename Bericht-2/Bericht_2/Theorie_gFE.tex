@@ -316,9 +316,9 @@ Dann löst $ (\underline{q}, \underline{u}) $ (L gFE) bzw. $ (q_h,u_h) $ (dgFE) 
 \begin{Satz}[Dual-Primal-Error] ~\newline
 	Wir betrachten unser Ausgangsproblem \emph{(LG)} bzw. \emph{(LG F)}. Sei $ u_h \in V_h(u_D) $ Lösung des linearen FE-Verfahren (\defi{primale Lösung}) und $ q_h \in W_h(-g_N) $ Lösung des gemischten FE-Verfahren (\defi{duale Lösung}). 
 	
-	Dann gilt die A-posteriori Schranke (wobei  $ \norm{f}_{\kappa^{-1}} = \int \kappa^{-1} f \cdot f \diff x $ ) 
+	Dann gilt die A-posteriori Schranke (wobei  $ \norm{f}_{\kappa^{-1}}^2 = \int \kappa^{-1} f \cdot f \diff x $ ) 
 	\begin{gather*}
-	\norm{q-q_h}_{\kappa^{-1}} \leq \underbrace{\norm{q_h + \kappa \nabla u_h}_{\kappa^{-1}}}_{\defi{Dual-Primal-Error}} 
+	\norm{q-q_h}_{\kappa^{-1}} \leq \underbrace{\norm{q_h - \kappa \nabla u_h}_{\kappa^{-1}}}_{\defi{Dual-Primal-Error}} 
 	\end{gather*}
 \end{Satz}
 
