@@ -18,7 +18,7 @@ Dabei stellen wir uns die Aufgabe den 'Erwartungswert' eines gegebenen Zielfunkt
 Für die Verteilung von $\kappa (\omega,x )$ kommen zunächst viele verschiedene Verteilungen in Frage, doch nicht bei allen konvergiert ein Monte-Carlo-Verfahren (näheres dazu gleich), weswegen wir als (funktionierenden) Ansatz $\kappa (\omega,x )$  als log-normal-verteiltes stochastisches Feld mit Kovarianzfunktion $C(x,y)= \sigma^2 \exp ( - \norm{x-y}^{\alpha}_2 / \lambda^{\alpha})$ wählen. \\
 Als Zielfunktional wählen wir das $L^2$-Funktional der Lösung $u(\omega,\cdot)$ des oben beschriebenen Randwertproblems, welches wir ab jetzt mit $Q$ bezeichnen wollen.
 Da wir die konkreten Daten von $\kappa$ nicht kennen, sind wir an einem Schätzer für $\mathbb{E}[Q]$ interessiert.
-Beachte hierbei, dass wir auch $u$ (die klassische Lösung des obigen Problems) nicht kennen, aber wir können $u$ durch mit der FEM approximieren. \\
+Beachte hierbei, dass wir auch $u$ (die klassische Lösung des obigen Problems) nicht kennen, aber wir können $u$ mit der FEM approximieren. \\
 Wir betrachten dazu zunächst folgenden Monte-Carlo Ansatz:
 \begin{align*}
 	    \hat{Q}^{MC}_{h,M}  \coloneqq \frac{1}{M} \sum_{i= 1}^{M} Q_h (\omega_i)
