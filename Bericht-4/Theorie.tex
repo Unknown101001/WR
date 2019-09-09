@@ -130,7 +130,7 @@ Nun diskretisieren wir mit dem impl. Euler-Verfahren auch in der Zeit und erhalt
 
 \begin{define}(Operator für $ \vdKDR $)
 	\begin{align*}
-		&F_h^n: V_h \to V_h \text{ gegeben durch }\\ & \qquad (F_h^n( \cdot ), \phi_h) = \bigg( \frac{1}{\Delta t} M_h \, \cdot + A_h \, \cdot, \phi_h  \bigg)_\Omega + \bigg( R_h^n( \cdot ), \phi_h \bigg)_\Omega - \bigg( \frac{1}{\Delta} M_h c_h^{\textcolor{red}{n-1}}, \phi_h \bigg)_\Omega \\
+		&F_h^n: V_h \to V_h \text{ gegeben durch }\\ & \qquad (F_h^n( \cdot ), \phi_h) = \bigg( \frac{1}{\Delta t} M_h \, \cdot + A_h \, \cdot, \phi_h  \bigg)_\Omega + \bigg( R_h^n( \cdot ), \phi_h \bigg)_\Omega - \bigg( \frac{1}{\Delta} M_h c_h^{n-1}, \phi_h \bigg)_\Omega \\
 		&\text{und } J_h^n \coloneqq D F_h^n
 	\end{align*} 
 \end{define}

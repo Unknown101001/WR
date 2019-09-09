@@ -9,9 +9,9 @@ Wir betrachten also das folgende Randwertproblem:
 \begin{gather*}
 	\begin{cases}
 	- \dive( \kappa(\omega,x)\nabla u(\omega,x))=0 &\text{, für } x \in D \\
-	q(\omega , x) = - \kappa(\omega ,x) \nabla u &\text{, für }  x \in D\\
+	q(\omega , x) = - \kappa(\omega ,x) \nabla u(\omega , x) &\text{, für }  x \in D\\
 	-q(\omega,x) \cdot n = g_N &\text{, für } x \in \GammaN\\
-	u(\omega,x) = u_D(\omega,x) &\text{, für } x \in \GammaD. 
+	u(\omega,x) = u_D(x) &\text{, für } x \in \GammaD. 
 	\end{cases}
 \end{gather*}
 Dabei stellen wir uns die Aufgabe den 'Erwartungswert' eines gegebenen Zielfunktionals $Q$, z.B. $Q(q) = \int_{\Gamma} q \cdot n \diff x $ (den Ausfluss) zu bestimmen.
@@ -83,7 +83,7 @@ Zudem können wir Beispiele der entstandenen Permeabilitäten einzelner Samples 
 	\subfigure[$\sigma = 3  \; \lambda =0.15 \; \alpha= 1.8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma3/perm2.png}}	
 	\subfigure[$\sigma = 6  \; \lambda =0.15  \; \alpha= 1.8$]{\includegraphics[width=0.25\textwidth]{../Aufgabe39/Sigma6/perm2.png}}	
 \end{figure}
-$\sigma$ geht in die Varianz der einzelnen Zufallsvariablen ein. An den Permeabilitäten erkennt man das daran, dass der Bereich $[\sigma_0,\sigma_1] $ immer größer wird und wir bei größerem Sigma (wenn wir über die gleichen Werte skalieren) deutlich mehr Bereiche auf oder jenseits des ursprünglichen Maximalniveaus finden.
+$\sigma$ geht in die Varianz der einzelnen Zufallsvariablen ein. An den Permeabilitäten erkennt man das daran, dass der Bereich $[\kappa_0,\kappa_1] $ immer größer wird und wir bei größerem Sigma (wenn wir über die gleichen Werte skalieren) deutlich mehr Bereiche auf oder jenseits des ursprünglichen Maximalniveaus finden.
 \begin{figure}[H]
 	\centering
 	\captionabove{Beispielpermeabilitäten für verschiedene $\lambda$ unter derselben Skalierung}
