@@ -112,9 +112,9 @@ Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial
 	\end{align*}
 	wobei $ \sigma \in \{\pm 1\} $ und $ \gamma_F \ge 0 \ (F\in\F\setminus\FN)$.
 	
-	\textcolor{red}{Diese Vorfaktoren werden in den Aufgaben verwendet: $ \sigma = 1 $ für \enquote{symmetric} bzw. $ \sigma = -1 $ für \enquote{non-symmetric} und $ \gamma_F $ als \enquote{penatly}}.
+	Diese Vorfaktoren werden in den Aufgaben verwendet: $ \sigma = 1 $ für \enquote{symmetric} bzw. $ \sigma = -1 $ für \enquote{non-symmetric} und $ \gamma_F $ als \enquote{penalty}.
 	
-	\textcolor{red}{Für $ \GammaD \ne \emptyset $ ist $ \norm{\cdot}_{DG} $ eine Norm auf $ Q_h(0) $.}
+Für $ \GammaD \ne \emptyset $ ist $ \norm{\cdot}_{DG} $ eine Norm auf $ Q_h(0) $.
 \end{define}
 %\begin{remark}\textcolor{red}{Bei Korrektur}\\
 %	Das \enquote{$-$}-Zeichen vor dem zweiten Integral bei $ b_h $ sollte dort stehen, allerdings ist es nicht auf den Folien nicht so.
@@ -127,12 +127,12 @@ Für eine Funktion $ u_h \in Q_h $ und $ \overline{F} = \partial K \cap \partial
 \end{itemize}
 
 \paragraph{Konsistenz:}~\\
-Für eine Lösung $ u $ von $ \PS $ mit $ u \in C(\overline{\Omega}) $ (u stetig auf $ \overline{\Omega} $) und  \textcolor{red}{$ \{\kappa \nabla u\}_F =0$   $(F \in \FIn)$} \textcolor{red}{Skript: $q \cdot n|_K = q \cdot n|_{K_F} $ ($\rightarrow$ $q = - \kappa \nabla u$)}
+Für eine Lösung $ u $ von $ \PS $ mit $ u \in C(\overline{\Omega}) $ (u stetig auf $ \overline{\Omega} $) und   $q \cdot n|_K = q \cdot n|_{K_F} $ ($\rightarrow$ $q = - \kappa \nabla u$)
 gilt die Gleichung
 \[ \asip(u,\phi_h) = \bsip(\phi_h) \ (\phi_h \in Q_h \text{ mit } \phi_h = 0 \text{ auf } \GammaD) \]
 
 \paragraph{Stabilität:}~\\
-Sei $ u_h \in Q_h $ eine Lösung von $ \asip(u_h, \phi_h) = \bsip(\phi_h) \ (\phi_h \in Q_h) $. Dann gilt
+Sei $ u_h \in Q_h $ eine Lösung von $ \asip(u_h, \phi_h) = \bsip(\phi_h) \ (\phi_h \in Q_h) $ und $ \asip(u_h, \phi_h)$ eine koerzive Bilinearform. Dann gilt
 \[ \norm{u_h}_{\text{DG}}^2 \le \asip(u_h, u_h) = \bsip(u_h) \le C \norm{u_h}_{\text{DG}} \implies \norm{u_h}_{\text{DG}} \le C \]
 Also ist unsere numerische Lösung beschränkt. 
 
