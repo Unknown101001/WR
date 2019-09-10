@@ -32,8 +32,8 @@ Wie sonst geben wir uns auch Anfangs- und Randwerte in Form von $ c_0, c_D, g_N,
 		\text{\textbf{Anfangswert: }} &c(0,x) = c_0(x) \text{ in } \Omega\\
 		\text{\textbf{Randwert:}}\\
 		\qquad \text{Dirichlet: } &c(t,x) = c_D(t,x) \text{ auf } [0,T] \times \GammaD \\
-		\qquad \text{Neumann: } &-\kappa_c \nabla c(t,x) \cdot \nu = g_N(t,x) \text{ auf } [0,T] \times \GammaN \\
-		\qquad \text{Robin: } &-\kappa_c \nabla c(t,x) \cdot \nu + \alpha_R c(t,x) = g_R(t,x) \text{ auf } [0,T] \times \GammaR
+		\qquad \text{Neumann: } &\kappa_c \nabla c(t,x) \cdot \nu = g_N(t,x) \text{ auf } [0,T] \times \GammaN \\
+		\qquad \text{Robin: } &\kappa_c \nabla c(t,x) \cdot \nu + \alpha_R c(t,x) = g_R(t,x) \text{ auf } [0,T] \times \GammaR
 	\end{cases}\\
 	\text{wobei } \partial \Omega = \GammaD \cupdot \GammaN \cupdot \GammaR
 \end{gather*}
@@ -130,7 +130,7 @@ Nun diskretisieren wir mit dem impl. Euler-Verfahren auch in der Zeit und erhalt
 
 \begin{define}(Operator für $ \vdKDR $)
 	\begin{align*}
-		&F_h^n: V_h \to V_h \text{ gegeben durch }\\ & \qquad (F_h^n( \cdot ), \phi_h) = \bigg( \frac{1}{\Delta t} M_h \, \cdot + A_h \, \cdot, \phi_h  \bigg)_\Omega + \bigg( R_h^n( \cdot ), \phi_h \bigg)_\Omega - \bigg( \frac{1}{\Delta} M_h c_h^{n-1}, \phi_h \bigg)_\Omega \\
+		&F_h^n: V_h \to V_h \text{ gegeben durch }\\ & \qquad (F_h^n( \cdot ), \phi_h) = \bigg( \frac{1}{\Delta t} M_h \, \cdot + A_h \, \cdot, \phi_h  \bigg)_\Omega - \bigg( R_h^n( \cdot ), \phi_h \bigg)_\Omega - \bigg( \frac{1}{\Delta t} M_h c_h^{n-1}, \phi_h \bigg)_\Omega \\
 		&\text{und } J_h^n \coloneqq D F_h^n
 	\end{align*} 
 \end{define}

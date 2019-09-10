@@ -50,42 +50,43 @@ Sei $\Omega = \R ^D$ , $q_0 \in \R ^D$ , $n_0 \in \R ^D$ und
 					\end{array}
 				\right. 
 	\end{align*}
-	ist schwache Lösung, denn für eine beliebige Testfunktion $\phi \in C_0^{\infty} ([-1,T] \times \R^D)$ gilt:
-	\begin{align*}
-		&\int_{\Omega} \rho_0 \phi (0) dx + \int_{Q_- \cap Q_+ } 
-				\begin{pmatrix}
-       				\rho \\
-       				\rho q_0
-     			\end{pmatrix}
-     		\cdot
-     			\begin{pmatrix}
-       				\partial_t \\
-       				\nabla q_0
-     			\end{pmatrix}
-     		\phi \; dxdt  \\
-     	= &\int_{ \partial Q_- \cap \partial Q_+ } \rho_- \phi
-     		\begin{pmatrix}
-       				1 \\
-       				q_0
-     			\end{pmatrix}
-     		\cdot
-     			\begin{pmatrix}
-       				-q_0 \cdot n_0 \\
-       				n_0
-     			\end{pmatrix} 
-     		\; da dt
-     	+ \int_{ \partial Q_- \cap \partial Q_+ } \rho_+ \phi
-     		\begin{pmatrix}
-       				1 \\
-       				q_0
-     			\end{pmatrix}
-     		\cdot
-     			\begin{pmatrix}
-       				-q_0 \cdot n_0 \\
-       				n_0
-     			\end{pmatrix} 
-     		\; da dt	
-	\end{align*}
+	ist schwache Lösung.
+%	, denn für eine beliebige Testfunktion $\phi \in C_0^{\infty} ([0,T] \times \R^D)$ gilt:
+%	\begin{align*}
+%		&\int_{\Omega} \rho_0 \phi (0) dx + \int_{Q_- \cap Q_+ } 
+%				\begin{pmatrix}
+%       				\rho \\
+%       				\rho q_0
+%     			\end{pmatrix}
+%     		\cdot
+%     			\begin{pmatrix}
+%       				\partial_t \\
+%       				\nabla q_0
+%     			\end{pmatrix}
+%     		\phi \; dxdt  \\
+%     	= &\int_{ \partial Q_- \cap \partial Q_+ } \rho_- \phi
+%     		\begin{pmatrix}
+%       				1 \\
+%       				q_0
+%     			\end{pmatrix}
+%     		\cdot
+%     			\begin{pmatrix}
+%       				-q_0 \cdot n_0 \\
+%       				n_0
+%     			\end{pmatrix} 
+%     		\; da dt
+%     	+ \int_{ \partial Q_- \cap \partial Q_+ } \rho_+ \phi
+%     		\begin{pmatrix}
+%       				1 \\
+%       				q_0
+%     			\end{pmatrix}
+%     		\cdot
+%     			\begin{pmatrix}
+%       				-q_0 \cdot n_0 \\
+%       				n_0
+%     			\end{pmatrix} 
+%     		\; da dt	
+%	\end{align*}
 	Wir können also tatsächlich analytisch eine Lösung des Problems berechnen und wollen nun untersuchen, wie sich das Finite Volumen Verfahren mit zwei verschiedenen Lösungsverfahren zur Zeitintegration verhält. 
 	\end{remark} 
 	Genauer betrachten wir hierbei zunächst das explizite Runge-Kutta-Verfahren 4. Ordnung und wenden uns danach der impliziten Mittelpunktsregel zu (diese hat Ordnung 2). Besonders wollen wir dabei auf die sogenannte CFL-Bedingung, eine Stabilitätsbedingung für explizite Verfahren,  $\mathcal{O}(\frac{\Delta t}{h})$ bzw. $\Delta t < Ch$ eingehen. Dabei ist das $\Delta t$ die Schrittweite der Zeitdiskretisierung und $h = \frac{10}{2^{level} }$ die Schrittweite der Ortsdiskretisierung. 
