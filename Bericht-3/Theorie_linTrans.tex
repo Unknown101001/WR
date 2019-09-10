@@ -19,11 +19,11 @@ Da $ K \subseteq \Omega $ beliebig ist und $ \rho, q \in C^1(\Omega) $, folgt di
 \end{gather*}
 Mit der Randbedingung $ \rho(x,t) = \rhoin(x,t) \text{ auf } \Gammain \times (0,T)$ und der Anfangsbedingung $ \rho(x,0) = \rho_0(x) \text{ auf } \Omega $ ergibt sich das zu lösende analytische Problem, welches wir in diesem Bericht numerisch approximieren wollen:
 \begin{gather*}
-	\text{Bestimme } \rho: \Omega \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
+	\text{Bestimme } \rho: \overline{\Omega} \times [0,T] \to \R_{\geq 0} \text{, sodass}\\
 	\lTG
 	\begin{cases}
 		\partial_t \rho + \dive(\rho q) = 0 &\text{ in } \Omega \times (0,T)\\
-		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times (0,T)\\
+		\rho(x,t) = \rhoin(x,t) &\text{ auf } \Gammain \times [0,T]\\
 		\rho(x,0) = \rho_0(x) &\text{ auf } \Omega
 	\end{cases}
 \end{gather*}
