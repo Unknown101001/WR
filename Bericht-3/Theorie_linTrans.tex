@@ -355,13 +355,13 @@ Anschließend bestimmen wir $\rho_h : [0,T] \rightarrow Q_h$ mit:
 			&\Rightarrow - \underline{A} \text{ ist positiv 	semidefinit}
 		\end{align*}
 		\item Lemma \ref{diskrete Massenbilanz} (die diskrete Massebilanz) lässt sich auf das DG-Verfahren übertragen, indem, statt punktweiser Erhaltung, Erhaltung im Mittel betrachtet wird.
-		\item Es gilt für die DG-Approximation mit Upwind-Flux: \newline
-		\begin{align*}
-			\int_{\Omega} | \rho_h (t) | ^2 \diff x &= \int_{\Omega} |\rho_0 |^2 \diff x 
-			+ \int_0^t \int_{\Gammain} | \rho_{in} |^2 |q \cdot n | \diff a \diff \tilde{t}
-			- \int_0^t \int_{\Gamma_{out}} |\rho_h |^2 |q \cdot n | \diff a \diff \tilde{t} \\
-			&- \sum_{F \in \mathcal{F}_h \cap \Omega^0} \int_0^t \int_F | \rho_K - \rho_{K_f} |^2 |q \cdot n| \diff a \diff \tilde{t}
-			- \int_0^t \int_F |\rho_{in} - \rho_h |^2 |q \cdot n| \diff a \diff \tilde{t}
-		\end{align*}
+%		\item Es gilt für die DG-Approximation mit Upwind-Flux: \newline
+%		\begin{align*}
+%			\int_{\Omega} | \rho_h (t) | ^2 \diff x &= \int_{\Omega} |\rho_0 |^2 \diff x 
+%			+ \int_0^t \int_{\Gammain} | \rho_{in} |^2 |q \cdot n | \diff a \diff \tilde{t}
+%			- \int_0^t \int_{\Gamma_{out}} |\rho_h |^2 |q \cdot n | \diff a \diff \tilde{t} \\
+%			&- \sum_{F \in \mathcal{F}_h \cap \Omega^0} \int_0^t \int_F | \rho_K - \rho_{K_f} |^2 |q \cdot n| \diff a \diff \tilde{t}
+%			- \int_0^t \int_F |\rho_{in} - \rho_h |^2 |q \cdot n| \diff a \diff \tilde{t}
+%		\end{align*}
 	\end{enumerate}
 \end{remark}
